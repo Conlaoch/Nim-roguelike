@@ -32,9 +32,16 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     # initial setup
     var game = newGame(canvas);
     game.clearGame();
+    
+    echo $resources.getURLs();
 
-    game.images.add(resources.get("gfx/human_m.png"));
-    echo game.images.len
+    for k in resources.getURLs():
+        echo $k;
+        # for easier retrieval from Nim
+        game.images.add(resources.get(k));
+    
+    #game.images.add(resources.get("gfx/human_m.png"));
+    #echo game.images.len
 
     # test
     renderGfxTile(game, game.images[0], 0, 0);
@@ -54,7 +61,7 @@ dom.window.onload = proc(e: dom.Event) =
   # do we need this?
   var ress = initLoader(dom.window);
   # we have to force cstring conversion for some reason
-  resources.load(@[cstring("gfx/human_m.png")]);
+  resources.load(@[cstring("gfx/human_m.png"), cstring("gfx/kobold.png")]);
 
 #   # initial setup
 #   var game = newGame(canvas);
