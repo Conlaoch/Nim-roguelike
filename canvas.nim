@@ -40,6 +40,18 @@ proc processKeyDown(key: int, player: Player) =
       of 40: player.move(0, 1)    #down
       else: echo key
 
+# stubs to be called from JS by JQuery onclick()
+proc moveUpNim() {.exportc.} =
+    game.player.move(0, -1)
+
+proc moveDownNim() {.exportc.} =
+    game.player.move(0, 1)
+
+proc moveLeftNim() {.exportc.} =
+    game.player.move(-1, 0)
+
+proc moveRightNim() {.exportc.} =
+    game.player.move(1, 0)
 
 # we need to specify our own %#^%$@ type so that we can work as a callback 
 # in onReady()
