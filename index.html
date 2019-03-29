@@ -1,12 +1,49 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <!-- we're using some fancy characters-->
     <meta charset="UTF-8">
     <title>Veins of the Earth</title>
   </head>
+  <script src="jquery-3.3.1.js"></script>
+  <script>
+      //crucial
+      $( document ).ready(function() {
+         $("input").click(function() {
+           console.log("Clicked a button");
+         });
+     });
+  </script>
   <script src="resources.js"></script>
   <script src="canvas.js"></script>
   <body>
     <canvas id="canvas"></canvas>
+  <!-- based on Ondrej Zara's js-like -->
+  <div id="keypad">
+    <table>
+    <tbody>
+    <tr>
+    <!-- button tag can be buggy so we use input type=button -->
+    <!-- using hex values for Unicode characters -->
+    <td><input type="button" value="&#9700" > </td>
+    <!-- for consistency -->
+    <td><input type="button" value="&#9650"> </td>
+    <td><input type="button" value="&#9701" > </td>
+    </tr>
+    <tr>
+    <td><input type="button" value= "&#9664"> </td>
+    <!-- midline ellipsis -->
+    <td><input type="button" value= "&#8943"> </td>
+    <td><input type="button" value= "&#9654"> </td>
+    </tr>
+    <tr>
+    <td><input type="button" value= "&#9699"> </td>
+    <!-- for consistency -->
+    <td><input type="button" value= "&#9660"> </td>
+    <td><input type="button" value="&#9698"> </td>
+    </tr>
+    </tbody>
+    </table>
+    </div>    
   </body>
 </html>
