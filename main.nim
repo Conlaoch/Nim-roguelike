@@ -9,26 +9,27 @@ import map, arena_map
 var game: Game;
 
 # main key input handler
-proc processKeyDown(key: int, player: Player) =
+proc processKeyDown(key: int, game:Game) =
     case key:
-      of 37: player.move(-1, 0)   #left
-      of 39: player.move(1, 0)     #right
-      of 38: player.move(0, -1)      #up
-      of 40: player.move(0, 1)    #down
+      of 37: game.player.move(-1, 0, game.map)   #left
+      of 39: game.player.move(1, 0, game.map)     #right
+      of 38: game.player.move(0, -1, game.map)      #up
+      of 40: game.player.move(0, 1, game.map)    #down
       else: echo key
 
 # stubs to be called from JS by JQuery onclick()
 proc moveUpNim() {.exportc.} =
-    game.player.move(0, -1)
+    game.player.move(0, -1, game.map)
 
 proc moveDownNim() {.exportc.} =
-    game.player.move(0, 1)
+    game.player.move(0, 1, game.map)
 
 proc moveLeftNim() {.exportc.} =
-    game.player.move(-1, 0)
+    game.player.move(-1, 0, game.map)
 
 proc moveRightNim() {.exportc.} =
-    game.player.move(1, 0)
+    game.player.move(1, 0, game.map)
+
 
 # we need to specify our own %#^%$@ type so that we can work as a callback 
 # in onReady()
@@ -101,7 +102,7 @@ dom.window.onload = proc(e: dom.Event) =
     proc onKeyDown(event: Event) =
         # prevent scrolling on arrow keys
         event.preventDefault();
-        processKeyDown(event.keyCode, game.player);
+        processKeyDown(event.keyCode, game);
 
     #  dom.window.addEventListener("keyup", onKeyUp)
     dom.window.addEventListener("keydown", onKeyDown)
