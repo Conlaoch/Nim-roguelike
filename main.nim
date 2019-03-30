@@ -2,6 +2,7 @@ import dom
 import html5_canvas
 
 import resources, entity, game_class
+import map, arena_map
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -53,7 +54,8 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     #renderGfxTile(game, game.images[0], 0, 0);
 
     # setup cd.
-    game.player = Player(position: (0,0))
+    game.player = Player(position: (1,1))
+    game.map = arena_map.generateMap(20,20,@[(10,10)])
 
     # what it says on the tin
     proc mainLoop(time:float) = 
@@ -65,6 +67,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         # clear
         game.clearGame();
         # render
+        game.renderMap(game.map);
         game.render(game.player);
 
     # this indentation is crucially important! It's not part of the main loop!
@@ -86,7 +89,10 @@ dom.window.onload = proc(e: dom.Event) =
     # do we need this? YES WE DO!
     var ress = initLoader(dom.window);
     # we have to force cstring conversion for some reason
-    resources.load(@[cstring("gfx/human_m.png"), cstring("gfx/kobold.png")]);
+    resources.load(@[cstring("gfx/human_m.png"), 
+    cstring("gfx/wall_stone.png"),
+    cstring("gfx/floor_cave.png"),
+    cstring("gfx/kobold.png")]);
 
     # keys
     #  proc onKeyUp(event: Event) =
