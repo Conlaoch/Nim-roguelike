@@ -2,8 +2,6 @@ import isometric
 
 
 type
-    Position* = tuple[x: int, y: int]
-
     # this is Nim's closest class equivalent (a type and associated functions)
     # a type
     Entity* = ref object
