@@ -14,7 +14,7 @@ if (typeof Float32Array === 'undefined') Float32Array = Array;
 if (typeof Float64Array === 'undefined') Float64Array = Array;
 var NTI3850 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI3858 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
-var NTI139015 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI138004 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI15346 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI3808 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
@@ -51,9 +51,9 @@ NTI3846.base = NTI3842;
 var NNI15346 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI140, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
 NTI15346.node = NNI15346;
-var NNI139015 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
+var NNI138004 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI139015.node = NNI139015;
+NTI138004.node = NNI138004;
 var NNI3858 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3858.node = NNI3858;
 NTI3858.base = NTI3828;
@@ -331,7 +331,7 @@ var out_of_mem_hook_13426 = [null];
       return (v - v % 1)   ||   (v < 0 ? -0 : v === 0 ? v : 0);
     };
   }
-var game_141116 = [null];
+var game_142014 = [null];
 
 function is_fat_pointer_17201(ti_17203) {
 	var result_17204 = false;
@@ -513,96 +513,96 @@ function add_quoted_139202(s_139206, s_139206_Idx, x_139208) {
 	
 }
 
-function HEX24_139038(x_139042) {
-	var result_139043 = [null];
+function HEX24_139031(x_139035) {
+	var result_139036 = [null];
 
 	var F={procname:"$.$",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 2613;
-		result_139043[0] = nimCopy(null, makeNimstrLit("("), NTI138);
+		result_139036[0] = nimCopy(null, makeNimstrLit("("), NTI138);
 		F.line = 2614;
-		var first_element_139044 = true;
-		if (!(first_element_139044)) {
+		var first_element_139037 = true;
+		if (!(first_element_139037)) {
 		F.line = 2616;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit(", ")); } else { result_139043[0] = makeNimstrLit(", "); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit(", ")); } else { result_139036[0] = makeNimstrLit(", "); };
 		}
 		
 		F.line = 2617;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit("x")); } else { result_139043[0] = makeNimstrLit("x"); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit("x")); } else { result_139036[0] = makeNimstrLit("x"); };
 		F.line = 2618;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit(": ")); } else { result_139043[0] = makeNimstrLit(": "); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit(": ")); } else { result_139036[0] = makeNimstrLit(": "); };
 		F.line = 2624;
-		add_quoted_139202(result_139043, 0, x_139042["Field0"]);
+		add_quoted_139202(result_139036, 0, x_139035["Field0"]);
 		F.line = 2625;
-		first_element_139044 = false;
-		if (!(first_element_139044)) {
+		first_element_139037 = false;
+		if (!(first_element_139037)) {
 		F.line = 2616;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit(", ")); } else { result_139043[0] = makeNimstrLit(", "); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit(", ")); } else { result_139036[0] = makeNimstrLit(", "); };
 		}
 		
 		F.line = 2617;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit("y")); } else { result_139043[0] = makeNimstrLit("y"); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit("y")); } else { result_139036[0] = makeNimstrLit("y"); };
 		F.line = 2618;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit(": ")); } else { result_139043[0] = makeNimstrLit(": "); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit(": ")); } else { result_139036[0] = makeNimstrLit(": "); };
 		F.line = 2624;
-		add_quoted_139202(result_139043, 0, x_139042["Field1"]);
+		add_quoted_139202(result_139036, 0, x_139035["Field1"]);
 		F.line = 2625;
-		first_element_139044 = false;
+		first_element_139037 = false;
 		F.line = 2628;
-		if (result_139043[0] != null) { result_139043[0] = (result_139043[0]).concat(makeNimstrLit(")")); } else { result_139043[0] = makeNimstrLit(")"); };
+		if (result_139036[0] != null) { result_139036[0] = (result_139036[0]).concat(makeNimstrLit(")")); } else { result_139036[0] = makeNimstrLit(")"); };
 	framePtr = F.prev;
 
-	return result_139043[0];
+	return result_139036[0];
 
 }
 
-function move_139031(e_139033, dx_139034, dy_139035) {
+function move_139024(e_139026, dx_139027, dy_139028) {
 	var F={procname:"entity.move",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
-		F.line = 16;
-		nimCopy(e_139033.position, {Field0: addInt(e_139033.position.Field0, dx_139034), Field1: addInt(e_139033.position.Field1, dy_139035)}, NTI139015);
-		F.line = 17;
-		rawEcho(HEX24_139038(e_139033.position));
+		F.line = 14;
+		nimCopy(e_139026.position, {Field0: addInt(e_139026.position.Field0, dx_139027), Field1: addInt(e_139026.position.Field1, dy_139028)}, NTI138004);
+		F.line = 15;
+		rawEcho(HEX24_139031(e_139026.position));
 	framePtr = F.prev;
 
 	
 }
 
 function moveUpNim() {
-	var F={procname:"canvas.moveUpNim",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.moveUpNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 45;
-		move_139031(game_141116[0].player, 0, -1);
+		F.line = 21;
+		move_139024(game_142014[0].player, 0, -1);
 	framePtr = F.prev;
 
 	
 }
 
 function moveDownNim() {
-	var F={procname:"canvas.moveDownNim",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.moveDownNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 48;
-		move_139031(game_141116[0].player, 0, 1);
+		F.line = 24;
+		move_139024(game_142014[0].player, 0, 1);
 	framePtr = F.prev;
 
 	
 }
 
 function moveLeftNim() {
-	var F={procname:"canvas.moveLeftNim",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.moveLeftNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 51;
-		move_139031(game_141116[0].player, -1, 0);
+		F.line = 27;
+		move_139024(game_142014[0].player, -1, 0);
 	framePtr = F.prev;
 
 	
 }
 
 function moveRightNim() {
-	var F={procname:"canvas.moveRightNim",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.moveRightNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 54;
-		move_139031(game_141116[0].player, 1, 0);
+		F.line = 30;
+		move_139024(game_142014[0].player, 1, 0);
 	framePtr = F.prev;
 
 	
@@ -621,20 +621,20 @@ function get_context2d_136728(c_136730) {
 
 }
 
-function new_game_141034(canvas_141036) {
-	var result_141037 = null;
+function new_game_141061(canvas_141063) {
+	var result_141064 = null;
 
-	var F={procname:"canvas.newGame",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"game_class.newGame",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 16;
-		result_141037 = {mx: 0, my: 0, canvas: null, context: null, images: null, player: null};
 		F.line = 17;
-		result_141037.canvas = canvas_141036;
+		result_141064 = {mx: 0, my: 0, canvas: null, context: null, images: null, player: null};
 		F.line = 18;
-		result_141037.context = get_context2d_136728(canvas_141036);
+		result_141064.canvas = canvas_141063;
+		F.line = 19;
+		result_141064.context = get_context2d_136728(canvas_141063);
 	framePtr = F.prev;
 
-	return result_141037;
+	return result_141064;
 
 }
 
@@ -664,13 +664,13 @@ function rgb_136001(r_136003, g_136004, b_136005) {
 
 }
 
-function clear_game_141059(game_141061) {
-	var F={procname:"canvas.clearGame",prev:framePtr,filename:"canvas.nim",line:0};
+function clear_game_141086(game_141088) {
+	var F={procname:"game_class.clearGame",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 21;
-		fill_styleHEX3D_136128(game_141061.context, rgb_136001(0, 0, 0));
 		F.line = 22;
-		game_141061.context.fillRect(0.0, 0.0, game_141061.canvas.width, game_141061.canvas.height);
+		fill_styleHEX3D_136128(game_141088.context, rgb_136001(0, 0, 0));
+		F.line = 23;
+		game_141088.context.fillRect(0.0, 0.0, game_141088.canvas.width, game_141088.canvas.height);
 	framePtr = F.prev;
 
 	
@@ -846,40 +846,40 @@ function add_escaped_char_22014(s_22017, s_22017_Idx, c_22018) {
 	
 }
 
-function add_quoted_141602(s_141606, s_141606_Idx, x_141608) {
+function add_quoted_142402(s_142406, s_142406_Idx, x_142408) {
 	var F={procname:"addQuoted.addQuoted",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 4093;
-		if (s_141606[s_141606_Idx] != null) { s_141606[s_141606_Idx] = (s_141606[s_141606_Idx]).concat(makeNimstrLit("\"")); } else { s_141606[s_141606_Idx] = makeNimstrLit("\""); };
+		if (s_142406[s_142406_Idx] != null) { s_142406[s_142406_Idx] = (s_142406[s_142406_Idx]).concat(makeNimstrLit("\"")); } else { s_142406[s_142406_Idx] = makeNimstrLit("\""); };
 		L1: do {
 			F.line = 4094;
-			var c_141801 = 0;
+			var c_142601 = 0;
 			F.line = 2289;
-			var i_141806 = 0;
+			var i_142606 = 0;
 			F.line = 2290;
-			var l_141808 = (x_141608 != null ? x_141608.length : 0);
+			var l_142608 = (x_142408 != null ? x_142408.length : 0);
 			L2: do {
 				F.line = 2291;
 					L3: while (true) {
-					if (!(i_141806 < l_141808)) break L3;
+					if (!(i_142606 < l_142608)) break L3;
 						F.line = 2292;
-						c_141801 = x_141608.charCodeAt(chckIndx(i_141806, 0, x_141608.length+0-1)-0);
-						if ((c_141801 <= 127)) {
+						c_142601 = x_142408.charCodeAt(chckIndx(i_142606, 0, x_142408.length+0-1)-0);
+						if ((c_142601 <= 127)) {
 						F.line = 4098;
-						add_escaped_char_22014(s_141606, s_141606_Idx, c_141801);
+						add_escaped_char_22014(s_142406, s_142406_Idx, c_142601);
 						}
 						else {
 							F.line = 4100;
-						if (s_141606[s_141606_Idx] != null) { addChar(s_141606[s_141606_Idx], c_141801); } else { s_141606[s_141606_Idx] = [c_141801]; };
+						if (s_142406[s_142406_Idx] != null) { addChar(s_142406[s_142406_Idx], c_142601); } else { s_142406[s_142406_Idx] = [c_142601]; };
 						}
 						
 						F.line = 2293;
-						i_141806 = addInt(i_141806, 1);
+						i_142606 = addInt(i_142606, 1);
 					}
 			} while(false);
 		} while(false);
 		F.line = 4101;
-		if (s_141606[s_141606_Idx] != null) { s_141606[s_141606_Idx] = (s_141606[s_141606_Idx]).concat(makeNimstrLit("\"")); } else { s_141606[s_141606_Idx] = makeNimstrLit("\""); };
+		if (s_142406[s_142406_Idx] != null) { s_142406[s_142406_Idx] = (s_142406[s_142406_Idx]).concat(makeNimstrLit("\"")); } else { s_142406[s_142406_Idx] = makeNimstrLit("\""); };
 	framePtr = F.prev;
 
 	
@@ -921,49 +921,49 @@ function failed_assert_impl_20481(msg_20483) {
 	
 }
 
-function collection_to_string_141233(x_141237, prefix_141239, separator_141241, suffix_141243) {
-	var result_141244 = [null];
+function collection_to_string_142131(x_142135, prefix_142137, separator_142139, suffix_142141) {
+	var result_142142 = [null];
 
 	var F={procname:"collectionToString.collectionToString",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 2631;
-		result_141244[0] = nimCopy(null, prefix_141239, NTI138);
+		result_142142[0] = nimCopy(null, prefix_142137, NTI138);
 		F.line = 2632;
-		var first_element_141245 = true;
+		var first_element_142143 = true;
 		L1: do {
 			F.line = 2633;
-			var value_141415 = null;
+			var value_142215 = null;
 			F.line = 3911;
-			var i_141826 = 0;
+			var i_142626 = 0;
 			F.line = 3912;
-			var l_141828 = (x_141237 != null ? x_141237.length : 0);
+			var l_142628 = (x_142135 != null ? x_142135.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_141826 < l_141828)) break L3;
+					if (!(i_142626 < l_142628)) break L3;
 						F.line = 3914;
-						value_141415 = x_141237[chckIndx(i_141826, 0, x_141237.length+0-1)-0];
-						if (first_element_141245) {
+						value_142215 = x_142135[chckIndx(i_142626, 0, x_142135.length+0-1)-0];
+						if (first_element_142143) {
 						F.line = 2635;
-						first_element_141245 = false;
+						first_element_142143 = false;
 						}
 						else {
 							F.line = 2637;
-						if (result_141244[0] != null) { result_141244[0] = (result_141244[0]).concat(separator_141241); } else { result_141244[0] = separator_141241.slice(); };
+						if (result_142142[0] != null) { result_142142[0] = (result_142142[0]).concat(separator_142139); } else { result_142142[0] = separator_142139.slice(); };
 						}
 						
-						if ((value_141415 === null)) {
+						if ((value_142215 === null)) {
 						F.line = 2642;
-						if (result_141244[0] != null) { result_141244[0] = (result_141244[0]).concat(makeNimstrLit("nil")); } else { result_141244[0] = makeNimstrLit("nil"); };
+						if (result_142142[0] != null) { result_142142[0] = (result_142142[0]).concat(makeNimstrLit("nil")); } else { result_142142[0] = makeNimstrLit("nil"); };
 						}
 						else {
 							F.line = 2644;
-						add_quoted_141602(result_141244, 0, value_141415);
+						add_quoted_142402(result_142142, 0, value_142215);
 						}
 						
 						F.line = 3915;
-						i_141826 = addInt(i_141826, 1);
-						if (!(((x_141237 != null ? x_141237.length : 0) == l_141828))) {
+						i_142626 = addInt(i_142626, 1);
+						if (!(((x_142135 != null ? x_142135.length : 0) == l_142628))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -972,98 +972,98 @@ function collection_to_string_141233(x_141237, prefix_141239, separator_141241, 
 			} while(false);
 		} while(false);
 		F.line = 2648;
-		if (result_141244[0] != null) { result_141244[0] = (result_141244[0]).concat(suffix_141243); } else { result_141244[0] = suffix_141243.slice(); };
+		if (result_142142[0] != null) { result_142142[0] = (result_142142[0]).concat(suffix_142141); } else { result_142142[0] = suffix_142141.slice(); };
 	framePtr = F.prev;
 
-	return result_141244[0];
+	return result_142142[0];
 
 }
 
-function HEX24_141225(x_141230) {
-	var result_141231 = null;
+function HEX24_142123(x_142128) {
+	var result_142129 = null;
 
 	var F={procname:"$.$",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 2659;
-		result_141231 = nimCopy(null, collection_to_string_141233(x_141230, makeNimstrLit("@["), makeNimstrLit(", "), makeNimstrLit("]")), NTI138);
+		result_142129 = nimCopy(null, collection_to_string_142131(x_142128, makeNimstrLit("@["), makeNimstrLit(", "), makeNimstrLit("]")), NTI138);
 	framePtr = F.prev;
 
-	return result_141231;
+	return result_142129;
 
 }
 
-function render_gfx_tile_141077(game_141079, img_141080, x_141081, y_141082) {
-	var F={procname:"canvas.renderGfxTile",prev:framePtr,filename:"canvas.nim",line:0};
+function render_gfx_tile_141104(game_141106, img_141107, x_141108, y_141109) {
+	var F={procname:"game_class.renderGfxTile",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 25;
-		game_141079.context.drawImage(img_141080, mulInt(x_141081, 32), mulInt(y_141082, 32));
+		F.line = 26;
+		game_141106.context.drawImage(img_141107, mulInt(x_141108, 32), mulInt(y_141109, 32));
 	framePtr = F.prev;
 
 	
 }
 
-function render_141099(game_141101, player_141102) {
-	var F={procname:"canvas.render",prev:framePtr,filename:"canvas.nim",line:0};
+function render_141126(game_141128, player_141129) {
+	var F={procname:"game_class.render",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 28;
-		render_gfx_tile_141077(game_141101, game_141101.images[chckIndx(0, 0, game_141101.images.length+0-1)-0], player_141102.position.Field0, player_141102.position.Field1);
+		F.line = 29;
+		render_gfx_tile_141104(game_141128, game_141128.images[chckIndx(0, 0, game_141128.images.length+0-1)-0], player_141129.position.Field0, player_141129.position.Field1);
 	framePtr = F.prev;
 
 	
 }
 
-function ready_141213(canvas_141215) {
+function ready_142111(canvas_142113) {
 
-		function main_loop_141883(time_141885) {
-			var F={procname:"ready.mainLoop",prev:framePtr,filename:"canvas.nim",line:0};
+		function main_loop_142683(time_142685) {
+			var F={procname:"ready.mainLoop",prev:framePtr,filename:"main.nim",line:0};
 			framePtr = F;
-				F.line = 84;
-				window.requestAnimationFrame(main_loop_141883);
-				F.line = 90;
-				clear_game_141059(game_141116[0]);
-				F.line = 92;
-				render_141099(game_141116[0], game_141116[0].player);
+				F.line = 60;
+				window.requestAnimationFrame(main_loop_142683);
+				F.line = 66;
+				clear_game_141086(game_142014[0]);
+				F.line = 68;
+				render_141126(game_142014[0], game_142014[0].player);
 			framePtr = F.prev;
 
 			
 		}
 
-	var result_141219 = null;
+	var result_142117 = null;
 
-	var F={procname:"canvas.ready",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.ready",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 59;
+		F.line = 35;
 		rawEcho(makeNimstrLit("We\'ve done loading, ready"));
-		F.line = 63;
-		game_141116[0] = new_game_141034(canvas_141215);
-		F.line = 64;
-		clear_game_141059(game_141116[0]);
-		F.line = 66;
-		rawEcho(HEX24_141225(getURLs()));
+		F.line = 39;
+		game_142014[0] = new_game_141061(canvas_142113);
+		F.line = 40;
+		clear_game_141086(game_142014[0]);
+		F.line = 42;
+		rawEcho(HEX24_142123(getURLs()));
 		L1: do {
-			F.line = 68;
-			var k_141866 = null;
+			F.line = 44;
+			var k_142666 = null;
 			F.line = 3909;
-			var colontmp__141900 = null;
-			F.line = 68;
-			colontmp__141900 = getURLs();
+			var colontmp__142700 = null;
+			F.line = 44;
+			colontmp__142700 = getURLs();
 			F.line = 3911;
-			var i_141903 = 0;
+			var i_142703 = 0;
 			F.line = 3912;
-			var l_141905 = (colontmp__141900 != null ? colontmp__141900.length : 0);
+			var l_142705 = (colontmp__142700 != null ? colontmp__142700.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_141903 < l_141905)) break L3;
+					if (!(i_142703 < l_142705)) break L3;
 						F.line = 3914;
-						k_141866 = colontmp__141900[chckIndx(i_141903, 0, colontmp__141900.length+0-1)-0];
-						F.line = 69;
-						rawEcho(cstrToNimstr(k_141866));
-						F.line = 71;
-						if (game_141116[0].images != null) { game_141116[0].images.push(get(k_141866)); } else { game_141116[0].images = [get(k_141866)]; };
+						k_142666 = colontmp__142700[chckIndx(i_142703, 0, colontmp__142700.length+0-1)-0];
+						F.line = 45;
+						rawEcho(cstrToNimstr(k_142666));
+						F.line = 47;
+						if (game_142014[0].images != null) { game_142014[0].images.push(get(k_142666)); } else { game_142014[0].images = [get(k_142666)]; };
 						F.line = 3915;
-						i_141903 = addInt(i_141903, 1);
-						if (!(((colontmp__141900 != null ? colontmp__141900.length : 0) == l_141905))) {
+						i_142703 = addInt(i_142703, 1);
+						if (!(((colontmp__142700 != null ? colontmp__142700.length : 0) == l_142705))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -1071,54 +1071,54 @@ function ready_141213(canvas_141215) {
 					}
 			} while(false);
 		} while(false);
-		F.line = 80;
-		game_141116[0].player = {position: {Field0: 0, Field1: 0}};
-		F.line = 95;
-		window.requestAnimationFrame(main_loop_141883);
+		F.line = 56;
+		game_142014[0].player = {position: {Field0: 0, Field1: 0}};
+		F.line = 71;
+		window.requestAnimationFrame(main_loop_142683);
 	framePtr = F.prev;
 
-	return result_141219;
+	return result_142117;
 
 }
 
 function onReadyNim() {
-	var F={procname:"canvas.onReadyNim",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.onReadyNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 99;
+		F.line = 75;
 		rawEcho(makeNimstrLit("Calling Nim from JS"));
-		F.line = 100;
-		var canvas_141925 = document.getElementById("canvas");
-		F.line = 101;
-		ready_141213(canvas_141925);
+		F.line = 76;
+		var canvas_142725 = document.getElementById("canvas");
+		F.line = 77;
+		ready_142111(canvas_142725);
 	framePtr = F.prev;
 
 	
 }
 
-function process_key_down_141130(key_141132, player_141133) {
-	var F={procname:"canvas.processKeyDown",prev:framePtr,filename:"canvas.nim",line:0};
+function process_key_down_142028(key_142030, player_142031) {
+	var F={procname:"main.processKeyDown",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 36;
-		switch (key_141132) {
+		F.line = 12;
+		switch (key_142030) {
 		case 37:
-			F.line = 37;
-			move_139031(player_141133, -1, 0);
+			F.line = 13;
+			move_139024(player_142031, -1, 0);
 			break;
 		case 39:
-			F.line = 38;
-			move_139031(player_141133, 1, 0);
+			F.line = 14;
+			move_139024(player_142031, 1, 0);
 			break;
 		case 38:
-			F.line = 39;
-			move_139031(player_141133, 0, -1);
+			F.line = 15;
+			move_139024(player_142031, 0, -1);
 			break;
 		case 40:
-			F.line = 40;
-			move_139031(player_141133, 0, 1);
+			F.line = 16;
+			move_139024(player_142031, 0, 1);
 			break;
 		default: 
-			F.line = 41;
-			rawEcho(cstrToNimstr((key_141132)+""));
+			F.line = 17;
+			rawEcho(cstrToNimstr((key_142030)+""));
 			break;
 		}
 	framePtr = F.prev;
@@ -1126,36 +1126,36 @@ function process_key_down_141130(key_141132, player_141133) {
 	
 }
 
-function HEX3Aanonymous_141939(e_141942) {
+function HEX3Aanonymous_142739(e_142742) {
 
-		function on_key_down_141959(event_141961) {
-			var F={procname:":anonymous.onKeyDown",prev:framePtr,filename:"canvas.nim",line:0};
+		function on_key_down_142759(event_142761) {
+			var F={procname:":anonymous.onKeyDown",prev:framePtr,filename:"main.nim",line:0};
 			framePtr = F;
-				F.line = 121;
-				event_141961.preventDefault();
-				F.line = 122;
-				process_key_down_141130(event_141961.keyCode, game_141116[0].player);
+				F.line = 97;
+				event_142761.preventDefault();
+				F.line = 98;
+				process_key_down_142028(event_142761.keyCode, game_142014[0].player);
 			framePtr = F.prev;
 
 			
 		}
 
-	var F={procname:"canvas.:anonymous",prev:framePtr,filename:"canvas.nim",line:0};
+	var F={procname:"main.:anonymous",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 105;
-		var canvas_141943 = document.getElementById("canvas");
-		F.line = 106;
-		canvas_141943.width = 800;
-		F.line = 107;
-		canvas_141943.height = 600;
-		F.line = 111;
-		var ress_141946 = initLoader(window);
-		F.line = 113;
+		F.line = 81;
+		var canvas_142743 = document.getElementById("canvas");
+		F.line = 82;
+		canvas_142743.width = 800;
+		F.line = 83;
+		canvas_142743.height = 600;
+		F.line = 87;
+		var ress_142746 = initLoader(window);
+		F.line = 89;
 		load(["gfx/human_m.png", "gfx/kobold.png"]);
-		F.line = 125;
-		window.addEventListener("keydown", on_key_down_141959, false);
+		F.line = 101;
+		window.addEventListener("keydown", on_key_down_142759, false);
 	framePtr = F.prev;
 
 	
 }
-window.onload = HEX3Aanonymous_141939;
+window.onload = HEX3Aanonymous_142739;
