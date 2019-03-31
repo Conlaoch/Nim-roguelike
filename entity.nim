@@ -1,4 +1,4 @@
-import isometric, map
+import math_helpers, map
 
 
 type

@@ -1,7 +1,7 @@
 import dom
 import html5_canvas
 
-import entity, isometric, map
+import entity, math_helpers, map
 
 
 # this is Nim's class equivalent (a type and methods which have it as a parameter)
