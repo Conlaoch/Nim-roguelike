@@ -1,7 +1,7 @@
 import dom
 import html5_canvas
 
-import entity, math_helpers, map
+import entity, math_helpers, map, FOV
 
 
 # this is Nim's class equivalent (a type and methods which have it as a parameter)
@@ -13,6 +13,8 @@ type
         images*: seq[ImageElement]
         player*: Player
         map*: Map
+        recalc_FOV*: bool
+        FOV_map*: seq[Vector2] 
 
 proc newGame*(canvas: Canvas) : Game =
     new result
@@ -40,9 +42,10 @@ proc drawMapTile(game: Game, point:Vector2, tile: int) =
     else:
         renderGfxTile(game, game.images[2], point.x, point.y)
 
-proc renderMap*(game: Game, map: Map) =
+proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2]) =
     # 0..x is inclusive in Nim
     for x in 0..<map.width:
         for y in 0..<map.height:
             #echo map.tiles[y * map.width + x]
-            drawMapTile(game, isoPos(x,y), map.tiles[y * map.width + x])
+            if (x,y) in fov_map:
+                drawMapTile(game, isoPos(x,y), map.tiles[y * map.width + x])

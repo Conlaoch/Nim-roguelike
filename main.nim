@@ -2,7 +2,7 @@ import dom
 import html5_canvas
 
 import resources, entity, game_class
-import map, arena_map
+import map, arena_map, FOV
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -57,6 +57,9 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     # setup cd.
     game.player = Player(position: (1,1))
     game.map = arena_map.generateMap(20,20,@[(10,10)])
+    # FOV
+    game.recalc_FOV = true;
+    game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
 
     # what it says on the tin
     proc mainLoop(time:float) = 
@@ -68,7 +71,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         # clear
         game.clearGame();
         # render
-        game.renderMap(game.map);
+        game.renderMap(game.map, game.FOV_map);
         game.render(game.player);
 
     # this indentation is crucially important! It's not part of the main loop!
