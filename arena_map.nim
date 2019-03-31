@@ -17,7 +17,7 @@ proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
   # walls around
   for x in 0 ..< width:
     setTile(tiles, x, 0, width, 0)
-    setTile(tiles, x, width-1, width, 0)
+    setTile(tiles, x, height-1, width, 0)
 
   for y in 0 ..< height:
     setTile(tiles, 0, y, width, 0)
