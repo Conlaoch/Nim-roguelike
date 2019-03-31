@@ -8,28 +8,32 @@ import map, arena_map, FOV
 # needed because key handler refs Game
 var game: Game;
 
+# stubs to be called from JS by JQuery onclick()
+# and by the key input
+proc moveUpNim() {.exportc.} =
+    if game.player.move(0, -1, game.map):
+        game.recalc_FOV = true
+
+proc moveDownNim() {.exportc.} =
+    if game.player.move(0, 1, game.map):
+        game.recalc_FOV = true
+
+proc moveLeftNim() {.exportc.} =
+    if game.player.move(-1, 0, game.map):
+        game.recalc_FOV = true
+
+proc moveRightNim() {.exportc.} =
+    if game.player.move(1, 0, game.map):
+        game.recalc_FOV = true
+
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
     case key:
-      of 37: game.player.move(-1, 0, game.map)   #left
-      of 39: game.player.move(1, 0, game.map)     #right
-      of 38: game.player.move(0, -1, game.map)      #up
-      of 40: game.player.move(0, 1, game.map)    #down
+      of 37: moveLeftNim()   #left
+      of 39: moveRightNim()     #right
+      of 38: moveUpNim()      #up
+      of 40: moveDownNim()   #down
       else: echo key
-
-# stubs to be called from JS by JQuery onclick()
-proc moveUpNim() {.exportc.} =
-    game.player.move(0, -1, game.map)
-
-proc moveDownNim() {.exportc.} =
-    game.player.move(0, 1, game.map)
-
-proc moveLeftNim() {.exportc.} =
-    game.player.move(-1, 0, game.map)
-
-proc moveRightNim() {.exportc.} =
-    game.player.move(1, 0, game.map)
-
 
 # we need to specify our own %#^%$@ type so that we can work as a callback 
 # in onReady()
@@ -41,7 +45,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     game = newGame(canvas);
     game.clearGame();
     
-    echo $resources.getURLs();
+    #echo $resources.getURLs();
 
     for k in resources.getURLs():
         echo $k;
@@ -68,6 +72,12 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     # should the main loop get moved to dom.window.onload
     # this if will become necessary
     #    if not isNil(game):
+
+        # recalc fov if needed
+        if game.recalc_FOV:
+            game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
+            # the loop is called 60x a second, so immediately set the flag to false
+            game.recalc_FOV = false;
         # clear
         game.clearGame();
         # render
