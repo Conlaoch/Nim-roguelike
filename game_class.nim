@@ -34,7 +34,7 @@ proc render*(game: Game, player: Player) =
     # entities need a slight offset to be placed more or less centrally
     renderGfxTile(game, game.images[0], iso[0]+8, iso[1]+8);
 
-proc drawMapTile(game: Game, point:Position, tile: int) =
+proc drawMapTile(game: Game, point:Vector2, tile: int) =
     if tile == 0:
         renderGfxTile(game, game.images[1], point.x, point.y);
     else:

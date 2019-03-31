@@ -5,7 +5,7 @@ proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
   tiles[y * width + x] = id
 
 
-proc generateMap*(width: int, height: int, pillars: seq[Position]): Map =
+proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
   var tiles: seq[int] = @[]
   for i in 0 .. <(width*height):
     tiles.add(1)

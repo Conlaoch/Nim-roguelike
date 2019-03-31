@@ -1,5 +1,5 @@
 type
-    Position* = tuple[x: int, y: int]
+    Vector2* = tuple[x: int, y: int]
 
 # x,y are positions in map coordinates
 proc isoPos*(x,y:int): (int, int)  =

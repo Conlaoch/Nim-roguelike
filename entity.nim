@@ -5,7 +5,7 @@ type
     # this is Nim's closest class equivalent (a type and associated functions)
     # a type
     Entity* = ref object
-        position*: Position
+        position*: Vector2
     
     Player* = Entity
 
