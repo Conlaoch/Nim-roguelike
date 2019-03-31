@@ -12,6 +12,12 @@ proc get_fov_rect(origin:Vector2, radius:int) : Rect2 =
 # Check for wall index in datamap cell
 proc is_wall(map:Map, wall_index:int, cell:Vector2) : bool =
     return map.tiles[cell.y * map.width + cell.x] == wall_index
+    # debugging
+    # try:
+    #     return map.tiles[cell.y * map.width + cell.x] == wall_index
+    # except:
+    #     echo("Invalid cell: " & $cell)
+    #     return true
 
 
 # Returns an array of cells that lie
@@ -88,8 +94,9 @@ proc cast_fov_ray(map:Map,wall_index:int,from_cell:Vector2,to:Vector2) : seq[Vec
     var cells: seq[Vector2];
     var line = get_line(from_cell,to);
     for cell in line:
-        var m_height = map.tiles.len div map.width;
-        if -1 < cell.x and cell.x <= map.width and -1 < cell.y and cell.y <= m_height:
+        #var m_height = map.tiles.len div map.width;
+        var m_height = map.height;
+        if -1 < cell.x and cell.x < map.width and -1 < cell.y and cell.y < m_height:
             # Check for blocking cell
             if not is_wall(map, wall_index, cell):
                 cells.add(cell)
@@ -153,10 +160,9 @@ proc calculate_fov*(map:Map, wall_index:int, origin:Vector2, radius:int) : seq[V
             for x in -1..2:
                 for y in -1..2:
                     var ncell = cell+(x,y)
-                    echo ncell
                     var m_height = map.height
                     #var m_height = map.tiles.len div map.width;
-                    if -1 < ncell.x and ncell.x <= map.width and -1 < ncell.y and ncell.y <= m_height:
+                    if -1 < ncell.x and ncell.x < map.width and -1 < ncell.y and ncell.y < m_height:
                         if is_wall(map, wall_index, ncell) and int(ncell.distance_to(origin)) <= radius:
                             cells.add(ncell)
 
