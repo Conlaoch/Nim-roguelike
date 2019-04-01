@@ -90,12 +90,12 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
 # just a stub for JS to be able to call
 proc onReadyNim() {.exportc.} =
     echo "Calling Nim from JS";
-    let canvas = dom.document.getElementById("canvas").Canvas
+    let canvas = dom.document.getElementById("canvas-game").Canvas
     discard ready(canvas);
 
 # setup canvas
 dom.window.onload = proc(e: dom.Event) =
-    let canvas = dom.document.getElementById("canvas").Canvas
+    let canvas = dom.document.getElementById("canvas-game").Canvas
     canvas.width = 800
     canvas.height = 600
 
