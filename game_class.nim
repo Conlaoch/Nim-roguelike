@@ -1,7 +1,7 @@
 import dom
 import html5_canvas
 
-import entity, math_helpers, map, FOV
+import entity, math_helpers, map, FOV, tint_image
 
 
 # this is Nim's class equivalent (a type and methods which have it as a parameter)
@@ -42,6 +42,12 @@ proc drawMapTile(game: Game, point:Vector2, tile: int) =
     else:
         renderGfxTile(game, game.images[2], point.x, point.y)
 
+proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
+    if tile == 0:
+        game.context.drawImage(tintImageNim(game.images[1], tint, 0.5), float(point.x), float(point.y));
+    else:
+        game.context.drawImage(tintImageNim(game.images[2], tint, 0.5), float(point.x), float(point.y));
+
 proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2]) =
     # 0..x is inclusive in Nim
     for x in 0..<map.width:
@@ -49,3 +55,5 @@ proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2]) =
             #echo map.tiles[y * map.width + x]
             if (x,y) in fov_map:
                 drawMapTile(game, isoPos(x,y), map.tiles[y * map.width + x])
+            else:
+                drawMapTileTint(game, isoPos(x,y), map.tiles[y * map.width + x], (127,127,127));

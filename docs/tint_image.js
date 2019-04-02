@@ -19,8 +19,12 @@ function tintImage(image, color, opacity = 0.5) {
     context.fillStyle = color;
     context.globalAlpha = opacity;
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
+    //"source" is the rect, "destination" is the original game canvas AFAICT
+    // destination atop - alpha channel = original game canvas, all pixels colored by our rect
     context.globalCompositeOperation = "destination-atop";
-    context.globalAlpha = 1;
+    //originally was 1, so none of the original color affected the output
+    //the function is usually called with an opacity of 0.5
+    context.globalAlpha = opacity;
     context.drawImage(image, 0, 0);
     context.restore();
   
