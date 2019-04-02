@@ -14,12 +14,14 @@ type
         player*: Player
         map*: Map
         recalc_FOV*: bool
-        FOV_map*: seq[Vector2] 
+        FOV_map*: seq[Vector2]
+        explored*: seq[Vector2]
 
 proc newGame*(canvas: Canvas) : Game =
     new result
     result.canvas = canvas
     result.context = canvas.getContext2D()
+    result.explored = @[];
 
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
@@ -48,12 +50,15 @@ proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
     else:
         game.context.drawImage(tintImageNim(game.images[2], tint, 0.5), float(point.x), float(point.y));
 
-proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2]) =
+proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[Vector2]) =
     # 0..x is inclusive in Nim
     for x in 0..<map.width:
         for y in 0..<map.height:
             #echo map.tiles[y * map.width + x]
-            if (x,y) in fov_map:
+            var cell = (x,y)
+            if cell in fov_map:
                 drawMapTile(game, isoPos(x,y), map.tiles[y * map.width + x])
-            else:
+                if explored.find(cell) == -1:
+                    add(explored, cell);
+            elif (x,y) in explored:
                 drawMapTileTint(game, isoPos(x,y), map.tiles[y * map.width + x], (127,127,127));

@@ -81,7 +81,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         # clear
         game.clearGame();
         # render
-        game.renderMap(game.map, game.FOV_map);
+        game.renderMap(game.map, game.FOV_map, game.explored);
         game.render(game.player);
 
     # this indentation is crucially important! It's not part of the main loop!
