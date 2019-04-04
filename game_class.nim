@@ -16,6 +16,7 @@ type
         recalc_FOV*: bool
         FOV_map*: seq[Vector2]
         explored*: seq[Vector2]
+        entities*: seq[Entity]
 
 proc newGame*(canvas: Canvas) : Game =
     new result
@@ -37,6 +38,16 @@ proc render*(game: Game, player: Player) =
     let iso = isoPos(player.position.x, player.position.y);
     # entities need a slight offset to be placed more or less centrally
     renderGfxTile(game, game.images[0], iso[0]+8, iso[1]+8);
+
+# Note: currently the player is rendered separately (see above)
+proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
+    for e in game.entities:
+        let iso = isoPos(e.position.x, e.position.y);
+        # if we can actually see the NPCs
+        if (e.position.x, e.position.y) in fov_map:
+            # need a slight offset to be placed more or less centrally
+            renderGfxTile(game, game.images[3], iso[0]+8, iso[1]+8);
+
 
 proc drawMapTile(game: Game, point:Vector2, tile: int) =
     if tile == 0:

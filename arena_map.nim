@@ -1,4 +1,5 @@
 import map, math_helpers
+import entity, alea
 
 # https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
 proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
@@ -28,3 +29,17 @@ proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
     height: height,
     tiles: tiles)
 
+
+proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
+    var rng = aleaRNG();
+    # Get a random number of monsters
+    var num = rng.range(0..max);
+
+    # taking a shortcut here: this map is rectangular so we can just place in rectangle
+    for i in (1..num):
+      # Choose a random location in the map
+      let x = rng.range(1..(map.height - 1))
+      let y = rng.range(1..(map.width - 1))
+
+      var mon = Entity(position:(x,y));
+      entities.add(mon);

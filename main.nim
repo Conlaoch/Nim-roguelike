@@ -61,6 +61,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     # setup cd.
     game.player = Player(position: (1,1))
     game.map = arena_map.generateMap(20,20,@[(10,10)])
+    arena_map.place_entities(game.map, game.entities, 3)
     # FOV
     game.recalc_FOV = true;
     game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
@@ -82,6 +83,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         game.clearGame();
         # render
         game.renderMap(game.map, game.FOV_map, game.explored);
+        game.renderEntities(game.FOV_map);
         game.render(game.player);
 
     # this indentation is crucially important! It's not part of the main loop!
