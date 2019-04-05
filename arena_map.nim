@@ -42,4 +42,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
       let y = rng.range(1..(map.width - 1))
 
       var mon = Entity(position:(x,y));
+      # creature component (will become much more important later)
+      var creat = Creature(name:"kobold");
+      mon.creature = creat;
       entities.add(mon);

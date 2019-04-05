@@ -11,19 +11,19 @@ var game: Game;
 # stubs to be called from JS by JQuery onclick()
 # and by the key input
 proc moveUpNim() {.exportc.} =
-    if game.player.move(0, -1, game.map):
+    if game.player.move(0, -1, game.map, game.entities):
         game.recalc_FOV = true
 
 proc moveDownNim() {.exportc.} =
-    if game.player.move(0, 1, game.map):
+    if game.player.move(0, 1, game.map, game.entities):
         game.recalc_FOV = true
 
 proc moveLeftNim() {.exportc.} =
-    if game.player.move(-1, 0, game.map):
+    if game.player.move(-1, 0, game.map, game.entities):
         game.recalc_FOV = true
 
 proc moveRightNim() {.exportc.} =
-    if game.player.move(1, 0, game.map):
+    if game.player.move(1, 0, game.map, game.entities):
         game.recalc_FOV = true
 
 # main key input handler
