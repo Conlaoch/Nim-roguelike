@@ -33,7 +33,7 @@ proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
 proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
     var rng = aleaRNG();
     # Get a random number of monsters
-    var num = rng.range(0..max);
+    var num = rng.range(1..max);
 
     # taking a shortcut here: this map is rectangular so we can just place in rectangle
     for i in (1..num):
@@ -42,7 +42,11 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
       let y = rng.range(1..(map.width - 1))
 
       var mon = Entity(position:(x,y));
-      # creature component (will become much more important later)
-      var creat = Creature(name:"kobold");
+      echo("Spawned monster at " & $mon.position);
+      # creature component
+      var creat = Creature(name:"kobold", owner:mon, hp:5, max_hp:5, defense:30, attack:20);
       mon.creature = creat;
+      # AI component
+      var AI_comp = AI(owner:mon);
+      mon.ai = AI_comp;
       entities.add(mon);

@@ -11,20 +11,24 @@ var game: Game;
 # stubs to be called from JS by JQuery onclick()
 # and by the key input
 proc moveUpNim() {.exportc.} =
-    if game.player.move(0, -1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(0, -1, game.map, game.entities):
         game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
 
 proc moveDownNim() {.exportc.} =
-    if game.player.move(0, 1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(0, 1, game.map, game.entities):
         game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
 
 proc moveLeftNim() {.exportc.} =
-    if game.player.move(-1, 0, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 0, game.map, game.entities):
         game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
 
 proc moveRightNim() {.exportc.} =
-    if game.player.move(1, 0, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, 0, game.map, game.entities):
         game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
 
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
@@ -60,6 +64,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
 
     # setup cd.
     game.player = Player(position: (1,1))
+    game.player.creature = Creature(name:"Player", owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.map = arena_map.generateMap(20,20,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3)
     # FOV
@@ -85,6 +90,14 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         game.renderMap(game.map, game.FOV_map, game.explored);
         game.renderEntities(game.FOV_map);
         game.render(game.player);
+        # AI turn
+        if game.game_state == ENEMY_TURN.int:
+            for entity in game.entities:
+                if not isNil(entity.ai):
+                    #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
+                    entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities);
+            # trick to use actual enum's int value
+            game.game_state = GameState.PLAYER_TURN.int
 
     # this indentation is crucially important! It's not part of the main loop!
     discard dom.window.requestAnimationFrame(mainLoop)

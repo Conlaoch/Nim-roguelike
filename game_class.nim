@@ -17,12 +17,18 @@ type
         FOV_map*: seq[Vector2]
         explored*: seq[Vector2]
         entities*: seq[Entity]
+        game_state*: int # because enums are ints by default
+
+    GameState* = enum
+        PLAYER_TURN, ENEMY_TURN
+
 
 proc newGame*(canvas: Canvas) : Game =
     new result
     result.canvas = canvas
     result.context = canvas.getContext2D()
     result.explored = @[];
+    result.game_state = PLAYER_TURN.int; # trick to use the int
 
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);

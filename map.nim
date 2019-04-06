@@ -10,3 +10,10 @@ type
 # trick from https://github.com/zacharycarter/NimRL
 proc `[]`*(map: Map, x, y: int): int =
     map.tiles[y * map.width + x]
+
+# general functions
+proc is_blocked*(map: Map, x,y: int) : bool =
+    if map.tiles[y * map.width + x] == 0:
+        return true
+    else:
+        return false
