@@ -9,6 +9,8 @@ license       = "MIT"
 
 requires "nim >= 0.19.0"
 requires "https://github.com/define-private-public/HTML5-Canvas-Nim"
+
+# for launcher
 requires "https://github.com/oskca/webview"
 
 task launch, "builds the app and runs it":
