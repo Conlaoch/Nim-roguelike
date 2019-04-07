@@ -30,6 +30,26 @@ proc moveRightNim() {.exportc.} =
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
+proc moveLeftUpNim() {.exportc.} =
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, -1, game.map, game.entities):
+        game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
+
+proc moveRightUpNim() {.exportc.} =
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, -1, game.map, game.entities):
+        game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
+
+proc moveLeftDownNim() {.exportc.} =
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 1, game.map, game.entities):
+        game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
+
+proc moveRightDownNim() {.exportc.} =
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, 1, game.map, game.entities):
+        game.recalc_FOV = true
+    game.game_state = ENEMY_TURN.int
+
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
     case key:
@@ -37,6 +57,17 @@ proc processKeyDown(key: int, game:Game) =
       of 39: moveRightNim()     #right
       of 38: moveUpNim()      #up
       of 40: moveDownNim()   #down
+      # vim
+      of 72: moveLeftNim() # h
+      of 76: moveRightNim() # l
+      of 74: moveDownNim() # j
+      of 75: moveUpNim() # k
+      # diagonals
+      of 89: moveLeftUpNim() # y
+      of 85: moveRightUpNim() # u
+      of 66: moveLeftDownNim() # b
+      of 78: moveRightDownNim() # n
+
       else: echo key
 
 # we need to specify our own %#^%$@ type so that we can work as a callback 

@@ -72,7 +72,7 @@ function _isInteger( _int ) {
 
 /* public: return inclusive range */
 range = function(random) { 
-  console.log("Random range " + arguments);
+  //console.log("Random range " + arguments);
   var loBound
       , hiBound
   ;
