@@ -71,25 +71,26 @@ function _isInteger( _int ) {
 };
 
 /* public: return inclusive range */
-range = function(random) { 
-  //console.log("Random range " + arguments);
+range = function(random, nums) { 
+  //console.log("Random range " + nums.a + " " + nums.b);
   var loBound
       , hiBound
   ;
   
-  //bit of a rework since random is now the first argument
-  if( arguments[1].length === 2 ) {
+  //bit of a rework since nums is now explicitly a parameter
+  //more generic (doesn't work in <IE8)
+  if( Object.keys(nums).length === 1 ) {
       loBound = 0;
-      hiBound = arguments[1].a;
+      hiBound = nums.a;
 
-  } else {[ 1 ]
-      loBound = arguments[1].a;
-      hiBound = arguments[1].b;
+  } else {
+      loBound = nums.a;
+      hiBound = nums.b;
   }
 
-  if( arguments[1].a > arguments[1].b ) { 
-      loBound = arguments[1].a;
-      hiBound = arguments[1].b;
+  if( nums.a > nums.b ) { 
+      loBound = nums.a;
+      hiBound = nums.b;
   }
   //console.log(loBound + " " + hiBound);
   // return integer
@@ -104,6 +105,22 @@ range = function(random) {
   }
 };
 
+//Based on https://github.com/skeeto/rng-js/blob/master/rng.js
+roller = function(random, expr) {
+  var parts = expr.split(/(\d+)?d(\d+)([+-]\d+)?/).slice(1);
+  var dice = parseFloat(parts[0]) || 1;
+  var sides = parseFloat(parts[1]);
+  var mod = parseFloat(parts[2]) || 0;
+  console.log("dice: " + dice + " d " + sides + " sides");
+  var total = mod;
+  for (var i = 0; i < dice; i++) {
+      var num = range(random, {a:sides});
+      //console.log("num:" + num);
+      total += num;
+  };
+  console.log("Roller returns: " + total);
+  return total;
+};
 
 //private - moved for readability
 function Mash() {

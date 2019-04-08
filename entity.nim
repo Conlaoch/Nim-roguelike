@@ -1,4 +1,4 @@
-import math_helpers, map, math
+import math_helpers, map, math, alea
 
 
 type
@@ -35,10 +35,24 @@ proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
 
     return nil
 
+# basic combat system
+proc take_damage*(cr:Creature, amount:int) =
+    cr.hp -= amount;
 
-# some functions that have our type as the first parameter
+proc attack*(cr:Creature, target:Entity) =
+    var rng = aleaRNG();
+    var damage = rng.roller("1d6");
+
+    if damage > 0:
+        target.creature.take_damage(damage);
+        echo(cr.name & " attacks " & target.creature.name & " for " & $damage & " points of damage!");
+    else:
+        echo(cr.name & " attacks " & target.creature.name & " but does no damage");
+
+
+# some functions that have our Entity type as the first parameter
 proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity]) : bool =
-    echo("Move: " & $dx & " " & $dy);
+    ##echo("Move: " & $dx & " " & $dy);
     var tx = e.position.x + dx
     var ty = e.position.y + dy
     
@@ -56,7 +70,8 @@ proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity]) : bool =
     var target:Entity;
     target = get_creatures_at(entities, tx, ty);
     if not isNil(target):
-        echo("You kick the " & $target.creature.name & " in the shins!");
+        #echo("You kick the " & $target.creature.name & " in the shins!");
+        attack(e.creature, target);
         # no need to recalc FOV
         return false
 
@@ -90,4 +105,5 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entiti
             # discard means we're not using the return value
             discard monster.move_towards(target.position, game_map, entities);
         elif target.creature.hp > 0:
-            echo ai.owner.creature.name & " insults you!";
+            #echo ai.owner.creature.name & " insults you!";
+            attack(ai.owner.creature, target);
