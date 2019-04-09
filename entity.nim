@@ -1,4 +1,4 @@
-import math_helpers, map, math, alea
+import math_helpers, map, math, alea, astar
 
 
 type
@@ -93,6 +93,19 @@ proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) 
         echo("We can move to " & $(e.position.x + dx) & " " & $(e.position.y + dy));
         return e.move(dx, dy, game_map, entities);
 
+proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) =
+    echo "Calling astar..."
+    var astar = findPathNim(game_map, e.position, target);
+    # for e in astar:
+    #     echo e
+    if not astar.len < 1:
+        # get the next point along the path (because #0 is our current position)
+        # it was already checked for walkability by astar so we don't need to do it again
+        e.position = astar[1]
+    else:
+        # backup in case no path found
+        discard e.move_towards(target, game_map, entities);
+
 # how to deal with the fact that canvas ref is stored as part of Game?
 #proc draw*(e: Entity) =
 
@@ -103,7 +116,8 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entiti
     if monster.position in fov_map:
         if monster.position.distance_to(target.position) >= 2:
             # discard means we're not using the return value
-            discard monster.move_towards(target.position, game_map, entities);
+            #discard monster.move_towards(target.position, game_map, entities);
+            monster.move_astar(target.position, game_map, entities);
         elif target.creature.hp > 0:
             #echo ai.owner.creature.name & " insults you!";
             attack(ai.owner.creature, target);
