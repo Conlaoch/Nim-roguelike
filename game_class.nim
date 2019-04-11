@@ -1,8 +1,7 @@
 import dom
 import html5_canvas
 
-import entity, math_helpers, map, FOV, tint_image
-
+import entity, math_helpers, map, FOV, tint_image, seq_slice
 
 # this is Nim's class equivalent (a type and methods which have it as a parameter)
 type
@@ -18,9 +17,13 @@ type
         explored*: seq[Vector2]
         entities*: seq[Entity]
         game_state*: int # because enums are ints by default
+        game_messages*: seq[string]
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN
+
+    GameMessage* = tuple[s:string, c:ColorRGB]
+
 
 
 proc newGame*(canvas: Canvas) : Game =
@@ -30,10 +33,13 @@ proc newGame*(canvas: Canvas) : Game =
     result.explored = @[];
     result.game_state = PLAYER_TURN.int; # trick to use the int
 
+proc gameMessage*(game:Game, msg:string) =
+    game.game_messages.add(msg);
+
+
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
     game.context.fillRect(0, 0, game.canvas.width.float, game.canvas.height.float)
-
 
 # -----------
 # pretty much just drawing functions from here down
@@ -79,3 +85,25 @@ proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[V
                     add(explored, cell);
             elif (x,y) in explored:
                 drawMapTileTint(game, isoPos(x,y), map.tiles[y * map.width + x], (127,127,127));
+
+proc drawMessages*(game:Game) = 
+    var drawn: seq[string];
+    # what do we draw?
+    if game.game_messages.len <= 5:
+        drawn = game.game_messages
+    else:
+        # fancy slicing similar to Python's
+        var view = SeqView[string](data:game.game_messages, bounds: game.game_messages.len-5..game.game_messages.len-1);
+        #echo "seqView: " & $view;
+
+        for el in view:
+            drawn.add(el);
+
+    # draw
+    var y = 0;
+    for i in 0..drawn.len-1:
+        var el = drawn[i];
+        game.context.font = "12px Arial"
+        game.context.fillStyle = rgb(255, 255, 255);
+        fillText(game.context, el, 5.0, float(game.canvas.height-50+y));
+        y += 10;
