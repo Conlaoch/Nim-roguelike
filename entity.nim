@@ -39,19 +39,19 @@ proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
 proc take_damage*(cr:Creature, amount:int) =
     cr.hp -= amount;
 
-proc attack*(cr:Creature, target:Entity) =
+proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
     var rng = aleaRNG();
     var damage = rng.roller("1d6");
 
     if damage > 0:
         target.creature.take_damage(damage);
-        echo(cr.name & " attacks " & target.creature.name & " for " & $damage & " points of damage!");
+        messages.add(cr.name & " attacks " & target.creature.name & " for " & $damage & " points of damage!");
     else:
-        echo(cr.name & " attacks " & target.creature.name & " but does no damage");
+        messages.add(cr.name & " attacks " & target.creature.name & " but does no damage");
 
 
 # some functions that have our Entity type as the first parameter
-proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity]) : bool =
+proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity], messages: var seq[string]) : bool =
     ##echo("Move: " & $dx & " " & $dy);
     var tx = e.position.x + dx
     var ty = e.position.y + dy
@@ -71,7 +71,7 @@ proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity]) : bool =
     target = get_creatures_at(entities, tx, ty);
     if not isNil(target):
         #echo("You kick the " & $target.creature.name & " in the shins!");
-        attack(e.creature, target);
+        attack(e.creature, target, messages);
         # no need to recalc FOV
         return false
 
@@ -79,7 +79,7 @@ proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity]) : bool =
     return true
     #echo e.position
 
-proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) : bool =
+proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], messages:var seq[string]) : bool =
     var dx = target.x - e.position.x
     var dy = target.y - e.position.y
     #var distance = math.sqrt(dx ** 2 + dy ** 2)
@@ -91,9 +91,9 @@ proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) 
 
     if not game_map.is_blocked(e.position.x + dx, e.position.y + dy) or isNil(get_creatures_at(entities, e.position.x + dx, e.position.y + dy)):
         echo("We can move to " & $(e.position.x + dx) & " " & $(e.position.y + dy));
-        return e.move(dx, dy, game_map, entities);
+        return e.move(dx, dy, game_map, entities, messages);
 
-proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) =
+proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], messages:var seq[string]) =
     echo "Calling astar..."
     var astar = findPathNim(game_map, e.position, target);
     # for e in astar:
@@ -104,12 +104,12 @@ proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity]) =
         e.position = astar[1]
     else:
         # backup in case no path found
-        discard e.move_towards(target, game_map, entities);
+        discard e.move_towards(target, game_map, entities, messages);
 
 # how to deal with the fact that canvas ref is stored as part of Game?
 #proc draw*(e: Entity) =
 
-proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entities:seq[Entity]) = 
+proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entities:seq[Entity], messages:var seq[string]) = 
     #echo ("The " & ai.owner.creature.name & "wonders when it will get to move");
     var monster = ai.owner
     # assume if we can see it, it can see us too
@@ -117,7 +117,7 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entiti
         if monster.position.distance_to(target.position) >= 2:
             # discard means we're not using the return value
             #discard monster.move_towards(target.position, game_map, entities);
-            monster.move_astar(target.position, game_map, entities);
+            monster.move_astar(target.position, game_map, entities, messages);
         elif target.creature.hp > 0:
             #echo ai.owner.creature.name & " insults you!";
-            attack(ai.owner.creature, target);
+            attack(ai.owner.creature, target, messages);

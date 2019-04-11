@@ -11,42 +11,42 @@ var game: Game;
 # stubs to be called from JS by JQuery onclick()
 # and by the key input
 proc moveUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(0, -1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(0, -1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(0, 1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(0, 1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveLeftNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 0, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 0, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveRightNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, 0, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, 0, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveLeftUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, -1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, -1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveRightUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, -1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, -1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveLeftDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc moveRightDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, 1, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(1, 1, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
@@ -121,12 +121,13 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         game.renderMap(game.map, game.FOV_map, game.explored);
         game.renderEntities(game.FOV_map);
         game.render(game.player);
+        game.drawMessages();
         # AI turn
         if game.game_state == ENEMY_TURN.int:
             for entity in game.entities:
                 if not isNil(entity.ai):
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
-                    entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities);
+                    entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities, game.game_messages);
             # trick to use actual enum's int value
             game.game_state = GameState.PLAYER_TURN.int
 
