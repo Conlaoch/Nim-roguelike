@@ -22,6 +22,8 @@ type
         max_hp*: int
         defense*: int
         attack*: int
+        # flag
+        dead*: bool
 
     AI* = ref object
         # back reference to entity
@@ -38,6 +40,10 @@ proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
 # basic combat system
 proc take_damage*(cr:Creature, amount:int) =
     cr.hp -= amount;
+
+    # kill!
+    if cr.hp <= 0:
+        cr.dead = true;
 
 proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
     var rng = aleaRNG();

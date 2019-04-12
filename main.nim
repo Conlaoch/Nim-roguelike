@@ -3,6 +3,7 @@ import html5_canvas
 
 import resources, entity, game_class
 import map, arena_map, FOV
+import death_functions
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -125,11 +126,25 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         # AI turn
         if game.game_state == ENEMY_TURN.int:
             for entity in game.entities:
-                if not isNil(entity.ai):
+                if not isNil(entity.ai) and not entity.creature.dead:
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
                     entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities, game.game_messages);
+            
+                if entity.creature.dead:
+                    mark_for_del(entity, game);
+
+                # break if the player's killed!
+                if game.game_state == GameState.PLAYER_DEAD.int:
+                    break
+
             # trick to use actual enum's int value
-            game.game_state = GameState.PLAYER_TURN.int
+            if game.game_state != GameState.PLAYER_DEAD.int:
+                game.game_state = GameState.PLAYER_TURN.int
+
+            # avoid modifying while iterating
+            for entity in game.to_remove:
+                death_monster(entity, game)
+                
 
     # this indentation is crucially important! It's not part of the main loop!
     discard dom.window.requestAnimationFrame(mainLoop)

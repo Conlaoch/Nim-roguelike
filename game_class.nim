@@ -18,9 +18,11 @@ type
         entities*: seq[Entity]
         game_state*: int # because enums are ints by default
         game_messages*: seq[string]
+        # list of entities to be deleted
+        to_remove*: seq[Entity]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD
 
     GameMessage* = tuple[s:string, c:ColorRGB]
 
@@ -35,7 +37,6 @@ proc newGame*(canvas: Canvas) : Game =
 
 proc gameMessage*(game:Game, msg:string) =
     game.game_messages.add(msg);
-
 
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
