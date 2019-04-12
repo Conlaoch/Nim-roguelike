@@ -1,7 +1,7 @@
 import dom
 import html5_canvas
 
-import entity, math_helpers, map, FOV, tint_image, seq_slice
+import entity, math_helpers, map, FOV, tint_image, seq_tools
 
 # this is Nim's class equivalent (a type and methods which have it as a parameter)
 type

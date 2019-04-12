@@ -1,3 +1,11 @@
+# because reversed() didn't play ball with seqs
+proc reverse*[T](xs: seq[T]): seq[T] =
+  result = newSeq[T](xs.len)
+  for i, x in xs:
+      #result[^i-1] = x 
+      result[xs.high-i] = x
+
+
 # based on https://forum.nim-lang.org/t/2328
 
 # sequence slicing similar to Python

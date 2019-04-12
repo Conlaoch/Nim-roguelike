@@ -1,4 +1,4 @@
-import map, math_helpers
+import map, math_helpers, seq_tools
 
 # Helpers
 

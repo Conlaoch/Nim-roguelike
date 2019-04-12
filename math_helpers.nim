@@ -19,12 +19,6 @@ proc distance_to*(start:Vector2, to:Vector2) : int =
 proc `+`*(a:Vector2, b:Vector2) : Vector2 =
     (a.x + b.x, a.y + b.y)
 
-proc reverse*[T](xs: seq[T]): seq[T] =
-    result = newSeq[T](xs.len)
-    for i, x in xs:
-        #result[^i-1] = x 
-        result[xs.high-i] = x
-
 # x,y are positions in map coordinates
 proc isoPos*(x,y:int): (int, int)  =
     # isometric
