@@ -48,6 +48,9 @@ proc renderGfxTile*(game: Game, img: Element, x,y: int) =
     game.context.drawImage((ImageElement)img, float(x), float(y));
 
 proc render*(game: Game, player: Player) =
+    # do nothing if dead
+    if isNil(player):
+        return
     let iso = isoPos(player.position.x, player.position.y);
     # entities need a slight offset to be placed more or less centrally
     renderGfxTile(game, game.images[0], iso[0]+8, iso[1]+8);

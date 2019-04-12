@@ -15,4 +15,7 @@ proc death_monster*(e:Entity, game:Game) =
 
 proc death_player*(e:Entity, game: Game) =
     game.game_messages.add("You are dead!");
+    # remove the player
+    game.player = nil
+    # shift to special state (prevents moving, among other things)
     game.game_state = PLAYER_DEAD.int

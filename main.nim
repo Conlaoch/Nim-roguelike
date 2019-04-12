@@ -134,7 +134,8 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
                     mark_for_del(entity, game);
 
                 # break if the player's killed!
-                if game.game_state == GameState.PLAYER_DEAD.int:
+                if game.player.creature.dead:
+                    death_player(game.player, game);
                     break
 
             # trick to use actual enum's int value
