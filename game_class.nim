@@ -111,3 +111,20 @@ proc drawMessages*(game:Game) =
         game.context.fillStyle = rgb(255, 255, 255);
         fillText(game.context, el, 5.0, float(game.canvas.height-50+y));
         y += 10;
+
+proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int, bar_color:ColorRGB, bg_color:ColorRGB) =
+    # draw the bg color
+    game.context.beginPath();
+    game.context.fillStyle = rgb(bg_color.r, bg_color.g, bg_color.b);
+    game.context.rect(float(x),float(y), float(total_width), 10.0);
+    game.context.fill();
+        
+    # calculate how big the actual bar is
+    var perc = float(value)/float(maximum) * 100;
+    #echo "v: " & $value & " perc: " & $perc;
+    var bar_width = (perc / 100) * float(total_width);
+    if bar_width > 0:
+        game.context.beginPath();
+        game.context.fillStyle = rgb(bar_color.r, bar_color.g, bar_color.b);
+        game.context.rect(float(x), float(y), float(bar_width), 10.0);
+        game.context.fill();
