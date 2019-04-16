@@ -10,6 +10,8 @@ type
         # optional components
         creature*: Creature
         ai*: AI
+        item*: Item
+        inventory*:Inventory
     
     Player* = Entity
 
@@ -29,6 +31,16 @@ type
     AI* = ref object
         # back reference to entity
         owner*: Entity
+
+    Item* = ref object
+        # back reference to entity
+        owner*: Entity
+    
+    Inventory* = ref object
+        # back reference to entity
+        owner*: Entity
+        capacity*: int
+        items: seq[Item]
 
 # Nim functions have to be defined before anything that uses them
 proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =

@@ -30,10 +30,12 @@ proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
     tiles: tiles)
 
 
-proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
+proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: int) =
     var rng = aleaRNG();
     # Get a random number of monsters
     var num = rng.range(1..max);
+    # Get a random number of items
+    var num_items = rng.range(1..max_items);
 
     # taking a shortcut here: this map is rectangular so we can just place in rectangle
     for i in (1..num):
@@ -50,3 +52,15 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
       var AI_comp = AI(owner:mon);
       mon.ai = AI_comp;
       entities.add(mon);
+
+    for i in (1..num_items):
+      # Choose a random location in the map
+      let x = rng.range(1..(map.height - 2))
+      let y = rng.range(1..(map.width - 2))
+
+      var en_it = Entity(position:(x,y), image:4);
+      echo("Spawned item at " & $en_it.position);
+      # item component
+      var it = Item();
+      en_it.item = it;
+      entities.add(en_it);

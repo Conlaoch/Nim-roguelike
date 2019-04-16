@@ -97,8 +97,9 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     # setup cd.
     game.player = Player(position: (1,1), image:0);
     game.player.creature = Creature(name:"Player", owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
+    game.player.inventory = Inventory(capacity:26);
     game.map = arena_map.generateMap(20,20,@[(10,10)])
-    arena_map.place_entities(game.map, game.entities, 3)
+    arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;
     game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
@@ -131,7 +132,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
                     entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities, game.game_messages);
             
-                if entity.creature.dead:
+                if not isNil(entity.creature) and entity.creature.dead:
                     mark_for_del(entity, game);
 
                 # break if the player's killed!
@@ -171,7 +172,8 @@ dom.window.onload = proc(e: dom.Event) =
     resources.load(@[cstring("gfx/human_m.png"), 
     cstring("gfx/wall_stone.png"),
     cstring("gfx/floor_cave.png"),
-    cstring("gfx/kobold.png")]);
+    cstring("gfx/kobold.png"),
+    cstring("gfx/potion.png")]);
 
     # keys
     #  proc onKeyUp(event: Event) =
