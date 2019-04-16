@@ -62,7 +62,7 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
         # if we can actually see the NPCs
         if (e.position.x, e.position.y) in fov_map:
             # need a slight offset to be placed more or less centrally
-            renderGfxTile(game, game.images[3], iso[0]+8, iso[1]+8);
+            renderGfxTile(game, game.images[e.image], iso[0]+8, iso[1]+8);
 
 
 proc drawMapTile(game: Game, point:Vector2, tile: int) =

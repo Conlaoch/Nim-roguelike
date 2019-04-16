@@ -6,6 +6,7 @@ type
     # a type
     Entity* = ref object
         position*: Vector2
+        image*: int # the index of the tile in game.images
         # optional components
         creature*: Creature
         ai*: AI

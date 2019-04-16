@@ -41,7 +41,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int) =
       let x = rng.range(1..(map.height - 1))
       let y = rng.range(1..(map.width - 1))
 
-      var mon = Entity(position:(x,y));
+      var mon = Entity(position:(x,y), image:3);
       echo("Spawned monster at " & $mon.position);
       # creature component
       var creat = Creature(name:"kobold", owner:mon, hp:5, max_hp:5, defense:30, attack:20);

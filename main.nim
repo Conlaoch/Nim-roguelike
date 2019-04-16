@@ -95,7 +95,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     #renderGfxTile(game, game.images[0], 0, 0);
 
     # setup cd.
-    game.player = Player(position: (1,1))
+    game.player = Player(position: (1,1), image:0);
     game.player.creature = Creature(name:"Player", owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.map = arena_map.generateMap(20,20,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3)
@@ -166,6 +166,7 @@ dom.window.onload = proc(e: dom.Event) =
     # load assets
     # do we need this? YES WE DO!
     var ress = initLoader(dom.window);
+    # the order here is carried over to game.images, and the indices are used by Entity class
     # we have to force cstring conversion for some reason
     resources.load(@[cstring("gfx/human_m.png"), 
     cstring("gfx/wall_stone.png"),
