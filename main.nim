@@ -51,6 +51,20 @@ proc moveRightDownNim() {.exportc.} =
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
+proc pickupNim() {.exportc.} =
+    if game.game_state == PLAYER_TURN.int:
+        var it = get_items_at(game.entities, game.player.position.x, game.player.position.y)
+        if not isNil(it):
+            it.item.pick_up(game.player);
+            game.game_messages.add("Picked up item");
+            # because it's no longer on map
+            game.entities.delete(game.entities.find(it));
+        else:
+            game.game_messages.add("No item to pick up here");
+    # end turn regardless        
+    game.game_state = ENEMY_TURN.int
+
+
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
     case key:
@@ -68,6 +82,8 @@ proc processKeyDown(key: int, game:Game) =
       of 85: moveRightUpNim() # u
       of 66: moveLeftDownNim() # b
       of 78: moveRightDownNim() # n
+      # others
+      of 71: pickupNim() # g
 
       else: echo key
 

@@ -50,6 +50,18 @@ proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
 
     return nil
 
+proc get_items_at*(entities: seq[Entity], x:int, y:int) : Entity =
+    for entity in entities:
+        if not isNil(entity.item) and entity.position.x == x and entity.position.y == y:
+            return entity
+    
+    return nil
+
+proc pick_up*(item: Item, e: Entity) =
+    if not isNil(e.inventory):
+        e.inventory.items.add(item)
+        # the rest is handled elsewhere because we can't use anything from Game here
+
 # basic combat system
 proc take_damage*(cr:Creature, amount:int) =
     cr.hp -= amount;
