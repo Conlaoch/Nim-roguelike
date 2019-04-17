@@ -17,12 +17,13 @@ type
         explored*: seq[Vector2]
         entities*: seq[Entity]
         game_state*: int # because enums are ints by default
+        previous_state*: int # for GUI windows to know what to go back to
         game_messages*: seq[string]
         # list of entities to be deleted
         to_remove*: seq[Entity]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY
 
     GameMessage* = tuple[s:string, c:ColorRGB]
 

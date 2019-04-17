@@ -47,4 +47,10 @@ $( document ).ready(function() {
         console.log($(this));
         pickupNim()
     });
+    $(".key_inv").click(function(e) {
+        showInventoryNim()
+    });
+    $(".key_esc").click(function(e){
+        quitInventoryNim()
+    })
  });

@@ -4,6 +4,7 @@ import html5_canvas
 import resources, entity, game_class
 import map, arena_map, FOV
 import death_functions
+import menus
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -64,6 +65,16 @@ proc pickupNim() {.exportc.} =
     # end turn regardless        
     game.game_state = ENEMY_TURN.int
 
+proc showInventoryNim() {.exportc.} =
+    # remember previous state
+    game.previous_state = game.game_state
+    # we can't name it inventory because Nim enums do not need to be qualified with their type
+    game.game_state = GUI_S_INVENTORY.int
+
+proc quitInventoryNim() {.exportc.} = 
+    if game.game_state == GUI_S_INVENTORY.int:
+        # go back to previous state
+        game.game_state = game.previous_state
 
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
@@ -84,6 +95,8 @@ proc processKeyDown(key: int, game:Game) =
       of 78: moveRightDownNim() # n
       # others
       of 71: pickupNim() # g
+      of 73: showInventoryNim() # i
+      of 27: quitInventoryNim() # escape
 
       else: echo key
 
@@ -141,6 +154,11 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         game.render(game.player);
         game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
         game.drawMessages();
+
+        # inventory
+        if game.game_state == GUI_S_INVENTORY.int:
+            game.inventory_menu("INVENTORY", game.player.inventory, 50, game.canvas.width, game.canvas.height);
+
         # AI turn
         if game.game_state == ENEMY_TURN.int:
             for entity in game.entities:
