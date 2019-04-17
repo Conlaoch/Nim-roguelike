@@ -114,7 +114,7 @@ proc cast_fov_ray(map:Map,wall_index:int,from_cell:Vector2,to:Vector2) : seq[Vec
 
 # returns a seq of Vector2
 proc calculate_fov*(map:Map, wall_index:int, origin:Vector2, radius:int) : seq[Vector2] =
-    echo("Calculating fov for : " & $origin & " r: " & $radius & " " & $wall_index);
+    #echo("Calculating fov for : " & $origin & " r: " & $radius & " " & $wall_index);
     var rect = get_fov_rect(origin, radius)
     var cells: seq[Vector2];
     #var data = map.tiles

@@ -76,29 +76,48 @@ proc quitInventoryNim() {.exportc.} =
         # go back to previous state
         game.game_state = game.previous_state
 
+
+proc processPlayerTurnKey(key: int, game:Game) =
+    case key:
+        of 37: moveLeftNim()   #left
+        of 39: moveRightNim()     #right
+        of 38: moveUpNim()      #up
+        of 40: moveDownNim()   #down
+        # vim
+        of 72: moveLeftNim() # h
+        of 76: moveRightNim() # l
+        of 74: moveDownNim() # j
+        of 75: moveUpNim() # k
+        # diagonals
+        of 89: moveLeftUpNim() # y
+        of 85: moveRightUpNim() # u
+        of 66: moveLeftDownNim() # b
+        of 78: moveRightDownNim() # n
+        # others
+        of 71: pickupNim() # g
+        of 73: showInventoryNim() # i
+        else:
+          echo key
+
+proc processInventoryKey(key: int, game:Game) =
+    # 65 is the int value returned for 'a' key
+    let index = key - 65
+    if 0 <= index and index < game.player.inventory.items.len:
+        #echo $index & " is a valid inventory entry"
+        var item = game.player.inventory.items[index]
+        echo "Item is " & $item.owner.name
+    
+    elif key == 27: # escape
+        quitInventoryNim()
+
 # main key input handler
 proc processKeyDown(key: int, game:Game) =
-    case key:
-      of 37: moveLeftNim()   #left
-      of 39: moveRightNim()     #right
-      of 38: moveUpNim()      #up
-      of 40: moveDownNim()   #down
-      # vim
-      of 72: moveLeftNim() # h
-      of 76: moveRightNim() # l
-      of 74: moveDownNim() # j
-      of 75: moveUpNim() # k
-      # diagonals
-      of 89: moveLeftUpNim() # y
-      of 85: moveRightUpNim() # u
-      of 66: moveLeftDownNim() # b
-      of 78: moveRightDownNim() # n
-      # others
-      of 71: pickupNim() # g
-      of 73: showInventoryNim() # i
-      of 27: quitInventoryNim() # escape
-
-      else: echo key
+      if game.game_state == PLAYER_TURN.int:
+        processPlayerTurnKey(key, game)
+      elif game.game_state == GUI_S_INVENTORY.int:
+        processInventoryKey(key, game)
+      else:
+        echo "Not player turn"
 
 # we need to specify our own %#^%$@ type so that we can work as a callback 
 # in onReady()
