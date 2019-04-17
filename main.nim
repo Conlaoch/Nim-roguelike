@@ -56,7 +56,7 @@ proc pickupNim() {.exportc.} =
         var it = get_items_at(game.entities, game.player.position.x, game.player.position.y)
         if not isNil(it):
             it.item.pick_up(game.player);
-            game.game_messages.add("Picked up item");
+            game.game_messages.add("Picked up item " & it.name);
             # because it's no longer on map
             game.entities.delete(game.entities.find(it));
         else:
