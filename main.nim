@@ -111,8 +111,8 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     #renderGfxTile(game, game.images[0], 0, 0);
 
     # setup cd.
-    game.player = Player(position: (1,1), image:0);
-    game.player.creature = Creature(name:"Player", owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
+    game.player = Player(position: (1,1), image:0, name:"Player");
+    game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.player.inventory = Inventory(capacity:26);
     game.map = arena_map.generateMap(20,20,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3, 2);

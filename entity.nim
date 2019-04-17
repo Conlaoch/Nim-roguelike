@@ -7,6 +7,8 @@ type
     Entity* = ref object
         position*: Vector2
         image*: int # the index of the tile in game.images
+        # small caps for type string!
+        name*: string
         # optional components
         creature*: Creature
         ai*: AI
@@ -16,8 +18,6 @@ type
     Player* = Entity
 
     Creature* = ref object
-        # small caps!
-        name*: string
         # back ref to entity
         owner*: Entity
         # combat stuff
@@ -40,7 +40,7 @@ type
         # back reference to entity
         owner*: Entity
         capacity*: int
-        items: seq[Item]
+        items*: seq[Item]
 
 # Nim functions have to be defined before anything that uses them
 proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
@@ -76,9 +76,9 @@ proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
 
     if damage > 0:
         target.creature.take_damage(damage);
-        messages.add(cr.name & " attacks " & target.creature.name & " for " & $damage & " points of damage!");
+        messages.add(cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!");
     else:
-        messages.add(cr.name & " attacks " & target.creature.name & " but does no damage");
+        messages.add(cr.owner.name & " attacks " & target.name & " but does no damage");
 
 
 # some functions that have our Entity type as the first parameter

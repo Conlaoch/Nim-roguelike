@@ -4,7 +4,7 @@ proc mark_for_del*(e:Entity, game:Game) =
     game.to_remove.add(e);
 
 proc death_monster*(e:Entity, game:Game) =
-    game.game_messages.add(e.creature.name & " is dead!");
+    game.game_messages.add(e.name & " is dead!");
 
     game.entities.delete(game.entities.find(e));
     # delete from the delete list, too
