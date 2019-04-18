@@ -71,7 +71,6 @@ proc showInventoryNim() {.exportc.} =
     # we can't name it inventory because Nim enums do not need to be qualified with their type
     game.game_state = GUI_S_INVENTORY.int
 
-    echo "Should be hiding normal keypad"
     # dom magic
     dom.document.getElementById("keypad").style.display = "none";
     dom.document.getElementById("inventory_keypad").style.display = "block";
@@ -93,6 +92,11 @@ proc quitInventoryNim() {.exportc.} =
     
         var target = getInventoryKeypad();
         removeAll(target);
+
+proc inventorySelectNim(index:int) {.exportc.} =
+    echo $index & " is a valid inventory entry"
+    var item = game.player.inventory.items[index]
+    echo "Item is " & $item.owner.name
 
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
@@ -120,9 +124,7 @@ proc processInventoryKey(key: int, game:Game) =
     # 65 is the int value returned for 'a' key
     let index = key - 65
     if 0 <= index and index < game.player.inventory.items.len:
-        #echo $index & " is a valid inventory entry"
-        var item = game.player.inventory.items[index]
-        echo "Item is " & $item.owner.name
+        inventorySelectNim(index);
     
     elif key == 27: # escape
         quitInventoryNim()

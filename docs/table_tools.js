@@ -8,6 +8,7 @@ function createButton(target, i){
     var btn = document.createElement("input");
     btn.type = "button";
     btn.value = val;
+    btn.setAttribute('onclick', "inventorySelectNim(this.value.charCodeAt(0)-97)");
     cell.appendChild(btn);
 }
 
