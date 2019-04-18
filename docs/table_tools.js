@@ -1,6 +1,14 @@
 
 
 function createButton(target, i){
+    if (target.rows.length < 2){
+        console.log("Inserting a second row");
+        target = target.insertRow(1)
+    }
+    else{
+        target = target.rows[1];
+    }
+
     //yet another thing that Nim can't do itself
     var cell = target.insertCell();
     //iterate over char codes to get the letters
@@ -15,14 +23,17 @@ function createButton(target, i){
 function getInventoryKeypad(){
     keypad = document.getElementById("inventory_keypad")
     //Nim cannot use rows or other special table props which make working with them easier
-    target = keypad.childNodes[1].rows[1];
+    target = keypad.childNodes[1];
     return target;
 }
 
+// target here refers to the table itself!
 function removeAll(target) {
-    for (cell of target.cells){
-        //console.log(cell.cellIndex);
-        target.deleteCell(cell.cellIndex);
-    }
+    target.deleteRow(1);
+    console.log("deleted second row");
+    // for (n =0;n < target.cells.length; n++){
+    //     console.log(n);
+    //     target.deleteCell(-1);
+    // }
 
 }
