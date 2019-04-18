@@ -53,6 +53,9 @@ $( document ).ready(function() {
     $(".key_inv").click(function(e) {
         showInventoryNim()
     });
+    $(".key_drop").click(function(e) {
+        showDropNim()
+    });
     $(".key_esc").click(function(e){
         quitInventoryNim()
     })

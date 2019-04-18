@@ -63,8 +63,14 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         game.drawMessages();
 
         # inventory
-        if game.game_state == GUI_S_INVENTORY.int:
-            game.inventory_menu("INVENTORY", game.player.inventory, 50, game.canvas.width, game.canvas.height);
+        if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
+            var inv_title: string;
+            if game.game_state == GUI_S_INVENTORY.int:
+                inv_title = "INVENTORY. Press key to use item"
+            else:
+                inv_title = "INVENTORY. Press key to drop item"
+
+            game.inventory_menu(inv_title, game.player.inventory, 50, game.canvas.width, game.canvas.height);
 
         # AI turn
         if game.game_state == ENEMY_TURN.int:

@@ -23,7 +23,7 @@ type
         to_remove*: seq[Entity]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP
 
     GameMessage* = tuple[s:string, c:ColorRGB]
 

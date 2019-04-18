@@ -62,12 +62,8 @@ proc pickupNim() {.exportc.} =
     # end turn regardless        
     game.game_state = ENEMY_TURN.int
 
-proc showInventoryNim() {.exportc.} =
-    # remember previous state
-    game.previous_state = game.game_state
-    # we can't name it inventory because Nim enums do not need to be qualified with their type
-    game.game_state = GUI_S_INVENTORY.int
 
+proc showInventoryKeypad() =
     # dom magic
     dom.document.getElementById("keypad").style.display = "none";
     dom.document.getElementById("inventory_keypad").style.display = "block";
@@ -78,32 +74,59 @@ proc showInventoryNim() {.exportc.} =
     for i in 0 .. game.player.inventory.items.len-1:
         createButton(target, i);
 
+proc hideInventoryKeypad() = 
+    # dom magic
+    dom.document.getElementById("keypad").style.display = "block";
+    dom.document.getElementById("inventory_keypad").style.display = "none";
+
+    var target = getInventoryKeypad();
+    removeAll(target);
+
+
+proc showInventoryNim() {.exportc.} =
+    # remember previous state
+    game.previous_state = game.game_state
+    # we can't name it inventory because Nim enums do not need to be qualified with their type
+    game.game_state = GUI_S_INVENTORY.int
+
+    showInventoryKeypad()
+
+proc showDropNim {.exportc.} =
+    game.previous_state = game.game_state
+    # see above for why we have the "GUI_S_" prefix
+    game.game_state = GUI_S_DROP.int
+
+    showInventoryKeypad()
+
 proc quitInventoryNim() {.exportc.} = 
-    if game.game_state == GUI_S_INVENTORY.int:
+    if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
         # go back to previous state
         game.game_state = game.previous_state
 
-        # dom magic
-        dom.document.getElementById("keypad").style.display = "block";
-        dom.document.getElementById("inventory_keypad").style.display = "none";
-    
-        var target = getInventoryKeypad();
-        removeAll(target);
+        hideInventoryKeypad();
 
 proc inventorySelectNim(index:int) {.exportc.} =
     #echo $index & " is a valid inventory entry"
     var item = game.player.inventory.items[index]
     #echo "Item is " & $item.owner.name
-    if item.use_item(game.player):
-        game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+    if game.game_state == GUI_S_INVENTORY.int:
+        if item.use_item(game.player):
+            game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+            # quit inventory menu
+            quitInventoryNim();
+            # end turn      
+            game.game_state = ENEMY_TURN.int
+        else:
+            game.game_messages.add($item.owner.name & " cannot be used!");
+
+    if game.game_state == GUI_S_DROP.int:
+        item.drop(game.player);
+        game.entities.add(item.owner);
+        game.game_messages.add("You dropped the " & $item.owner.name);
         # quit inventory menu
         quitInventoryNim();
         # end turn      
         game.game_state = ENEMY_TURN.int
-    else:
-        game.game_messages.add($item.owner.name & " cannot be used!");
-
-
 
 
 proc processPlayerTurnKey(key: int, game:Game) =
@@ -125,6 +148,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         # others
         of 71: pickupNim() # g
         of 73: showInventoryNim() # i
+        of 68: showDropNim() # d
         else:
           echo key
 
@@ -141,7 +165,7 @@ proc processInventoryKey(key: int, game:Game) =
 proc processKeyDown*(key: int, game:Game) =
       if game.game_state == PLAYER_TURN.int:
         processPlayerTurnKey(key, game)
-      elif game.game_state == GUI_S_INVENTORY.int:
+      elif game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
         processInventoryKey(key, game)
       else:
         echo "Not player turn"

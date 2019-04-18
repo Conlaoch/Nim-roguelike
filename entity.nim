@@ -67,6 +67,12 @@ proc pick_up*(item: Item, e: Entity) =
         e.inventory.items.add(item)
         # the rest is handled elsewhere because we can't use anything from Game here
 
+proc drop*(item: Item, e: Entity) =
+    e.inventory.items.delete(e.inventory.items.find(item));
+    # set position
+    item.owner.position = e.position
+    # can't put it back in entities list here due to it being in game... see input handler for now
+
 proc use_item*(item:Item, user:Entity) : bool =
     # call proc?
     if not isNil(item.use_func):
