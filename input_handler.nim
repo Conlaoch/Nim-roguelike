@@ -91,9 +91,20 @@ proc quitInventoryNim() {.exportc.} =
         removeAll(target);
 
 proc inventorySelectNim(index:int) {.exportc.} =
-    echo $index & " is a valid inventory entry"
+    #echo $index & " is a valid inventory entry"
     var item = game.player.inventory.items[index]
-    echo "Item is " & $item.owner.name
+    #echo "Item is " & $item.owner.name
+    if item.use_item(game.player):
+        game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+        # quit inventory menu
+        quitInventoryNim();
+        # end turn      
+        game.game_state = ENEMY_TURN.int
+    else:
+        game.game_messages.add($item.owner.name & " cannot be used!");
+
+
+
 
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:

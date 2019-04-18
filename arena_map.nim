@@ -1,5 +1,6 @@
 import map, math_helpers
 import entity, alea
+import use_functions
 
 # https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
 proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
@@ -61,6 +62,6 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
       var en_it = Entity(position:(x,y), image:4, name:"potion");
       echo("Spawned item at " & $en_it.position);
       # item component
-      var it = Item(owner:en_it);
+      var it = Item(owner:en_it, use_func:heal);
       en_it.item = it;
       entities.add(en_it);

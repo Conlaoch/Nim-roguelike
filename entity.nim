@@ -35,12 +35,17 @@ type
     Item* = ref object
         # back reference to entity
         owner*: Entity
+        # optional
+        use_func*: FuncHandler
     
     Inventory* = ref object
         # back reference to entity
         owner*: Entity
         capacity*: int
         items*: seq[Item]
+
+    # in Nim, the easiest way to call a function is to assign a dummy type
+    FuncHandler* = proc(i:Item, e:Entity)
 
 # Nim functions have to be defined before anything that uses them
 proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
@@ -61,6 +66,15 @@ proc pick_up*(item: Item, e: Entity) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)
         # the rest is handled elsewhere because we can't use anything from Game here
+
+proc use_item*(item:Item, user:Entity) : bool =
+    # call proc?
+    if not isNil(item.use_func):
+        echo "Calling use function"
+        item.use_func(item, user);
+        return true
+    else:
+        return false
 
 # basic combat system
 proc take_damage*(cr:Creature, amount:int) =
