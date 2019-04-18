@@ -1,5 +1,8 @@
 //crucial
 $( document ).ready(function() {
+    //hide inventory keypad
+    $("#inventory_keypad").hide();
+    
     $(".key_arrow1").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 1");

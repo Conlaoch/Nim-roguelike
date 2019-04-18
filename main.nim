@@ -4,7 +4,7 @@ import html5_canvas
 import resources, entity, game_class
 import map, arena_map, FOV
 import death_functions
-import menus
+import menus, table_tools
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -71,11 +71,28 @@ proc showInventoryNim() {.exportc.} =
     # we can't name it inventory because Nim enums do not need to be qualified with their type
     game.game_state = GUI_S_INVENTORY.int
 
+    echo "Should be hiding normal keypad"
+    # dom magic
+    dom.document.getElementById("keypad").style.display = "none";
+    dom.document.getElementById("inventory_keypad").style.display = "block";
+
+    var target = getInventoryKeypad();
+    # these need to be created on the fly, depending on how many items we have...
+    # Nim ranges are inclusive!
+    for i in 0 .. game.player.inventory.items.len-1:
+        createButton(target, i);
+
 proc quitInventoryNim() {.exportc.} = 
     if game.game_state == GUI_S_INVENTORY.int:
         # go back to previous state
         game.game_state = game.previous_state
 
+        # dom magic
+        dom.document.getElementById("keypad").style.display = "block";
+        dom.document.getElementById("inventory_keypad").style.display = "none";
+    
+        var target = getInventoryKeypad();
+        removeAll(target);
 
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
