@@ -37,6 +37,7 @@ type
         owner*: Entity
         # optional
         use_func*: FuncHandler
+        targeting*: bool
     
     Inventory* = ref object
         # back reference to entity
@@ -48,7 +49,7 @@ type
     FuncHandler* = proc(i:Item, e:Entity)
 
 # Nim functions have to be defined before anything that uses them
-proc get_creatures_at(entities: seq[Entity], x:int, y:int) : Entity =
+proc get_creatures_at*(entities: seq[Entity], x:int, y:int) : Entity =
     for entity in entities:
         if not isNil(entity.creature) and entity.position.x == x and entity.position.y == y:
             return entity

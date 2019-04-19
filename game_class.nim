@@ -21,9 +21,10 @@ type
         game_messages*: seq[string]
         # list of entities to be deleted
         to_remove*: seq[Entity]
+        targeting*: Vector2
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
 
     GameMessage* = tuple[s:string, c:ColorRGB]
 
@@ -129,3 +130,7 @@ proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int,
         game.context.fillStyle = rgb(bar_color.r, bar_color.g, bar_color.b);
         game.context.rect(float(x), float(y), float(bar_width), 10.0);
         game.context.fill();
+
+proc drawTargeting*(game:Game) =
+    let iso = isoPos(game.targeting.x, game.targeting.y);
+    renderGfxTile(game, game.images[7], iso[0], iso[1]);

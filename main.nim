@@ -72,6 +72,10 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
 
             game.inventory_menu(inv_title, game.player.inventory, 50, game.canvas.width, game.canvas.height);
 
+        # targeting
+        if game.game_state == TARGETING.int:
+            game.drawTargeting();
+
         # AI turn
         if game.game_state == ENEMY_TURN.int:
             for entity in game.entities:
@@ -121,7 +125,9 @@ dom.window.onload = proc(e: dom.Event) =
     cstring("gfx/floor_cave.png"),
     cstring("gfx/kobold.png"),
     cstring("gfx/potion.png"),
-    cstring("gfx/scroll_lightning.png")]);
+    cstring("gfx/scroll_lightning.png"), #5
+    cstring("gfx/scroll_fire.png"),
+    cstring("gfx/mouseover.png")]);
 
     # keys
     #  proc onKeyUp(event: Event) =
