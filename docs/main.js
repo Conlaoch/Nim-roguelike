@@ -12,31 +12,33 @@ if (typeof Uint16Array === 'undefined') Uint16Array = Array;
 if (typeof Uint32Array === 'undefined') Uint32Array = Array;
 if (typeof Float32Array === 'undefined') Float32Array = Array;
 if (typeof Float64Array === 'undefined') Float64Array = Array;
-var NTI141032 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI140032 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI155285 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
 var NTI37907 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI147037 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI138509 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI146038 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI137509 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI144466 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI145418 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI145547 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI144469 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI144598 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI144282 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI145429 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI3896 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
-var NTI3804 = {size: 0,kind: 20,base: null,node: null,finalizer: null};
-var NTI138401 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI144480 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI144284 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
 var NTI144137 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
 var NTI144153 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI3862 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI144078 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
 var NTI17403 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
 var NTI144089 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI139004 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI139003 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
-var NTI148070 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI148085 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI147098 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
-var NTI138017 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI151056 = {size: 0,kind: 25,base: null,node: null,finalizer: null};
+var NTI138004 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI138003 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI152043 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI152058 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI146105 = {size: 0,kind: 24,base: null,node: null,finalizer: null};
+var NTI3896 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
+var NTI3804 = {size: 0,kind: 20,base: null,node: null,finalizer: null};
+var NTI137401 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
+var NTI3862 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
+var NTI137071 = {size: 0, kind: 18, base: null, node: null, finalizer: null};
 var NTI3850 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI3858 = {size: 0, kind: 17, base: null, node: null, finalizer: null};
 var NTI104 = {size: 0,kind: 31,base: null,node: null,finalizer: null};
@@ -81,48 +83,49 @@ NTI3858.base = NTI3828;
 var NNI3850 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3850.node = NNI3850;
 NTI3850.base = NTI3828;
-var NNI138017 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
+var NNI137071 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI138017.node = NNI138017;
-NTI147098.base = NTI138017;
-NTI148085.base = NTI104;
-NTI148070.base = NTI104;
-NTI139004.base = NTI104;
-var NNI139003 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "tiles", len: 0, typ: NTI139004, name: "tiles", sons: null}, 
-{kind: 1, offset: "width", len: 0, typ: NTI104, name: "width", sons: null}, 
-{kind: 1, offset: "height", len: 0, typ: NTI104, name: "height", sons: null}]};
-NTI139003.node = NNI139003;
-var NNI144089 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI17403, name: "Field0", sons: null}, 
-{kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI144089.node = NNI144089;
-NTI144078.base = NTI138017;
+NTI137071.node = NNI137071;
 var NNI3862 = {kind: 2, len: 0, offset: 0, typ: null, name: null, sons: []};
 NTI3862.node = NNI3862;
 NTI3862.base = NTI3828;
-NTI144153.base = NTI138017;
-NTI144137.base = NTI138017;
-NTI144284.base = NTI138017;
 NTI3804.base = NTI3896;
-var NNI138401 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
+var NNI137401 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI3804, name: "Field1", sons: null}]};
-NTI138401.node = NNI138401;
-var NNI145429 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI17403, name: "Field0", sons: null}, 
+NTI137401.node = NNI137401;
+NTI146105.base = NTI137071;
+NTI152058.base = NTI104;
+NTI152043.base = NTI104;
+NTI138004.base = NTI104;
+var NNI138003 = {kind: 2, len: 3, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "tiles", len: 0, typ: NTI138004, name: "tiles", sons: null}, 
+{kind: 1, offset: "width", len: 0, typ: NTI104, name: "width", sons: null}, 
+{kind: 1, offset: "height", len: 0, typ: NTI104, name: "height", sons: null}]};
+NTI138003.node = NNI138003;
+var NNI144089 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI17403, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI145429.node = NNI145429;
-NTI144282.base = NTI138017;
-var NNI145547 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
+NTI144089.node = NNI144089;
+NTI144078.base = NTI137071;
+NTI144153.base = NTI137071;
+NTI144137.base = NTI137071;
+NTI144284.base = NTI137071;
+var NNI144480 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI17403, name: "Field0", sons: null}, 
+{kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
+NTI144480.node = NNI144480;
+NTI144282.base = NTI137071;
+var NNI144598 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI17403, name: "Field1", sons: null}]};
-NTI145547.node = NNI145547;
-NTI145418.base = NTI138017;
-NTI144466.base = NTI138017;
-var NNI138509 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
+NTI144598.node = NNI144598;
+NTI144469.base = NTI137071;
+NTI144466.base = NTI137071;
+var NNI137509 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "Field0", len: 0, typ: NTI104, name: "Field0", sons: null}, 
 {kind: 1, offset: "Field1", len: 0, typ: NTI104, name: "Field1", sons: null}]};
-NTI138509.node = NNI138509;
-NTI147037.base = NTI138;
+NTI137509.node = NNI137509;
+NTI146038.base = NTI138;
 var NNI37907 = {kind: 2, len: 2, offset: 0, typ: null, name: null, sons: [{kind: 1, offset: "a", len: 0, typ: NTI104, name: "a", sons: null}, 
 {kind: 1, offset: "b", len: 0, typ: NTI104, name: "b", sons: null}]};
 NTI37907.node = NNI37907;
-NTI141032.base = NTI138017;
+NTI155285.base = NTI138;
+NTI140032.base = NTI137071;
 
 function makeNimstrLit(c_16225) {
 		  var ln = c_16225.length;
@@ -374,35 +377,6 @@ function subInt(a_16621, b_16622) {
 	
 }
 
-function rawEcho() {
-		      var buf = "";
-      for (var i = 0; i < arguments.length; ++i) {
-        buf += toJSStr(arguments[i]);
-      }
-      console.log(buf);
-    
-
-	
-}
-
-function absInt(a_16819) {
-		var Tmp1;
-
-	var result_16820 = 0;
-
-		if ((a_16819 < 0)) {
-		Tmp1 = (a_16819 * -1);
-		}
-		else {
-		Tmp1 = a_16819;
-		}
-		
-		result_16820 = Tmp1;
-
-	return result_16820;
-
-}
-
 function chckRange(i_17754, a_17755, b_17756) {
 			var Tmp1;
 
@@ -422,6 +396,71 @@ function chckRange(i_17754, a_17755, b_17756) {
 	return result_17757;
 
 }
+
+function rawEcho() {
+		      var buf = "";
+      for (var i = 0; i < arguments.length; ++i) {
+        buf += toJSStr(arguments[i]);
+      }
+      console.log(buf);
+    
+
+	
+}
+
+function eqStrings(a_16454, b_16455) {
+		    if (a_16454 == b_16455) return true;
+    if (a_16454 === null && b_16455.length == 0) return true;
+    if (b_16455 === null && a_16454.length == 0) return true;
+    if ((!a_16454) || (!b_16455)) return false;
+    var alen = a_16454.length;
+    if (alen != b_16455.length) return false;
+    for (var i = 0; i < alen; ++i)
+      if (a_16454[i] != b_16455[i]) return false;
+    return true;
+  
+
+	
+}
+
+function nimMin(a_16940, b_16941) {
+		var Tmp1;
+
+	var result_16942 = 0;
+
+	BeforeRet: do {
+		if ((a_16940 <= b_16941)) {
+		Tmp1 = a_16940;
+		}
+		else {
+		Tmp1 = b_16941;
+		}
+		
+		result_16942 = Tmp1;
+		break BeforeRet;
+	} while (false);
+
+	return result_16942;
+
+}
+
+function absInt(a_16819) {
+		var Tmp1;
+
+	var result_16820 = 0;
+
+		if ((a_16819 < 0)) {
+		Tmp1 = (a_16819 * -1);
+		}
+		else {
+		Tmp1 = a_16819;
+		}
+		
+		result_16820 = Tmp1;
+
+	return result_16820;
+
+}
 var nimvm_7173 = false;
 var nim_program_result = 0;
 var global_raise_hook_13418 = [null];
@@ -435,7 +474,7 @@ var out_of_mem_hook_13426 = [null];
       return (v - v % 1)   ||   (v < 0 ? -0 : v === 0 ? v : 0);
     };
   }
-var game_150014 = [null];
+var game_148014 = [null];
 
 function is_fat_pointer_17201(ti_17203) {
 	var result_17204 = false;
@@ -653,37 +692,37 @@ function failed_assert_impl_20481(msg_20483) {
 	
 }
 
-function get_creatures_at_142056(entities_142059, x_142060, y_142061) {
+function get_creatures_at_141097(entities_141100, x_141101, y_141102) {
 							var Tmp4;
 							var Tmp5;
 
-	var result_142062 = null;
+	var result_141103 = null;
 
 	var F={procname:"entity.get_creatures_at",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
 		L1: do {
-			F.line = 34;
-			var entity_142215 = null;
+			F.line = 53;
+			var entity_141215 = null;
 			F.line = 3911;
-			var i_142226 = 0;
+			var i_141226 = 0;
 			F.line = 3912;
-			var l_142228 = (entities_142059 != null ? entities_142059.length : 0);
+			var l_141228 = (entities_141100 != null ? entities_141100.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_142226 < l_142228)) break L3;
+					if (!(i_141226 < l_141228)) break L3;
 						F.line = 3914;
-						entity_142215 = entities_142059[chckIndx(i_142226, 0, entities_142059.length+0-1)-0];
-							if (!!((entity_142215.creature === null))) Tmp5 = false; else {								Tmp5 = (entity_142215.position.Field0 == x_142060);							}							if (!Tmp5) Tmp4 = false; else {								Tmp4 = (entity_142215.position.Field1 == y_142061);							}						if (Tmp4) {
-						F.line = 36;
-						result_142062 = entity_142215;
+						entity_141215 = entities_141100[chckIndx(i_141226, 0, entities_141100.length+0-1)-0];
+							if (!!((entity_141215.creature === null))) Tmp5 = false; else {								Tmp5 = (entity_141215.position.Field0 == x_141101);							}							if (!Tmp5) Tmp4 = false; else {								Tmp4 = (entity_141215.position.Field1 == y_141102);							}						if (Tmp4) {
+						F.line = 55;
+						result_141103 = entity_141215;
 						break BeforeRet;
 						}
 						
 						F.line = 3915;
-						i_142226 = addInt(i_142226, 1);
-						if (!(((entities_142059 != null ? entities_142059.length : 0) == l_142228))) {
+						i_141226 = addInt(i_141226, 1);
+						if (!(((entities_141100 != null ? entities_141100.length : 0) == l_141228))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -691,24 +730,24 @@ function get_creatures_at_142056(entities_142059, x_142060, y_142061) {
 					}
 			} while(false);
 		} while(false);
-		F.line = 38;
-		result_142062 = null;
+		F.line = 57;
+		result_141103 = null;
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_142062;
+	return result_141103;
 
 }
 
-function take_damage_142242(cr_142244, amount_142245) {
+function take_damage_142266(cr_142268, amount_142269) {
 	var F={procname:"entity.take_damage",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
-		F.line = 42;
-		cr_142244.hp = subInt(cr_142244.hp, amount_142245);
-		if ((cr_142244.hp <= 0)) {
-		F.line = 46;
-		cr_142244.dead = true;
+		F.line = 103;
+		cr_142268.hp = subInt(cr_142268.hp, amount_142269);
+		if ((cr_142268.hp <= 0)) {
+		F.line = 107;
+		cr_142268.dead = true;
 		}
 		
 	framePtr = F.prev;
@@ -716,22 +755,22 @@ function take_damage_142242(cr_142244, amount_142245) {
 	
 }
 
-function attack_142268(cr_142270, target_142271, messages_142274, messages_142274_Idx) {
+function attack_142292(cr_142294, target_142295, messages_142298, messages_142298_Idx) {
 	var F={procname:"entity.attack",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
-		F.line = 49;
-		var rng_142275 = aleaRNG();
-		F.line = 50;
-		var damage_142276 = roller(rng_142275, "1d6");
-		if ((0 < damage_142276)) {
-		F.line = 53;
-		take_damage_142242(target_142271.creature, damage_142276);
-		F.line = 54;
-		if (messages_142274[messages_142274_Idx] != null) { messages_142274[messages_142274_Idx].push((cr_142270.name).concat(makeNimstrLit(" attacks "),target_142271.creature.name,makeNimstrLit(" for "),cstrToNimstr((damage_142276)+""),makeNimstrLit(" points of damage!"))); } else { messages_142274[messages_142274_Idx] = [(cr_142270.name).concat(makeNimstrLit(" attacks "),target_142271.creature.name,makeNimstrLit(" for "),cstrToNimstr((damage_142276)+""),makeNimstrLit(" points of damage!"))]; };
+		F.line = 110;
+		var rng_142299 = aleaRNG();
+		F.line = 111;
+		var damage_142300 = roller(rng_142299, "1d6");
+		if ((0 < damage_142300)) {
+		F.line = 114;
+		take_damage_142266(target_142295.creature, damage_142300);
+		F.line = 115;
+		if (messages_142298[messages_142298_Idx] != null) { messages_142298[messages_142298_Idx].push((cr_142294.owner.name).concat(makeNimstrLit(" attacks "),target_142295.name,makeNimstrLit(" for "),cstrToNimstr((damage_142300)+""),makeNimstrLit(" points of damage!"))); } else { messages_142298[messages_142298_Idx] = [(cr_142294.owner.name).concat(makeNimstrLit(" attacks "),target_142295.name,makeNimstrLit(" for "),cstrToNimstr((damage_142300)+""),makeNimstrLit(" points of damage!"))]; };
 		}
 		else {
-			F.line = 56;
-		if (messages_142274[messages_142274_Idx] != null) { messages_142274[messages_142274_Idx].push((cr_142270.name).concat(makeNimstrLit(" attacks "),target_142271.creature.name,makeNimstrLit(" but does no damage"))); } else { messages_142274[messages_142274_Idx] = [(cr_142270.name).concat(makeNimstrLit(" attacks "),target_142271.creature.name,makeNimstrLit(" but does no damage"))]; };
+			F.line = 117;
+		if (messages_142298[messages_142298_Idx] != null) { messages_142298[messages_142298_Idx].push((cr_142294.owner.name).concat(makeNimstrLit(" attacks "),target_142295.name,makeNimstrLit(" but does no damage"))); } else { messages_142298[messages_142298_Idx] = [(cr_142294.owner.name).concat(makeNimstrLit(" attacks "),target_142295.name,makeNimstrLit(" but does no damage"))]; };
 		}
 		
 	framePtr = F.prev;
@@ -739,72 +778,72 @@ function attack_142268(cr_142270, target_142271, messages_142274, messages_14227
 	
 }
 
-function move_142312(e_142314, dx_142315, dy_142316, map_142317, entities_142319, messages_142322, messages_142322_Idx) {
+function move_142336(e_142338, dx_142339, dy_142340, map_142341, entities_142343, messages_142346, messages_142346_Idx) {
 			var Tmp1;
 
-	var result_142323 = false;
+	var result_142347 = false;
 
 	var F={procname:"entity.move",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		F.line = 62;
-		var tx_142324 = addInt(e_142314.position.Field0, dx_142315);
-		F.line = 63;
-		var ty_142325 = addInt(e_142314.position.Field1, dy_142316);
-		if (((tx_142324 < 0) || (ty_142325 < 0))) {
-		F.line = 66;
-		result_142323 = false;
+		F.line = 123;
+		var tx_142348 = addInt(e_142338.position.Field0, dx_142339);
+		F.line = 124;
+		var ty_142349 = addInt(e_142338.position.Field1, dy_142340);
+		if (((tx_142348 < 0) || (ty_142349 < 0))) {
+		F.line = 127;
+		result_142347 = false;
 		break BeforeRet;
 		}
 		
-			if (((map_142317.tiles != null ? map_142317.tiles.length : 0) < tx_142324)) Tmp1 = true; else {				Tmp1 = ((map_142317.tiles != null ? map_142317.tiles.length : 0) < ty_142325);			}		if (Tmp1) {
-		F.line = 69;
-		result_142323 = false;
+			if (((map_142341.tiles != null ? map_142341.tiles.length : 0) < tx_142348)) Tmp1 = true; else {				Tmp1 = ((map_142341.tiles != null ? map_142341.tiles.length : 0) < ty_142349);			}		if (Tmp1) {
+		F.line = 130;
+		result_142347 = false;
 		break BeforeRet;
 		}
 		
-		if ((map_142317.tiles[chckIndx(addInt(mulInt(ty_142325, map_142317.width), tx_142324), 0, map_142317.tiles.length+0-1)-0] == 0)) {
-		F.line = 73;
-		result_142323 = false;
+		if ((map_142341.tiles[chckIndx(addInt(mulInt(ty_142349, map_142341.width), tx_142348), 0, map_142341.tiles.length+0-1)-0] == 0)) {
+		F.line = 134;
+		result_142347 = false;
 		break BeforeRet;
 		}
 		
-		F.line = 76;
-		var target_142340 = null;
-		F.line = 77;
-		target_142340 = get_creatures_at_142056(entities_142319, tx_142324, ty_142325);
-		if (!((target_142340 === null))) {
-		F.line = 80;
-		attack_142268(e_142314.creature, target_142340, messages_142322, messages_142322_Idx);
-		F.line = 82;
-		result_142323 = false;
+		F.line = 137;
+		var target_142364 = null;
+		F.line = 138;
+		target_142364 = get_creatures_at_141097(entities_142343, tx_142348, ty_142349);
+		if (!((target_142364 === null))) {
+		F.line = 141;
+		attack_142292(e_142338.creature, target_142364, messages_142346, messages_142346_Idx);
+		F.line = 143;
+		result_142347 = false;
 		break BeforeRet;
 		}
 		
-		F.line = 84;
-		nimCopy(e_142314.position, {Field0: addInt(e_142314.position.Field0, dx_142315), Field1: addInt(e_142314.position.Field1, dy_142316)}, NTI138017);
-		F.line = 85;
-		result_142323 = true;
+		F.line = 145;
+		nimCopy(e_142338.position, {Field0: addInt(e_142338.position.Field0, dx_142339), Field1: addInt(e_142338.position.Field1, dy_142340)}, NTI137071);
+		F.line = 146;
+		result_142347 = true;
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_142323;
+	return result_142347;
 
 }
 
 function moveUpNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveUpNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveUpNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, 0, -1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 16;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, 0, -1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 14;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 17;
-		game_150014[0].game_state = 1;
+		F.line = 15;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -813,15 +852,15 @@ function moveUpNim() {
 function moveDownNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveDownNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveDownNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, 0, 1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 21;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, 0, 1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 19;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 22;
-		game_150014[0].game_state = 1;
+		F.line = 20;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -830,15 +869,15 @@ function moveDownNim() {
 function moveLeftNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveLeftNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveLeftNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, -1, 0, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 26;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, -1, 0, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 24;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 27;
-		game_150014[0].game_state = 1;
+		F.line = 25;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -847,15 +886,15 @@ function moveLeftNim() {
 function moveRightNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveRightNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveRightNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, 1, 0, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 31;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, 1, 0, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 29;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 32;
-		game_150014[0].game_state = 1;
+		F.line = 30;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -864,15 +903,15 @@ function moveRightNim() {
 function moveLeftUpNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveLeftUpNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveLeftUpNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, -1, -1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 36;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, -1, -1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 34;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 37;
-		game_150014[0].game_state = 1;
+		F.line = 35;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -881,15 +920,15 @@ function moveLeftUpNim() {
 function moveRightUpNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveRightUpNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveRightUpNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, 1, -1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 41;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, 1, -1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 39;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 42;
-		game_150014[0].game_state = 1;
+		F.line = 40;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -898,15 +937,15 @@ function moveRightUpNim() {
 function moveLeftDownNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveLeftDownNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveLeftDownNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, -1, 1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 46;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, -1, 1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 44;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 47;
-		game_150014[0].game_state = 1;
+		F.line = 45;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
@@ -915,19 +954,730 @@ function moveLeftDownNim() {
 function moveRightDownNim() {
 			var Tmp1;
 
-	var F={procname:"main.moveRightDownNim",prev:framePtr,filename:"main.nim",line:0};
+	var F={procname:"input_handler.moveRightDownNim",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-			if (!(game_150014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142312(game_150014[0].player, 1, 1, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");			}		if (Tmp1) {
-		F.line = 51;
-		game_150014[0].recalc_FOV = true;
+			if (!(game_148014[0].game_state == 0)) Tmp1 = false; else {				Tmp1 = move_142336(game_148014[0].player, 1, 1, game_148014[0].map, game_148014[0].entities, game_148014[0], "game_messages");			}		if (Tmp1) {
+		F.line = 49;
+		game_148014[0].recalc_FOV = true;
 		}
 		
-		F.line = 52;
-		game_150014[0].game_state = 1;
+		F.line = 50;
+		game_148014[0].game_state = 1;
 	framePtr = F.prev;
 
 	
 }
+
+function get_items_at_141242(entities_141245, x_141246, y_141247) {
+							var Tmp4;
+							var Tmp5;
+
+	var result_141248 = null;
+
+	var F={procname:"entity.get_items_at",prev:framePtr,filename:"entity.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		L1: do {
+			F.line = 60;
+			var entity_141257 = null;
+			F.line = 3911;
+			var i_141268 = 0;
+			F.line = 3912;
+			var l_141270 = (entities_141245 != null ? entities_141245.length : 0);
+			L2: do {
+				F.line = 3913;
+					L3: while (true) {
+					if (!(i_141268 < l_141270)) break L3;
+						F.line = 3914;
+						entity_141257 = entities_141245[chckIndx(i_141268, 0, entities_141245.length+0-1)-0];
+							if (!!((entity_141257.item === null))) Tmp5 = false; else {								Tmp5 = (entity_141257.position.Field0 == x_141246);							}							if (!Tmp5) Tmp4 = false; else {								Tmp4 = (entity_141257.position.Field1 == y_141247);							}						if (Tmp4) {
+						F.line = 62;
+						result_141248 = entity_141257;
+						break BeforeRet;
+						}
+						
+						F.line = 3915;
+						i_141268 = addInt(i_141268, 1);
+						if (!(((entities_141245 != null ? entities_141245.length : 0) == l_141270))) {
+						F.line = 3916;
+						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+						}
+						
+					}
+			} while(false);
+		} while(false);
+		F.line = 64;
+		result_141248 = null;
+		break BeforeRet;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141248;
+
+}
+
+function pick_up_141473(item_141475, e_141476) {
+	var F={procname:"entity.pick_up",prev:framePtr,filename:"entity.nim",line:0};
+	framePtr = F;
+		if (!((e_141476.inventory === null))) {
+		F.line = 83;
+		if (e_141476.inventory.items != null) { e_141476.inventory.items.push(item_141475); } else { e_141476.inventory.items = [item_141475]; };
+		}
+		
+	framePtr = F.prev;
+
+	
+}
+
+function delete_148257(x_148263, x_148263_Idx, i_148265) {
+	var F={procname:"delete.delete",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+		F.line = 1643;
+		x_148263[x_148263_Idx].splice(i_148265, 1);
+	framePtr = F.prev;
+
+	
+}
+
+function find_148199(a_148204, item_148206) {
+	var result_148207 = 0;
+
+	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		L1: do {
+			F.line = 2511;
+			var i_148216 = null;
+			F.line = 3911;
+			var i_148240 = 0;
+			F.line = 3912;
+			var l_148242 = (a_148204 != null ? a_148204.length : 0);
+			L2: do {
+				F.line = 3913;
+					L3: while (true) {
+					if (!(i_148240 < l_148242)) break L3;
+						F.line = 3914;
+						i_148216 = a_148204[chckIndx(i_148240, 0, a_148204.length+0-1)-0];
+						if ((i_148216 == item_148206)) {
+						F.line = 2512;
+						break BeforeRet;
+						}
+						
+						F.line = 2513;
+						result_148207 = addInt(result_148207, 1);
+						F.line = 3915;
+						i_148240 = addInt(i_148240, 1);
+						if (!(((a_148204 != null ? a_148204.length : 0) == l_148242))) {
+						F.line = 3916;
+						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+						}
+						
+					}
+			} while(false);
+		} while(false);
+		F.line = 2514;
+		result_148207 = -1;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_148207;
+
+}
+
+function raiseRangeError() {
+		var e_16125 = null;
+		e_16125 = {m_type: NTI3862, parent: null, name: null, message: null, trace: null, raise_id: 0, up: null};
+		e_16125.message = nimCopy(null, makeNimstrLit("value out of range"), NTI138);
+		e_16125.parent = null;
+		raiseException(e_16125, "RangeError");
+
+	
+}
+
+function pickupNim() {
+	var F={procname:"input_handler.pickupNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		if ((game_148014[0].game_state == 0)) {
+		F.line = 54;
+		var it_148180 = get_items_at_141242(game_148014[0].entities, game_148014[0].player.position.Field0, game_148014[0].player.position.Field1);
+		if (!((it_148180 === null))) {
+		F.line = 56;
+		pick_up_141473(it_148180.item, game_148014[0].player);
+		F.line = 57;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((makeNimstrLit("Picked up item ")).concat(it_148180.name)); } else { game_148014[0].game_messages = [(makeNimstrLit("Picked up item ")).concat(it_148180.name)]; };
+		F.line = 59;
+		delete_148257(game_148014[0], "entities", chckRange(find_148199(game_148014[0].entities, it_148180), 0, 2147483647));
+		}
+		else {
+			F.line = 61;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push(makeNimstrLit("No item to pick up here")); } else { game_148014[0].game_messages = [makeNimstrLit("No item to pick up here")]; };
+		}
+		
+		}
+		
+		F.line = 63;
+		game_148014[0].game_state = 1;
+	framePtr = F.prev;
+
+	
+}
+
+function show_inventory_keypad_148850() {
+	var F={procname:"input_handler.showInventoryKeypad",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 68;
+		document.getElementById("keypad").style.display = "none";
+		F.line = 69;
+		document.getElementById("inventory_keypad").style.display = "block";
+		F.line = 71;
+		var target_148852 = getInventoryKeypad();
+		L1: do {
+			F.line = 74;
+			var i_148871 = 0;
+			F.line = 2104;
+			var colontmp__148873 = 0;
+			F.line = 74;
+			colontmp__148873 = subInt((game_148014[0].player.inventory.items != null ? game_148014[0].player.inventory.items.length : 0), 1);
+			F.line = 2107;
+			var res_148876 = 0;
+			L2: do {
+				F.line = 2108;
+					L3: while (true) {
+					if (!(res_148876 <= colontmp__148873)) break L3;
+						F.line = 2109;
+						i_148871 = res_148876;
+						F.line = 75;
+						createButton(target_148852, i_148871);
+						F.line = 2110;
+						res_148876 = addInt(res_148876, 1);
+					}
+			} while(false);
+		} while(false);
+	framePtr = F.prev;
+
+	
+}
+
+function showInventoryNim() {
+	var F={procname:"input_handler.showInventoryNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 88;
+		game_148014[0].previous_state = game_148014[0].game_state;
+		F.line = 90;
+		game_148014[0].game_state = 3;
+		F.line = 92;
+		show_inventory_keypad_148850();
+	framePtr = F.prev;
+
+	
+}
+
+function showDropNim() {
+	var F={procname:"input_handler.showDropNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 95;
+		game_148014[0].previous_state = game_148014[0].game_state;
+		F.line = 97;
+		game_148014[0].game_state = 4;
+		F.line = 99;
+		show_inventory_keypad_148850();
+	framePtr = F.prev;
+
+	
+}
+
+function hide_inventory_keypad_148893() {
+	var F={procname:"input_handler.hideInventoryKeypad",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 79;
+		document.getElementById("keypad").style.display = "block";
+		F.line = 80;
+		document.getElementById("inventory_keypad").style.display = "none";
+		F.line = 82;
+		var target_148895 = getInventoryKeypad();
+		F.line = 83;
+		removeAll(target_148895);
+	framePtr = F.prev;
+
+	
+}
+
+function quitInventoryNim() {
+			var Tmp1;
+
+	var F={procname:"input_handler.quitInventoryNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+			if ((game_148014[0].game_state == 3)) Tmp1 = true; else {				Tmp1 = (game_148014[0].game_state == 4);			}		if (Tmp1) {
+		F.line = 104;
+		game_148014[0].game_state = game_148014[0].previous_state;
+		F.line = 106;
+		hide_inventory_keypad_148893();
+		}
+		
+	framePtr = F.prev;
+
+	
+}
+
+function use_item_142238(item_142240, user_142241) {
+	var result_142242 = false;
+
+	var F={procname:"entity.use_item",prev:framePtr,filename:"entity.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		if (!((item_142240.use_func === null))) {
+		F.line = 95;
+		rawEcho(makeNimstrLit("Calling use function"));
+		F.line = 96;
+		item_142240.use_func(item_142240, user_142241);
+		F.line = 97;
+		result_142242 = true;
+		break BeforeRet;
+		}
+		else {
+			F.line = 99;
+			result_142242 = false;
+			break BeforeRet;
+		}
+		
+	} while (false);
+	framePtr = F.prev;
+
+	return result_142242;
+
+}
+
+function HEX3DHEX3D_141382(x_141386, y_141388) {
+	var result_141389 = false;
+
+	var F={procname:"==.==",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		if (!((x_141386["Field0"] == y_141388["Field0"]))) {
+		F.line = 2585;
+		result_141389 = false;
+		break BeforeRet;
+		}
+		
+		if (!((x_141386["Field1"] == y_141388["Field1"]))) {
+		F.line = 2585;
+		result_141389 = false;
+		break BeforeRet;
+		}
+		
+		F.line = 2586;
+		result_141389 = true;
+		break BeforeRet;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141389;
+
+}
+
+function find_141333(a_141338, item_141340) {
+	var result_141341 = 0;
+
+	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		L1: do {
+			F.line = 2511;
+			var i_141380 = {Field0: 0, Field1: 0};
+			F.line = 2247;
+			var i_141425 = 0;
+			L2: do {
+				F.line = 2248;
+					L3: while (true) {
+					if (!(i_141425 < (a_141338 != null ? a_141338.length : 0))) break L3;
+						F.line = 2249;
+						nimCopy(i_141380, a_141338[chckIndx(i_141425, 0, a_141338.length+0-1)-0], NTI137071);
+						if (HEX3DHEX3D_141382(i_141380, item_141340)) {
+						F.line = 2512;
+						break BeforeRet;
+						}
+						
+						F.line = 2513;
+						result_141341 = addInt(result_141341, 1);
+						F.line = 2250;
+						i_141425 = addInt(i_141425, 1);
+					}
+			} while(false);
+		} while(false);
+		F.line = 2514;
+		result_141341 = -1;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141341;
+
+}
+
+function contains_141323(a_141328, item_141330) {
+	var result_141331 = false;
+
+	var F={procname:"contains.contains",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		F.line = 2519;
+		result_141331 = (0 <= find_141333(a_141328, item_141330));
+		break BeforeRet;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141331;
+
+}
+
+function HEX2AHEX3D_137405(x_137410, x_137410_Idx, y_137412) {
+	var F={procname:"*=.*=",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+		F.line = 3796;
+		x_137410[x_137410_Idx] = mulInt(x_137410[x_137410_Idx], y_137412);
+	framePtr = F.prev;
+
+	
+}
+
+function HEX5E_137099(x_137103, y_137105) {
+	var result_137106 = [0];
+
+	var F={procname:"^.^",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/pure/math.nim",line:0};
+	framePtr = F;
+		if (!((0 <= y_137105))) {
+		F.line = 661;
+		failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/pure/math.nim(661, 12) `\x0AT(0) <= y` "));
+		}
+		
+		F.line = 664;
+		var colontmp__149120 = {Field0: 0, Field1: 0};
+		F.line = 664;
+		var x_137402 = [0];
+		F.line = 664;
+		var y_137403 = 0;
+		F.line = 664;
+		nimCopy(colontmp__149120, {Field0: x_137103, Field1: y_137105}, NTI137401);
+		F.line = 664;
+		x_137402[0] = colontmp__149120["Field0"];
+		F.line = 664;
+		y_137403 = colontmp__149120["Field1"];
+		F.line = 665;
+		result_137106[0] = 1;
+		L1: do {
+			F.line = 667;
+				L2: while (true) {
+				if (!true) break L2;
+					if (!(((y_137403 & 1) == 0))) {
+					F.line = 669;
+					HEX2AHEX3D_137405(result_137106, 0, x_137402[0]);
+					}
+					
+					F.line = 670;
+					y_137403 = chckRange(((y_137403 >>> 0) >>> 1), 0, 2147483647);
+					if ((y_137403 == 0)) {
+					F.line = 672;
+					break L1;
+					}
+					
+					F.line = 673;
+					HEX2AHEX3D_137405(x_137402, 0, x_137402[0]);
+				}
+		} while(false);
+	framePtr = F.prev;
+
+	return result_137106[0];
+
+}
+
+function distance_to_137091(start_137093, to_137094) {
+	var result_137095 = 0;
+
+	var F={procname:"math_helpers.distance_to",prev:framePtr,filename:"math_helpers.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		F.line = 15;
+		var dx_137096 = subInt(to_137094.Field0, start_137093.Field0);
+		F.line = 16;
+		var dy_137097 = subInt(to_137094.Field1, start_137093.Field1);
+		F.line = 17;
+		result_137095 = ((Math.sqrt(addInt(HEX5E_137099(dx_137096, 2), HEX5E_137099(dy_137097, 2))))|0);
+		break BeforeRet;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_137095;
+
+}
+
+function closest_monster_141284(player_141286, entities_141288, fov_map_141290, max_range_141291) {
+							var Tmp4;
+							var Tmp5;
+
+	var result_141292 = null;
+
+	var F={procname:"entity.closest_monster",prev:framePtr,filename:"entity.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		F.line = 68;
+		var target_141293 = null;
+		F.line = 69;
+		var closest_dist_141294 = 0;
+		F.line = 70;
+		closest_dist_141294 = addInt(max_range_141291, 1);
+		L1: do {
+			F.line = 71;
+			var entity_141303 = null;
+			F.line = 3911;
+			var i_141457 = 0;
+			F.line = 3912;
+			var l_141459 = (entities_141288 != null ? entities_141288.length : 0);
+			L2: do {
+				F.line = 3913;
+					L3: while (true) {
+					if (!(i_141457 < l_141459)) break L3;
+						F.line = 3914;
+						entity_141303 = entities_141288[chckIndx(i_141457, 0, entities_141288.length+0-1)-0];
+							if (!!((entity_141303.creature === null))) Tmp5 = false; else {								Tmp5 = !((entity_141303 == player_141286));							}							if (!Tmp5) Tmp4 = false; else {								Tmp4 = contains_141323(fov_map_141290, entity_141303.position);							}						if (Tmp4) {
+						F.line = 74;
+						var dist_141453 = distance_to_137091(player_141286.position, entity_141303.position);
+						if ((dist_141453 < closest_dist_141294)) {
+						F.line = 76;
+						target_141293 = entity_141303;
+						F.line = 77;
+						closest_dist_141294 = dist_141453;
+						}
+						
+						}
+						
+						F.line = 3915;
+						i_141457 = addInt(i_141457, 1);
+						if (!(((entities_141288 != null ? entities_141288.length : 0) == l_141459))) {
+						F.line = 3916;
+						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+						}
+						
+					}
+			} while(false);
+		} while(false);
+		F.line = 79;
+		result_141292 = target_141293;
+		break BeforeRet;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141292;
+
+}
+
+function delete_141656(x_141662, x_141662_Idx, i_141664) {
+	var F={procname:"delete.delete",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+		F.line = 1643;
+		x_141662[x_141662_Idx].splice(i_141664, 1);
+	framePtr = F.prev;
+
+	
+}
+
+function find_141512(a_141517, item_141519) {
+	var result_141520 = 0;
+
+	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		L1: do {
+			F.line = 2511;
+			var i_141615 = null;
+			F.line = 3911;
+			var i_141639 = 0;
+			F.line = 3912;
+			var l_141641 = (a_141517 != null ? a_141517.length : 0);
+			L2: do {
+				F.line = 3913;
+					L3: while (true) {
+					if (!(i_141639 < l_141641)) break L3;
+						F.line = 3914;
+						i_141615 = a_141517[chckIndx(i_141639, 0, a_141517.length+0-1)-0];
+						if ((i_141615 == item_141519)) {
+						F.line = 2512;
+						break BeforeRet;
+						}
+						
+						F.line = 2513;
+						result_141520 = addInt(result_141520, 1);
+						F.line = 3915;
+						i_141639 = addInt(i_141639, 1);
+						if (!(((a_141517 != null ? a_141517.length : 0) == l_141641))) {
+						F.line = 3916;
+						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+						}
+						
+					}
+			} while(false);
+		} while(false);
+		F.line = 2514;
+		result_141520 = -1;
+	} while (false);
+	framePtr = F.prev;
+
+	return result_141520;
+
+}
+
+function drop_141507(item_141509, e_141510) {
+	var F={procname:"entity.drop",prev:framePtr,filename:"entity.nim",line:0};
+	framePtr = F;
+		F.line = 87;
+		delete_141656(e_141510.inventory, "items", chckRange(find_141512(e_141510.inventory.items, item_141509), 0, 2147483647));
+		F.line = 89;
+		nimCopy(item_141509.owner.position, e_141510.position, NTI137071);
+	framePtr = F.prev;
+
+	
+}
+
+function inventorySelectNim(index_148960) {
+	var F={procname:"input_handler.inventorySelectNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 110;
+		var item_148961 = game_148014[0].player.inventory.items[chckIndx(index_148960, 0, game_148014[0].player.inventory.items.length+0-1)-0];
+		if ((game_148014[0].game_state == 3)) {
+		if (use_item_142238(item_148961, game_148014[0].player)) {
+		F.line = 114;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)); } else { game_148014[0].game_messages = [(game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)]; };
+		F.line = 116;
+		quitInventoryNim();
+		F.line = 118;
+		game_148014[0].game_state = 1;
+		}
+		else {
+		if (eqStrings(item_148961.owner.name, makeNimstrLit("lightning scroll"))) {
+		F.line = 122;
+		var tg_148976 = closest_monster_141284(game_148014[0].player, game_148014[0].entities, game_148014[0].FOV_map, 4);
+		if ((tg_148976 === null)) {
+		F.line = 124;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push(makeNimstrLit("No enemy is close enough to strike")); } else { game_148014[0].game_messages = [makeNimstrLit("No enemy is close enough to strike")]; };
+		}
+		else {
+			F.line = 126;
+			take_damage_142266(tg_148976.creature, 8);
+			F.line = 127;
+			if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((makeNimstrLit("A lightning bolt strikes ")).concat(tg_148976.name,makeNimstrLit(" and deals 8 damage!"))); } else { game_148014[0].game_messages = [(makeNimstrLit("A lightning bolt strikes ")).concat(tg_148976.name,makeNimstrLit(" and deals 8 damage!"))]; };
+		}
+		
+		F.line = 129;
+		delete_141656(game_148014[0].player.inventory, "items", chckRange(find_141512(game_148014[0].player.inventory.items, item_148961), 0, 2147483647));
+		F.line = 131;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)); } else { game_148014[0].game_messages = [(game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)]; };
+		F.line = 133;
+		quitInventoryNim();
+		F.line = 135;
+		game_148014[0].game_state = 1;
+		}
+		else {
+		if (item_148961.targeting) {
+		F.line = 139;
+		delete_141656(game_148014[0].player.inventory, "items", chckRange(find_141512(game_148014[0].player.inventory.items, item_148961), 0, 2147483647));
+		F.line = 141;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)); } else { game_148014[0].game_messages = [(game_148014[0].player.name).concat(makeNimstrLit(" uses "),item_148961.owner.name)]; };
+		F.line = 143;
+		quitInventoryNim();
+		F.line = 146;
+		game_148014[0].game_state = 5;
+		F.line = 148;
+		nimCopy(game_148014[0].targeting, game_148014[0].player.position, NTI137071);
+		F.line = 152;
+		document.getElementById("keypad").style.display = "none";
+		F.line = 153;
+		document.getElementById("targeting_keypad").style.display = "block";
+		}
+		else {
+			F.line = 156;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((item_148961.owner.name).concat(makeNimstrLit(" cannot be used!"))); } else { game_148014[0].game_messages = [(item_148961.owner.name).concat(makeNimstrLit(" cannot be used!"))]; };
+		}
+		}}
+		}
+		
+		if ((game_148014[0].game_state == 4)) {
+		F.line = 159;
+		drop_141507(item_148961, game_148014[0].player);
+		F.line = 160;
+		if (game_148014[0].entities != null) { game_148014[0].entities.push(item_148961.owner); } else { game_148014[0].entities = [item_148961.owner]; };
+		F.line = 161;
+		if (game_148014[0].game_messages != null) { game_148014[0].game_messages.push((makeNimstrLit("You dropped the ")).concat(item_148961.owner.name)); } else { game_148014[0].game_messages = [(makeNimstrLit("You dropped the ")).concat(item_148961.owner.name)]; };
+		F.line = 163;
+		quitInventoryNim();
+		F.line = 165;
+		game_148014[0].game_state = 1;
+		}
+		
+	framePtr = F.prev;
+
+	
+}
+
+function HEX2B_137486(a_137488, b_137489) {
+	var result_137490 = {Field0: 0, Field1: 0};
+
+	var F={procname:"math_helpers.+",prev:framePtr,filename:"math_helpers.nim",line:0};
+	framePtr = F;
+		F.line = 20;
+		nimCopy(result_137490, {Field0: addInt(a_137488.Field0, b_137489.Field0), Field1: addInt(a_137488.Field1, b_137489.Field1)}, NTI137071);
+	framePtr = F.prev;
+
+	return result_137490;
+
+}
+
+function moveTargetNim(x_149180, y_149181) {
+	var F={procname:"input_handler.moveTargetNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 202;
+		rawEcho((makeNimstrLit("Move target ")).concat(cstrToNimstr((x_149180)+""),makeNimstrLit(" "),cstrToNimstr((y_149181)+"")));
+		F.line = 203;
+		nimCopy(game_148014[0].targeting, HEX2B_137486(game_148014[0].targeting, {Field0: x_149180, Field1: y_149181}), NTI137071);
+	framePtr = F.prev;
+
+	
+}
+
+function confirmTargetNim() {
+	var F={procname:"input_handler.confirmTargetNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 207;
+		var tg_149201 = get_creatures_at_141097(game_148014[0].entities, game_148014[0].targeting.Field0, game_148014[0].targeting.Field1);
+		if (!((tg_149201 === null))) {
+		F.line = 209;
+		take_damage_142266(tg_149201.creature, 6);
+		}
+		
+		F.line = 213;
+		document.getElementById("keypad").style.display = "block";
+		F.line = 214;
+		document.getElementById("targeting_keypad").style.display = "none";
+		F.line = 217;
+		game_148014[0].game_state = 1;
+	framePtr = F.prev;
+
+	
+}
+
+function quitTargetingNim() {
+	var F={procname:"input_handler.quitTargetingNim",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 221;
+		nimCopy(game_148014[0].targeting, game_148014[0].player.position, NTI137071);
+		F.line = 223;
+		game_148014[0].game_state = 0;
+		F.line = 227;
+		document.getElementById("keypad").style.display = "block";
+		F.line = 228;
+		document.getElementById("targeting_keypad").style.display = "none";
+	framePtr = F.prev;
+
+	
+}
+var game_156014 = [null];
 
 function get_context2d_136728(c_136730) {
 	var result_136731 = null;
@@ -942,24 +1692,24 @@ function get_context2d_136728(c_136730) {
 
 }
 
-function new_game_147072(canvas_147074) {
-	var result_147075 = null;
+function new_game_146079(canvas_146081) {
+	var result_146082 = null;
 
 	var F={procname:"game_class.newGame",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 32;
-		result_147075 = {mx: 0, my: 0, canvas: null, context: null, images: null, player: null, map: {tiles: null, width: 0, height: 0}, recalc_FOV: false, FOV_map: null, explored: null, entities: null, game_state: 0, game_messages: null, to_remove: null};
-		F.line = 33;
-		result_147075.canvas = canvas_147074;
 		F.line = 34;
-		result_147075.context = get_context2d_136728(canvas_147074);
+		result_146082 = {mx: 0, my: 0, canvas: null, context: null, images: null, player: null, map: {tiles: null, width: 0, height: 0}, recalc_FOV: false, FOV_map: null, explored: null, entities: null, game_state: 0, previous_state: 0, game_messages: null, to_remove: null, targeting: {Field0: 0, Field1: 0}};
 		F.line = 35;
-		result_147075.explored = nimCopy(null, [], NTI147098);
+		result_146082.canvas = canvas_146081;
 		F.line = 36;
-		result_147075.game_state = 0;
+		result_146082.context = get_context2d_136728(canvas_146081);
+		F.line = 37;
+		result_146082.explored = nimCopy(null, [], NTI146105);
+		F.line = 38;
+		result_146082.game_state = 0;
 	framePtr = F.prev;
 
-	return result_147075;
+	return result_146082;
 
 }
 
@@ -989,124 +1739,124 @@ function rgb_136001(r_136003, g_136004, b_136005) {
 
 }
 
-function clear_game_147140(game_147142) {
+function clear_game_146147(game_146149) {
 	var F={procname:"game_class.clearGame",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 42;
-		fill_styleHEX3D_136128(game_147142.context, rgb_136001(0, 0, 0));
-		F.line = 43;
-		game_147142.context.fillRect(0.0, 0.0, game_147142.canvas.width, game_147142.canvas.height);
+		F.line = 44;
+		fill_styleHEX3D_136128(game_146149.context, rgb_136001(0, 0, 0));
+		F.line = 45;
+		game_146149.context.fillRect(0.0, 0.0, game_146149.canvas.width, game_146149.canvas.height);
 	framePtr = F.prev;
 
 	
 }
 
-function set_tile_148041(tiles_148045, tiles_148045_Idx, x_148046, y_148047, width_148048, id_148049) {
+function set_tile_152014(tiles_152018, tiles_152018_Idx, x_152019, y_152020, width_152021, id_152022) {
 	var F={procname:"arena_map.setTile",prev:framePtr,filename:"arena_map.nim",line:0};
 	framePtr = F;
-		F.line = 6;
-		tiles_148045[tiles_148045_Idx][chckIndx(addInt(mulInt(y_148047, width_148048), x_148046), 0, tiles_148045[tiles_148045_Idx].length+0-1)-0] = id_148049;
+		F.line = 7;
+		tiles_152018[tiles_152018_Idx][chckIndx(addInt(mulInt(y_152020, width_152021), x_152019), 0, tiles_152018[tiles_152018_Idx].length+0-1)-0] = id_152022;
 	framePtr = F.prev;
 
 	
 }
 
-function generate_map_148063(width_148065, height_148066, pillars_148068) {
-	var result_148069 = {tiles: null, width: 0, height: 0};
+function generate_map_152036(width_152038, height_152039, pillars_152041) {
+	var result_152042 = {tiles: null, width: 0, height: 0};
 
 	var F={procname:"arena_map.generateMap",prev:framePtr,filename:"arena_map.nim",line:0};
 	framePtr = F;
-		F.line = 10;
-		F.line = 10;
-		var tiles_148086 = [nimCopy(null, [], NTI148085)];
+		F.line = 11;
+		F.line = 11;
+		var tiles_152059 = [nimCopy(null, [], NTI152058)];
 		L1: do {
-			F.line = 11;
-			var i_148105 = 0;
+			F.line = 12;
+			var i_152078 = 0;
 			F.line = 2104;
-			var colontmp__148162 = 0;
-			F.line = 11;
-			colontmp__148162 = subInt(mulInt(width_148065, height_148066), 1);
+			var colontmp__152135 = 0;
+			F.line = 12;
+			colontmp__152135 = subInt(mulInt(width_152038, height_152039), 1);
 			F.line = 2107;
-			var res_148165 = 0;
+			var res_152138 = 0;
 			L2: do {
 				F.line = 2108;
 					L3: while (true) {
-					if (!(res_148165 <= colontmp__148162)) break L3;
+					if (!(res_152138 <= colontmp__152135)) break L3;
 						F.line = 2109;
-						i_148105 = res_148165;
-						F.line = 12;
-						if (tiles_148086[0] != null) { tiles_148086[0].push(1); } else { tiles_148086[0] = [1]; };
+						i_152078 = res_152138;
+						F.line = 13;
+						if (tiles_152059[0] != null) { tiles_152059[0].push(1); } else { tiles_152059[0] = [1]; };
 						F.line = 2110;
-						res_148165 = addInt(res_148165, 1);
+						res_152138 = addInt(res_152138, 1);
 					}
 			} while(false);
 		} while(false);
 		L4: do {
-			F.line = 15;
-			var i_148133 = 0;
+			F.line = 16;
+			var i_152106 = 0;
 			F.line = 3616;
-			var colontmp__148172 = 0;
-			F.line = 15;
-			colontmp__148172 = (pillars_148068 != null ? pillars_148068.length : 0);
+			var colontmp__152145 = 0;
+			F.line = 16;
+			colontmp__152145 = (pillars_152041 != null ? pillars_152041.length : 0);
 			F.line = 3617;
-			var i_148175 = 0;
+			var i_152148 = 0;
 			L5: do {
 				F.line = 3618;
 					L6: while (true) {
-					if (!(i_148175 < colontmp__148172)) break L6;
+					if (!(i_152148 < colontmp__152145)) break L6;
 						F.line = 3619;
-						i_148133 = i_148175;
-						F.line = 16;
-						set_tile_148041(tiles_148086, 0, pillars_148068[chckIndx(i_148133, 0, pillars_148068.length+0-1)-0].Field0, pillars_148068[chckIndx(i_148133, 0, pillars_148068.length+0-1)-0].Field1, width_148065, 0);
+						i_152106 = i_152148;
+						F.line = 17;
+						set_tile_152014(tiles_152059, 0, pillars_152041[chckIndx(i_152106, 0, pillars_152041.length+0-1)-0].Field0, pillars_152041[chckIndx(i_152106, 0, pillars_152041.length+0-1)-0].Field1, width_152038, 0);
 						F.line = 3620;
-						i_148175 = addInt(i_148175, 1);
+						i_152148 = addInt(i_152148, 1);
 					}
 			} while(false);
 		} while(false);
 		L7: do {
-			F.line = 19;
-			var x_148145 = 0;
+			F.line = 20;
+			var x_152118 = 0;
 			F.line = 3617;
-			var i_148180 = 0;
+			var i_152153 = 0;
 			L8: do {
 				F.line = 3618;
 					L9: while (true) {
-					if (!(i_148180 < width_148065)) break L9;
+					if (!(i_152153 < width_152038)) break L9;
 						F.line = 3619;
-						x_148145 = i_148180;
-						F.line = 20;
-						set_tile_148041(tiles_148086, 0, x_148145, 0, width_148065, 0);
+						x_152118 = i_152153;
 						F.line = 21;
-						set_tile_148041(tiles_148086, 0, x_148145, subInt(height_148066, 1), width_148065, 0);
+						set_tile_152014(tiles_152059, 0, x_152118, 0, width_152038, 0);
+						F.line = 22;
+						set_tile_152014(tiles_152059, 0, x_152118, subInt(height_152039, 1), width_152038, 0);
 						F.line = 3620;
-						i_148180 = addInt(i_148180, 1);
+						i_152153 = addInt(i_152153, 1);
 					}
 			} while(false);
 		} while(false);
 		L10: do {
-			F.line = 23;
-			var y_148158 = 0;
+			F.line = 24;
+			var y_152131 = 0;
 			F.line = 3617;
-			var i_148185 = 0;
+			var i_152158 = 0;
 			L11: do {
 				F.line = 3618;
 					L12: while (true) {
-					if (!(i_148185 < height_148066)) break L12;
+					if (!(i_152158 < height_152039)) break L12;
 						F.line = 3619;
-						y_148158 = i_148185;
-						F.line = 24;
-						set_tile_148041(tiles_148086, 0, 0, y_148158, width_148065, 0);
+						y_152131 = i_152158;
 						F.line = 25;
-						set_tile_148041(tiles_148086, 0, 0, subInt(height_148066, 1), width_148065, 0);
+						set_tile_152014(tiles_152059, 0, 0, y_152131, width_152038, 0);
+						F.line = 26;
+						set_tile_152014(tiles_152059, 0, 0, subInt(height_152039, 1), width_152038, 0);
 						F.line = 3620;
-						i_148185 = addInt(i_148185, 1);
+						i_152158 = addInt(i_152158, 1);
 					}
 			} while(false);
 		} while(false);
-		nimCopy(result_148069, {width: width_148065, height: height_148066, tiles: nimCopy(null, tiles_148086[0], NTI148070)}, NTI139003);
+		nimCopy(result_152042, {width: width_152038, height: height_152039, tiles: nimCopy(null, tiles_152059[0], NTI152043)}, NTI138003);
 	framePtr = F.prev;
 
-	return result_148069;
+	return result_152042;
 
 }
 
@@ -1125,100 +1875,175 @@ function HEX2EHEX2E_47828(a_47833, b_47835) {
 
 }
 
-function add_quoted_144602(s_144606, s_144606_Idx, x_144608) {
+function add_quoted_152402(s_152406, s_152406_Idx, x_152408) {
 	var F={procname:"addQuoted.addQuoted",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 4110;
-		if (s_144606[s_144606_Idx] != null) { s_144606[s_144606_Idx] = (s_144606[s_144606_Idx]).concat(cstrToNimstr((x_144608)+"")); } else { s_144606[s_144606_Idx] = cstrToNimstr((x_144608)+"").slice(); };
+		if (s_152406[s_152406_Idx] != null) { s_152406[s_152406_Idx] = (s_152406[s_152406_Idx]).concat(cstrToNimstr((x_152408)+"")); } else { s_152406[s_152406_Idx] = cstrToNimstr((x_152408)+"").slice(); };
 	framePtr = F.prev;
 
 	
 }
 
-function HEX24_144469(x_144473) {
-	var result_144474 = [null];
+function HEX24_152250(x_152254) {
+	var result_152255 = [null];
 
 	var F={procname:"$.$",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 		F.line = 2613;
-		result_144474[0] = nimCopy(null, makeNimstrLit("("), NTI138);
+		result_152255[0] = nimCopy(null, makeNimstrLit("("), NTI138);
 		F.line = 2614;
-		var first_element_144475 = true;
-		if (!(first_element_144475)) {
+		var first_element_152256 = true;
+		if (!(first_element_152256)) {
 		F.line = 2616;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit(", ")); } else { result_144474[0] = makeNimstrLit(", "); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit(", ")); } else { result_152255[0] = makeNimstrLit(", "); };
 		}
 		
 		F.line = 2617;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit("x")); } else { result_144474[0] = makeNimstrLit("x"); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit("x")); } else { result_152255[0] = makeNimstrLit("x"); };
 		F.line = 2618;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit(": ")); } else { result_144474[0] = makeNimstrLit(": "); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit(": ")); } else { result_152255[0] = makeNimstrLit(": "); };
 		F.line = 2624;
-		add_quoted_144602(result_144474, 0, x_144473["Field0"]);
+		add_quoted_152402(result_152255, 0, x_152254["Field0"]);
 		F.line = 2625;
-		first_element_144475 = false;
-		if (!(first_element_144475)) {
+		first_element_152256 = false;
+		if (!(first_element_152256)) {
 		F.line = 2616;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit(", ")); } else { result_144474[0] = makeNimstrLit(", "); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit(", ")); } else { result_152255[0] = makeNimstrLit(", "); };
 		}
 		
 		F.line = 2617;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit("y")); } else { result_144474[0] = makeNimstrLit("y"); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit("y")); } else { result_152255[0] = makeNimstrLit("y"); };
 		F.line = 2618;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit(": ")); } else { result_144474[0] = makeNimstrLit(": "); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit(": ")); } else { result_152255[0] = makeNimstrLit(": "); };
 		F.line = 2624;
-		add_quoted_144602(result_144474, 0, x_144473["Field1"]);
+		add_quoted_152402(result_152255, 0, x_152254["Field1"]);
 		F.line = 2625;
-		first_element_144475 = false;
+		first_element_152256 = false;
 		F.line = 2628;
-		if (result_144474[0] != null) { result_144474[0] = (result_144474[0]).concat(makeNimstrLit(")")); } else { result_144474[0] = makeNimstrLit(")"); };
+		if (result_152255[0] != null) { result_152255[0] = (result_152255[0]).concat(makeNimstrLit(")")); } else { result_152255[0] = makeNimstrLit(")"); };
 	framePtr = F.prev;
 
-	return result_144474[0];
+	return result_152255[0];
 
 }
 
-function place_entities_148201(map_148203, entities_148206, entities_148206_Idx, max_148207) {
+function heal_151055(item_151057, user_151058) {
+	var F={procname:"use_functions.heal",prev:framePtr,filename:"use_functions.nim",line:0};
+	framePtr = F;
+		F.line = 4;
+		rawEcho(makeNimstrLit("Heal..."));
+		if ((user_151058.creature.hp < user_151058.creature.max_hp)) {
+		F.line = 6;
+		var amount_151062 = nimMin(subInt(user_151058.creature.max_hp, user_151058.creature.hp), 5);
+		F.line = 7;
+		user_151058.creature.hp = addInt(user_151058.creature.hp, amount_151062);
+		F.line = 8;
+		delete_141656(user_151058.inventory, "items", chckRange(find_141512(user_151058.inventory.items, item_151057), 0, 2147483647));
+		}
+		
+	framePtr = F.prev;
+
+	
+}
+
+function place_entities_152174(map_152176, entities_152179, entities_152179_Idx, max_152180, max_items_152181) {
 	var F={procname:"arena_map.place_entities",prev:framePtr,filename:"arena_map.nim",line:0};
 	framePtr = F;
-		F.line = 34;
-		var rng_148208 = aleaRNG();
-		F.line = 36;
-		var num_148221 = range(rng_148208, HEX2EHEX2E_47828(1, max_148207));
+		F.line = 35;
+		var rng_152182 = aleaRNG();
+		F.line = 37;
+		var num_152195 = range(rng_152182, HEX2EHEX2E_47828(1, max_152180));
+		F.line = 39;
+		var num_items_152208 = range(rng_152182, HEX2EHEX2E_47828(1, max_items_152181));
 		L1: do {
-			F.line = 39;
-			var i_148233 = 0;
+			F.line = 42;
+			var i_152220 = 0;
 			F.line = 2107;
-			var res_148289 = 1;
+			var res_153369 = 1;
 			L2: do {
 				F.line = 2108;
 					L3: while (true) {
-					if (!(res_148289 <= num_148221)) break L3;
+					if (!(res_153369 <= num_152195)) break L3;
 						F.line = 2109;
-						i_148233 = res_148289;
-						F.line = 41;
-						var x_148246 = range(rng_148208, HEX2EHEX2E_47828(1, subInt(map_148203.height, 1)));
-						F.line = 42;
-						var y_148259 = range(rng_148208, HEX2EHEX2E_47828(1, subInt(map_148203.width, 1)));
+						i_152220 = res_153369;
 						F.line = 44;
-						var mon_148261 = {position: nimCopy(null, {Field0: x_148246, Field1: y_148259}, NTI138017), creature: null, ai: null};
+						var x_152233 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.height, 1)));
 						F.line = 45;
-						rawEcho((makeNimstrLit("Spawned monster at ")).concat(HEX24_144469(mon_148261.position)));
+						var y_152246 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.width, 1)));
 						F.line = 47;
-						var creat_148271 = {name: makeNimstrLit("kobold"), owner: mon_148261, hp: 5, max_hp: 5, defense: 30, attack: 20, dead: false};
+						var mon_152248 = {position: nimCopy(null, {Field0: x_152233, Field1: y_152246}, NTI137071), image: 3, name: makeNimstrLit("kobold"), creature: null, ai: null, item: null, inventory: null};
 						F.line = 48;
-						mon_148261.creature = creat_148271;
+						rawEcho((makeNimstrLit("Spawned monster at ")).concat(HEX24_152250(mon_152248.position)));
 						F.line = 50;
-						var ai_comp_148272 = {owner: mon_148261};
+						var creat_153217 = {owner: mon_152248, hp: 5, max_hp: 5, defense: 30, attack: 20, dead: false};
 						F.line = 51;
-						mon_148261.ai = ai_comp_148272;
-						F.line = 52;
-						if (entities_148206[entities_148206_Idx] != null) { entities_148206[entities_148206_Idx].push(mon_148261); } else { entities_148206[entities_148206_Idx] = [mon_148261]; };
+						mon_152248.creature = creat_153217;
+						F.line = 53;
+						var ai_comp_153218 = {owner: mon_152248};
+						F.line = 54;
+						mon_152248.ai = ai_comp_153218;
+						F.line = 55;
+						if (entities_152179[entities_152179_Idx] != null) { entities_152179[entities_152179_Idx].push(mon_152248); } else { entities_152179[entities_152179_Idx] = [mon_152248]; };
 						F.line = 2110;
-						res_148289 = addInt(res_148289, 1);
+						res_153369 = addInt(res_153369, 1);
 					}
 			} while(false);
 		} while(false);
+		L4: do {
+			F.line = 57;
+			var i_153240 = 0;
+			F.line = 2107;
+			var res_153378 = 1;
+			L5: do {
+				F.line = 2108;
+					L6: while (true) {
+					if (!(res_153378 <= num_items_152208)) break L6;
+						F.line = 2109;
+						i_153240 = res_153378;
+						F.line = 59;
+						var x_153253 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.height, 2)));
+						F.line = 60;
+						var y_153266 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.width, 2)));
+						F.line = 62;
+						var en_it_153268 = {position: nimCopy(null, {Field0: x_153253, Field1: y_153266}, NTI137071), image: 4, name: makeNimstrLit("potion"), creature: null, ai: null, item: null, inventory: null};
+						F.line = 63;
+						rawEcho((makeNimstrLit("Spawned item at ")).concat(HEX24_152250(en_it_153268.position)));
+						F.line = 65;
+						var it_153278 = {owner: en_it_153268, use_func: nimCopy(null, heal_151055, NTI151056), targeting: false};
+						F.line = 66;
+						en_it_153268.item = it_153278;
+						F.line = 67;
+						if (entities_152179[entities_152179_Idx] != null) { entities_152179[entities_152179_Idx].push(en_it_153268); } else { entities_152179[entities_152179_Idx] = [en_it_153268]; };
+						F.line = 2110;
+						res_153378 = addInt(res_153378, 1);
+					}
+			} while(false);
+		} while(false);
+		F.line = 71;
+		var x_153301 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.height, 2)));
+		F.line = 72;
+		var y_153314 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.width, 2)));
+		F.line = 74;
+		var en_it_153316 = {position: nimCopy(null, {Field0: x_153301, Field1: y_153314}, NTI137071), image: 5, name: makeNimstrLit("lightning scroll"), creature: null, ai: null, item: null, inventory: null};
+		F.line = 76;
+		var it_153317 = {owner: en_it_153316, use_func: null, targeting: false};
+		F.line = 77;
+		en_it_153316.item = it_153317;
+		F.line = 78;
+		if (entities_152179[entities_152179_Idx] != null) { entities_152179[entities_152179_Idx].push(en_it_153316); } else { entities_152179[entities_152179_Idx] = [en_it_153316]; };
+		F.line = 82;
+		x_153301 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.height, 2)));
+		F.line = 83;
+		y_153314 = range(rng_152182, HEX2EHEX2E_47828(1, subInt(map_152176.width, 2)));
+		F.line = 85;
+		en_it_153316 = {position: nimCopy(null, {Field0: x_153301, Field1: y_153314}, NTI137071), image: 6, name: makeNimstrLit("fire scroll"), creature: null, ai: null, item: null, inventory: null};
+		F.line = 87;
+		it_153317 = {owner: en_it_153316, targeting: true, use_func: null};
+		F.line = 88;
+		en_it_153316.item = it_153317;
+		F.line = 89;
+		if (entities_152179[entities_152179_Idx] != null) { entities_152179[entities_152179_Idx].push(en_it_153316); } else { entities_152179[entities_152179_Idx] = [en_it_153316]; };
 	framePtr = F.prev;
 
 	
@@ -1258,16 +2083,6 @@ function new_seq_144148(len_144152) {
 
 }
 
-function raiseRangeError() {
-		var e_16125 = null;
-		e_16125 = {m_type: NTI3862, parent: null, name: null, message: null, trace: null, raise_id: 0, up: null};
-		e_16125.message = nimCopy(null, makeNimstrLit("value out of range"), NTI138);
-		e_16125.parent = null;
-		raiseException(e_16125, "RangeError");
-
-	
-}
-
 function reverse_144131(xs_144136) {
 	var result_144138 = null;
 
@@ -1289,9 +2104,9 @@ function reverse_144131(xs_144136) {
 						F.line = 2356;
 						i_144224 = i_144239;
 						F.line = 2356;
-						nimCopy(x_144225, xs_144136[chckIndx(i_144239, 0, xs_144136.length+0-1)-0], NTI138017);
+						nimCopy(x_144225, xs_144136[chckIndx(i_144239, 0, xs_144136.length+0-1)-0], NTI137071);
 						F.line = 6;
-						nimCopy(result_144138[chckIndx(subInt((xs_144136 != null ? (xs_144136.length-1) : -1), i_144224), 0, result_144138.length+0-1)-0], x_144225, NTI138017);
+						nimCopy(result_144138[chckIndx(subInt((xs_144136 != null ? (xs_144136.length-1) : -1), i_144224), 0, result_144138.length+0-1)-0], x_144225, NTI137071);
 						F.line = 2357;
 						i_144239 = addInt(i_144239, 1);
 					}
@@ -1393,7 +2208,7 @@ function get_line_144056(from_cell_144058, to_144059) {
 						}
 						
 						F.line = 78;
-						var Tmp4 = nimCopy(null, coord_144090, NTI138017);
+						var Tmp4 = nimCopy(null, coord_144090, NTI137071);
 						if (points_144079 != null) { points_144079.push(Tmp4); } else { points_144079 = [Tmp4]; };
 						F.line = 79;
 						error_144073 = subInt(error_144073, absInt(dy_144067));
@@ -1464,18 +2279,18 @@ function cast_fov_ray_144276(map_144278, wall_index_144279, from_cell_144280, to
 					L3: while (true) {
 					if (!(i_144444 < l_144446)) break L3;
 						F.line = 3914;
-						nimCopy(cell_144415, line_144286[chckIndx(i_144444, 0, line_144286.length+0-1)-0], NTI138017);
+						nimCopy(cell_144415, line_144286[chckIndx(i_144444, 0, line_144286.length+0-1)-0], NTI137071);
 						F.line = 98;
 						var m_height_144416 = map_144278.height;
 						if (((((-1 < cell_144415.Field0) && (cell_144415.Field0 < map_144278.width)) && (-1 < cell_144415.Field1)) && (cell_144415.Field1 < m_height_144416))) {
 						if (!(is_wall_144037(map_144278, wall_index_144279, cell_144415))) {
 						F.line = 102;
-						var Tmp4 = nimCopy(null, cell_144415, NTI138017);
+						var Tmp4 = nimCopy(null, cell_144415, NTI137071);
 						if (cells_144285 != null) { cells_144285.push(Tmp4); } else { cells_144285 = [Tmp4]; };
 						}
 						else {
 							F.line = 105;
-							var Tmp5 = nimCopy(null, cell_144415, NTI138017);
+							var Tmp5 = nimCopy(null, cell_144415, NTI137071);
 							if (cells_144285 != null) { cells_144285.push(Tmp5); } else { cells_144285 = [Tmp5]; };
 							F.line = 106;
 							result_144283 = nimCopy(null, cells_144285, NTI144284);
@@ -1504,63 +2319,35 @@ function cast_fov_ray_144276(map_144278, wall_index_144279, from_cell_144280, to
 
 }
 
-function HEX3DHEX3D_142525(x_142529, y_142531) {
-	var result_142532 = false;
-
-	var F={procname:"==.==",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-	BeforeRet: do {
-		if (!((x_142529["Field0"] == y_142531["Field0"]))) {
-		F.line = 2585;
-		result_142532 = false;
-		break BeforeRet;
-		}
-		
-		if (!((x_142529["Field1"] == y_142531["Field1"]))) {
-		F.line = 2585;
-		result_142532 = false;
-		break BeforeRet;
-		}
-		
-		F.line = 2586;
-		result_142532 = true;
-		break BeforeRet;
-	} while (false);
-	framePtr = F.prev;
-
-	return result_142532;
-
-}
-
-function find_145442(a_145447, item_145449) {
-	var result_145450 = 0;
+function find_144493(a_144498, item_144500) {
+	var result_144501 = 0;
 
 	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
 		L1: do {
 			F.line = 2511;
-			var i_145459 = {Field0: 0, Field1: 0};
+			var i_144510 = {Field0: 0, Field1: 0};
 			F.line = 3911;
-			var i_145481 = 0;
+			var i_144532 = 0;
 			F.line = 3912;
-			var l_145483 = (a_145447 != null ? a_145447.length : 0);
+			var l_144534 = (a_144498 != null ? a_144498.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_145481 < l_145483)) break L3;
+					if (!(i_144532 < l_144534)) break L3;
 						F.line = 3914;
-						nimCopy(i_145459, a_145447[chckIndx(i_145481, 0, a_145447.length+0-1)-0], NTI138017);
-						if (HEX3DHEX3D_142525(i_145459, item_145449)) {
+						nimCopy(i_144510, a_144498[chckIndx(i_144532, 0, a_144498.length+0-1)-0], NTI137071);
+						if (HEX3DHEX3D_141382(i_144510, item_144500)) {
 						F.line = 2512;
 						break BeforeRet;
 						}
 						
 						F.line = 2513;
-						result_145450 = addInt(result_145450, 1);
+						result_144501 = addInt(result_144501, 1);
 						F.line = 3915;
-						i_145481 = addInt(i_145481, 1);
-						if (!(((a_145447 != null ? a_145447.length : 0) == l_145483))) {
+						i_144532 = addInt(i_144532, 1);
+						if (!(((a_144498 != null ? a_144498.length : 0) == l_144534))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -1569,104 +2356,11 @@ function find_145442(a_145447, item_145449) {
 			} while(false);
 		} while(false);
 		F.line = 2514;
-		result_145450 = -1;
+		result_144501 = -1;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_145450;
-
-}
-
-function HEX2AHEX3D_138405(x_138410, x_138410_Idx, y_138412) {
-	var F={procname:"*=.*=",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-		F.line = 3796;
-		x_138410[x_138410_Idx] = mulInt(x_138410[x_138410_Idx], y_138412);
-	framePtr = F.prev;
-
-	
-}
-
-function HEX5E_138045(x_138049, y_138051) {
-	var result_138052 = [0];
-
-	var F={procname:"^.^",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/pure/math.nim",line:0};
-	framePtr = F;
-		if (!((0 <= y_138051))) {
-		F.line = 661;
-		failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/pure/math.nim(661, 12) `\x0AT(0) <= y` "));
-		}
-		
-		F.line = 664;
-		var colontmp__150551 = {Field0: 0, Field1: 0};
-		F.line = 664;
-		var x_138402 = [0];
-		F.line = 664;
-		var y_138403 = 0;
-		F.line = 664;
-		nimCopy(colontmp__150551, {Field0: x_138049, Field1: y_138051}, NTI138401);
-		F.line = 664;
-		x_138402[0] = colontmp__150551["Field0"];
-		F.line = 664;
-		y_138403 = colontmp__150551["Field1"];
-		F.line = 665;
-		result_138052[0] = 1;
-		L1: do {
-			F.line = 667;
-				L2: while (true) {
-				if (!true) break L2;
-					if (!(((y_138403 & 1) == 0))) {
-					F.line = 669;
-					HEX2AHEX3D_138405(result_138052, 0, x_138402[0]);
-					}
-					
-					F.line = 670;
-					y_138403 = chckRange(((y_138403 >>> 0) >>> 1), 0, 2147483647);
-					if ((y_138403 == 0)) {
-					F.line = 672;
-					break L1;
-					}
-					
-					F.line = 673;
-					HEX2AHEX3D_138405(x_138402, 0, x_138402[0]);
-				}
-		} while(false);
-	framePtr = F.prev;
-
-	return result_138052[0];
-
-}
-
-function distance_to_138037(start_138039, to_138040) {
-	var result_138041 = 0;
-
-	var F={procname:"math_helpers.distance_to",prev:framePtr,filename:"math_helpers.nim",line:0};
-	framePtr = F;
-	BeforeRet: do {
-		F.line = 15;
-		var dx_138042 = subInt(to_138040.Field0, start_138039.Field0);
-		F.line = 16;
-		var dy_138043 = subInt(to_138040.Field1, start_138039.Field1);
-		F.line = 17;
-		result_138041 = ((Math.sqrt(addInt(HEX5E_138045(dx_138042, 2), HEX5E_138045(dy_138043, 2))))|0);
-		break BeforeRet;
-	} while (false);
-	framePtr = F.prev;
-
-	return result_138041;
-
-}
-
-function HEX2B_138486(a_138488, b_138489) {
-	var result_138490 = {Field0: 0, Field1: 0};
-
-	var F={procname:"math_helpers.+",prev:framePtr,filename:"math_helpers.nim",line:0};
-	framePtr = F;
-		F.line = 20;
-		nimCopy(result_138490, {Field0: addInt(a_138488.Field0, b_138489.Field0), Field1: addInt(a_138488.Field1, b_138489.Field1)}, NTI138017);
-	framePtr = F.prev;
-
-	return result_138490;
+	return result_144501;
 
 }
 
@@ -1678,60 +2372,58 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 	var F={procname:"FOV.calculate_fov",prev:framePtr,filename:"FOV.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		F.line = 117;
-		rawEcho((makeNimstrLit("Calculating fov for : ")).concat(HEX24_144469(origin_144464),makeNimstrLit(" r: "),cstrToNimstr((radius_144465)+""),makeNimstrLit(" "),cstrToNimstr((wall_index_144463)+"")));
 		F.line = 118;
-		var rect_145417 = get_fov_rect_144014(origin_144464, radius_144465);
+		var rect_144468 = get_fov_rect_144014(origin_144464, radius_144465);
 		F.line = 119;
-		var cells_145419 = null;
+		var cells_144470 = null;
 		L1: do {
 			F.line = 122;
-			var x_145428 = 0;
+			var x_144479 = 0;
 			F.line = 2104;
-			var colontmp__145677 = 0;
+			var colontmp__144728 = 0;
 			F.line = 2104;
-			var colontmp__145678 = 0;
+			var colontmp__144729 = 0;
 			F.line = 122;
-			colontmp__145677 = rect_145417.x;
+			colontmp__144728 = rect_144468.x;
 			F.line = 122;
-			colontmp__145678 = subInt(addInt(rect_145417.x, rect_145417.w), 1);
+			colontmp__144729 = subInt(addInt(rect_144468.x, rect_144468.w), 1);
 			F.line = 2107;
-			var res_145681 = colontmp__145677;
+			var res_144732 = colontmp__144728;
 			L2: do {
 				F.line = 2108;
 					L3: while (true) {
-					if (!(res_145681 <= colontmp__145678)) break L3;
+					if (!(res_144732 <= colontmp__144729)) break L3;
 						F.line = 2109;
-						x_145428 = res_145681;
+						x_144479 = res_144732;
 						F.line = 123;
-						var v_145430 = {Field0: x_145428, Field1: rect_145417.y};
+						var v_144481 = {Field0: x_144479, Field1: rect_144468.y};
 						F.line = 124;
-						var line_145431 = cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_145430);
+						var line_144482 = cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_144481);
 						L4: do {
 							F.line = 125;
-							var cell_145440 = {Field0: 0, Field1: 0};
+							var cell_144491 = {Field0: 0, Field1: 0};
 							F.line = 3911;
-							var i_145668 = 0;
+							var i_144719 = 0;
 							F.line = 3912;
-							var l_145670 = (line_145431 != null ? line_145431.length : 0);
+							var l_144721 = (line_144482 != null ? line_144482.length : 0);
 							L5: do {
 								F.line = 3913;
 									L6: while (true) {
-									if (!(i_145668 < l_145670)) break L6;
+									if (!(i_144719 < l_144721)) break L6;
 										F.line = 3914;
-										nimCopy(cell_145440, line_145431[chckIndx(i_145668, 0, line_145431.length+0-1)-0], NTI138017);
-										if ((find_145442(cells_145419, cell_145440) == -1)) {
-										if ((distance_to_138037(cell_145440, origin_144464) <= radius_144465)) {
+										nimCopy(cell_144491, line_144482[chckIndx(i_144719, 0, line_144482.length+0-1)-0], NTI137071);
+										if ((find_144493(cells_144470, cell_144491) == -1)) {
+										if ((distance_to_137091(cell_144491, origin_144464) <= radius_144465)) {
 										F.line = 129;
-										var Tmp7 = nimCopy(null, cell_145440, NTI138017);
-										if (cells_145419 != null) { cells_145419.push(Tmp7); } else { cells_145419 = [Tmp7]; };
+										var Tmp7 = nimCopy(null, cell_144491, NTI137071);
+										if (cells_144470 != null) { cells_144470.push(Tmp7); } else { cells_144470 = [Tmp7]; };
 										}
 										
 										}
 										
 										F.line = 3915;
-										i_145668 = addInt(i_145668, 1);
-										if (!(((line_145431 != null ? line_145431.length : 0) == l_145670))) {
+										i_144719 = addInt(i_144719, 1);
+										if (!(((line_144482 != null ? line_144482.length : 0) == l_144721))) {
 										F.line = 3916;
 										failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 										}
@@ -1740,34 +2432,34 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 							} while(false);
 						} while(false);
 						F.line = 131;
-						nimCopy(v_145430, {Field0: x_145428, Field1: subInt(addInt(rect_145417.y, rect_145417.h), 1)}, NTI145429);
+						nimCopy(v_144481, {Field0: x_144479, Field1: subInt(addInt(rect_144468.y, rect_144468.h), 1)}, NTI144480);
 						F.line = 132;
-						line_145431 = nimCopy(null, cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_145430), NTI144282);
+						line_144482 = nimCopy(null, cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_144481), NTI144282);
 						L8: do {
 							F.line = 133;
-							var cell_145517 = {Field0: 0, Field1: 0};
+							var cell_144568 = {Field0: 0, Field1: 0};
 							F.line = 3911;
-							var i_145674 = 0;
+							var i_144725 = 0;
 							F.line = 3912;
-							var l_145676 = (line_145431 != null ? line_145431.length : 0);
+							var l_144727 = (line_144482 != null ? line_144482.length : 0);
 							L9: do {
 								F.line = 3913;
 									L10: while (true) {
-									if (!(i_145674 < l_145676)) break L10;
+									if (!(i_144725 < l_144727)) break L10;
 										F.line = 3914;
-										nimCopy(cell_145517, line_145431[chckIndx(i_145674, 0, line_145431.length+0-1)-0], NTI138017);
-										if ((find_145442(cells_145419, cell_145517) == -1)) {
-										if ((distance_to_138037(cell_145517, origin_144464) <= radius_144465)) {
+										nimCopy(cell_144568, line_144482[chckIndx(i_144725, 0, line_144482.length+0-1)-0], NTI137071);
+										if ((find_144493(cells_144470, cell_144568) == -1)) {
+										if ((distance_to_137091(cell_144568, origin_144464) <= radius_144465)) {
 										F.line = 137;
-										var Tmp11 = nimCopy(null, cell_145517, NTI138017);
-										if (cells_145419 != null) { cells_145419.push(Tmp11); } else { cells_145419 = [Tmp11]; };
+										var Tmp11 = nimCopy(null, cell_144568, NTI137071);
+										if (cells_144470 != null) { cells_144470.push(Tmp11); } else { cells_144470 = [Tmp11]; };
 										}
 										
 										}
 										
 										F.line = 3915;
-										i_145674 = addInt(i_145674, 1);
-										if (!(((line_145431 != null ? line_145431.length : 0) == l_145676))) {
+										i_144725 = addInt(i_144725, 1);
+										if (!(((line_144482 != null ? line_144482.length : 0) == l_144727))) {
 										F.line = 3916;
 										failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 										}
@@ -1776,58 +2468,58 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 							} while(false);
 						} while(false);
 						F.line = 2110;
-						res_145681 = addInt(res_145681, 1);
+						res_144732 = addInt(res_144732, 1);
 					}
 			} while(false);
 		} while(false);
 		L12: do {
 			F.line = 139;
-			var y_145546 = 0;
+			var y_144597 = 0;
 			F.line = 2104;
-			var colontmp__145698 = 0;
+			var colontmp__144749 = 0;
 			F.line = 2104;
-			var colontmp__145699 = 0;
+			var colontmp__144750 = 0;
 			F.line = 139;
-			colontmp__145698 = rect_145417.y;
+			colontmp__144749 = rect_144468.y;
 			F.line = 139;
-			colontmp__145699 = addInt(rect_145417.h, rect_145417.y);
+			colontmp__144750 = addInt(rect_144468.h, rect_144468.y);
 			F.line = 2107;
-			var res_145702 = colontmp__145698;
+			var res_144753 = colontmp__144749;
 			L13: do {
 				F.line = 2108;
 					L14: while (true) {
-					if (!(res_145702 <= colontmp__145699)) break L14;
+					if (!(res_144753 <= colontmp__144750)) break L14;
 						F.line = 2109;
-						y_145546 = res_145702;
+						y_144597 = res_144753;
 						F.line = 140;
-						var v_145548 = {Field0: rect_145417.x, Field1: y_145546};
+						var v_144599 = {Field0: rect_144468.x, Field1: y_144597};
 						F.line = 141;
-						var line_145549 = cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_145548);
+						var line_144600 = cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_144599);
 						L15: do {
 							F.line = 142;
-							var cell_145558 = {Field0: 0, Field1: 0};
+							var cell_144609 = {Field0: 0, Field1: 0};
 							F.line = 3911;
-							var i_145689 = 0;
+							var i_144740 = 0;
 							F.line = 3912;
-							var l_145691 = (line_145549 != null ? line_145549.length : 0);
+							var l_144742 = (line_144600 != null ? line_144600.length : 0);
 							L16: do {
 								F.line = 3913;
 									L17: while (true) {
-									if (!(i_145689 < l_145691)) break L17;
+									if (!(i_144740 < l_144742)) break L17;
 										F.line = 3914;
-										nimCopy(cell_145558, line_145549[chckIndx(i_145689, 0, line_145549.length+0-1)-0], NTI138017);
-										if ((find_145442(cells_145419, cell_145558) == -1)) {
-										if ((distance_to_138037(cell_145558, origin_144464) <= radius_144465)) {
+										nimCopy(cell_144609, line_144600[chckIndx(i_144740, 0, line_144600.length+0-1)-0], NTI137071);
+										if ((find_144493(cells_144470, cell_144609) == -1)) {
+										if ((distance_to_137091(cell_144609, origin_144464) <= radius_144465)) {
 										F.line = 146;
-										var Tmp18 = nimCopy(null, cell_145558, NTI138017);
-										if (cells_145419 != null) { cells_145419.push(Tmp18); } else { cells_145419 = [Tmp18]; };
+										var Tmp18 = nimCopy(null, cell_144609, NTI137071);
+										if (cells_144470 != null) { cells_144470.push(Tmp18); } else { cells_144470 = [Tmp18]; };
 										}
 										
 										}
 										
 										F.line = 3915;
-										i_145689 = addInt(i_145689, 1);
-										if (!(((line_145549 != null ? line_145549.length : 0) == l_145691))) {
+										i_144740 = addInt(i_144740, 1);
+										if (!(((line_144600 != null ? line_144600.length : 0) == l_144742))) {
 										F.line = 3916;
 										failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 										}
@@ -1836,34 +2528,34 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 							} while(false);
 						} while(false);
 						F.line = 148;
-						nimCopy(v_145548, {Field0: subInt(addInt(rect_145417.w, rect_145417.x), 1), Field1: y_145546}, NTI145547);
+						nimCopy(v_144599, {Field0: subInt(addInt(rect_144468.w, rect_144468.x), 1), Field1: y_144597}, NTI144598);
 						F.line = 149;
-						line_145549 = nimCopy(null, cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_145548), NTI144282);
+						line_144600 = nimCopy(null, cast_fov_ray_144276(map_144462, wall_index_144463, origin_144464, v_144599), NTI144282);
 						L19: do {
 							F.line = 150;
-							var cell_145588 = {Field0: 0, Field1: 0};
+							var cell_144639 = {Field0: 0, Field1: 0};
 							F.line = 3911;
-							var i_145695 = 0;
+							var i_144746 = 0;
 							F.line = 3912;
-							var l_145697 = (line_145549 != null ? line_145549.length : 0);
+							var l_144748 = (line_144600 != null ? line_144600.length : 0);
 							L20: do {
 								F.line = 3913;
 									L21: while (true) {
-									if (!(i_145695 < l_145697)) break L21;
+									if (!(i_144746 < l_144748)) break L21;
 										F.line = 3914;
-										nimCopy(cell_145588, line_145549[chckIndx(i_145695, 0, line_145549.length+0-1)-0], NTI138017);
-										if ((find_145442(cells_145419, cell_145588) == -1)) {
-										if ((distance_to_138037(cell_145588, origin_144464) <= radius_144465)) {
+										nimCopy(cell_144639, line_144600[chckIndx(i_144746, 0, line_144600.length+0-1)-0], NTI137071);
+										if ((find_144493(cells_144470, cell_144639) == -1)) {
+										if ((distance_to_137091(cell_144639, origin_144464) <= radius_144465)) {
 										F.line = 154;
-										var Tmp22 = nimCopy(null, cell_145588, NTI138017);
-										if (cells_145419 != null) { cells_145419.push(Tmp22); } else { cells_145419 = [Tmp22]; };
+										var Tmp22 = nimCopy(null, cell_144639, NTI137071);
+										if (cells_144470 != null) { cells_144470.push(Tmp22); } else { cells_144470 = [Tmp22]; };
 										}
 										
 										}
 										
 										F.line = 3915;
-										i_145695 = addInt(i_145695, 1);
-										if (!(((line_145549 != null ? line_145549.length : 0) == l_145697))) {
+										i_144746 = addInt(i_144746, 1);
+										if (!(((line_144600 != null ? line_144600.length : 0) == l_144748))) {
 										F.line = 3916;
 										failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 										}
@@ -1872,76 +2564,76 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 							} while(false);
 						} while(false);
 						F.line = 2110;
-						res_145702 = addInt(res_145702, 1);
+						res_144753 = addInt(res_144753, 1);
 					}
 			} while(false);
 		} while(false);
 		F.line = 157;
-		var res_145609 = nimCopy(null, cells_145419, NTI145418);
+		var res_144660 = nimCopy(null, cells_144470, NTI144469);
 		L23: do {
 			F.line = 158;
-			var cell_145618 = {Field0: 0, Field1: 0};
+			var cell_144669 = {Field0: 0, Field1: 0};
 			F.line = 3911;
-			var i_145724 = 0;
+			var i_144775 = 0;
 			F.line = 3912;
-			var l_145726 = (res_145609 != null ? res_145609.length : 0);
+			var l_144777 = (res_144660 != null ? res_144660.length : 0);
 			L24: do {
 				F.line = 3913;
 					L25: while (true) {
-					if (!(i_145724 < l_145726)) break L25;
+					if (!(i_144775 < l_144777)) break L25;
 						F.line = 3914;
-						nimCopy(cell_145618, res_145609[chckIndx(i_145724, 0, res_145609.length+0-1)-0], NTI138017);
-						if (!(is_wall_144037(map_144462, wall_index_144463, cell_145618))) {
+						nimCopy(cell_144669, res_144660[chckIndx(i_144775, 0, res_144660.length+0-1)-0], NTI137071);
+						if (!(is_wall_144037(map_144462, wall_index_144463, cell_144669))) {
 						L26: do {
 							F.line = 160;
-							var x_145632 = 0;
+							var x_144683 = 0;
 							F.line = 2107;
-							var res_145718 = -1;
+							var res_144769 = -1;
 							L27: do {
 								F.line = 2108;
 									L28: while (true) {
-									if (!(res_145718 <= 2)) break L28;
+									if (!(res_144769 <= 2)) break L28;
 										F.line = 2109;
-										x_145632 = res_145718;
+										x_144683 = res_144769;
 										L29: do {
 											F.line = 161;
-											var y_145646 = 0;
+											var y_144697 = 0;
 											F.line = 2107;
-											var res_145712 = -1;
+											var res_144763 = -1;
 											L30: do {
 												F.line = 2108;
 													L31: while (true) {
-													if (!(res_145712 <= 2)) break L31;
+													if (!(res_144763 <= 2)) break L31;
 														F.line = 2109;
-														y_145646 = res_145712;
+														y_144697 = res_144763;
 														F.line = 162;
-														var ncell_145648 = HEX2B_138486(cell_145618, {Field0: x_145632, Field1: y_145646});
+														var ncell_144699 = HEX2B_137486(cell_144669, {Field0: x_144683, Field1: y_144697});
 														F.line = 163;
-														var m_height_145649 = map_144462.height;
-														if (((((-1 < ncell_145648.Field0) && (ncell_145648.Field0 < map_144462.width)) && (-1 < ncell_145648.Field1)) && (ncell_145648.Field1 < m_height_145649))) {
-															if (!is_wall_144037(map_144462, wall_index_144463, ncell_145648)) Tmp32 = false; else {																Tmp32 = (distance_to_138037(ncell_145648, origin_144464) <= radius_144465);															}														if (Tmp32) {
+														var m_height_144700 = map_144462.height;
+														if (((((-1 < ncell_144699.Field0) && (ncell_144699.Field0 < map_144462.width)) && (-1 < ncell_144699.Field1)) && (ncell_144699.Field1 < m_height_144700))) {
+															if (!is_wall_144037(map_144462, wall_index_144463, ncell_144699)) Tmp32 = false; else {																Tmp32 = (distance_to_137091(ncell_144699, origin_144464) <= radius_144465);															}														if (Tmp32) {
 														F.line = 167;
-														var Tmp33 = nimCopy(null, ncell_145648, NTI138017);
-														if (cells_145419 != null) { cells_145419.push(Tmp33); } else { cells_145419 = [Tmp33]; };
+														var Tmp33 = nimCopy(null, ncell_144699, NTI137071);
+														if (cells_144470 != null) { cells_144470.push(Tmp33); } else { cells_144470 = [Tmp33]; };
 														}
 														
 														}
 														
 														F.line = 2110;
-														res_145712 = addInt(res_145712, 1);
+														res_144763 = addInt(res_144763, 1);
 													}
 											} while(false);
 										} while(false);
 										F.line = 2110;
-										res_145718 = addInt(res_145718, 1);
+										res_144769 = addInt(res_144769, 1);
 									}
 							} while(false);
 						} while(false);
 						}
 						
 						F.line = 3915;
-						i_145724 = addInt(i_145724, 1);
-						if (!(((res_145609 != null ? res_145609.length : 0) == l_145726))) {
+						i_144775 = addInt(i_144775, 1);
+						if (!(((res_144660 != null ? res_144660.length : 0) == l_144777))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -1950,7 +2642,7 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 			} while(false);
 		} while(false);
 		F.line = 169;
-		result_144467 = nimCopy(null, cells_145419, NTI145418);
+		result_144467 = nimCopy(null, cells_144470, NTI144469);
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
@@ -1959,80 +2651,26 @@ function calculate_fov_144460(map_144462, wall_index_144463, origin_144464, radi
 
 }
 
-function find_142476(a_142481, item_142483) {
-	var result_142484 = 0;
-
-	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-	BeforeRet: do {
-		L1: do {
-			F.line = 2511;
-			var i_142523 = {Field0: 0, Field1: 0};
-			F.line = 2247;
-			var i_142568 = 0;
-			L2: do {
-				F.line = 2248;
-					L3: while (true) {
-					if (!(i_142568 < (a_142481 != null ? a_142481.length : 0))) break L3;
-						F.line = 2249;
-						nimCopy(i_142523, a_142481[chckIndx(i_142568, 0, a_142481.length+0-1)-0], NTI138017);
-						if (HEX3DHEX3D_142525(i_142523, item_142483)) {
-						F.line = 2512;
-						break BeforeRet;
-						}
-						
-						F.line = 2513;
-						result_142484 = addInt(result_142484, 1);
-						F.line = 2250;
-						i_142568 = addInt(i_142568, 1);
-					}
-			} while(false);
-		} while(false);
-		F.line = 2514;
-		result_142484 = -1;
-	} while (false);
-	framePtr = F.prev;
-
-	return result_142484;
-
-}
-
-function contains_142466(a_142471, item_142473) {
-	var result_142474 = false;
-
-	var F={procname:"contains.contains",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-	BeforeRet: do {
-		F.line = 2519;
-		result_142474 = (0 <= find_142476(a_142471, item_142473));
-		break BeforeRet;
-	} while (false);
-	framePtr = F.prev;
-
-	return result_142474;
-
-}
-
-function render_gfx_tile_147158(game_147160, img_147161, x_147162, y_147163) {
+function render_gfx_tile_146165(game_146167, img_146168, x_146169, y_146170) {
 	var F={procname:"game_class.renderGfxTile",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 48;
-		game_147160.context.drawImage(img_147161, x_147162, y_147163);
+		F.line = 50;
+		game_146167.context.drawImage(img_146168, x_146169, y_146170);
 	framePtr = F.prev;
 
 	
 }
 
-function draw_map_tile_147251(game_147253, point_147254, tile_147255) {
+function draw_map_tile_146258(game_146260, point_146261, tile_146262) {
 	var F={procname:"game_class.drawMapTile",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		if ((tile_147255 == 0)) {
-		F.line = 70;
-		render_gfx_tile_147158(game_147253, game_147253.images[chckIndx(1, 0, game_147253.images.length+0-1)-0], point_147254.Field0, point_147254.Field1);
+		if ((tile_146262 == 0)) {
+		F.line = 72;
+		render_gfx_tile_146165(game_146260, game_146260.images[chckIndx(1, 0, game_146260.images.length+0-1)-0], point_146261.Field0, point_146261.Field1);
 		}
 		else {
-			F.line = 72;
-		render_gfx_tile_147158(game_147253, game_147253.images[chckIndx(2, 0, game_147253.images.length+0-1)-0], point_147254.Field0, point_147254.Field1);
+			F.line = 74;
+		render_gfx_tile_146165(game_146260, game_146260.images[chckIndx(2, 0, game_146260.images.length+0-1)-0], point_146261.Field0, point_146261.Field1);
 		}
 		
 	framePtr = F.prev;
@@ -2040,61 +2678,61 @@ function draw_map_tile_147251(game_147253, point_147254, tile_147255) {
 	
 }
 
-function iso_pos_138505(x_138507, y_138508) {
-	var result_138510 = {Field0: 0, Field1: 0};
+function iso_pos_137505(x_137507, y_137508) {
+	var result_137510 = {Field0: 0, Field1: 0};
 
 	var F={procname:"math_helpers.isoPos",prev:framePtr,filename:"math_helpers.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
 		F.line = 26;
-		var half_tile_height_138512 = 16;
+		var half_tile_height_137512 = 16;
 		F.line = 27;
-		var half_tile_width_138514 = 32;
+		var half_tile_width_137514 = 32;
 		F.line = 28;
-		var offset_x_138517 = 80;
+		var offset_x_137517 = 80;
 		F.line = 29;
-		var tile_x_138518 = addInt(mulInt(subInt(x_138507, y_138508), half_tile_width_138514), offset_x_138517);
+		var tile_x_137518 = addInt(mulInt(subInt(x_137507, y_137508), half_tile_width_137514), offset_x_137517);
 		F.line = 30;
-		var tile_y_138519 = mulInt(addInt(x_138507, y_138508), half_tile_height_138512);
+		var tile_y_137519 = mulInt(addInt(x_137507, y_137508), half_tile_height_137512);
 		F.line = 32;
-		nimCopy(result_138510, {Field0: tile_x_138518, Field1: tile_y_138519}, NTI138509);
+		nimCopy(result_137510, {Field0: tile_x_137518, Field1: tile_y_137519}, NTI137509);
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_138510;
+	return result_137510;
 
 }
 
-function find_147334(a_147339, item_147341) {
-	var result_147342 = 0;
+function find_146341(a_146346, item_146348) {
+	var result_146349 = 0;
 
 	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
 		L1: do {
 			F.line = 2511;
-			var i_147351 = {Field0: 0, Field1: 0};
+			var i_146358 = {Field0: 0, Field1: 0};
 			F.line = 3911;
-			var i_147373 = 0;
+			var i_146380 = 0;
 			F.line = 3912;
-			var l_147375 = (a_147339 != null ? a_147339.length : 0);
+			var l_146382 = (a_146346 != null ? a_146346.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_147373 < l_147375)) break L3;
+					if (!(i_146380 < l_146382)) break L3;
 						F.line = 3914;
-						nimCopy(i_147351, a_147339[chckIndx(i_147373, 0, a_147339.length+0-1)-0], NTI138017);
-						if (HEX3DHEX3D_142525(i_147351, item_147341)) {
+						nimCopy(i_146358, a_146346[chckIndx(i_146380, 0, a_146346.length+0-1)-0], NTI137071);
+						if (HEX3DHEX3D_141382(i_146358, item_146348)) {
 						F.line = 2512;
 						break BeforeRet;
 						}
 						
 						F.line = 2513;
-						result_147342 = addInt(result_147342, 1);
+						result_146349 = addInt(result_146349, 1);
 						F.line = 3915;
-						i_147373 = addInt(i_147373, 1);
-						if (!(((a_147339 != null ? a_147339.length : 0) == l_147375))) {
+						i_146380 = addInt(i_146380, 1);
+						if (!(((a_146346 != null ? a_146346.length : 0) == l_146382))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -2103,39 +2741,39 @@ function find_147334(a_147339, item_147341) {
 			} while(false);
 		} while(false);
 		F.line = 2514;
-		result_147342 = -1;
+		result_146349 = -1;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_147342;
+	return result_146349;
 
 }
 
-function tint_image_nim_146042(image_146044, color_146045, opacity_146046) {
-	var result_146047 = null;
+function tint_image_nim_145042(image_145044, color_145045, opacity_145046) {
+	var result_145047 = null;
 
 	var F={procname:"tint_image.tintImageNim",prev:framePtr,filename:"tint_image.nim",line:0};
 	framePtr = F;
 		F.line = 12;
 		F.line = 12;
-		var col_s_146048 = (makeNimstrLit("rgb( ")).concat(cstrToNimstr((color_146045.Field0)+""),makeNimstrLit(", "),cstrToNimstr((color_146045.Field1)+""),makeNimstrLit(", "),cstrToNimstr((color_146045.Field2)+""),makeNimstrLit(")"));
-		result_146047 = tintImage(image_146044, toJSStr(col_s_146048), opacity_146046);
+		var col_s_145048 = (makeNimstrLit("rgb( ")).concat(cstrToNimstr((color_145045.Field0)+""),makeNimstrLit(", "),cstrToNimstr((color_145045.Field1)+""),makeNimstrLit(", "),cstrToNimstr((color_145045.Field2)+""),makeNimstrLit(")"));
+		result_145047 = tintImage(image_145044, toJSStr(col_s_145048), opacity_145046);
 	framePtr = F.prev;
 
-	return result_146047;
+	return result_145047;
 
 }
 
-function draw_map_tile_tint_147269(game_147271, point_147272, tile_147273, tint_147274) {
+function draw_map_tile_tint_146276(game_146278, point_146279, tile_146280, tint_146281) {
 	var F={procname:"game_class.drawMapTileTint",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		if ((tile_147273 == 0)) {
-		F.line = 76;
-		game_147271.context.drawImage(tint_image_nim_146042(game_147271.images[chckIndx(1, 0, game_147271.images.length+0-1)-0], tint_147274, 5.0000000000000000e-01), point_147272.Field0, point_147272.Field1);
+		if ((tile_146280 == 0)) {
+		F.line = 78;
+		game_146278.context.drawImage(tint_image_nim_145042(game_146278.images[chckIndx(1, 0, game_146278.images.length+0-1)-0], tint_146281, 5.0000000000000000e-01), point_146279.Field0, point_146279.Field1);
 		}
 		else {
-			F.line = 78;
-		game_147271.context.drawImage(tint_image_nim_146042(game_147271.images[chckIndx(2, 0, game_147271.images.length+0-1)-0], tint_147274, 5.0000000000000000e-01), point_147272.Field0, point_147272.Field1);
+			F.line = 80;
+		game_146278.context.drawImage(tint_image_nim_145042(game_146278.images[chckIndx(2, 0, game_146278.images.length+0-1)-0], tint_146281, 5.0000000000000000e-01), point_146279.Field0, point_146279.Field1);
 		}
 		
 	framePtr = F.prev;
@@ -2143,64 +2781,64 @@ function draw_map_tile_tint_147269(game_147271, point_147272, tile_147273, tint_
 	
 }
 
-function render_map_147292(game_147294, map_147295, fov_map_147297, explored_147300, explored_147300_Idx) {
+function render_map_146299(game_146301, map_146302, fov_map_146304, explored_146307, explored_146307_Idx) {
 	var F={procname:"game_class.renderMap",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
 		L1: do {
-			F.line = 82;
-			var x_147310 = 0;
+			F.line = 84;
+			var x_146317 = 0;
 			F.line = 3616;
-			var colontmp__147425 = 0;
-			F.line = 82;
-			colontmp__147425 = map_147295.width;
+			var colontmp__146432 = 0;
+			F.line = 84;
+			colontmp__146432 = map_146302.width;
 			F.line = 3617;
-			var i_147428 = 0;
+			var i_146435 = 0;
 			L2: do {
 				F.line = 3618;
 					L3: while (true) {
-					if (!(i_147428 < colontmp__147425)) break L3;
+					if (!(i_146435 < colontmp__146432)) break L3;
 						F.line = 3619;
-						x_147310 = i_147428;
+						x_146317 = i_146435;
 						L4: do {
-							F.line = 83;
-							var y_147320 = 0;
+							F.line = 85;
+							var y_146327 = 0;
 							F.line = 3616;
-							var colontmp__147420 = 0;
-							F.line = 83;
-							colontmp__147420 = map_147295.height;
+							var colontmp__146427 = 0;
+							F.line = 85;
+							colontmp__146427 = map_146302.height;
 							F.line = 3617;
-							var i_147423 = 0;
+							var i_146430 = 0;
 							L5: do {
 								F.line = 3618;
 									L6: while (true) {
-									if (!(i_147423 < colontmp__147420)) break L6;
+									if (!(i_146430 < colontmp__146427)) break L6;
 										F.line = 3619;
-										y_147320 = i_147423;
-										F.line = 85;
-										var cell_147322 = {Field0: x_147310, Field1: y_147320};
-										if (contains_142466(fov_map_147297, cell_147322)) {
+										y_146327 = i_146430;
 										F.line = 87;
-										draw_map_tile_147251(game_147294, iso_pos_138505(x_147310, y_147320), map_147295.tiles[chckIndx(addInt(mulInt(y_147320, map_147295.width), x_147310), 0, map_147295.tiles.length+0-1)-0]);
-										if ((find_147334(explored_147300[explored_147300_Idx], cell_147322) == -1)) {
+										var cell_146329 = {Field0: x_146317, Field1: y_146327};
+										if (contains_141323(fov_map_146304, cell_146329)) {
 										F.line = 89;
-										var Tmp7 = nimCopy(null, cell_147322, NTI138017);
-										if (explored_147300[explored_147300_Idx] != null) { explored_147300[explored_147300_Idx].push(Tmp7); } else { explored_147300[explored_147300_Idx] = [Tmp7]; };
+										draw_map_tile_146258(game_146301, iso_pos_137505(x_146317, y_146327), map_146302.tiles[chckIndx(addInt(mulInt(y_146327, map_146302.width), x_146317), 0, map_146302.tiles.length+0-1)-0]);
+										if ((find_146341(explored_146307[explored_146307_Idx], cell_146329) == -1)) {
+										F.line = 91;
+										var Tmp7 = nimCopy(null, cell_146329, NTI137071);
+										if (explored_146307[explored_146307_Idx] != null) { explored_146307[explored_146307_Idx].push(Tmp7); } else { explored_146307[explored_146307_Idx] = [Tmp7]; };
 										}
 										
 										}
 										else {
-										if (contains_142466(explored_147300[explored_147300_Idx], {Field0: x_147310, Field1: y_147320})) {
-										F.line = 91;
-										draw_map_tile_tint_147269(game_147294, iso_pos_138505(x_147310, y_147320), map_147295.tiles[chckIndx(addInt(mulInt(y_147320, map_147295.width), x_147310), 0, map_147295.tiles.length+0-1)-0], {Field0: 127, Field1: 127, Field2: 127});
+										if (contains_141323(explored_146307[explored_146307_Idx], {Field0: x_146317, Field1: y_146327})) {
+										F.line = 93;
+										draw_map_tile_tint_146276(game_146301, iso_pos_137505(x_146317, y_146327), map_146302.tiles[chckIndx(addInt(mulInt(y_146327, map_146302.width), x_146317), 0, map_146302.tiles.length+0-1)-0], {Field0: 127, Field1: 127, Field2: 127});
 										}
 										}
 										F.line = 3620;
-										i_147423 = addInt(i_147423, 1);
+										i_146430 = addInt(i_146430, 1);
 									}
 							} while(false);
 						} while(false);
 						F.line = 3620;
-						i_147428 = addInt(i_147428, 1);
+						i_146435 = addInt(i_146435, 1);
 					}
 			} while(false);
 		} while(false);
@@ -2209,36 +2847,36 @@ function render_map_147292(game_147294, map_147295, fov_map_147297, explored_147
 	
 }
 
-function render_entities_147205(game_147207, fov_map_147209) {
+function render_entities_146212(game_146214, fov_map_146216) {
 	var F={procname:"game_class.renderEntities",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
 		L1: do {
-			F.line = 60;
-			var e_147218 = null;
+			F.line = 62;
+			var e_146225 = null;
 			F.line = 3909;
-			var colontmp__147232 = null;
-			F.line = 60;
-			colontmp__147232 = game_147207.entities;
+			var colontmp__146239 = null;
+			F.line = 62;
+			colontmp__146239 = game_146214.entities;
 			F.line = 3911;
-			var i_147235 = 0;
+			var i_146242 = 0;
 			F.line = 3912;
-			var l_147237 = (colontmp__147232 != null ? colontmp__147232.length : 0);
+			var l_146244 = (colontmp__146239 != null ? colontmp__146239.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_147235 < l_147237)) break L3;
+					if (!(i_146242 < l_146244)) break L3;
 						F.line = 3914;
-						e_147218 = colontmp__147232[chckIndx(i_147235, 0, colontmp__147232.length+0-1)-0];
-						F.line = 61;
-						var iso_147219 = iso_pos_138505(e_147218.position.Field0, e_147218.position.Field1);
-						if (contains_142466(fov_map_147209, {Field0: e_147218.position.Field0, Field1: e_147218.position.Field1})) {
-						F.line = 65;
-						render_gfx_tile_147158(game_147207, game_147207.images[chckIndx(3, 0, game_147207.images.length+0-1)-0], addInt(iso_147219["Field0"], 8), addInt(iso_147219["Field1"], 8));
+						e_146225 = colontmp__146239[chckIndx(i_146242, 0, colontmp__146239.length+0-1)-0];
+						F.line = 63;
+						var iso_146226 = iso_pos_137505(e_146225.position.Field0, e_146225.position.Field1);
+						if (contains_141323(fov_map_146216, {Field0: e_146225.position.Field0, Field1: e_146225.position.Field1})) {
+						F.line = 67;
+						render_gfx_tile_146165(game_146214, game_146214.images[chckIndx(e_146225.image, 0, game_146214.images.length+0-1)-0], addInt(iso_146226["Field0"], 8), addInt(iso_146226["Field1"], 8));
 						}
 						
 						F.line = 3915;
-						i_147235 = addInt(i_147235, 1);
-						if (!(((colontmp__147232 != null ? colontmp__147232.length : 0) == l_147237))) {
+						i_146242 = addInt(i_146242, 1);
+						if (!(((colontmp__146239 != null ? colontmp__146239.length : 0) == l_146244))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -2251,76 +2889,107 @@ function render_entities_147205(game_147207, fov_map_147209) {
 	
 }
 
-function render_147180(game_147182, player_147183) {
+function render_146187(game_146189, player_146190) {
 	var F={procname:"game_class.render",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		if ((player_147183 === null)) {
-		F.line = 53;
+		if ((player_146190 === null)) {
+		F.line = 55;
 		break BeforeRet;
 		}
 		
-		F.line = 54;
-		var iso_147191 = iso_pos_138505(player_147183.position.Field0, player_147183.position.Field1);
 		F.line = 56;
-		render_gfx_tile_147158(game_147182, game_147182.images[chckIndx(0, 0, game_147182.images.length+0-1)-0], addInt(iso_147191["Field0"], 8), addInt(iso_147191["Field1"], 8));
+		var iso_146198 = iso_pos_137505(player_146190.position.Field0, player_146190.position.Field1);
+		F.line = 58;
+		render_gfx_tile_146165(game_146189, game_146189.images[chckIndx(0, 0, game_146189.images.length+0-1)-0], addInt(iso_146198["Field0"], 8), addInt(iso_146198["Field1"], 8));
 	} while (false);
 	framePtr = F.prev;
 
 	
 }
 
-function draw_messages_147443(game_147445) {
+function render_bar_146672(game_146674, x_146675, y_146676, total_width_146677, value_146678, maximum_146679, bar_color_146680, bg_color_146681) {
+	var F={procname:"game_class.renderBar",prev:framePtr,filename:"game_class.nim",line:0};
+	framePtr = F;
+		F.line = 119;
+		game_146674.context.beginPath();
+		F.line = 120;
+		fill_styleHEX3D_136128(game_146674.context, rgb_136001(bg_color_146681.Field0, bg_color_146681.Field1, bg_color_146681.Field2));
+		F.line = 121;
+		game_146674.context.rect(x_146675, y_146676, total_width_146677, 1.0000000000000000e+01);
+		F.line = 122;
+		game_146674.context.fill();
+		F.line = 125;
+		var perc_146683 = ((value_146678 / maximum_146679) * 1.0000000000000000e+02);
+		F.line = 127;
+		var bar_width_146685 = ((perc_146683 / 1.0000000000000000e+02) * total_width_146677);
+		if ((0.0 < bar_width_146685)) {
+		F.line = 129;
+		game_146674.context.beginPath();
+		F.line = 130;
+		fill_styleHEX3D_136128(game_146674.context, rgb_136001(bar_color_146680.Field0, bar_color_146680.Field1, bar_color_146680.Field2));
+		F.line = 131;
+		game_146674.context.rect(x_146675, y_146676, bar_width_146685, 1.0000000000000000e+01);
+		F.line = 132;
+		game_146674.context.fill();
+		}
+		
+	framePtr = F.prev;
+
+	
+}
+
+function draw_messages_146450(game_146452) {
 	var F={procname:"game_class.drawMessages",prev:framePtr,filename:"game_class.nim",line:0};
 	framePtr = F;
-		F.line = 94;
-		var drawn_147447 = null;
-		if (((game_147445.game_messages != null ? game_147445.game_messages.length : 0) <= 5)) {
-		F.line = 97;
-		drawn_147447 = nimCopy(null, game_147445.game_messages, NTI147037);
+		F.line = 96;
+		var drawn_146454 = null;
+		if (((game_146452.game_messages != null ? game_146452.game_messages.length : 0) <= 5)) {
+		F.line = 99;
+		drawn_146454 = nimCopy(null, game_146452.game_messages, NTI146038);
 		}
 		else {
-			F.line = 100;
-			var view_147496 = {data: nimCopy(null, game_147445.game_messages, NTI147037), bounds: HEX2EHEX2E_47828(subInt((game_147445.game_messages != null ? game_147445.game_messages.length : 0), 5), subInt((game_147445.game_messages != null ? game_147445.game_messages.length : 0), 1))};
+			F.line = 102;
+			var view_146503 = {data: nimCopy(null, game_146452.game_messages, NTI146038), bounds: HEX2EHEX2E_47828(subInt((game_146452.game_messages != null ? game_146452.game_messages.length : 0), 5), subInt((game_146452.game_messages != null ? game_146452.game_messages.length : 0), 1))};
 			L1: do {
-				F.line = 103;
-				var el_147578 = null;
+				F.line = 105;
+				var el_146585 = null;
 				L2: do {
 					F.line = 30;
-					var pos_147629 = 0;
+					var pos_146636 = 0;
 					F.line = 2312;
-					var colontmp__147631 = {a: 0, b: 0};
+					var colontmp__146638 = {a: 0, b: 0};
 					F.line = 30;
-					nimCopy(colontmp__147631, view_147496.bounds, NTI37907);
+					nimCopy(colontmp__146638, view_146503.bounds, NTI37907);
 					L3: do {
 						F.line = 2315;
-						var x_147633 = 0;
+						var x_146640 = 0;
 						F.line = 2104;
-						var colontmp__147635 = 0;
+						var colontmp__146642 = 0;
 						F.line = 2104;
-						var colontmp__147637 = 0;
+						var colontmp__146644 = 0;
 						F.line = 2315;
-						colontmp__147635 = colontmp__147631.a;
+						colontmp__146642 = colontmp__146638.a;
 						F.line = 2315;
-						colontmp__147637 = colontmp__147631.b;
+						colontmp__146644 = colontmp__146638.b;
 						F.line = 2107;
-						var res_147639 = colontmp__147635;
+						var res_146646 = colontmp__146642;
 						L4: do {
 							F.line = 2108;
 								L5: while (true) {
-								if (!(res_147639 <= colontmp__147637)) break L5;
+								if (!(res_146646 <= colontmp__146644)) break L5;
 									F.line = 2109;
-									x_147633 = res_147639;
+									x_146640 = res_146646;
 									F.line = 2316;
-									pos_147629 = x_147633;
+									pos_146636 = x_146640;
 									F.line = 31;
 ++excHandler;
 									try {
 									F.line = 32;
-									el_147578 = view_147496.data[chckIndx(pos_147629, 0, view_147496.data.length+0-1)-0];
-									F.line = 104;
-									var Tmp7 = nimCopy(null, el_147578, NTI138);
-									if (drawn_147447 != null) { drawn_147447.push(Tmp7); } else { drawn_147447 = [Tmp7]; };
+									el_146585 = view_146503.data[chckIndx(pos_146636, 0, view_146503.data.length+0-1)-0];
+									F.line = 106;
+									var Tmp7 = nimCopy(null, el_146585, NTI138);
+									if (drawn_146454 != null) { drawn_146454.push(Tmp7); } else { drawn_146454 = [Tmp7]; };
 --excHandler;
 } catch (EXC) {
  var prevJSError = lastJSError;
@@ -2328,13 +2997,13 @@ function draw_messages_147443(game_147445) {
  --excHandler;
 									framePtr = F;
 									F.line = 34;
-									rawEcho((makeNimstrLit("Something weird happened...")).concat(cstrToNimstr((pos_147629)+"")));
+									rawEcho((makeNimstrLit("Something weird happened...")).concat(cstrToNimstr((pos_146636)+"")));
 lastJSError = prevJSError;
 									} finally {
 									framePtr = F;
 									}
 									F.line = 2110;
-									res_147639 = addInt(res_147639, 1);
+									res_146646 = addInt(res_146646, 1);
 								}
 						} while(false);
 					} while(false);
@@ -2342,35 +3011,35 @@ lastJSError = prevJSError;
 			} while(false);
 		}
 		
-		F.line = 107;
-		var y_147590 = 0;
+		F.line = 109;
+		var y_146597 = 0;
 		L8: do {
-			F.line = 108;
-			var i_147609 = 0;
+			F.line = 110;
+			var i_146616 = 0;
 			F.line = 2104;
-			var colontmp__147645 = 0;
-			F.line = 108;
-			colontmp__147645 = subInt((drawn_147447 != null ? drawn_147447.length : 0), 1);
+			var colontmp__146652 = 0;
+			F.line = 110;
+			colontmp__146652 = subInt((drawn_146454 != null ? drawn_146454.length : 0), 1);
 			F.line = 2107;
-			var res_147648 = 0;
+			var res_146655 = 0;
 			L9: do {
 				F.line = 2108;
 					L10: while (true) {
-					if (!(res_147648 <= colontmp__147645)) break L10;
+					if (!(res_146655 <= colontmp__146652)) break L10;
 						F.line = 2109;
-						i_147609 = res_147648;
-						F.line = 109;
-						var el_147610 = nimCopy(null, drawn_147447[chckIndx(i_147609, 0, drawn_147447.length+0-1)-0], NTI138);
-						F.line = 110;
-						game_147445.context.font = "12px Arial";
+						i_146616 = res_146655;
 						F.line = 111;
-						fill_styleHEX3D_136128(game_147445.context, rgb_136001(255, 255, 255));
+						var el_146617 = nimCopy(null, drawn_146454[chckIndx(i_146616, 0, drawn_146454.length+0-1)-0], NTI138);
 						F.line = 112;
-						game_147445.context.fillText(toJSStr(el_147610), 5.0000000000000000e+00, addInt(subInt(game_147445.canvas.height, 50), y_147590));
+						game_146452.context.font = "12px Arial";
 						F.line = 113;
-						y_147590 = addInt(y_147590, 10);
+						fill_styleHEX3D_136128(game_146452.context, rgb_136001(255, 255, 255));
+						F.line = 114;
+						game_146452.context.fillText(toJSStr(el_146617), 5.0000000000000000e+00, addInt(subInt(game_146452.canvas.height, 50), y_146597));
+						F.line = 115;
+						y_146597 = addInt(y_146597, 10);
 						F.line = 2110;
-						res_147648 = addInt(res_147648, 1);
+						res_146655 = addInt(res_146655, 1);
 					}
 			} while(false);
 		} while(false);
@@ -2379,45 +3048,181 @@ lastJSError = prevJSError;
 	
 }
 
-function find_path_nim_141024(map_141026, start_141027, end_point_141028) {
-	var result_141030 = null;
+function HEX2F_19442(x_19444, y_19445) {
+	var result_19446 = 0.0;
+
+	var F={procname:"system./",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
+	framePtr = F;
+		F.line = 3596;
+		result_19446 = (x_19444 / y_19445);
+	framePtr = F.prev;
+
+	return result_19446;
+
+}
+
+function menu_155041(game_155043, header_155044, options_155046, width_155047, screen_width_155048, screen_height_155049) {
+	var F={procname:"menus.menu",prev:framePtr,filename:"menus.nim",line:0};
+	framePtr = F;
+	BeforeRet: do {
+		if ((26 < (options_155046 != null ? options_155046.length : 0))) {
+		F.line = 8;
+		rawEcho(makeNimstrLit("Cannot have a menu with more than 26 options."));
+		F.line = 9;
+		break BeforeRet;
+		}
+		
+		F.line = 12;
+		var header_height_155063 = 2;
+		F.line = 14;
+		var menu_h_155064 = addInt(addInt(header_height_155063, 1), 26);
+		F.line = 15;
+		var menu_y_155066 = ((HEX2F_19442(subInt(50, menu_h_155064), 2))|0);
+		F.line = 17;
+		game_155043.context.font = "12px Arial";
+		F.line = 18;
+		fill_styleHEX3D_136128(game_155043.context, rgb_136001(255, 255, 255));
+		F.line = 22;
+		var y_155070 = mulInt(addInt(menu_y_155066, header_height_155063), 10);
+		F.line = 23;
+		var letter_index_155079 = 97;
+		L1: do {
+			F.line = 24;
+			var option_text_155215 = null;
+			F.line = 3911;
+			var i_155241 = 0;
+			F.line = 3912;
+			var l_155243 = (options_155046 != null ? options_155046.length : 0);
+			L2: do {
+				F.line = 3913;
+					L3: while (true) {
+					if (!(i_155241 < l_155243)) break L3;
+						F.line = 3914;
+						option_text_155215 = options_155046[chckIndx(i_155241, 0, options_155046.length+0-1)-0];
+						F.line = 25;
+						var text_155216 = (makeNimstrLit("(")).concat([chckRange(letter_index_155079, 0, 255)],makeNimstrLit(") "),option_text_155215);
+						F.line = 26;
+						game_155043.context.fillText(toJSStr(text_155216), 5.0000000000000000e+00, y_155070);
+						F.line = 28;
+						y_155070 = addInt(y_155070, 10);
+						F.line = 29;
+						letter_index_155079 = addInt(letter_index_155079, 1);
+						F.line = 3915;
+						i_155241 = addInt(i_155241, 1);
+						if (!(((options_155046 != null ? options_155046.length : 0) == l_155243))) {
+						F.line = 3916;
+						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+						}
+						
+					}
+			} while(false);
+		} while(false);
+	} while (false);
+	framePtr = F.prev;
+
+	
+}
+
+function inventory_menu_155257(game_155259, header_155260, inventory_155261, inventory_width_155262, screen_width_155263, screen_height_155264) {
+	var F={procname:"menus.inventory_menu",prev:framePtr,filename:"menus.nim",line:0};
+	framePtr = F;
+		F.line = 33;
+		var options_155266 = null;
+		if (((inventory_155261.items != null ? inventory_155261.items.length : 0) == 0)) {
+		F.line = 36;
+		options_155266 = nimCopy(null, [makeNimstrLit("Inventory is empty.")], NTI155285);
+		}
+		else {
+			L1: do {
+				F.line = 39;
+				var item_155294 = null;
+				F.line = 3909;
+				var colontmp__155306 = null;
+				F.line = 39;
+				colontmp__155306 = inventory_155261.items;
+				F.line = 3911;
+				var i_155309 = 0;
+				F.line = 3912;
+				var l_155311 = (colontmp__155306 != null ? colontmp__155306.length : 0);
+				L2: do {
+					F.line = 3913;
+						L3: while (true) {
+						if (!(i_155309 < l_155311)) break L3;
+							F.line = 3914;
+							item_155294 = colontmp__155306[chckIndx(i_155309, 0, colontmp__155306.length+0-1)-0];
+							F.line = 40;
+							var Tmp4 = nimCopy(null, item_155294.owner.name, NTI138);
+							if (options_155266 != null) { options_155266.push(Tmp4); } else { options_155266 = [Tmp4]; };
+							F.line = 3915;
+							i_155309 = addInt(i_155309, 1);
+							if (!(((colontmp__155306 != null ? colontmp__155306.length : 0) == l_155311))) {
+							F.line = 3916;
+							failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
+							}
+							
+						}
+				} while(false);
+			} while(false);
+		}
+		
+		F.line = 42;
+		menu_155041(game_155259, header_155260, options_155266, inventory_width_155262, screen_width_155263, screen_height_155264);
+	framePtr = F.prev;
+
+	
+}
+
+function draw_targeting_146710(game_146712) {
+	var F={procname:"game_class.drawTargeting",prev:framePtr,filename:"game_class.nim",line:0};
+	framePtr = F;
+		F.line = 135;
+		var iso_146713 = iso_pos_137505(game_146712.targeting.Field0, game_146712.targeting.Field1);
+		F.line = 136;
+		render_gfx_tile_146165(game_146712, game_146712.images[chckIndx(7, 0, game_146712.images.length+0-1)-0], iso_146713["Field0"], iso_146713["Field1"]);
+	framePtr = F.prev;
+
+	
+}
+
+function find_path_nim_140024(map_140026, start_140027, end_point_140028) {
+	var result_140030 = null;
 
 	var F={procname:"astar.findPathNim",prev:framePtr,filename:"astar.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
 		F.line = 8;
-		var res_141031 = findPath(map_141026, start_141027, end_point_141028);
+		var res_140031 = findPath(map_140026, start_140027, end_point_140028);
 		F.line = 9;
-		var ret_141033 = null;
+		var ret_140033 = null;
 		L1: do {
 			F.line = 12;
-			var i_141052 = 0;
+			var i_140052 = 0;
 			F.line = 2104;
-			var colontmp__141065 = 0;
+			var colontmp__140065 = 0;
 			F.line = 12;
-			colontmp__141065 = subInt((res_141031 != null ? res_141031.length : 0), 1);
+			colontmp__140065 = subInt((res_140031 != null ? res_140031.length : 0), 1);
 			F.line = 2107;
-			var res_141068 = 0;
+			var res_140068 = 0;
 			L2: do {
 				F.line = 2108;
 					L3: while (true) {
-					if (!(res_141068 <= colontmp__141065)) break L3;
+					if (!(res_140068 <= colontmp__140065)) break L3;
 						F.line = 2109;
-						i_141052 = res_141068;
+						i_140052 = res_140068;
 						F.line = 15;
-						if (ret_141033 != null) { ret_141033.push({Field0: res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0][chckIndx(0, 0, res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0].length+0-1)-0], Field1: res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0][chckIndx(1, 0, res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0].length+0-1)-0]}); } else { ret_141033 = [{Field0: res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0][chckIndx(0, 0, res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0].length+0-1)-0], Field1: res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0][chckIndx(1, 0, res_141031[chckIndx(i_141052, 0, res_141031.length+0-1)-0].length+0-1)-0]}]; };
+						if (ret_140033 != null) { ret_140033.push({Field0: res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0][chckIndx(0, 0, res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0].length+0-1)-0], Field1: res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0][chckIndx(1, 0, res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0].length+0-1)-0]}); } else { ret_140033 = [{Field0: res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0][chckIndx(0, 0, res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0].length+0-1)-0], Field1: res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0][chckIndx(1, 0, res_140031[chckIndx(i_140052, 0, res_140031.length+0-1)-0].length+0-1)-0]}]; };
 						F.line = 2110;
-						res_141068 = addInt(res_141068, 1);
+						res_140068 = addInt(res_140068, 1);
 					}
 			} while(false);
 		} while(false);
 		F.line = 17;
-		result_141030 = nimCopy(null, ret_141033, NTI141032);
+		result_140030 = nimCopy(null, ret_140033, NTI140032);
 		break BeforeRet;
 	} while (false);
 	framePtr = F.prev;
 
-	return result_141030;
+	return result_140030;
 
 }
 
@@ -2437,90 +3242,77 @@ function round_132846(x_132850, places_132852) {
 
 }
 
-function HEX2F_19442(x_19444, y_19445) {
-	var result_19446 = 0.0;
-
-	var F={procname:"system./",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-		F.line = 3596;
-		result_19446 = (x_19444 / y_19445);
-	framePtr = F.prev;
-
-	return result_19446;
-
-}
-
-function is_blocked_139027(map_139029, x_139030, y_139031) {
-	var result_139032 = false;
+function is_blocked_138027(map_138029, x_138030, y_138031) {
+	var result_138032 = false;
 
 	var F={procname:"map.is_blocked",prev:framePtr,filename:"map.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		if ((map_139029.tiles[chckIndx(addInt(mulInt(y_139031, map_139029.width), x_139030), 0, map_139029.tiles.length+0-1)-0] == 0)) {
+		if ((map_138029.tiles[chckIndx(addInt(mulInt(y_138031, map_138029.width), x_138030), 0, map_138029.tiles.length+0-1)-0] == 0)) {
 		F.line = 17;
-		result_139032 = true;
+		result_138032 = true;
 		break BeforeRet;
 		}
 		else {
 			F.line = 19;
-			result_139032 = false;
+			result_138032 = false;
 			break BeforeRet;
 		}
 		
 	} while (false);
 	framePtr = F.prev;
 
-	return result_139032;
+	return result_138032;
 
 }
 
-function move_towards_142362(e_142364, target_142365, game_map_142366, entities_142368, messages_142371, messages_142371_Idx) {
+function move_towards_142386(e_142388, target_142389, game_map_142390, entities_142392, messages_142395, messages_142395_Idx) {
 			var Tmp1;
 
-	var result_142372 = false;
+	var result_142396 = false;
 
 	var F={procname:"entity.move_towards",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
 	BeforeRet: do {
-		F.line = 89;
-		var dx_142373 = subInt(target_142365.Field0, e_142364.position.Field0);
-		F.line = 90;
-		var dy_142374 = subInt(target_142365.Field1, e_142364.position.Field1);
-		F.line = 92;
-		var distance_142375 = distance_to_138037(e_142364.position, target_142365);
-		F.line = 94;
-		dx_142373 = ((round_132846(HEX2F_19442(dx_142373, distance_142375), 0))|0);
-		F.line = 95;
-		dy_142374 = ((round_132846(HEX2F_19442(dy_142374, distance_142375), 0))|0);
-			if (!(is_blocked_139027(game_map_142366, addInt(e_142364.position.Field0, dx_142373), addInt(e_142364.position.Field1, dy_142374)))) Tmp1 = true; else {				Tmp1 = (get_creatures_at_142056(entities_142368, addInt(e_142364.position.Field0, dx_142373), addInt(e_142364.position.Field1, dy_142374)) === null);			}		if (Tmp1) {
-		F.line = 99;
-		rawEcho((makeNimstrLit("We can move to ")).concat(cstrToNimstr((addInt(e_142364.position.Field0, dx_142373))+""),makeNimstrLit(" "),cstrToNimstr((addInt(e_142364.position.Field1, dy_142374))+"")));
-		F.line = 100;
-		result_142372 = move_142312(e_142364, dx_142373, dy_142374, game_map_142366, entities_142368, messages_142371, messages_142371_Idx);
+		F.line = 150;
+		var dx_142397 = subInt(target_142389.Field0, e_142388.position.Field0);
+		F.line = 151;
+		var dy_142398 = subInt(target_142389.Field1, e_142388.position.Field1);
+		F.line = 153;
+		var distance_142399 = distance_to_137091(e_142388.position, target_142389);
+		F.line = 155;
+		dx_142397 = ((round_132846(HEX2F_19442(dx_142397, distance_142399), 0))|0);
+		F.line = 156;
+		dy_142398 = ((round_132846(HEX2F_19442(dy_142398, distance_142399), 0))|0);
+			if (!(is_blocked_138027(game_map_142390, addInt(e_142388.position.Field0, dx_142397), addInt(e_142388.position.Field1, dy_142398)))) Tmp1 = true; else {				Tmp1 = (get_creatures_at_141097(entities_142392, addInt(e_142388.position.Field0, dx_142397), addInt(e_142388.position.Field1, dy_142398)) === null);			}		if (Tmp1) {
+		F.line = 160;
+		rawEcho((makeNimstrLit("We can move to ")).concat(cstrToNimstr((addInt(e_142388.position.Field0, dx_142397))+""),makeNimstrLit(" "),cstrToNimstr((addInt(e_142388.position.Field1, dy_142398))+"")));
+		F.line = 161;
+		result_142396 = move_142336(e_142388, dx_142397, dy_142398, game_map_142390, entities_142392, messages_142395, messages_142395_Idx);
 		break BeforeRet;
 		}
 		
 	} while (false);
 	framePtr = F.prev;
 
-	return result_142372;
+	return result_142396;
 
 }
 
-function move_astar_142417(e_142419, target_142420, game_map_142421, entities_142423, messages_142426, messages_142426_Idx) {
+function move_astar_142441(e_142443, target_142444, game_map_142445, entities_142447, messages_142450, messages_142450_Idx) {
 	var F={procname:"entity.move_astar",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
-		F.line = 103;
+		F.line = 164;
 		rawEcho(makeNimstrLit("Calling astar..."));
-		F.line = 104;
-		var astar_142430 = find_path_nim_141024(game_map_142421, e_142419.position, target_142420);
-		if ((~((astar_142430 != null ? astar_142430.length : 0)) < 1)) {
-		F.line = 110;
-		nimCopy(e_142419.position, astar_142430[chckIndx(1, 0, astar_142430.length+0-1)-0], NTI138017);
+		F.line = 165;
+		var astar_142454 = find_path_nim_140024(game_map_142445, e_142443.position, target_142444);
+		if ((~((astar_142454 != null ? astar_142454.length : 0)) < 1)) {
+		F.line = 171;
+		nimCopy(e_142443.position, astar_142454[chckIndx(1, 0, astar_142454.length+0-1)-0], NTI137071);
 		}
 		else {
-			F.line = 113;
-		move_towards_142362(e_142419, target_142420, game_map_142421, entities_142423, messages_142426, messages_142426_Idx);
+			F.line = 174;
+		move_towards_142386(e_142443, target_142444, game_map_142445, entities_142447, messages_142450, messages_142450_Idx);
 		}
 		
 	framePtr = F.prev;
@@ -2528,20 +3320,20 @@ function move_astar_142417(e_142419, target_142420, game_map_142421, entities_14
 	
 }
 
-function take_turn_142451(ai_142453, target_142454, fov_map_142456, game_map_142457, entities_142459, messages_142462, messages_142462_Idx) {
+function take_turn_142475(ai_142477, target_142478, fov_map_142480, game_map_142481, entities_142483, messages_142486, messages_142486_Idx) {
 	var F={procname:"entity.take_turn",prev:framePtr,filename:"entity.nim",line:0};
 	framePtr = F;
-		F.line = 120;
-		var monster_142463 = ai_142453.owner;
-		if (contains_142466(fov_map_142456, monster_142463.position)) {
-		if ((2 <= distance_to_138037(monster_142463.position, target_142454.position))) {
-		F.line = 126;
-		move_astar_142417(monster_142463, target_142454.position, game_map_142457, entities_142459, messages_142462, messages_142462_Idx);
+		F.line = 181;
+		var monster_142487 = ai_142477.owner;
+		if (contains_141323(fov_map_142480, monster_142487.position)) {
+		if ((2 <= distance_to_137091(monster_142487.position, target_142478.position))) {
+		F.line = 187;
+		move_astar_142441(monster_142487, target_142478.position, game_map_142481, entities_142483, messages_142486, messages_142486_Idx);
 		}
 		else {
-		if ((0 < target_142454.creature.hp)) {
-		F.line = 129;
-		attack_142268(ai_142453.owner.creature, target_142454, messages_142462, messages_142462_Idx);
+		if ((0 < target_142478.creature.hp)) {
+		F.line = 190;
+		attack_142292(ai_142477.owner.creature, target_142478, messages_142486, messages_142486_Idx);
 		}
 		}
 		}
@@ -2551,167 +3343,137 @@ function take_turn_142451(ai_142453, target_142454, fov_map_142456, game_map_142
 	
 }
 
-function mark_for_del_149028(e_149030, game_149031) {
+function mark_for_del_154028(e_154030, game_154031) {
 	var F={procname:"death_functions.mark_for_del",prev:framePtr,filename:"death_functions.nim",line:0};
 	framePtr = F;
 		F.line = 4;
-		if (game_149031.to_remove != null) { game_149031.to_remove.push(e_149030); } else { game_149031.to_remove = [e_149030]; };
+		if (game_154031.to_remove != null) { game_154031.to_remove.push(e_154030); } else { game_154031.to_remove = [e_154030]; };
 	framePtr = F.prev;
 
 	
 }
 
-function death_player_149658(e_149660, game_149661) {
+function death_player_154122(e_154124, game_154125) {
 	var F={procname:"death_functions.death_player",prev:framePtr,filename:"death_functions.nim",line:0};
 	framePtr = F;
 		F.line = 17;
-		if (game_149661.game_messages != null) { game_149661.game_messages.push(makeNimstrLit("You are dead!")); } else { game_149661.game_messages = [makeNimstrLit("You are dead!")]; };
+		if (game_154125.game_messages != null) { game_154125.game_messages.push(makeNimstrLit("You are dead!")); } else { game_154125.game_messages = [makeNimstrLit("You are dead!")]; };
 		F.line = 19;
-		game_149661.player = null;
+		game_154125.player = null;
 		F.line = 21;
-		game_149661.game_state = 2;
+		game_154125.game_state = 2;
 	framePtr = F.prev;
 
 	
 }
 
-function delete_149128(x_149134, x_149134_Idx, i_149136) {
-	var F={procname:"delete.delete",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-		F.line = 1643;
-		x_149134[x_149134_Idx].splice(i_149136, 1);
-	framePtr = F.prev;
-
-	
-}
-
-function find_149070(a_149075, item_149077) {
-	var result_149078 = 0;
-
-	var F={procname:"find.find",prev:framePtr,filename:"../../../.choosenim/toolchains/nim-0.19.4/lib/system.nim",line:0};
-	framePtr = F;
-	BeforeRet: do {
-		L1: do {
-			F.line = 2511;
-			var i_149087 = null;
-			F.line = 3911;
-			var i_149111 = 0;
-			F.line = 3912;
-			var l_149113 = (a_149075 != null ? a_149075.length : 0);
-			L2: do {
-				F.line = 3913;
-					L3: while (true) {
-					if (!(i_149111 < l_149113)) break L3;
-						F.line = 3914;
-						i_149087 = a_149075[chckIndx(i_149111, 0, a_149075.length+0-1)-0];
-						if ((i_149087 == item_149077)) {
-						F.line = 2512;
-						break BeforeRet;
-						}
-						
-						F.line = 2513;
-						result_149078 = addInt(result_149078, 1);
-						F.line = 3915;
-						i_149111 = addInt(i_149111, 1);
-						if (!(((a_149075 != null ? a_149075.length : 0) == l_149113))) {
-						F.line = 3916;
-						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
-						}
-						
-					}
-			} while(false);
-		} while(false);
-		F.line = 2514;
-		result_149078 = -1;
-	} while (false);
-	framePtr = F.prev;
-
-	return result_149078;
-
-}
-
-function death_monster_149055(e_149057, game_149058) {
+function death_monster_154055(e_154057, game_154058) {
 	var F={procname:"death_functions.death_monster",prev:framePtr,filename:"death_functions.nim",line:0};
 	framePtr = F;
 		F.line = 7;
-		if (game_149058.game_messages != null) { game_149058.game_messages.push((e_149057.creature.name).concat(makeNimstrLit(" is dead!"))); } else { game_149058.game_messages = [(e_149057.creature.name).concat(makeNimstrLit(" is dead!"))]; };
+		if (game_154058.game_messages != null) { game_154058.game_messages.push((e_154057.name).concat(makeNimstrLit(" is dead!"))); } else { game_154058.game_messages = [(e_154057.name).concat(makeNimstrLit(" is dead!"))]; };
 		F.line = 9;
-		delete_149128(game_149058, "entities", chckRange(find_149070(game_149058.entities, e_149057), 0, 2147483647));
+		delete_148257(game_154058, "entities", chckRange(find_148199(game_154058.entities, e_154057), 0, 2147483647));
 		F.line = 11;
-		delete_149128(game_149058, "to_remove", chckRange(find_149070(game_149058.to_remove, e_149057), 0, 2147483647));
+		delete_148257(game_154058, "to_remove", chckRange(find_148199(game_154058.to_remove, e_154057), 0, 2147483647));
 		F.line = 13;
-		e_149057.creature = null;
+		e_154057.creature = null;
 		F.line = 14;
-		e_149057.ai = null;
+		e_154057.ai = null;
 	framePtr = F.prev;
 
 	
 }
 
-function ready_150205(canvas_150207) {
+function ready_156028(canvas_156030) {
 
-		function main_loop_150448(time_150450) {
-									var Tmp4;
+		function main_loop_156248(time_156250) {
+					var Tmp1;
+									var Tmp5;
+									var Tmp6;
 
 			var F={procname:"ready.mainLoop",prev:framePtr,filename:"main.nim",line:0};
 			framePtr = F;
-				F.line = 108;
-				window.requestAnimationFrame(main_loop_150448);
-				if (game_150014[0].recalc_FOV) {
-				F.line = 116;
-				game_150014[0].FOV_map = nimCopy(null, calculate_fov_144460(game_150014[0].map, 0, game_150014[0].player.position, 4), NTI144466);
-				F.line = 118;
-				game_150014[0].recalc_FOV = false;
+				F.line = 45;
+				window.requestAnimationFrame(main_loop_156248);
+				if (game_156014[0].recalc_FOV) {
+				F.line = 53;
+				game_156014[0].FOV_map = nimCopy(null, calculate_fov_144460(game_156014[0].map, 0, game_156014[0].player.position, 4), NTI144466);
+				F.line = 55;
+				game_156014[0].recalc_FOV = false;
 				}
 				
-				F.line = 120;
-				clear_game_147140(game_150014[0]);
-				F.line = 122;
-				render_map_147292(game_150014[0], game_150014[0].map, game_150014[0].FOV_map, game_150014[0], "explored");
-				F.line = 123;
-				render_entities_147205(game_150014[0], game_150014[0].FOV_map);
-				F.line = 124;
-				render_147180(game_150014[0], game_150014[0].player);
-				F.line = 125;
-				draw_messages_147443(game_150014[0]);
-				if ((game_150014[0].game_state == 1)) {
-				L1: do {
-					F.line = 128;
-					var entity_150460 = null;
+				F.line = 57;
+				clear_game_146147(game_156014[0]);
+				F.line = 59;
+				render_map_146299(game_156014[0], game_156014[0].map, game_156014[0].FOV_map, game_156014[0], "explored");
+				F.line = 60;
+				render_entities_146212(game_156014[0], game_156014[0].FOV_map);
+				F.line = 61;
+				render_146187(game_156014[0], game_156014[0].player);
+				F.line = 62;
+				render_bar_146672(game_156014[0], 10, 10, 100, game_156014[0].player.creature.hp, game_156014[0].player.creature.max_hp, {Field0: 255, Field1: 0, Field2: 0}, {Field0: 191, Field1: 0, Field2: 0});
+				F.line = 63;
+				draw_messages_146450(game_156014[0]);
+					if ((game_156014[0].game_state == 3)) Tmp1 = true; else {						Tmp1 = (game_156014[0].game_state == 4);					}				if (Tmp1) {
+				F.line = 67;
+				var inv_title_156263 = null;
+				if ((game_156014[0].game_state == 3)) {
+				F.line = 69;
+				inv_title_156263 = nimCopy(null, makeNimstrLit("INVENTORY. Press key to use item"), NTI138);
+				}
+				else {
+					F.line = 71;
+					inv_title_156263 = nimCopy(null, makeNimstrLit("INVENTORY. Press key to drop item"), NTI138);
+				}
+				
+				F.line = 73;
+				inventory_menu_155257(game_156014[0], inv_title_156263, game_156014[0].player.inventory, 50, game_156014[0].canvas.width, game_156014[0].canvas.height);
+				}
+				
+				if ((game_156014[0].game_state == 5)) {
+				F.line = 77;
+				draw_targeting_146710(game_156014[0]);
+				}
+				
+				if ((game_156014[0].game_state == 1)) {
+				L2: do {
+					F.line = 81;
+					var entity_156272 = null;
 					F.line = 3909;
-					var colontmp__150482 = null;
-					F.line = 128;
-					colontmp__150482 = game_150014[0].entities;
+					var colontmp__156305 = null;
+					F.line = 81;
+					colontmp__156305 = game_156014[0].entities;
 					F.line = 3911;
-					var i_150485 = 0;
+					var i_156308 = 0;
 					F.line = 3912;
-					var l_150487 = (colontmp__150482 != null ? colontmp__150482.length : 0);
-					L2: do {
+					var l_156310 = (colontmp__156305 != null ? colontmp__156305.length : 0);
+					L3: do {
 						F.line = 3913;
-							L3: while (true) {
-							if (!(i_150485 < l_150487)) break L3;
+							L4: while (true) {
+							if (!(i_156308 < l_156310)) break L4;
 								F.line = 3914;
-								entity_150460 = colontmp__150482[chckIndx(i_150485, 0, colontmp__150482.length+0-1)-0];
-									if (!!((entity_150460.ai === null))) Tmp4 = false; else {										Tmp4 = !(entity_150460.creature.dead);									}								if (Tmp4) {
-								F.line = 131;
-								take_turn_142451(entity_150460.ai, game_150014[0].player, game_150014[0].FOV_map, game_150014[0].map, game_150014[0].entities, game_150014[0], "game_messages");
+								entity_156272 = colontmp__156305[chckIndx(i_156308, 0, colontmp__156305.length+0-1)-0];
+									if (!!((entity_156272.ai === null))) Tmp5 = false; else {										Tmp5 = !(entity_156272.creature.dead);									}								if (Tmp5) {
+								F.line = 84;
+								take_turn_142475(entity_156272.ai, game_156014[0].player, game_156014[0].FOV_map, game_156014[0].map, game_156014[0].entities, game_156014[0], "game_messages");
 								}
 								
-								if (entity_150460.creature.dead) {
-								F.line = 134;
-								mark_for_del_149028(entity_150460, game_150014[0]);
+									if (!!((entity_156272.creature === null))) Tmp6 = false; else {										Tmp6 = entity_156272.creature.dead;									}								if (Tmp6) {
+								F.line = 87;
+								mark_for_del_154028(entity_156272, game_156014[0]);
 								}
 								
-								if (game_150014[0].player.creature.dead) {
-								F.line = 138;
-								death_player_149658(game_150014[0].player, game_150014[0]);
-								F.line = 139;
-								break L1;
+								if (game_156014[0].player.creature.dead) {
+								F.line = 91;
+								death_player_154122(game_156014[0].player, game_156014[0]);
+								F.line = 92;
+								break L2;
 								}
 								
 								F.line = 3915;
-								i_150485 = addInt(i_150485, 1);
-								if (!(((colontmp__150482 != null ? colontmp__150482.length : 0) == l_150487))) {
+								i_156308 = addInt(i_156308, 1);
+								if (!(((colontmp__156305 != null ? colontmp__156305.length : 0) == l_156310))) {
 								F.line = 3916;
 								failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 								}
@@ -2719,33 +3481,33 @@ function ready_150205(canvas_150207) {
 							}
 					} while(false);
 				} while(false);
-				if (!((game_150014[0].game_state == 2))) {
-				F.line = 143;
-				game_150014[0].game_state = 0;
+				if (!((game_156014[0].game_state == 2))) {
+				F.line = 96;
+				game_156014[0].game_state = 0;
 				}
 				
-				L5: do {
-					F.line = 146;
-					var entity_150479 = null;
+				L7: do {
+					F.line = 99;
+					var entity_156298 = null;
 					F.line = 3909;
-					var colontmp__150491 = null;
-					F.line = 146;
-					colontmp__150491 = game_150014[0].to_remove;
+					var colontmp__156314 = null;
+					F.line = 99;
+					colontmp__156314 = game_156014[0].to_remove;
 					F.line = 3911;
-					var i_150494 = 0;
+					var i_156317 = 0;
 					F.line = 3912;
-					var l_150496 = (colontmp__150491 != null ? colontmp__150491.length : 0);
-					L6: do {
+					var l_156319 = (colontmp__156314 != null ? colontmp__156314.length : 0);
+					L8: do {
 						F.line = 3913;
-							L7: while (true) {
-							if (!(i_150494 < l_150496)) break L7;
+							L9: while (true) {
+							if (!(i_156317 < l_156319)) break L9;
 								F.line = 3914;
-								entity_150479 = colontmp__150491[chckIndx(i_150494, 0, colontmp__150491.length+0-1)-0];
-								F.line = 147;
-								death_monster_149055(entity_150479, game_150014[0]);
+								entity_156298 = colontmp__156314[chckIndx(i_156317, 0, colontmp__156314.length+0-1)-0];
+								F.line = 100;
+								death_monster_154055(entity_156298, game_156014[0]);
 								F.line = 3915;
-								i_150494 = addInt(i_150494, 1);
-								if (!(((colontmp__150491 != null ? colontmp__150491.length : 0) == l_150496))) {
+								i_156317 = addInt(i_156317, 1);
+								if (!(((colontmp__156314 != null ? colontmp__156314.length : 0) == l_156319))) {
 								F.line = 3916;
 								failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 								}
@@ -2760,40 +3522,42 @@ function ready_150205(canvas_150207) {
 			
 		}
 
-	var result_150211 = null;
+	var result_156034 = null;
 
 	var F={procname:"main.ready",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 77;
+		F.line = 18;
 		rawEcho(makeNimstrLit("We\'ve done loading, ready"));
-		F.line = 81;
-		game_150014[0] = new_game_147072(canvas_150207);
-		F.line = 82;
-		clear_game_147140(game_150014[0]);
+		F.line = 22;
+		game_156014[0] = new_game_146079(canvas_156030);
+		F.line = 23;
+		clear_game_146147(game_156014[0]);
+		F.line = 24;
+		game_148014[0] = game_156014[0];
 		L1: do {
-			F.line = 86;
-			var k_150415 = null;
+			F.line = 28;
+			var k_156215 = null;
 			F.line = 3909;
-			var colontmp__150511 = null;
-			F.line = 86;
-			colontmp__150511 = getURLs();
+			var colontmp__156334 = null;
+			F.line = 28;
+			colontmp__156334 = getURLs();
 			F.line = 3911;
-			var i_150514 = 0;
+			var i_156337 = 0;
 			F.line = 3912;
-			var l_150516 = (colontmp__150511 != null ? colontmp__150511.length : 0);
+			var l_156339 = (colontmp__156334 != null ? colontmp__156334.length : 0);
 			L2: do {
 				F.line = 3913;
 					L3: while (true) {
-					if (!(i_150514 < l_150516)) break L3;
+					if (!(i_156337 < l_156339)) break L3;
 						F.line = 3914;
-						k_150415 = colontmp__150511[chckIndx(i_150514, 0, colontmp__150511.length+0-1)-0];
-						F.line = 87;
-						rawEcho(cstrToNimstr(k_150415));
-						F.line = 89;
-						if (game_150014[0].images != null) { game_150014[0].images.push(get(k_150415)); } else { game_150014[0].images = [get(k_150415)]; };
+						k_156215 = colontmp__156334[chckIndx(i_156337, 0, colontmp__156334.length+0-1)-0];
+						F.line = 29;
+						rawEcho(cstrToNimstr(k_156215));
+						F.line = 31;
+						if (game_156014[0].images != null) { game_156014[0].images.push(get(k_156215)); } else { game_156014[0].images = [get(k_156215)]; };
 						F.line = 3915;
-						i_150514 = addInt(i_150514, 1);
-						if (!(((colontmp__150511 != null ? colontmp__150511.length : 0) == l_150516))) {
+						i_156337 = addInt(i_156337, 1);
+						if (!(((colontmp__156334 != null ? colontmp__156334.length : 0) == l_156339))) {
 						F.line = 3916;
 						failed_assert_impl_20481(makeNimstrLit("/home/kasia/.choosenim/toolchains/nim-0.19.4/lib/system.nim(3916, 11) `len(a) == L` seq modified while iterating over it"));
 						}
@@ -2801,96 +3565,110 @@ function ready_150205(canvas_150207) {
 					}
 			} while(false);
 		} while(false);
-		F.line = 98;
-		game_150014[0].player = {position: {Field0: 1, Field1: 1}, creature: null, ai: null};
-		F.line = 99;
-		game_150014[0].player.creature = {name: makeNimstrLit("Player"), owner: game_150014[0].player, hp: 20, max_hp: 20, attack: 40, defense: 30, dead: false};
-		F.line = 100;
-		nimCopy(game_150014[0].map, generate_map_148063(20, 20, [{Field0: 10, Field1: 10}]), NTI139003);
-		F.line = 101;
-		place_entities_148201(game_150014[0].map, game_150014[0], "entities", 3);
-		F.line = 103;
-		game_150014[0].recalc_FOV = true;
+		F.line = 34;
+		game_156014[0].player = {position: {Field0: 1, Field1: 1}, image: 0, name: makeNimstrLit("Player"), creature: null, ai: null, item: null, inventory: null};
+		F.line = 35;
+		game_156014[0].player.creature = {owner: game_156014[0].player, hp: 20, max_hp: 20, attack: 40, defense: 30, dead: false};
+		F.line = 36;
+		game_156014[0].player.inventory = {capacity: 26, owner: null, items: null};
+		F.line = 37;
+		nimCopy(game_156014[0].map, generate_map_152036(20, 20, [{Field0: 10, Field1: 10}]), NTI138003);
+		F.line = 38;
+		place_entities_152174(game_156014[0].map, game_156014[0], "entities", 3, 2);
+		F.line = 40;
+		game_156014[0].recalc_FOV = true;
+		F.line = 41;
+		game_156014[0].FOV_map = nimCopy(null, calculate_fov_144460(game_156014[0].map, 0, game_156014[0].player.position, 4), NTI144466);
 		F.line = 104;
-		game_150014[0].FOV_map = nimCopy(null, calculate_fov_144460(game_150014[0].map, 0, game_150014[0].player.position, 4), NTI144466);
-		F.line = 151;
-		window.requestAnimationFrame(main_loop_150448);
+		window.requestAnimationFrame(main_loop_156248);
 	framePtr = F.prev;
 
-	return result_150211;
+	return result_156034;
 
 }
 
 function onReadyNim() {
 	var F={procname:"main.onReadyNim",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 155;
+		F.line = 108;
 		rawEcho(makeNimstrLit("Calling Nim from JS"));
-		F.line = 156;
-		var canvas_150537 = document.getElementById("canvas-game");
-		F.line = 157;
-		ready_150205(canvas_150537);
+		F.line = 109;
+		var canvas_156361 = document.getElementById("canvas-game");
+		F.line = 110;
+		ready_156028(canvas_156361);
 	framePtr = F.prev;
 
 	
 }
 
-function process_key_down_150178(key_150180, game_150181) {
-	var F={procname:"main.processKeyDown",prev:framePtr,filename:"main.nim",line:0};
+function process_player_turn_key_149121(key_149123, game_149124) {
+	var F={procname:"input_handler.processPlayerTurnKey",prev:framePtr,filename:"input_handler.nim",line:0};
 	framePtr = F;
-		F.line = 56;
-		switch (key_150180) {
+		F.line = 169;
+		switch (key_149123) {
 		case 37:
-			F.line = 57;
+			F.line = 170;
 			moveLeftNim();
 			break;
 		case 39:
-			F.line = 58;
+			F.line = 171;
 			moveRightNim();
 			break;
 		case 38:
-			F.line = 59;
+			F.line = 172;
 			moveUpNim();
 			break;
 		case 40:
-			F.line = 60;
+			F.line = 173;
 			moveDownNim();
 			break;
 		case 72:
-			F.line = 62;
+			F.line = 175;
 			moveLeftNim();
 			break;
 		case 76:
-			F.line = 63;
+			F.line = 176;
 			moveRightNim();
 			break;
 		case 74:
-			F.line = 64;
+			F.line = 177;
 			moveDownNim();
 			break;
 		case 75:
-			F.line = 65;
+			F.line = 178;
 			moveUpNim();
 			break;
 		case 89:
-			F.line = 67;
+			F.line = 180;
 			moveLeftUpNim();
 			break;
 		case 85:
-			F.line = 68;
+			F.line = 181;
 			moveRightUpNim();
 			break;
 		case 66:
-			F.line = 69;
+			F.line = 182;
 			moveLeftDownNim();
 			break;
 		case 78:
-			F.line = 70;
+			F.line = 183;
 			moveRightDownNim();
 			break;
+		case 71:
+			F.line = 185;
+			pickupNim();
+			break;
+		case 73:
+			F.line = 186;
+			showInventoryNim();
+			break;
+		case 68:
+			F.line = 187;
+			showDropNim();
+			break;
 		default: 
-			F.line = 72;
-			rawEcho(cstrToNimstr((key_150180)+""));
+			F.line = 189;
+			rawEcho(cstrToNimstr((key_149123)+""));
 			break;
 		}
 	framePtr = F.prev;
@@ -2898,15 +3676,137 @@ function process_key_down_150178(key_150180, game_150181) {
 	
 }
 
-function HEX3Aanonymous_150552(e_150555) {
+function process_inventory_key_149151(key_149153, game_149154) {
+			var Tmp1;
 
-		function on_key_down_150572(event_150574) {
+	var F={procname:"input_handler.processInventoryKey",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 193;
+		var index_149156 = subInt(key_149153, 65);
+			if (!(0 <= index_149156)) Tmp1 = false; else {				Tmp1 = (index_149156 < (game_149154.player.inventory.items != null ? game_149154.player.inventory.items.length : 0));			}		if (Tmp1) {
+		F.line = 195;
+		inventorySelectNim(index_149156);
+		}
+		else {
+		if ((key_149153 == 27)) {
+		F.line = 198;
+		quitInventoryNim();
+		}
+		}
+	framePtr = F.prev;
+
+	
+}
+
+function process_targeting_key_149239(key_149241, game_149242) {
+	var F={procname:"input_handler.processTargetingKey",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		F.line = 233;
+		switch (key_149241) {
+		case 37:
+			F.line = 234;
+			moveTargetNim(-1, 0);
+			break;
+		case 39:
+			F.line = 235;
+			moveTargetNim(1, 0);
+			break;
+		case 38:
+			F.line = 236;
+			moveTargetNim(0, -1);
+			break;
+		case 40:
+			F.line = 237;
+			moveTargetNim(0, 1);
+			break;
+		case 72:
+			F.line = 239;
+			moveTargetNim(-1, 0);
+			break;
+		case 76:
+			F.line = 240;
+			moveTargetNim(1, 0);
+			break;
+		case 74:
+			F.line = 241;
+			moveTargetNim(0, 1);
+			break;
+		case 75:
+			F.line = 242;
+			moveTargetNim(0, -1);
+			break;
+		case 89:
+			F.line = 244;
+			moveTargetNim(-1, -1);
+			break;
+		case 85:
+			F.line = 245;
+			moveTargetNim(1, -1);
+			break;
+		case 66:
+			F.line = 246;
+			moveTargetNim(-1, 1);
+			break;
+		case 78:
+			F.line = 247;
+			moveTargetNim(1, 1);
+			break;
+		case 27:
+			F.line = 249;
+			quitTargetingNim();
+			break;
+		case 13:
+			F.line = 250;
+			confirmTargetNim();
+			break;
+		default: 
+			F.line = 252;
+			rawEcho(cstrToNimstr((key_149241)+""));
+			break;
+		}
+	framePtr = F.prev;
+
+	
+}
+
+function process_key_down_149274(key_149276, game_149277) {
+			var Tmp1;
+
+	var F={procname:"input_handler.processKeyDown",prev:framePtr,filename:"input_handler.nim",line:0};
+	framePtr = F;
+		if ((game_149277.game_state == 0)) {
+		F.line = 257;
+		process_player_turn_key_149121(key_149276, game_149277);
+		}
+		else {
+			if ((game_149277.game_state == 3)) Tmp1 = true; else {				Tmp1 = (game_149277.game_state == 4);			}		if (Tmp1) {
+		F.line = 259;
+		process_inventory_key_149151(key_149276, game_149277);
+		}
+		else {
+		if ((game_149277.game_state == 5)) {
+		F.line = 261;
+		process_targeting_key_149239(key_149276, game_149277);
+		}
+		else {
+			F.line = 263;
+		rawEcho(makeNimstrLit("Not player turn"));
+		}
+		}}
+	framePtr = F.prev;
+
+	
+}
+
+function HEX3Aanonymous_156375(e_156378) {
+
+		function on_key_down_156395(event_156397) {
 			var F={procname:":anonymous.onKeyDown",prev:framePtr,filename:"main.nim",line:0};
 			framePtr = F;
-				F.line = 180;
-				event_150574.preventDefault();
-				F.line = 181;
-				process_key_down_150178(event_150574.keyCode, game_150014[0]);
+				F.line = 138;
+				event_156397.preventDefault();
+				F.line = 139;
+				process_key_down_149274(event_156397.keyCode, game_156014[0]);
 			framePtr = F.prev;
 
 			
@@ -2914,20 +3814,20 @@ function HEX3Aanonymous_150552(e_150555) {
 
 	var F={procname:"main.:anonymous",prev:framePtr,filename:"main.nim",line:0};
 	framePtr = F;
-		F.line = 161;
-		var canvas_150556 = document.getElementById("canvas-game");
-		F.line = 162;
-		canvas_150556.width = 800;
-		F.line = 163;
-		canvas_150556.height = 600;
-		F.line = 167;
-		var ress_150559 = initLoader(window);
-		F.line = 169;
-		load(["gfx/human_m.png", "gfx/wall_stone.png", "gfx/floor_cave.png", "gfx/kobold.png"]);
-		F.line = 184;
-		window.addEventListener("keydown", on_key_down_150572, false);
+		F.line = 114;
+		var canvas_156379 = document.getElementById("canvas-game");
+		F.line = 115;
+		canvas_156379.width = 800;
+		F.line = 116;
+		canvas_156379.height = 600;
+		F.line = 120;
+		var ress_156382 = initLoader(window);
+		F.line = 123;
+		load(["gfx/human_m.png", "gfx/wall_stone.png", "gfx/floor_cave.png", "gfx/kobold.png", "gfx/potion.png", "gfx/scroll_lightning.png", "gfx/scroll_fire.png", "gfx/mouseover.png"]);
+		F.line = 142;
+		window.addEventListener("keydown", on_key_down_156395, false);
 	framePtr = F.prev;
 
 	
 }
-window.onload = HEX3Aanonymous_150552;
+window.onload = HEX3Aanonymous_156375;
