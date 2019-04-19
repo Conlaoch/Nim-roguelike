@@ -65,3 +65,14 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
       var it = Item(owner:en_it, use_func:heal);
       en_it.item = it;
       entities.add(en_it);
+
+    # spawn a scroll
+    # Choose a random location in the map
+    let x = rng.range(1..(map.height - 2))
+    let y = rng.range(1..(map.width - 2))
+
+    var en_it = Entity(position:(x,y), image:5, name:"lightning scroll");
+    # item component
+    var it = Item(owner:en_it);
+    en_it.item = it;
+    entities.add(en_it);

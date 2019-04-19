@@ -116,6 +116,23 @@ proc inventorySelectNim(index:int) {.exportc.} =
             quitInventoryNim();
             # end turn      
             game.game_state = ENEMY_TURN.int
+        # ugly hack because we can't use game stuff in entity.nim...
+        if item.owner.name == "lightning scroll":
+            # cast lighting
+            var tg = closest_monster(game.player, game.entities, game.FOV_map, 4);
+            if isNil(tg):
+                game.game_messages.add("No enemy is close enough to strike");
+            else:
+                tg.creature.take_damage(8);
+                game.game_messages.add("A lightning bolt strikes " & $tg.name & " and deals 8 damage!");
+            # destroy
+            game.player.inventory.items.delete(game.player.inventory.items.find(item));
+            # standard stuff
+            game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+            # quit inventory menu
+            quitInventoryNim();
+            # end turn      
+            game.game_state = ENEMY_TURN.int
         else:
             game.game_messages.add($item.owner.name & " cannot be used!");
 

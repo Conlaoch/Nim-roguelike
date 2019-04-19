@@ -62,6 +62,21 @@ proc get_items_at*(entities: seq[Entity], x:int, y:int) : Entity =
     
     return nil
 
+# find closest enemy, up to a maximum range, and in the player's FOV
+proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2], max_range:int) : Entity =
+    var target: Entity;
+    var closest_dist: int;
+    closest_dist = max_range+1; # start with slightly more than maximum range
+    for entity in entities:
+        if not isNil(entity.creature) and entity != player and entity.position in fov_map:
+            # calculate distance between this entity and the player
+            var dist = player.position.distance_to(entity.position);
+            if dist < closest_dist: # it's closer, so remember it
+                target = entity
+                closest_dist = dist
+
+    return target
+
 proc pick_up*(item: Item, e: Entity) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)
