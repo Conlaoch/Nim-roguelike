@@ -7,45 +7,10 @@ import table_tools
 # needed because key handlers ref Game
 var game*: Game;
 
-# stubs to be called from JS by JQuery onclick()
+# functions to be called from JS by JQuery onclick()
 # and by the key input
-proc moveUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(0, -1, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(0, 1, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveLeftNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 0, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveRightNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, 0, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveLeftUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, -1, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveRightUpNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, -1, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveLeftDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(-1, 1, game.map, game.entities, game.game_messages):
-        game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
-
-proc moveRightDownNim() {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(1, 1, game.map, game.entities, game.game_messages):
+proc moveNim(x:int, y:int) {.exportc.} =
+    if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game.map, game.entities, game.game_messages):
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
@@ -167,20 +132,20 @@ proc inventorySelectNim(index:int) {.exportc.} =
 
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
-        of 37: moveLeftNim()   #left
-        of 39: moveRightNim()     #right
-        of 38: moveUpNim()      #up
-        of 40: moveDownNim()   #down
+        of 37: moveNim(-1,0)   #left
+        of 39: moveNim(1,0)     #right
+        of 38: moveNim(0,-1)      #up
+        of 40: moveNim(0,1)   #down
         # vim
-        of 72: moveLeftNim() # h
-        of 76: moveRightNim() # l
-        of 74: moveDownNim() # j
-        of 75: moveUpNim() # k
+        of 72: moveNim(-1,0) # h
+        of 76: moveNim(1,0) # l
+        of 74: moveNim(0,1) # j
+        of 75: moveNim(0,-1) # k
         # diagonals
-        of 89: moveLeftUpNim() # y
-        of 85: moveRightUpNim() # u
-        of 66: moveLeftDownNim() # b
-        of 78: moveRightDownNim() # n
+        of 89: moveNim(-1,-1) # y
+        of 85: moveNim(1,-1) # u
+        of 66: moveNim(-1,1) # b
+        of 78: moveNim(1,1) # n
         # others
         of 71: pickupNim() # g
         of 73: showInventoryNim() # i

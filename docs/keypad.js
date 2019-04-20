@@ -8,22 +8,22 @@ $( document ).ready(function() {
     $(".key_arrow1").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 1");
-        moveLeftUpNim()
+        moveNim(-1,-1)
     });
     $(".key_arrow2").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 2");
-        moveUpNim()
+        moveNim(0,-1)
     });
     $(".key_arrow3").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 3");
-        moveRightUpNim()
+        moveNim(1,-1)
     });
     $(".key_arrow4").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 4");
-        moveLeftNim()
+        moveNim(-1,0)
     });
     $(".key_arrow5").click(function(e) {
         console.log("Clicked a button 5");
@@ -31,22 +31,22 @@ $( document ).ready(function() {
     $(".key_arrow6").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 6");
-        moveRightNim()
+        moveNim(1,0)
     });
     $(".key_arrow7").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 7");
-        moveLeftDownNim()
+        moveNim(-1,1)
     });
     $(".key_arrow8").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 8");
-        moveDownNim()
+        moveNim(0,1)
     });
     $(".key_arrow9").click(function(e) {
         //console.log($(this));
         console.log("Clicked a button 9");
-        moveRightDownNim()
+        moveNim(1,1)
     });
     $(".key_get").click(function(e) {
         console.log($(this));
@@ -60,7 +60,7 @@ $( document ).ready(function() {
     });
     $(".key_esc").click(function(e){
         quitInventoryNim()
-    })
+    });
     //targeting keys
     $(".key_tg_arrow1").click(function(e) {
         //console.log($(this));
