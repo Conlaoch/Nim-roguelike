@@ -135,6 +135,20 @@ proc loadGameNim() {.exportc.} =
     game.images = imgs;
     input_handler.game = game;
 
+    # fix references
+    # naive way (a proper one would probably involve a e id => Entity ref lookup table)
+    for e in game.entities:
+        if not isNil(e.item):
+            e.item.owner = e
+        if not isNil(e.ai):
+            e.ai.owner = e
+        if not isNil(e.creature):
+            e.creature.owner = e
+
+    # fix player's ref, too
+    game.player.creature.owner = game.player
+
+
     game.game_messages.add("Loaded game...");
 
 # setup canvas
