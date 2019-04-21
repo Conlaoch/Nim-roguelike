@@ -26,7 +26,10 @@ function loadStrBack(chars) {
 }
 
 
-// function loadJS(json) {
-//     var obj = JSON.parse(json);
-//     console.log(obj);
-// }
+function loadJS(json) {
+    //unf&^k the json
+    var json = String.fromCharCode.apply(null, json);
+    var obj = JSON.parse(json);
+    console.log(obj);
+    return obj;
+}
