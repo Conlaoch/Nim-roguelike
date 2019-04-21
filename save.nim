@@ -7,5 +7,8 @@ proc saveJS*(obj: Game) {.importc.}
 # has to return cstring otherwise it doesn't print back correctly
 proc loadStrBack*(str: cstring) : cstring {.importc.}
 
+
+proc loadJS*() : Game {.importc.}
+
 # see save above
-proc loadJS*(s:string) : Game {.importc.}
+proc loadJSNim*(s:string) : Game {.importc.}

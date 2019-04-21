@@ -61,6 +61,12 @@ $( document ).ready(function() {
     $(".key_esc").click(function(e){
         quitInventoryNim()
     });
+    $(".key_save").click(function(e){
+        saveGameNim()
+    });
+    $(".key_load").click(function(e){
+        loadGameNim()
+    })
     //targeting keys
     $(".key_tg_arrow1").click(function(e) {
         //console.log($(this));

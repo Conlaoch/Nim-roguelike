@@ -131,8 +131,10 @@ proc inventorySelectNim(index:int) {.exportc.} =
         game.game_state = ENEMY_TURN.int
 
 
-proc saveGameNim() = 
+proc saveGameNim() {.exportc.} = 
     echo "Saving game test..."
+
+    game.game_messages.add("Saving game...")
 
     # Nim 0.19.4 seems to have a bug in its marshal library, and manually serializing is a PITA, so... 
     # head over to JS side
@@ -190,7 +192,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 71: pickupNim() # g
         of 73: showInventoryNim() # i
         of 68: showDropNim() # d
-        #of 83: loadGameNim() # s
+        of 83: saveGameNim() # s
         else:
           echo key
 
