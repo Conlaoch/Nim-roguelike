@@ -4,6 +4,9 @@ import json
 import game_class, entity, math_helpers
 import table_tools, save
 
+# for next level
+import map, arena_map, FOV
+
 # global stuff goes here
 # needed because key handlers ref Game
 var game*: Game;
@@ -172,6 +175,24 @@ proc saveGameNim() {.exportc.} =
     #     # $cstring serves as a nice reverse of cstring(str)
     #     game.game_messages.add($st);
 
+proc nextLevel() =
+    # are we on stairs?
+    if game.map.is_stairs(game.player.position.x, game.player.position.y):
+        game.game_messages.add("You descend deeper in the dungeon")
+        # clear entities list
+        if game.entities.len > 0:
+            game.entities.setLen(0)
+        # generate new level
+        game.map = arena_map.generateMap(15,15,@[(6,6)])
+        arena_map.place_entities(game.map, game.entities, 3, 2);
+        # set player pos
+        game.player.position = (1,1);
+        # FOV
+        game.recalc_FOV = true;
+        game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
+    else:
+        game.game_messages.add("There are no stairs here");
+
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
         of 37: moveNim(-1,0)   #left
@@ -193,6 +214,8 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 73: showInventoryNim() # i
         of 68: showDropNim() # d
         of 83: saveGameNim() # s
+        # loading handled in main.nim # q
+        of 13: nextLevel() # enter
         else:
           echo key
 

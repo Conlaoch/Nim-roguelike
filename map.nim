@@ -17,3 +17,9 @@ proc is_blocked*(map: Map, x,y: int) : bool =
         return true
     else:
         return false
+
+proc is_stairs*(map: Map, x,y:int) : bool =
+    if map.tiles[y * map.width + x] == 2:
+        return true
+    else:
+        return false

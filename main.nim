@@ -35,7 +35,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     game.player = Player(position: (1,1), image:0, name:"Player");
     game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.player.inventory = Inventory(capacity:26);
-    game.map = arena_map.generateMap(20,20,@[(10,10)])
+    game.map = arena_map.generateMap(15,15,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;
@@ -169,7 +169,8 @@ dom.window.onload = proc(e: dom.Event) =
     cstring("gfx/potion.png"),
     cstring("gfx/scroll_lightning.png"), #5
     cstring("gfx/scroll_fire.png"),
-    cstring("gfx/mouseover.png")]);
+    cstring("gfx/mouseover.png"),
+    cstring("gfx/stairs_down.png")]);
 
     # keys
     #  proc onKeyUp(event: Event) =

@@ -70,8 +70,10 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
 proc drawMapTile(game: Game, point:Vector2, tile: int) =
     if tile == 0:
         renderGfxTile(game, game.images[1], point.x, point.y);
-    else:
-        renderGfxTile(game, game.images[2], point.x, point.y)
+    elif tile == 1:
+        renderGfxTile(game, game.images[2], point.x, point.y);
+    elif tile == 2:
+        renderGfxTile(game, game.images[8], point.x, point.y);
 
 proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
     if tile == 0:

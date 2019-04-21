@@ -9,7 +9,7 @@ proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
 
 proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
   var tiles: seq[int] = @[]
-  for i in 0 .. <(width*height):
+  for i in 0 ..< (width*height):
     tiles.add(1)
 
 
@@ -23,7 +23,17 @@ proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
 
   for y in 0 ..< height:
     setTile(tiles, 0, y, width, 0)
-    setTile(tiles, 0, height-1, width, 0)
+    setTile(tiles, width-1, y, width, 0)
+
+  # place stairs
+  var rng = aleaRNG();
+  # Choose a random location in the map
+  let x = rng.range(1..(height - 2))
+  let y = rng.range(1..(width - 2))
+  
+  setTile(tiles, x,y, width, 2)
+
+
 
   Map(
     width: width,
