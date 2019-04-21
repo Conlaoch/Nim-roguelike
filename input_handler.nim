@@ -175,7 +175,7 @@ proc saveGameNim() {.exportc.} =
     #     # $cstring serves as a nice reverse of cstring(str)
     #     game.game_messages.add($st);
 
-proc nextLevel() =
+proc nextLevel() {.exportc.} =
     # are we on stairs?
     if game.map.is_stairs(game.player.position.x, game.player.position.y):
         game.game_messages.add("You descend deeper in the dungeon")

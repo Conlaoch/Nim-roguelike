@@ -165,7 +165,7 @@ proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], me
     var astar = findPathNim(game_map, e.position, target);
     # for e in astar:
     #     echo e
-    if not astar.len < 1:
+    if astar.len > 1:
         # get the next point along the path (because #0 is our current position)
         # it was already checked for walkability by astar so we don't need to do it again
         e.position = astar[1]

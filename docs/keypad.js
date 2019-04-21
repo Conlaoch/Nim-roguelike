@@ -61,6 +61,9 @@ $( document ).ready(function() {
     $(".key_esc").click(function(e){
         quitInventoryNim()
     });
+    $(".key_descend").click(function(e){
+        nextLevel()
+    });
     $(".key_save").click(function(e){
         saveGameNim()
     });
