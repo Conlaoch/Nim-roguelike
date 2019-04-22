@@ -25,8 +25,10 @@ proc isoPos*(x,y:int): (int, int)  =
     # those values work for Gervais isometric tiles
     let HALF_TILE_HEIGHT = 16
     let HALF_TILE_WIDTH = 32
-    let offset_x = 80
-    let tile_x = (x - y) * HALF_TILE_WIDTH + offset_x
+    # lets us see the whole 15x15 map 
+    # which is, incidentally, the biggest map that we can fit on 800x600 canvas
+    let offset_x = 360 
+    let tile_x = offset_x + (x - y) * HALF_TILE_WIDTH
     let tile_y = (x + y) * HALF_TILE_HEIGHT
   
     return (int(tile_x),
