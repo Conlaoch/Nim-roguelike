@@ -1,5 +1,5 @@
 import map, math_helpers
-import entity, alea
+import type_defs, alea
 import use_functions
 
 # https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
@@ -83,7 +83,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
 
     var en_it = Entity(position:(x,y), image:5, name:"lightning scroll");
     # item component
-    var it = Item(owner:en_it);
+    var it = Item(owner:en_it, use_func:cast_lightning);
     en_it.item = it;
     entities.add(en_it);
 

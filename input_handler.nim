@@ -3,6 +3,7 @@ import json
 
 import game_class, entity, math_helpers
 import table_tools, save
+import type_defs
 
 # for next level
 import map, arena_map, FOV
@@ -22,10 +23,7 @@ proc pickupNim() {.exportc.} =
     if game.game_state == PLAYER_TURN.int:
         var it = get_items_at(game.entities, game.player.position.x, game.player.position.y)
         if not isNil(it):
-            it.item.pick_up(game.player);
-            game.game_messages.add("Picked up item " & it.name);
-            # because it's no longer on map
-            game.entities.delete(game.entities.find(it));
+            it.item.pick_up(game.player, game);
         else:
             game.game_messages.add("No item to pick up here");
     # end turn regardless        
@@ -79,24 +77,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
     var item = game.player.inventory.items[index]
     #echo "Item is " & $item.owner.name
     if game.game_state == GUI_S_INVENTORY.int:
-        if item.use_item(game.player):
-            game.game_messages.add($game.player.name & " uses " & $item.owner.name);
-            # quit inventory menu
-            quitInventoryNim();
-            # end turn      
-            game.game_state = ENEMY_TURN.int
-        # ugly hack because we can't use game stuff in entity.nim...
-        elif item.owner.name == "lightning scroll":
-            # cast lighting
-            var tg = closest_monster(game.player, game.entities, game.FOV_map, 4);
-            if isNil(tg):
-                game.game_messages.add("No enemy is close enough to strike");
-            else:
-                tg.creature.take_damage(8);
-                game.game_messages.add("A lightning bolt strikes " & $tg.name & " and deals 8 damage!");
-            # destroy
-            game.player.inventory.items.delete(game.player.inventory.items.find(item));
-            # standard stuff
+        if item.use_item(game.player, game):
             game.game_messages.add($game.player.name & " uses " & $item.owner.name);
             # quit inventory menu
             quitInventoryNim();
@@ -125,9 +106,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
             game.game_messages.add($item.owner.name & " cannot be used!");
 
     if game.game_state == GUI_S_DROP.int:
-        item.drop(game.player);
-        game.entities.add(item.owner);
-        game.game_messages.add("You dropped the " & $item.owner.name);
+        item.drop(game.player, game);
         # quit inventory menu
         quitInventoryNim();
         # end turn      

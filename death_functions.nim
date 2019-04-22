@@ -1,4 +1,4 @@
-import game_class, entity
+import game_class, type_defs
 
 proc mark_for_del*(e:Entity, game:Game) =
     game.to_remove.add(e);

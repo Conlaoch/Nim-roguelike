@@ -1,5 +1,5 @@
 # Bindings for JS save functions
-import game_class
+import type_defs
 
 # ideally would be generic (object or ref object...)
 proc saveJS*(obj: Game) {.importc.}

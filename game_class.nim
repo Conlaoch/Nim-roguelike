@@ -1,33 +1,10 @@
 import dom
 import html5_canvas
 
-import entity, math_helpers, map, FOV, tint_image, seq_tools
+import entity, math_helpers, map, tint_image, seq_tools
 
-# this is Nim's class equivalent (a type and methods which have it as a parameter)
-type
-    Game* = ref object
-        mx, my: int
-        canvas*: Canvas
-        context*: CanvasRenderingContext2D
-        images*: seq[ImageElement]
-        player*: Player
-        map*: Map
-        recalc_FOV*: bool
-        FOV_map*: seq[Vector2]
-        explored*: seq[Vector2]
-        entities*: seq[Entity]
-        game_state*: int # because enums are ints by default
-        previous_state*: int # for GUI windows to know what to go back to
-        game_messages*: seq[string]
-        # list of entities to be deleted
-        to_remove*: seq[Entity]
-        targeting*: Vector2
-
-    GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
-
-    GameMessage* = tuple[s:string, c:ColorRGB]
-
+# type definition moved to type_defs
+import type_defs
 
 
 proc newGame*(canvas: Canvas) : Game =

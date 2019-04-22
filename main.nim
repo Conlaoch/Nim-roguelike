@@ -2,6 +2,7 @@ import dom
 import html5_canvas
 
 import input_handler
+import type_defs
 import resources, entity, game_class
 import map, arena_map, FOV
 import death_functions

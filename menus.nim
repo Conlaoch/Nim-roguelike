@@ -1,6 +1,6 @@
 import html5_canvas
 
-import game_class, entity
+import type_defs, entity
 
 # generic
 proc menu(game:Game, header:string, options:seq[string], width:int, screen_width:int, screen_height:int) =

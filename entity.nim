@@ -1,52 +1,8 @@
 import math_helpers, map, math, alea, astar
 
-
-type
-    # this is Nim's closest class equivalent (a type and associated functions)
-    # a type
-    Entity* = ref object
-        position*: Vector2
-        image*: int # the index of the tile in game.images
-        # small caps for type string!
-        name*: string
-        # optional components
-        creature*: Creature
-        ai*: AI
-        item*: Item
-        inventory*:Inventory
+# type definition moved to type_defs
+import type_defs
     
-    Player* = Entity
-
-    Creature* = ref object
-        # back ref to entity
-        owner*: Entity
-        # combat stuff
-        hp*: int
-        max_hp*: int
-        defense*: int
-        attack*: int
-        # flag
-        dead*: bool
-
-    AI* = ref object
-        # back reference to entity
-        owner*: Entity
-
-    Item* = ref object
-        # back reference to entity
-        owner*: Entity
-        # optional
-        use_func*: FuncHandler
-        targeting*: bool
-    
-    Inventory* = ref object
-        # back reference to entity
-        owner*: Entity
-        capacity*: int
-        items*: seq[Item]
-
-    # in Nim, the easiest way to call a function is to assign a dummy type
-    FuncHandler* = proc(i:Item, e:Entity)
 
 # Nim functions have to be defined before anything that uses them
 proc get_creatures_at*(entities: seq[Entity], x:int, y:int) : Entity =
@@ -78,22 +34,25 @@ proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2
 
     return target
 
-proc pick_up*(item: Item, e: Entity) =
+proc pick_up*(item: Item, e: Entity, game:Game) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)
-        # the rest is handled elsewhere because we can't use anything from Game here
+        game.game_messages.add("Picked up item " & item.owner.name);
+        # because it's no longer on map
+        game.entities.delete(game.entities.find(item.owner));
 
-proc drop*(item: Item, e: Entity) =
+proc drop*(item: Item, e: Entity, game:Game) =
     e.inventory.items.delete(e.inventory.items.find(item));
     # set position
     item.owner.position = e.position
-    # can't put it back in entities list here due to it being in game... see input handler for now
+    game.entities.add(item.owner);
+    game.game_messages.add("You dropped the " & $item.owner.name);
 
-proc use_item*(item:Item, user:Entity) : bool =
+proc use_item*(item:Item, user:Entity, game:Game) : bool =
     # call proc?
     if not isNil(item.use_func):
         echo "Calling use function"
-        item.use_func(item, user);
+        item.use_func(item, user, game);
         return true
     else:
         return false
