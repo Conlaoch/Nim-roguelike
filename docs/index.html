@@ -3,6 +3,7 @@
   <head>
     <!-- we're using some fancy characters-->
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="main.css">
     <title>Veins of the Earth</title>
   </head>
   <script src="jquery-3.3.1.js"></script>
@@ -14,83 +15,85 @@
   <script src="save.js"></script>
   <script src="main.js"></script>
   <body>
+    <div class="wrapper"> 
     <canvas id="canvas-game"></canvas>
-  <!-- based on Ondrej Zara's js-like -->
-  <div id="keypad">
-    <table>
-    <tbody>
+    <!-- based on Ondrej Zara's js-like -->
+    <div id="keypad" class="keypad">
+      <table>
+      <tbody>
+        <tr>
+          <td><input class="key_save" type="button" value="(s)ave"></td>
+          <td><input class="key_load" type="button" value="(l)oad"></td> 
+        </tr>
       <tr>
-        <td><input class="key_save" type="button" value="(s)ave"></td>
-        <td><input class="key_load" type="button" value="(l)oad"></td> 
+      <td><input class="key_get" type="button" value="(g)et" > </td>
+      <td><input class="key_inv" type="button" value="(i)nven"></td>
+      <td><input class="key_drop" type="button" value="(d)rop"></td>
       </tr>
-    <tr>
-    <td><input class="key_get" type="button" value="(g)et" > </td>
-    <td><input class="key_inv" type="button" value="(i)nven"></td>
-    <td><input class="key_drop" type="button" value="(d)rop"></td>
-    </tr>
-    <tr>
-      <td><input class="key_descend" type="button" value="descend"></td>
-      <td><input class="key_esc" type="button" value="ESC"></td>
-    </tr>
-    <tr>
-    <!-- button tag can be buggy so we use input type=button -->
-    <!-- using hex values for Unicode characters -->
-    <td><input class="key_arrow1" type="button" value="&#9700" > </td>
-    <!-- for consistency -->
-    <td><input class="key_arrow2" type="button" value="&#9650"> </td>
-    <td><input class="key_arrow3" type="button" value="&#9701" > </td>
-    </tr>
-    <tr>
-    <td><input class="key_arrow4" type="button" value= "&#9664"> </td>
-    <!-- midline ellipsis -->
-    <td><input class="key_arrow5" type="button" value= "&#8943"> </td>
-    <td><input class="key_arrow6" type="button" value= "&#9654"> </td>
-    </tr>
-    <tr>
-    <td><input class="key_arrow7" type="button" value= "&#9699"> </td>
-    <!-- for consistency -->
-    <td><input class="key_arrow8" type="button" value= "&#9660"> </td>
-    <td><input class="key_arrow9" type="button" value="&#9698"> </td>
-    </tr>
-    </tbody>
-    </table>
+      <tr>
+        <td><input class="key_descend" type="button" value="descend"></td>
+        <td><input class="key_esc" type="button" value="ESC"></td>
+      </tr>
+      <tr>
+      <!-- button tag can be buggy so we use input type=button -->
+      <!-- using hex values for Unicode characters -->
+      <td><input class="key_arrow1" type="button" value="&#9700" > </td>
+      <!-- for consistency -->
+      <td><input class="key_arrow2" type="button" value="&#9650"> </td>
+      <td><input class="key_arrow3" type="button" value="&#9701" > </td>
+      </tr>
+      <tr>
+      <td><input class="key_arrow4" type="button" value= "&#9664"> </td>
+      <!-- midline ellipsis -->
+      <td><input class="key_arrow5" type="button" value= "&#8943"> </td>
+      <td><input class="key_arrow6" type="button" value= "&#9654"> </td>
+      </tr>
+      <tr>
+      <td><input class="key_arrow7" type="button" value= "&#9699"> </td>
+      <!-- for consistency -->
+      <td><input class="key_arrow8" type="button" value= "&#9660"> </td>
+      <td><input class="key_arrow9" type="button" value="&#9698"> </td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+    <div id="inventory_keypad" class="keypad">
+      <table>
+        <tbody>
+            <tr>
+                <td><input class="key_esc" type="button" value="ESC"></td>
+            </tr>
+        </tbody>
+      </table>
+      
+    </div>  
+    <div id="targeting_keypad" class="keypad">
+      <table>
+        <tbody>
+          <tr>
+            <td><input class="key_tg_esc" type="button" value="ESC"></td>
+            <td><input class="key_tg_enter" type="button" value="ENTER"></td>
+          </tr>
+          <tr>
+            <td><input class="key_tg_arrow1" type="button" value="&#9700" > </td>
+            <!-- for consistency -->
+            <td><input class="key_tg_arrow2" type="button" value="&#9650"> </td>
+            <td><input class="key_tg_arrow3" type="button" value="&#9701" > </td>
+            </tr>
+            <tr>
+            <td><input class="key_tg_arrow4" type="button" value= "&#9664"> </td>
+            <td><input class="key_tg_arrow6" type="button" value= "&#9654"> </td>
+            </tr>
+            <tr>
+            <td><input class="key_tg_arrow7" type="button" value= "&#9699"> </td>
+            <!-- for consistency -->
+            <td><input class="key_tg_arrow8" type="button" value= "&#9660"> </td>
+            <td><input class="key_tg_arrow9" type="button" value="&#9698"> </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  <div id="inventory_keypad">
-    <table>
-      <tbody>
-          <tr>
-              <td><input class="key_esc" type="button" value="ESC"></td>
-          </tr>
-      </tbody>
-    </table>
-    
-  </div>  
-  <div id="targeting_keypad">
-    <table>
-      <tbody>
-        <tr>
-          <td><input class="key_tg_esc" type="button" value="ESC"></td>
-          <td><input class="key_tg_enter" type="button" value="ENTER"></td>
-        </tr>
-        <tr>
-          <td><input class="key_tg_arrow1" type="button" value="&#9700" > </td>
-          <!-- for consistency -->
-          <td><input class="key_tg_arrow2" type="button" value="&#9650"> </td>
-          <td><input class="key_tg_arrow3" type="button" value="&#9701" > </td>
-          </tr>
-          <tr>
-          <td><input class="key_tg_arrow4" type="button" value= "&#9664"> </td>
-          <td><input class="key_tg_arrow6" type="button" value= "&#9654"> </td>
-          </tr>
-          <tr>
-          <td><input class="key_tg_arrow7" type="button" value= "&#9699"> </td>
-          <!-- for consistency -->
-          <td><input class="key_tg_arrow8" type="button" value= "&#9660"> </td>
-          <td><input class="key_tg_arrow9" type="button" value="&#9698"> </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+    </div>
   </body>
   <script src="table_tools.js"></script>
 </html>
