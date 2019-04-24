@@ -6,6 +6,7 @@ import entity, math_helpers, map, tint_image, seq_tools
 # type definition moved to type_defs
 import type_defs
 
+import tables
 
 proc newGame*(canvas: Canvas) : Game =
     new result
@@ -44,19 +45,25 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
             renderGfxTile(game, game.images[e.image], iso[0]+8, iso[1]+8);
 
 
+var tile_lookup = {0: 1, 1:2, 2:8}.toTable()
+
 proc drawMapTile(game: Game, point:Vector2, tile: int) =
-    if tile == 0:
-        renderGfxTile(game, game.images[1], point.x, point.y);
-    elif tile == 1:
-        renderGfxTile(game, game.images[2], point.x, point.y);
-    elif tile == 2:
-        renderGfxTile(game, game.images[8], point.x, point.y);
+    renderGfxTile(game, game.images[tile_lookup[tile]], point.x, point.y);
+
+    # if tile == 0:
+    #     renderGfxTile(game, game.images[1], point.x, point.y);
+    # elif tile == 1:
+    #     renderGfxTile(game, game.images[2], point.x, point.y);
+    # elif tile == 2:
+    #     renderGfxTile(game, game.images[8], point.x, point.y);
 
 proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
-    if tile == 0:
-        game.context.drawImage(tintImageNim(game.images[1], tint, 0.5), float(point.x), float(point.y));
-    else:
-        game.context.drawImage(tintImageNim(game.images[2], tint, 0.5), float(point.x), float(point.y));
+    game.context.drawImage(tintImageNim(game.images[tile_lookup[tile]], tint, 0.5), float(point.x), float(point.y));
+
+    # if tile == 0:
+    #     game.context.drawImage(tintImageNim(game.images[1], tint, 0.5), float(point.x), float(point.y));
+    # else:
+    #     game.context.drawImage(tintImageNim(game.images[2], tint, 0.5), float(point.x), float(point.y));
 
 proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[Vector2]) =
     # 0..x is inclusive in Nim
