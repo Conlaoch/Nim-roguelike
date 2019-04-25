@@ -145,6 +145,8 @@ proc loadGameNim() {.exportc.} =
             e.ai.owner = e
         if not isNil(e.creature):
             e.creature.owner = e
+        if not isNil(e.equipment):
+            e.equipment.owner = e
 
     # fix player's ref, too
     game.player.creature.owner = game.player
@@ -171,7 +173,8 @@ dom.window.onload = proc(e: dom.Event) =
     cstring("gfx/scroll_lightning.png"), #5
     cstring("gfx/scroll_fire.png"),
     cstring("gfx/mouseover.png"),
-    cstring("gfx/stairs_down.png")]);
+    cstring("gfx/stairs_down.png"),
+    cstring("gfx/longsword.png")]);
 
     # keys
     #  proc onKeyUp(event: Event) =

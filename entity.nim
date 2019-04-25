@@ -48,9 +48,41 @@ proc drop*(item: Item, e: Entity, game:Game) =
     game.entities.add(item.owner);
     game.game_messages.add("You dropped the " & $item.owner.name);
 
+# Equipment system
+proc display_name*(e: Entity) : string = 
+    if not isNil(e.item):
+        if not isNil(e.equipment) and e.equipment.equipped:
+            return e.name & " (equipped)"
+        else:
+            return e.name
+    else:
+        return e.name
+
+
+proc equip(eq: Equipment, game: Game) =
+    eq.equipped = true;
+
+    game.game_messages.add("Item equipped");
+
+proc unequip(eq: Equipment, game: Game) =
+    eq.equipped = false;
+    game.game_messages.add("Took off item");
+
+
+proc toggle_equip(eq: Equipment, game: Game) = 
+    if eq.equipped:
+        eq.unequip(game)
+    else:
+        eq.equip(game)
+
 proc use_item*(item:Item, user:Entity, game:Game) : bool =
+    # equippable items
+    if not isNil(item.owner.equipment):
+        item.owner.equipment.toggle_equip(game);
+        return true
+
     # call proc?
-    if not isNil(item.use_func):
+    elif not isNil(item.use_func):
         echo "Calling use function"
         item.use_func(item, user, game);
         return true

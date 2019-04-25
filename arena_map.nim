@@ -97,3 +97,17 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     it = Item(owner:en_it, targeting:true);
     en_it.item = it;
     entities.add(en_it);
+
+    # spawn sword
+    # Choose a random location in the map
+    x = rng.range(1..(map.height - 2))
+    y = rng.range(1..(map.width - 2))
+
+    en_it = Entity(position:(x,y), image:9, name:"longsword");
+    # item component
+    it = Item(owner:en_it);
+    en_it.item = it;
+    # equipment component
+    var eq = Equipment(owner:en_it);
+    en_it.equipment = eq;
+    entities.add(en_it);

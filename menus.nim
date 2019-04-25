@@ -37,6 +37,6 @@ proc inventory_menu*(game:Game, header:string, inventory:Inventory, inventory_wi
     else:
         #options = [item.owner.name for item in inventory.items]
         for item in inventory.items:
-            options.add(item.owner.name);
+            options.add(item.owner.display_name);
 
     menu(game, header, options, inventory_width, screen_width, screen_height)

@@ -39,6 +39,7 @@ type
         creature*: Creature
         ai*: AI
         item*: Item
+        equipment*: Equipment
         inventory*:Inventory
     
     Player* = Entity
@@ -65,6 +66,12 @@ type
         use_func*: FuncHandler
         targeting*: bool
     
+    Equipment* = ref object
+        # back reference to entity
+        owner*: Entity
+        slot*: string
+        equipped*: bool
+
     Inventory* = ref object
         # back reference to entity
         owner*: Entity
