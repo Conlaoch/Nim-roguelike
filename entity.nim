@@ -57,6 +57,15 @@ proc use_item*(item:Item, user:Entity, game:Game) : bool =
     else:
         return false
 
+proc heal_damage*(cr:Creature, amount: int) =
+    var amount = amount;
+    # prevent overhealing
+    if cr.hp + amount > cr.max_hp:
+        amount = cr.max_hp - cr.hp
+
+    cr.hp += amount
+
+
 # basic combat system
 proc take_damage*(cr:Creature, amount:int) =
     cr.hp -= amount;
