@@ -75,6 +75,15 @@ proc toggle_equip(eq: Equipment, game: Game) =
     else:
         eq.equip(game)
 
+proc equipped_items(inv: Inventory) : seq[Item] =
+    var list_equipped: seq[Item];
+    
+    for it in inv.items:
+        if not isNil(it.owner.equipment) and it.owner.equipment.equipped:
+            list_equipped.add(it);
+
+    return list_equipped
+
 proc use_item*(item:Item, user:Entity, game:Game) : bool =
     # equippable items
     if not isNil(item.owner.equipment):
@@ -88,6 +97,24 @@ proc use_item*(item:Item, user:Entity, game:Game) : bool =
         return true
     else:
         return false
+
+# Nim property
+# Unfortunately we can't name it the same as the variable itself,
+# the manual indicates we should be able to, but there's a name collision...
+proc get_defense*(cr:Creature): int {.inline.} =
+    var ret = cr.defense
+
+    if not isNil(cr.owner.inventory):
+        # check for items
+        for i in cr.owner.inventory.equipped_items:
+            if i.owner.equipment.defense_bonus > 0:
+                ret += i.owner.equipment.defense_bonus
+                echo("Added def bonus of " & $i.owner.equipment.defense_bonus);
+    
+    echo("Def: " & $ret)
+    return ret
+
+
 
 proc heal_damage*(cr:Creature, amount: int) =
     var amount = amount;
@@ -110,11 +137,16 @@ proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
     var rng = aleaRNG();
     var damage = rng.roller("1d6");
 
-    if damage > 0:
-        target.creature.take_damage(damage);
-        messages.add(cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!");
+    var attack_roll = rng.roller("1d100");
+
+    if attack_roll < target.creature.get_defense:
+        if damage > 0:
+            target.creature.take_damage(damage);
+            messages.add(cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!");
+        else:
+            messages.add(cr.owner.name & " attacks " & target.name & " but does no damage");
     else:
-        messages.add(cr.owner.name & " attacks " & target.name & " but does no damage");
+        messages.add(cr.owner.name & " misses " & target.name & "!");
 
 
 # some functions that have our Entity type as the first parameter

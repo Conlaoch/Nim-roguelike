@@ -71,6 +71,8 @@ type
         owner*: Entity
         slot*: string
         equipped*: bool
+        attack_bonus*: int
+        defense_bonus*: int
 
     Inventory* = ref object
         # back reference to entity
