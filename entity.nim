@@ -84,6 +84,18 @@ proc equipped_items(inv: Inventory) : seq[Item] =
 
     return list_equipped
 
+proc get_weapon(e:Entity) : Item =
+    if not isNil(e.inventory):
+        for i in e.inventory.equipped_items:
+            if not isNil(i.owner.equipment) and i.owner.equipment.num_dice > 0:
+                #echo("We have a weapon " & $i.owner.name);
+                return i
+
+        # in case there is none
+        return nil
+    else:
+        return nil
+
 proc use_item*(item:Item, user:Entity, game:Game) : bool =
     # equippable items
     if not isNil(item.owner.equipment):
@@ -109,7 +121,7 @@ proc get_defense*(cr:Creature): int {.inline.} =
         for i in cr.owner.inventory.equipped_items:
             if i.owner.equipment.defense_bonus > 0:
                 ret += i.owner.equipment.defense_bonus
-                echo("Added def bonus of " & $i.owner.equipment.defense_bonus);
+                #echo("Added def bonus of " & $i.owner.equipment.defense_bonus);
     
     echo("Def: " & $ret)
     return ret
@@ -136,6 +148,11 @@ proc take_damage*(cr:Creature, amount:int) =
 proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
     var rng = aleaRNG();
     var damage = rng.roller("1d6");
+
+    var weapon = cr.owner.get_weapon()
+    if not isNil(weapon):
+        #echo("We have a weapon, dmg " & $weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
+        damage = rng.roller($weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
 
     var attack_roll = rng.roller("1d100");
 

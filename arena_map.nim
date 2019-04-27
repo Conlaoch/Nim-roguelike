@@ -108,7 +108,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     it = Item(owner:en_it);
     en_it.item = it;
     # equipment component
-    var eq = Equipment(owner:en_it);
+    var eq = Equipment(owner:en_it, num_dice: 1, damage_dice:8);
     en_it.equipment = eq;
     entities.add(en_it);
 

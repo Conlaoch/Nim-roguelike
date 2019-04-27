@@ -71,6 +71,8 @@ type
         owner*: Entity
         slot*: string
         equipped*: bool
+        num_dice*: int
+        damage_dice*: int
         attack_bonus*: int
         defense_bonus*: int
 
