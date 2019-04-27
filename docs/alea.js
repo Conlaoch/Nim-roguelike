@@ -114,7 +114,7 @@ roller = function(random, expr) {
   console.log("dice: " + dice + " d " + sides + " sides");
   var total = mod;
   for (var i = 0; i < dice; i++) {
-      var num = range(random, {a:sides});
+      var num = range(random, {a:1, b:sides});
       //console.log("num:" + num);
       total += num;
   };
