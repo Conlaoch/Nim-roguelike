@@ -2,6 +2,8 @@ import html5_canvas
 
 import math_helpers, map, FOV, tint_image
 
+import camera
+
 # Solution to Game <-> Entity dependency that plagued the tutorial
 # In Nim mutually recursive types can only be declared within a single type section
 type
@@ -16,6 +18,7 @@ type
         recalc_FOV*: bool
         FOV_map*: seq[Vector2]
         explored*: seq[Vector2]
+        camera*: Camera
         entities*: seq[Entity]
         game_state*: int # because enums are ints by default
         previous_state*: int # for GUI windows to know what to go back to

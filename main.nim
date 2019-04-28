@@ -4,7 +4,7 @@ import html5_canvas
 import input_handler
 import type_defs
 import resources, entity, game_class
-import map, arena_map, FOV
+import map, arena_map, FOV, camera
 import death_functions
 import menus
 import save
@@ -36,6 +36,8 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     game.player = Player(position: (1,1), image:0, name:"Player");
     game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.player.inventory = Inventory(capacity:26);
+    game.camera = Camera(width:7, height:7, position:game.player.position);
+    game.camera.calculate_extents();
     game.map = arena_map.generateMap(15,15,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
@@ -52,13 +54,16 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
 
         # recalc fov if needed
         if game.recalc_FOV:
+            # piggyback on this for camera recalculations
+            game.camera.position = game.player.position
+            game.camera.calculate_extents();
             game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
             # the loop is called 60x a second, so immediately set the flag to false
             game.recalc_FOV = false;
         # clear
         game.clearGame();
         # render
-        game.renderMap(game.map, game.FOV_map, game.explored);
+        game.renderMap(game.map, game.FOV_map, game.explored, game.camera);
         game.renderEntities(game.FOV_map);
         game.render(game.player);
         game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));

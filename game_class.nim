@@ -3,6 +3,8 @@ import html5_canvas
 
 import entity, math_helpers, map, tint_image, seq_tools
 
+import camera
+
 # type definition moved to type_defs
 import type_defs
 
@@ -65,10 +67,25 @@ proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
     # else:
     #     game.context.drawImage(tintImageNim(game.images[2], tint, 0.5), float(point.x), float(point.y));
 
-proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[Vector2]) =
+proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[Vector2], cam: Camera) =    
+    # isometric camera
+    var x:int;
+    var y:int;
+
+    for a in cam.startxy..cam.endxy:
+        for b in cam.startxminy..cam.endxminy:
+            # integer division
+            x = (a+b) div 2;
+            y = (a-b) div 2;
+
+            # weirdness check
+            if x < 0 or y < 0 or x > map.width or y > map.height:
+                # skip
+                continue
+    
     # 0..x is inclusive in Nim
-    for x in 0..<map.width:
-        for y in 0..<map.height:
+    #for x in 0..<map.width:
+    #    for y in 0..<map.height:
             #echo map.tiles[y * map.width + x]
             var cell = (x,y)
             if cell in fov_map:
