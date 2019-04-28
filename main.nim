@@ -36,7 +36,7 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
     game.player = Player(position: (1,1), image:0, name:"Player");
     game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
     game.player.inventory = Inventory(capacity:26);
-    game.camera = Camera(width:7, height:7, position:game.player.position);
+    game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();
     game.map = arena_map.generateMap(15,15,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3, 2);

@@ -33,14 +33,14 @@ proc render*(game: Game, player: Player) =
     # do nothing if dead
     if isNil(player):
         return
-    let iso = isoPos(player.position.x, player.position.y);
+    let iso = isoPos(player.position.x, player.position.y, game.camera.offset);
     # entities need a slight offset to be placed more or less centrally
     renderGfxTile(game, game.images[0], iso[0]+8, iso[1]+8);
 
 # Note: currently the player is rendered separately (see above)
 proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
     for e in game.entities:
-        let iso = isoPos(e.position.x, e.position.y);
+        let iso = isoPos(e.position.x, e.position.y, game.camera.offset);
         # if we can actually see the NPCs
         if (e.position.x, e.position.y) in fov_map:
             # need a slight offset to be placed more or less centrally
@@ -89,11 +89,11 @@ proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[V
             #echo map.tiles[y * map.width + x]
             var cell = (x,y)
             if cell in fov_map:
-                drawMapTile(game, isoPos(x,y), map.tiles[y * map.width + x])
+                drawMapTile(game, isoPos(x,y,cam.offset), map.tiles[y * map.width + x])
                 if explored.find(cell) == -1:
                     add(explored, cell);
             elif (x,y) in explored:
-                drawMapTileTint(game, isoPos(x,y), map.tiles[y * map.width + x], (127,127,127));
+                drawMapTileTint(game, isoPos(x,y,cam.offset), map.tiles[y * map.width + x], (127,127,127));
 
 proc drawMessages*(game:Game) = 
     var drawn: seq[string];
@@ -135,5 +135,5 @@ proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int,
         game.context.fill();
 
 proc drawTargeting*(game:Game) =
-    let iso = isoPos(game.targeting.x, game.targeting.y);
+    let iso = isoPos(game.targeting.x, game.targeting.y, game.camera.offset);
     renderGfxTile(game, game.images[7], iso[0], iso[1]);

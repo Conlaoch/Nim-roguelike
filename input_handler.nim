@@ -6,7 +6,7 @@ import table_tools, save
 import type_defs
 
 # for next level
-import map, arena_map, FOV
+import map, arena_map, FOV, camera
 
 # global stuff goes here
 # needed because key handlers ref Game
@@ -16,6 +16,7 @@ var game*: Game;
 # and by the key input
 proc moveNim(x:int, y:int) {.exportc.} =
     if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game.map, game.entities, game.game_messages):
+        game.camera.move(x,y);
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 

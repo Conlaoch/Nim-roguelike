@@ -42,7 +42,7 @@ proc calculate_extents*(cam:Camera) =
 
 
 # Based on Python implementation
-proc move(cam: Camera, dx:int, dy:int) =
+proc move*(cam: Camera, dx:int, dy:int) =
     # those values work for Gervais isometric tiles
     let HALF_TILE_HEIGHT = 16
     let HALF_TILE_WIDTH = 32
