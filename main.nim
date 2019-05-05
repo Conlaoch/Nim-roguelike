@@ -35,6 +35,14 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
 
     generators.loadfiles()
 
+# called from JS after loading generator data files
+proc onReadyNimCallback*() {.exportc.} =
+    echo "Callback!"
+    var data = generators.getData();
+
+    generators.items_data = data[0];
+
+
     # setup cd.
     game.player = Player(position: (1,1), image:0, name:"Player");
     game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);

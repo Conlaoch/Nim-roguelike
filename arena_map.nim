@@ -1,6 +1,7 @@
 import map, math_helpers
 import type_defs, alea
 import use_functions
+import generators
 
 # https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
 proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
@@ -103,14 +104,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     x = rng.range(1..(map.height - 2))
     y = rng.range(1..(map.width - 2))
 
-    en_it = Entity(position:(x,y), image:9, name:"longsword");
-    # item component
-    it = Item(owner:en_it);
-    en_it.item = it;
-    # equipment component
-    var eq = Equipment(owner:en_it, num_dice: 1, damage_dice:8);
-    en_it.equipment = eq;
-    entities.add(en_it);
+    entities.add(generateItem("longsword", x,y));
 
     # spawn armor
     # Choose a random location in the map
@@ -122,6 +116,6 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     it = Item(owner:en_it);
     en_it.item = it;
     # equipment component
-    eq = Equipment(owner:en_it, defense_bonus:5);
+    var eq = Equipment(owner:en_it, defense_bonus:5);
     en_it.equipment = eq;
     entities.add(en_it);
