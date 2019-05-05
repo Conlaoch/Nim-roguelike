@@ -8,6 +8,7 @@ import map, arena_map, FOV, camera
 import death_functions
 import menus
 import save
+import generators
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -31,6 +32,8 @@ proc ready(canvas: Canvas) : proc(canvas:Canvas) =
         echo $k;
         # for easier retrieval from Nim
         game.images.add(resources.get(k));
+
+    generators.loadfiles()
 
     # setup cd.
     game.player = Player(position: (1,1), image:0, name:"Player");

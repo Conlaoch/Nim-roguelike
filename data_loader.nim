@@ -1,3 +1,8 @@
 # Nim bindings for data loader
 
-proc loadfile*(file: cstring) : cstring {.importc.}
+import jsffi
+
+
+proc loadfile*(file: cstring) {.importc.}
+
+proc get_loaded*() : seq[JsObject] {.importc.}

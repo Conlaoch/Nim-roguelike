@@ -1,3 +1,7 @@
+var loaded = []
+var promise;
+
+
 //https://stackoverflow.com/questions/19706046/how-to-read-an-external-local-json-file-in-javascript?noredirect=1&lq=1
 function readTextFile(file, callback) {
     var rawFile = new XMLHttpRequest();
@@ -13,10 +17,29 @@ function readTextFile(file, callback) {
 
 function loadfile(file){
     var data = "";
-    readTextFile(file+".json", function(text){
+    promise = new Promise (function(resolve, reject){
+        readTextFile(file+".json", function(text){
              data = JSON.parse(text);
-             console.log(data);
-             //return data;
+             loaded.push(data);
+             //console.log(data);
+             console.log(loaded);
+             resolve("file loaded OK!");
         });
-    return data;
+    });
+
+    promise.then(
+        function(result) {
+            console.log(result); // "Stuff worked!"
+            //call Nim
+            onReadyNimCallback();
+          }, 
+          function(err) {
+            console.log(err); // Error: "It broke"
+          }
+    )
+}
+
+
+function get_loaded(){
+    return loaded;
 }

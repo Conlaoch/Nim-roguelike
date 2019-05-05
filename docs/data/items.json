@@ -1,0 +1,81 @@
+{
+
+ "longsword": {
+           "char": "0x2215",
+           "name": "longsword",
+           "paperdoll": "0xE202",
+           "slot": "main_hand",
+           "type": "weapon",
+           "damage_dice": 8,
+           "damage_number": 1
+ },
+ "dagger": {
+           "char": "0x1C0",
+           "name": "dagger",
+           "slot": "main_hand",
+           "type": "weapon",
+           "damage_dice": 4,
+           "damage_number": 1
+ },
+ "chainmail": {
+           "char": "0xFF3B",
+           "name": "chainmail",
+           "paperdoll": "0xE200",
+           "cost": {
+           "platinum": 2
+           },
+           "slot": "body",
+           "type": "armor",
+           "combat_armor": 5
+ },
+ "leather armor": {
+           "char": "0xFF09",
+           "name": "leather armor",
+           "paperdoll": "0xE201",
+           "cost": {
+           "gold": 7,
+           "silver": 10
+           },
+           "slot": "body",
+           "type": "armor",
+           "combat_armor": 3
+ },
+ "studded armor": {
+           "char": "0xFF08",
+           "name": "studded armor",
+           "paperdoll": "0xE201",
+           "cost": {
+           "gold": 26,
+           "silver": 5
+           },
+           "slot": "body",
+           "type": "armor",
+           "combat_armor": 4
+ },
+ "boots":{
+          "char": "0x3C9",
+          "name": "boots",
+          "slot": "legs",
+          "type": "other"
+ },
+ "helmet":{
+          "char": "0x2102",
+          "name": "helmet",
+          "paperdoll": "0xE204",
+          "slot": "head",
+          "type": "armor",
+          "combat_armor": 4
+ },
+ "light wooden shield":{
+          "char": "0x3009",
+          "name": "light wooden shield",
+          "slot": "off_hand",
+          "type": "shield"
+ },
+ "torch": {
+          "char": "0x2053",
+          "name": "torch",
+          "slot": "lite",
+          "type": "lite"
+ }
+}
