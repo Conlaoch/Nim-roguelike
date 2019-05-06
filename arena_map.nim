@@ -111,11 +111,4 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     x = rng.range(1..(map.height - 2))
     y = rng.range(1..(map.width - 2))
 
-    en_it = Entity(position:(x,y), image:10, name:"chain armor");
-    # item component
-    it = Item(owner:en_it);
-    en_it.item = it;
-    # equipment component
-    var eq = Equipment(owner:en_it, defense_bonus:5);
-    en_it.equipment = eq;
-    entities.add(en_it);
+    entities.add(generateItem("chainmail", x,y));

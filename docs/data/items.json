@@ -1,7 +1,7 @@
 {
 
  "longsword": {
-           "char": "0x2215",
+           "image": 9,
            "name": "longsword",
            "paperdoll": "0xE202",
            "slot": "main_hand",
@@ -18,7 +18,7 @@
            "damage_number": 1
  },
  "chainmail": {
-           "char": "0xFF3B",
+           "image": 10,
            "name": "chainmail",
            "paperdoll": "0xE200",
            "cost": {
