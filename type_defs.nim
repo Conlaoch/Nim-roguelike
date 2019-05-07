@@ -55,6 +55,13 @@ type
         max_hp*: int
         defense*: int
         attack*: int
+        # stats 
+        base_str*: int
+        base_dex*: int
+        base_con*: int
+        base_int*: int
+        base_wis*: int
+        base_cha*: int
         # flag
         dead*: bool
 

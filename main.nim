@@ -45,7 +45,10 @@ proc onReadyNimCallback*() {.exportc.} =
 
     # setup cd.
     game.player = Player(position: (1,1), image:0, name:"Player");
-    game.player.creature = Creature(owner:game.player, hp: 20, max_hp:20, attack:40, defense:30);
+    var arr = generate_stats("heroic");
+    # procs have a different syntax to type() construction (= instead of :)
+    game.player.creature = newCreature(owner=game.player, hp=20, attack=40, defense=30,
+    base_str=arr[0], base_dex=arr[1], base_con=arr[2], base_int=arr[3], base_wis=arr[4], base_cha=arr[5]);
     game.player.inventory = Inventory(capacity:26);
     game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();

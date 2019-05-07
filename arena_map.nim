@@ -1,5 +1,5 @@
 import map, math_helpers
-import type_defs, alea
+import type_defs, entity, alea
 import use_functions
 import generators
 
@@ -58,7 +58,7 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
       var mon = Entity(position:(x,y), image:3, name:"kobold");
       echo("Spawned monster at " & $mon.position);
       # creature component
-      var creat = Creature(owner:mon, hp:5, max_hp:5, defense:30, attack:20);
+      var creat = newCreature(owner=mon, hp=5, defense=30, attack=20);
       mon.creature = creat;
       # AI component
       var AI_comp = AI(owner:mon);

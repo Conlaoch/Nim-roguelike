@@ -2,7 +2,43 @@ import math_helpers, map, math, alea, astar
 
 # type definition moved to type_defs
 import type_defs
+
+# constructor so that we can provide default values
+proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8) : Creature =
+
+    Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
+    base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha);    
+
+proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
+    var arr : array[6, int]
+    if typ == "heroic":
+        arr = [ 15, 14, 13, 12, 10, 8]
+    else:
+        arr = [ 13, 12, 11, 10, 9, 8]
+
+    var temp: array[6, int]
+    if kind == "ranged":
+        # STR DEX CON INT WIS CHA
+        temp[0] = arr[2]
+        temp[1] = arr[0]
+        temp[2] = arr[1]
+        temp[3] = arr[3]
+        temp[4] = arr[4]
+        temp[5] = arr[5]
+    else:
+        echo "Using default array"
+        # STR DEX CON INT WIS CHA
+        temp[0] = arr[0]
+        temp[1] = arr[2]
+        temp[2] = arr[1]
+        temp[3] = arr[4]
+        temp[4] = arr[3]
+        temp[5] = arr[5]
+
+
+    return temp
     
+
 
 # Nim functions have to be defined before anything that uses them
 proc get_creatures_at*(entities: seq[Entity], x:int, y:int) : Entity =
