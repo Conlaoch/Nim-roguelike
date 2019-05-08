@@ -28,13 +28,31 @@ proc add_faction*(game:Game, faction_data:Faction) =
     game.factions.add((faction_data[1], faction_data[0], faction_data[2]))
     echo ("Added reverse faction " & $(faction_data[1], faction_data[0], faction_data[2]));
 
-proc get_faction_reaction*(game:Game, faction:string, target_faction:string) : int =
+proc get_faction_reaction*(game:Game, faction:string, target_faction:string, log=false) : int =
+    if faction == target_faction:
+        return 100
+
     for fact in game.factions:
         if fact[0] == faction and fact[1] == target_faction:
-            echo ("Faction reaction of " & $fact[0] & " to " & $fact[1] & " is " & $fact[2]);
+            if log:
+                echo ("Faction reaction of " & $fact[0] & " to " & $fact[1] & " is " & $fact[2]);
             return fact[2]
 
     return 0
+
+# should be in entity, but it leads to recursive imports...
+proc get_marker_color(cr:Creature, game:Game) : ColorRGB =
+    let react = game.get_faction_reaction(cr.faction, "player");
+    if react < -50:
+        return (r:255, g:0, b:0) #"red"
+    elif react < 0:
+        return (r:255, g:165, b:0) #"orange"
+    elif react == 0:
+        return (r:255, g:255, b:0) #"yellow"
+    elif react > 50:
+        return (r:0, g:255, b:255) #"cyan"
+    elif react > 0:
+        return (r:0, g:0, b:255) #"blue"
 
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
@@ -45,13 +63,21 @@ proc clearGame*(game: Game) =
 proc renderGfxTile*(game: Game, img: Element, x,y: int) =
     game.context.drawImage((ImageElement)img, float(x), float(y));
 
+# tinted version
+proc renderGfxTileTinted*(game:Game, img: Element, tint:ColorRGB, x,y: int) =
+    game.context.drawImage(tintImageNim((ImageElement)img, tint, 0.5), float(x), float(y));
+
 proc render*(game: Game, player: Player) =
     # do nothing if dead
     if isNil(player):
         return
     let iso = isoPos(player.position.x, player.position.y, game.camera.offset);
+
+    # marker (no need to calculate because player's always friendly to player lol)
+    renderGfxTileTinted(game, game.images[11], (r:0, g:255, b:255), iso[0], iso[1]);
+
     # entities need a slight offset to be placed more or less centrally
-    renderGfxTile(game, game.images[0], iso[0]+8, iso[1]+8);
+    renderGfxTile(game, game.images[0], iso[0]+10, iso[1]+10);
 
 # Note: currently the player is rendered separately (see above)
 proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
@@ -59,8 +85,13 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
         let iso = isoPos(e.position.x, e.position.y, game.camera.offset);
         # if we can actually see the NPCs
         if (e.position.x, e.position.y) in fov_map:
-            # need a slight offset to be placed more or less centrally
-            renderGfxTile(game, game.images[e.image], iso[0]+8, iso[1]+8);
+            if not isNil(e.creature) and e.creature.faction != "":
+                renderGfxTileTinted(game, game.images[11], e.creature.get_marker_color(game), iso[0], iso[1]);
+            
+            var off = (12,12);
+
+            # creatures need a slight offset to be placed more or less centrally
+            renderGfxTile(game, game.images[e.image], iso[0]+off[0], iso[1]+off[1]);
 
 
 var tile_lookup = {0: 1, 1:2, 2:8}.toTable()
@@ -76,7 +107,8 @@ proc drawMapTile(game: Game, point:Vector2, tile: int) =
     #     renderGfxTile(game, game.images[8], point.x, point.y);
 
 proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
-    game.context.drawImage(tintImageNim(game.images[tile_lookup[tile]], tint, 0.5), float(point.x), float(point.y));
+    renderGfxTileTinted(game, game.images[tile_lookup[tile]], tint, point.x, point.y);
+    #game.context.drawImage(tintImageNim(game.images[tile_lookup[tile]], tint, 0.5), float(point.x), float(point.y));
 
     # if tile == 0:
     #     game.context.drawImage(tintImageNim(game.images[1], tint, 0.5), float(point.x), float(point.y));
