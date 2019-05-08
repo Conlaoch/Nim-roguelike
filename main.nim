@@ -44,11 +44,16 @@ proc onReadyNimCallback*() {.exportc.} =
 
 
     # setup cd.
+    game.add_faction(("player", "enemy", -100));
+    game.add_faction(("player", "neutral", 0));
+
+
     game.player = Player(position: (1,1), image:0, name:"Player");
     var arr = generate_stats("heroic");
     # procs have a different syntax to type() construction (= instead of :)
     game.player.creature = newCreature(owner=game.player, hp=20, attack=40, defense=30,
-    base_str=arr[0], base_dex=arr[1], base_con=arr[2], base_int=arr[3], base_wis=arr[4], base_cha=arr[5]);
+    base_str=arr[0], base_dex=arr[1], base_con=arr[2], base_int=arr[3], base_wis=arr[4], base_cha=arr[5],
+    faction="player");
     game.player.inventory = Inventory(capacity:26);
     game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();
@@ -102,7 +107,7 @@ proc onReadyNimCallback*() {.exportc.} =
             for entity in game.entities:
                 if not isNil(entity.ai) and not entity.creature.dead:
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
-                    entity.ai.take_turn(game.player, game.FOV_map, game.map, game.entities, game.game_messages);
+                    entity.ai.take_turn(game.player, game.FOV_map, game, game.map, game.entities, game.game_messages);
             
                 if not isNil(entity.creature) and entity.creature.dead:
                     mark_for_del(entity, game);

@@ -26,11 +26,14 @@ type
         # list of entities to be deleted
         to_remove*: seq[Entity]
         targeting*: Vector2
+        factions*: seq[Faction]
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
 
     GameMessage* = tuple[s:string, c:ColorRGB]    
+
+    Faction* = tuple[f1:string, f2:string, react:int]
 
     # From entity.nim
     Entity* = ref object
@@ -62,6 +65,7 @@ type
         base_int*: int
         base_wis*: int
         base_cha*: int
+        faction*: string
         # flag
         dead*: bool
 

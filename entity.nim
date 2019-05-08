@@ -2,12 +2,14 @@ import math_helpers, map, math, alea, astar
 
 # type definition moved to type_defs
 import type_defs
+import game_class # to be able to use game.get_faction_reaction()
 
 # constructor so that we can provide default values
-proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8) : Creature =
+proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, faction="enemy") : Creature =
 
     Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
-    base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha);    
+    base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
+    faction:faction);    
 
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
     var arr : array[6, int]
@@ -203,7 +205,7 @@ proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
 
 
 # some functions that have our Entity type as the first parameter
-proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity], messages: var seq[string]) : bool =
+proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity], messages: var seq[string]) : bool =
     ##echo("Move: " & $dx & " " & $dy);
     var tx = e.position.x + dx
     var ty = e.position.y + dy
@@ -221,17 +223,25 @@ proc move*(e: Entity, dx: int, dy: int, map:Map, entities:seq[Entity], messages:
     # check for creatures
     var target:Entity;
     target = get_creatures_at(entities, tx, ty);
-    if not isNil(target):
-        #echo("You kick the " & $target.creature.name & " in the shins!");
-        attack(e.creature, target, messages);
+    #if not isNil(target):
+    if not isNil(target) and target.creature.faction != e.creature.faction:
+        var is_enemy_faction : bool;
+        is_enemy_faction = get_faction_reaction(game, e.creature.faction, target.creature.faction) < 0;
+
+        if is_enemy_faction:
+            echo "Target faction " & $target.creature.faction & " is enemy!"
+            #echo("You kick the " & $target.creature.name & " in the shins!");
+            attack(e.creature, target, messages);
+        
         # no need to recalc FOV
         return false
-
-    e.position = ((e.position.x + dx, e.position.y + dy))
-    return true
+    
+    if isNil(target):
+        e.position = ((e.position.x + dx, e.position.y + dy))
+        return true
     #echo e.position
 
-proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], messages:var seq[string]) : bool =
+proc move_towards(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) : bool =
     var dx = target.x - e.position.x
     var dy = target.y - e.position.y
     #var distance = math.sqrt(dx ** 2 + dy ** 2)
@@ -243,9 +253,9 @@ proc move_towards(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], 
 
     if not game_map.is_blocked(e.position.x + dx, e.position.y + dy) or isNil(get_creatures_at(entities, e.position.x + dx, e.position.y + dy)):
         echo("We can move to " & $(e.position.x + dx) & " " & $(e.position.y + dy));
-        return e.move(dx, dy, game_map, entities, messages);
+        return e.move(dx, dy, game, game_map, entities, messages);
 
-proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], messages:var seq[string]) =
+proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) =
     echo "Calling astar..."
     var astar = findPathNim(game_map, e.position, target);
     # for e in astar:
@@ -256,12 +266,12 @@ proc move_astar(e:Entity, target:Vector2, game_map:Map, entities:seq[Entity], me
         e.position = astar[1]
     else:
         # backup in case no path found
-        discard e.move_towards(target, game_map, entities, messages);
+        discard e.move_towards(target, game, game_map, entities, messages);
 
 # how to deal with the fact that canvas ref is stored as part of Game?
 #proc draw*(e: Entity) =
 
-proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entities:seq[Entity], messages:var seq[string]) = 
+proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) = 
     #echo ("The " & ai.owner.creature.name & "wonders when it will get to move");
     var monster = ai.owner
     # assume if we can see it, it can see us too
@@ -269,7 +279,7 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game_map:Map, entiti
         if monster.position.distance_to(target.position) >= 2:
             # discard means we're not using the return value
             #discard monster.move_towards(target.position, game_map, entities);
-            monster.move_astar(target.position, game_map, entities, messages);
+            monster.move_astar(target.position, game, game_map, entities, messages);
         elif target.creature.hp > 0:
             #echo ai.owner.creature.name & " insults you!";
             attack(ai.owner.creature, target, messages);
