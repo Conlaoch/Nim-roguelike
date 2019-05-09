@@ -1,0 +1,76 @@
+{
+
+ "kobold": {
+           "image": 3,
+           "rarity": 20,
+           "name": "kobold",
+           "faction": "enemy",
+           "hit_points": 4,
+           "damage_dice": 6,
+           "damage_number": 1,
+           "equipment": [
+              "dagger"
+           ]
+ },
+ "goblin": {
+           "char": "0xE001",
+           "rarity": 15,
+           "name": "goblin",
+           "faction": "enemy",
+           "hit_points": 5,
+           "damage_dice": 6,
+           "damage_number": 1,
+           "equipment": [
+              "dagger"
+           ]
+ },
+ "drow": {
+           "char": "0xE002",
+           "rarity": 12,
+           "name": "drow",
+           "faction": "enemy",
+           "hit_points": 6,
+           "damage_dice": 6,
+           "damage_number": 1,
+           "equipment": [
+              "longsword",
+              "chainmail"
+           ]
+ },
+ "human": {
+           "char": "0xE003",
+           "rarity": 3,
+           "name": "human",
+           "faction": "neutral",
+           "hit_points": 8,
+           "damage_dice": 6,
+           "damage_number": 1,
+           "text": "Hello traveler",
+           "languages": ["Common"],
+           "chat": "test"
+ },
+ "hooker": {
+           "char": "0xE003",
+           "rarity": 8,
+           "name": "hooker",
+           "faction": "neutral",
+           "hit_points": 8,
+           "damage_dice": 4,
+           "damage_number": 1,
+           "text": "Hello sweetie",
+           "languages": ["Common"],
+           "chat": "hooker"
+ },
+ "orc": {
+           "char": "0xE001",
+           "rarity": 5,
+           "name": "orc",
+           "faction": "enemy",
+           "hit_points": 8,
+           "damage_dice": 8,
+           "damage_number": 1,
+           "equipment": [
+              "longsword"
+           ]
+ }
+}

@@ -1,14 +1,18 @@
 import data_loader
 import jsffi # to be able to do stuff with the data we loaded from JS side
 import type_defs
-
+import entity
 
 # globals
 var items_data*: JsObject;
+var monster_data*: JsObject;
 
-proc load_files*() =
+proc loadfiles*() =
+    data_loader.load_files(@[cstring("/data/items"), cstring("/data/test")]);
+
+
     # test
-    data_loader.loadfile("/data/items");
+    #data_loader.loadfile("/data/items");
 
 proc generateItem*(id:string, x: int, y:int) : Entity =
     echo "Generate item with id: " & $id
@@ -48,6 +52,34 @@ proc generateItem*(id:string, x: int, y:int) : Entity =
 
         echo("Spawned item at " & $en_it.position);
         return en_it;
+
+proc generateMonster*(id: string, x,y:int) : Entity =
+    echo "Generate monster with id: " & $id
+
+    if isNil(monster_data[id]):
+        echo("No monster with id " & $id);
+        return nil
+
+    else:
+        var mon_name = to(monster_data[id]["name"], cstring)
+        var item_image = to(monster_data[id]["image"], int);
+        echo $item_image;
+        
+        var mon = Entity(position:(x,y), image:item_image, name: $mon_name);
+
+        var mon_hp = to(monster_data[id]["hit_points"], int)
+        #var mon_dam_num = to(monster_data[id]["damage_number"], int)
+        #var mon_dam_dice = to(monster_data[id]["damage_dice"], int)
+
+        # creature component
+        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20);
+        mon.creature = creat;
+        # AI component
+        var AI_comp = AI(owner:mon);
+        mon.ai = AI_comp;
+
+        echo("Spawned monster at " & $mon.position);
+        return mon;
 
 proc getData*() : seq[JsObject] =
     var data = data_loader.get_loaded();

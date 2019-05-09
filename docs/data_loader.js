@@ -17,7 +17,7 @@ function readTextFile(file, callback) {
 
 function loadfile(file){
     var data = "";
-    promise = new Promise (function(resolve, reject){
+    return new Promise (function(resolve, reject){
         readTextFile(file+".json", function(text){
              data = JSON.parse(text);
              loaded.push(data);
@@ -27,17 +27,36 @@ function loadfile(file){
         });
     });
 
-    promise.then(
-        function(result) {
-            console.log(result); // "Stuff worked!"
-            //call Nim
-            onReadyNimCallback();
-          }, 
-          function(err) {
-            console.log(err); // Error: "It broke"
-          }
-    )
+    // promise.then(
+    //     function(result) {
+    //         console.log(result); // "Stuff worked!"
+    //         //call Nim
+    //         onReadyNimCallback();
+    //       }, 
+    //       function(err) {
+    //         console.log(err); // Error: "It broke"
+    //       }
+    // )
 }
+
+//wrapper for Nim to call
+function load_files(files_array){
+    //https://stackoverflow.com/questions/49744707/how-to-use-promise-all-on-array-of-promises-which-take-parameters
+    Promise.all(
+        files_array.map(  //map location to promise
+            file => loadfile(file))) // promises
+            .then(results => { 
+                // executed when all promises resolved, 
+                // results is the array of results resolved by the promises
+                console.log(results);
+                //call Nim
+                onReadyNimCallback();
+            })
+            .catch(err => {  
+            // catch if single promise fails to resolve
+            console.log(err);
+            });
+};
 
 
 function get_loaded(){

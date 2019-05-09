@@ -41,6 +41,7 @@ proc onReadyNimCallback*() {.exportc.} =
     var data = generators.getData();
 
     generators.items_data = data[0];
+    generators.monster_data = data[1];
 
 
     # setup cd.
