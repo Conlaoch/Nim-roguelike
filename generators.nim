@@ -39,15 +39,17 @@ proc generateItem*(id:string, x: int, y:int) : Entity =
         if item_type == "weapon":
             var num_dice = to(items_data[id]["damage_number"], int);
             var damage_dice = to(items_data[id]["damage_dice"], int);
+            var item_slot = to(items_data[id]["slot"], cstring);
 
             # equipment component
-            var eq = Equipment(owner:en_it, num_dice: num_dice, damage_dice:damage_dice);
+            var eq = Equipment(owner:en_it, slot: $item_slot, num_dice: num_dice, damage_dice:damage_dice);
             en_it.equipment = eq;
         
         if item_type == "armor":
             var def_bonus = to(items_data[id]["combat_armor"], int);
+            var item_slot = to(items_data[id]["slot"], cstring);
             # equipment component
-            var eq = Equipment(owner:en_it, defense_bonus: def_bonus);
+            var eq = Equipment(owner:en_it, slot: $item_slot, defense_bonus: def_bonus);
             en_it.equipment = eq;
 
         echo("Spawned item at " & $en_it.position);

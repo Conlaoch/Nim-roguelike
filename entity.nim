@@ -96,22 +96,34 @@ proc display_name*(e: Entity) : string =
     else:
         return e.name
 
+# returns the equipment in a slot, or nil if it's empty
+proc get_equipped_in_slot(inv: Inventory, slot: string) : Equipment =
+    for it in inv.items:
+        if not isNil(it.owner.equipment) and it.owner.equipment.slot == slot and it.owner.equipment.equipped:
+            return it.owner.equipment;
+    return nil
 
-proc equip(eq: Equipment, game: Game) =
-    eq.equipped = true;
-
-    game.game_messages.add("Item equipped");
-
-proc unequip(eq: Equipment, game: Game) =
+proc unequip(eq: Equipment, e: Entity, game: Game) =
     eq.equipped = false;
-    game.game_messages.add("Took off item");
+    game.game_messages.add(e.name & " took off " & $eq.owner.name);
+
+proc equip(eq: Equipment, e: Entity, game: Game) =
+    if isNil(e.inventory):
+        return
+
+    var old_equipment = get_equipped_in_slot(e.inventory, eq.slot);
+    if not isNil(old_equipment):
+        old_equipment.unequip(e, game);
+
+    eq.equipped = true;
+    game.game_messages.add(e.name & " equipped " & $eq.owner.name);
 
 
-proc toggle_equip(eq: Equipment, game: Game) = 
+proc toggle_equip(eq: Equipment, e: Entity, game: Game) = 
     if eq.equipped:
-        eq.unequip(game)
+        eq.unequip(e, game)
     else:
-        eq.equip(game)
+        eq.equip(e, game)
 
 proc equipped_items(inv: Inventory) : seq[Item] =
     var list_equipped: seq[Item];
@@ -137,7 +149,7 @@ proc get_weapon(e:Entity) : Item =
 proc use_item*(item:Item, user:Entity, game:Game) : bool =
     # equippable items
     if not isNil(item.owner.equipment):
-        item.owner.equipment.toggle_equip(game);
+        item.owner.equipment.toggle_equip(user, game);
         return true
 
     # call proc?
