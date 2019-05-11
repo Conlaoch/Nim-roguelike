@@ -5,11 +5,11 @@ import type_defs
 import game_class # to be able to use game.get_faction_reaction()
 
 # constructor so that we can provide default values
-proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, faction="enemy") : Creature =
+proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, faction="enemy", text="") : Creature =
 
     Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
     base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
-    faction:faction);    
+    faction:faction, text:text);    
 
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
     var arr : array[6, int]
@@ -244,6 +244,11 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
             echo "Target faction " & $target.creature.faction & " is enemy!"
             #echo("You kick the " & $target.creature.name & " in the shins!");
             attack(e.creature, target, messages);
+        else:
+            if target.creature.text != "":
+                game.game_messages.add(target.name & " says: " & $target.creature.text);
+            else:
+                game.game_messages.add(target.name & " has nothing to say");
         
         # no need to recalc FOV
         return false
@@ -293,5 +298,15 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:
             #discard monster.move_towards(target.position, game_map, entities);
             monster.move_astar(target.position, game, game_map, entities, messages);
         elif target.creature.hp > 0:
-            #echo ai.owner.creature.name & " insults you!";
-            attack(ai.owner.creature, target, messages);
+            var is_enemy_faction : bool;
+            is_enemy_faction = get_faction_reaction(game, monster.creature.faction, target.creature.faction) < 0;
+
+            if is_enemy_faction:
+                echo "Target faction " & $target.creature.faction & " is enemy!"
+                #echo ai.owner.creature.name & " insults you!";
+                attack(ai.owner.creature, target, messages);
+            else:
+                if monster.creature.text != "":
+                    game.game_messages.add(monster.name & " says: " & $monster.creature.text);
+                else:
+                    game.game_messages.add(monster.name & " has nothing to say");

@@ -38,7 +38,7 @@
            ]
  },
  "human": {
-           "char": "0xE003",
+           "image": 12,
            "rarity": 3,
            "name": "human",
            "faction": "neutral",

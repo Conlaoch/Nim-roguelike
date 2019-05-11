@@ -52,10 +52,17 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
     # taking a shortcut here: this map is rectangular so we can just place in rectangle
     for i in (1..num):
       # Choose a random location in the map
-      let x = rng.range(1..(map.height - 1))
-      let y = rng.range(1..(map.width - 1))
+      let x = rng.range(1..(map.height - 2))
+      let y = rng.range(1..(map.width - 2))
 
       entities.add(generateMonster("kobold", x, y));
+
+    # test
+    # Choose a random location in the map
+    var x = rng.range(1..(map.height - 2))
+    var y = rng.range(1..(map.width - 2))
+    entities.add(generateMonster("human", x, y));
+
 
     for i in (1..num_items):
       # Choose a random location in the map
@@ -71,8 +78,8 @@ proc place_entities*(map: Map, entities: var seq[Entity], max: int, max_items: i
 
     # spawn a scroll
     # Choose a random location in the map
-    var x = rng.range(1..(map.height - 2))
-    var y = rng.range(1..(map.width - 2))
+    x = rng.range(1..(map.height - 2))
+    y = rng.range(1..(map.width - 2))
 
     var en_it = Entity(position:(x,y), image:5, name:"lightning scroll");
     # item component

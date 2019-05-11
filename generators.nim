@@ -72,9 +72,16 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         var mon_hp = to(monster_data[id]["hit_points"], int)
         #var mon_dam_num = to(monster_data[id]["damage_number"], int)
         #var mon_dam_dice = to(monster_data[id]["damage_dice"], int)
+        var fact = to(monster_data[id]["faction"], cstring)
+
+
+        var mon_text = cstring("")
+        if monster_data[id].hasOwnProperty("text"):
+            echo $id & " has text entry"
+            mon_text = to(monster_data[id]["text"], cstring)
 
         # creature component
-        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20);
+        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text);
         mon.creature = creat;
         # AI component
         var AI_comp = AI(owner:mon);

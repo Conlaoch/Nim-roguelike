@@ -66,6 +66,7 @@ type
         base_wis*: int
         base_cha*: int
         faction*: string
+        text*: string
         # flag
         dead*: bool
 

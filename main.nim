@@ -201,7 +201,8 @@ dom.window.onload = proc(e: dom.Event) =
     cstring("gfx/stairs_down.png"),
     cstring("gfx/longsword.png"),
     cstring("gfx/chain_armor.png"), #10
-    cstring("gfx/unit_marker.png")]); 
+    cstring("gfx/unit_marker.png"),
+    cstring("gfx/human.png")]); 
 
     # keys
     #  proc onKeyUp(event: Event) =
