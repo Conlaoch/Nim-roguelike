@@ -57,7 +57,7 @@ function aleaRNG() {
   };
 
 //moved to be top_level functions so that Nim bindings can work
-uint32 = function(random) {
+randint32 = function(random) {
   return random() * 0x100000000; // 2^32
 };
 fract53 = function(random) {
