@@ -4,7 +4,8 @@ import html5_canvas
 import input_handler
 import type_defs
 import resources, entity, game_class
-import map, arena_map, FOV, camera
+import map, FOV, camera
+import arena_map, basic_map
 import death_functions
 import menus
 import save
@@ -58,8 +59,15 @@ proc onReadyNimCallback*() {.exportc.} =
     game.player.inventory = Inventory(capacity:26);
     game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();
-    game.map = arena_map.generateMap(20,20,@[(10,10)])
-    arena_map.place_entities(game.map, game.entities, 3, 2);
+    #game.map = arena_map.generateMap(20,20,@[(10,10)])
+    var map_data = basic_map.generateMap(15,15);
+    game.map = map_data[0];
+    game.player.position = map_data[1];
+    # test (reveal all map)
+    for x in 0..<game.map.width:
+        for y in 0..<game.map.height:
+            game.explored.add((x,y))
+    #arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;
     game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);

@@ -19,6 +19,19 @@ proc distance_to*(start:Vector2, to:Vector2) : int =
 proc `+`*(a:Vector2, b:Vector2) : Vector2 =
     (a.x + b.x, a.y + b.y)
 
+proc intersects*(r: Rect2, p_rect: Rect2) : bool =
+    if (r.x >= (p_rect.x + p_rect.w)):
+        return false;
+    if ((r.x + r.w) <= p_rect.x):
+        return false;
+    if (r.y >= (p_rect.y + p_rect.h)):
+        return false;
+    if ((r.y + r.h) <= p_rect.y):
+        return false;
+
+    return true;
+
+
 # x,y are positions in map coordinates
 proc isoPos*(x:int,y:int, offset:Vector2): (int, int)  =
     # isometric
