@@ -11,6 +11,10 @@ type
 proc `[]`*(map: Map, x, y: int): int =
     map.tiles[y * map.width + x]
 
+# https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
+proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
+    tiles[y * width + x] = id
+
 # general functions
 proc is_blocked*(map: Map, x,y: int) : bool =
     if map.tiles[y * map.width + x] == 0:

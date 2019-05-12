@@ -58,7 +58,7 @@ proc onReadyNimCallback*() {.exportc.} =
     game.player.inventory = Inventory(capacity:26);
     game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();
-    game.map = arena_map.generateMap(15,15,@[(10,10)])
+    game.map = arena_map.generateMap(20,20,@[(10,10)])
     arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;

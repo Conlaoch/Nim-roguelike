@@ -3,10 +3,6 @@ import type_defs, entity, alea
 import use_functions
 import generators
 
-# https://stackoverflow.com/questions/2151084/map-a-2d-array-onto-a-1d-array
-proc setTile*(tiles: var seq[int], x,y: int, width: int, id: int) =
-  tiles[y * width + x] = id
-
 
 proc generateMap*(width: int, height: int, pillars: seq[Vector2]): Map =
   var tiles: seq[int] = @[]
