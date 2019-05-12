@@ -75,7 +75,7 @@ proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2
 proc pick_up*(item: Item, e: Entity, game:Game) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)
-        game.game_messages.add("Picked up item " & item.owner.name);
+        game.game_messages.add(("Picked up item " & item.owner.name, (255,255,255)));
         # because it's no longer on map
         game.entities.delete(game.entities.find(item.owner));
 
@@ -84,7 +84,7 @@ proc drop*(item: Item, e: Entity, game:Game) =
     # set position
     item.owner.position = e.position
     game.entities.add(item.owner);
-    game.game_messages.add("You dropped the " & $item.owner.name);
+    game.game_messages.add(("You dropped the " & $item.owner.name, (255,255,255)));
 
 # Equipment system
 proc display_name*(e: Entity) : string = 
@@ -105,7 +105,7 @@ proc get_equipped_in_slot(inv: Inventory, slot: string) : Equipment =
 
 proc unequip(eq: Equipment, e: Entity, game: Game) =
     eq.equipped = false;
-    game.game_messages.add(e.name & " took off " & $eq.owner.name);
+    game.game_messages.add((e.name & " took off " & $eq.owner.name, (255,255,255)));
 
 proc equip(eq: Equipment, e: Entity, game: Game) =
     if isNil(e.inventory):
@@ -116,7 +116,7 @@ proc equip(eq: Equipment, e: Entity, game: Game) =
         old_equipment.unequip(e, game);
 
     eq.equipped = true;
-    game.game_messages.add(e.name & " equipped " & $eq.owner.name);
+    game.game_messages.add((e.name & " equipped " & $eq.owner.name, (255,255,255)));
 
 
 proc toggle_equip(eq: Equipment, e: Entity, game: Game) = 
@@ -195,7 +195,7 @@ proc take_damage*(cr:Creature, amount:int) =
     if cr.hp <= 0:
         cr.dead = true;
 
-proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
+proc attack*(cr:Creature, target:Entity, game:Game) =
     var rng = aleaRNG();
     var damage = rng.roller("1d6");
 
@@ -204,20 +204,23 @@ proc attack*(cr:Creature, target:Entity, messages: var seq[string]) =
         #echo("We have a weapon, dmg " & $weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
         damage = rng.roller($weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
 
-    var attack_roll = rng.roller("1d100");
+    var color = (127,127,127);
+    if target == game.player:
+        color = (255,0,0)
 
+    var attack_roll = rng.roller("1d100");
     if attack_roll < target.creature.get_defense:
         if damage > 0:
             target.creature.take_damage(damage);
-            messages.add(cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!");
+            game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
         else:
-            messages.add(cr.owner.name & " attacks " & target.name & " but does no damage");
+            game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
     else:
-        messages.add(cr.owner.name & " misses " & target.name & "!");
+        game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
 
 
 # some functions that have our Entity type as the first parameter
-proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity], messages: var seq[string]) : bool =
+proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]) : bool =
     ##echo("Move: " & $dx & " " & $dy);
     var tx = e.position.x + dx
     var ty = e.position.y + dy
@@ -243,12 +246,12 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
         if is_enemy_faction:
             echo "Target faction " & $target.creature.faction & " is enemy!"
             #echo("You kick the " & $target.creature.name & " in the shins!");
-            attack(e.creature, target, messages);
+            attack(e.creature, target, game);
         else:
             if target.creature.text != "":
-                game.game_messages.add(target.name & " says: " & $target.creature.text);
+                game.game_messages.add((target.name & " says: " & $target.creature.text, (255,255,255)));
             else:
-                game.game_messages.add(target.name & " has nothing to say");
+                game.game_messages.add((target.name & " has nothing to say", (127,127,127)));
         
         # no need to recalc FOV
         return false
@@ -258,7 +261,7 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
         return true
     #echo e.position
 
-proc move_towards(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) : bool =
+proc move_towards(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity]) : bool =
     var dx = target.x - e.position.x
     var dy = target.y - e.position.y
     #var distance = math.sqrt(dx ** 2 + dy ** 2)
@@ -270,9 +273,9 @@ proc move_towards(e:Entity, target:Vector2, game:Game, game_map:Map, entities:se
 
     if not game_map.is_blocked(e.position.x + dx, e.position.y + dy) or isNil(get_creatures_at(entities, e.position.x + dx, e.position.y + dy)):
         echo("We can move to " & $(e.position.x + dx) & " " & $(e.position.y + dy));
-        return e.move(dx, dy, game, game_map, entities, messages);
+        return e.move(dx, dy, game, game_map, entities);
 
-proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) =
+proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity]) =
     echo "Calling astar..."
     var astar = findPathNim(game_map, e.position, target);
     # for e in astar:
@@ -283,12 +286,12 @@ proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[
         e.position = astar[1]
     else:
         # backup in case no path found
-        discard e.move_towards(target, game, game_map, entities, messages);
+        discard e.move_towards(target, game, game_map, entities);
 
 # how to deal with the fact that canvas ref is stored as part of Game?
 #proc draw*(e: Entity) =
 
-proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:Map, entities:seq[Entity], messages:var seq[string]) = 
+proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:Map, entities:seq[Entity]) = 
     #echo ("The " & ai.owner.creature.name & "wonders when it will get to move");
     var monster = ai.owner
     # assume if we can see it, it can see us too
@@ -296,7 +299,7 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:
         if monster.position.distance_to(target.position) >= 2:
             # discard means we're not using the return value
             #discard monster.move_towards(target.position, game_map, entities);
-            monster.move_astar(target.position, game, game_map, entities, messages);
+            monster.move_astar(target.position, game, game_map, entities);
         elif target.creature.hp > 0:
             var is_enemy_faction : bool;
             is_enemy_faction = get_faction_reaction(game, monster.creature.faction, target.creature.faction) < 0;
@@ -304,9 +307,9 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:
             if is_enemy_faction:
                 echo "Target faction " & $target.creature.faction & " is enemy!"
                 #echo ai.owner.creature.name & " insults you!";
-                attack(ai.owner.creature, target, messages);
+                attack(ai.owner.creature, target, game);
             else:
                 if monster.creature.text != "":
-                    game.game_messages.add(monster.name & " says: " & $monster.creature.text);
+                    game.game_messages.add((monster.name & " says: " & $monster.creature.text, (255,255,255)));
                 else:
-                    game.game_messages.add(monster.name & " has nothing to say");
+                    game.game_messages.add((monster.name & " has nothing to say", (127,127,127)));

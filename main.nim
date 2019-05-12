@@ -108,7 +108,7 @@ proc onReadyNimCallback*() {.exportc.} =
             for entity in game.entities:
                 if not isNil(entity.ai) and not entity.creature.dead:
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
-                    entity.ai.take_turn(game.player, game.FOV_map, game, game.map, game.entities, game.game_messages);
+                    entity.ai.take_turn(game.player, game.FOV_map, game, game.map, game.entities);
             
                 if not isNil(entity.creature) and entity.creature.dead:
                     mark_for_del(entity, game);
@@ -177,7 +177,7 @@ proc loadGameNim() {.exportc.} =
     game.player.creature.owner = game.player
 
 
-    game.game_messages.add("Loaded game...");
+    game.game_messages.add(("Loaded game...", (255,255,255)));
 
 # setup canvas
 dom.window.onload = proc(e: dom.Event) =

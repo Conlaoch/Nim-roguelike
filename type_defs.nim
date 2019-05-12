@@ -22,7 +22,7 @@ type
         entities*: seq[Entity]
         game_state*: int # because enums are ints by default
         previous_state*: int # for GUI windows to know what to go back to
-        game_messages*: seq[string]
+        game_messages*: seq[GameMessage]
         # list of entities to be deleted
         to_remove*: seq[Entity]
         targeting*: Vector2

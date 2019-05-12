@@ -11,11 +11,11 @@ proc heal*(item:Item, user:Entity, game:Game) =
 proc cast_lightning*(item:Item, user:Entity, game:Game) =
     var tg = closest_monster(game.player, game.entities, game.FOV_map, 4);
     if isNil(tg):
-        game.game_messages.add("No enemy is close enough to strike");
+        game.game_messages.add(("No enemy is close enough to strike", (255,0,0)));
     else:
         tg.creature.take_damage(8);
-        game.game_messages.add("A lightning bolt strikes " & $tg.name & " and deals 8 damage!");
+        game.game_messages.add(("A lightning bolt strikes " & $tg.name & " and deals 8 damage!", (0,255,0)));
     # destroy
     game.player.inventory.items.delete(game.player.inventory.items.find(item));
     # standard stuff
-    game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+    game.game_messages.add(($game.player.name & " uses " & $item.owner.name, (255,255,255)));

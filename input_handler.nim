@@ -15,7 +15,7 @@ var game*: Game;
 # functions to be called from JS by JQuery onclick()
 # and by the key input
 proc moveNim(x:int, y:int) {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game, game.map, game.entities, game.game_messages):
+    if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game, game.map, game.entities):
         game.camera.move(x,y);
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
@@ -26,7 +26,7 @@ proc pickupNim() {.exportc.} =
         if not isNil(it):
             it.item.pick_up(game.player, game);
         else:
-            game.game_messages.add("No item to pick up here");
+            game.game_messages.add(("No item to pick up here", (255,255,255)));
     # end turn regardless        
     game.game_state = ENEMY_TURN.int
 
@@ -79,7 +79,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
     #echo "Item is " & $item.owner.name
     if game.game_state == GUI_S_INVENTORY.int:
         if item.use_item(game.player, game):
-            game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+            game.game_messages.add(($game.player.name & " uses " & $item.owner.name, (255,255,255)));
             # quit inventory menu
             quitInventoryNim();
             # end turn      
@@ -89,7 +89,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
             # destroy
             game.player.inventory.items.delete(game.player.inventory.items.find(item));
             # standard stuff
-            game.game_messages.add($game.player.name & " uses " & $item.owner.name);
+            game.game_messages.add(($game.player.name & " uses " & $item.owner.name, (255,255,255)));
             # quit inventory menu
             quitInventoryNim();
 
@@ -104,7 +104,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
             dom.document.getElementById("targeting_keypad").style.display = "block";
 
         else:
-            game.game_messages.add($item.owner.name & " cannot be used!");
+            game.game_messages.add(($item.owner.name & " cannot be used!", (255,0,0)));
 
     if game.game_state == GUI_S_DROP.int:
         item.drop(game.player, game);
@@ -117,7 +117,7 @@ proc inventorySelectNim(index:int) {.exportc.} =
 proc saveGameNim() {.exportc.} = 
     echo "Saving game test..."
 
-    game.game_messages.add("Saving game...")
+    game.game_messages.add(("Saving game...", (255,255,255)))
 
     # Nim 0.19.4 seems to have a bug in its marshal library, and manually serializing is a PITA, so... 
     # head over to JS side
@@ -158,7 +158,7 @@ proc saveGameNim() {.exportc.} =
 proc nextLevel() {.exportc.} =
     # are we on stairs?
     if game.map.is_stairs(game.player.position.x, game.player.position.y):
-        game.game_messages.add("You descend deeper in the dungeon")
+        game.game_messages.add(("You descend deeper in the dungeon", (127,0,255)))
         # clear entities list
         if game.entities.len > 0:
             game.entities.setLen(0)
@@ -171,7 +171,7 @@ proc nextLevel() {.exportc.} =
         game.recalc_FOV = true;
         game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
     else:
-        game.game_messages.add("There are no stairs here");
+        game.game_messages.add(("There are no stairs here", (255,255,255)));
 
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:

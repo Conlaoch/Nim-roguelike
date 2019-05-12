@@ -18,7 +18,7 @@ proc newGame*(canvas: Canvas) : Game =
     result.game_state = PLAYER_TURN.int; # trick to use the int
 
 proc gameMessage*(game:Game, msg:string) =
-    game.game_messages.add(msg);
+    game.game_messages.add((msg, (255,255,255)));
 
 # taken from Python version, originally adapted from ToME4
 proc add_faction*(game:Game, faction_data:Faction) =
@@ -144,13 +144,13 @@ proc renderMap*(game: Game, map: Map, fov_map: seq[Vector2], explored: var seq[V
                 drawMapTileTint(game, isoPos(x,y,cam.offset), map.tiles[y * map.width + x], (127,127,127));
 
 proc drawMessages*(game:Game) = 
-    var drawn: seq[string];
+    var drawn: seq[GameMessage];
     # what do we draw?
     if game.game_messages.len <= 5:
         drawn = game.game_messages
     else:
         # fancy slicing similar to Python's
-        var view = SeqView[string](data:game.game_messages, bounds: game.game_messages.len-5..game.game_messages.len-1);
+        var view = SeqView[GameMessage](data:game.game_messages, bounds: game.game_messages.len-5..game.game_messages.len-1);
         #echo "seqView: " & $view;
 
         for el in view:
@@ -161,8 +161,9 @@ proc drawMessages*(game:Game) =
     for i in 0..drawn.len-1:
         var el = drawn[i];
         game.context.font = "12px Arial"
-        game.context.fillStyle = rgb(255, 255, 255);
-        fillText(game.context, el, 5.0, float(game.canvas.height-50+y));
+        game.context.fillStyle = rgb(el[1][0], el[1][1], el[1][2])
+        #game.context.fillStyle = rgb(255, 255, 255);
+        fillText(game.context, el[0], 5.0, float(game.canvas.height-50+y));
         y += 10;
 
 proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int, bar_color:ColorRGB, bg_color:ColorRGB) =
