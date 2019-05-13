@@ -56,7 +56,7 @@ proc generateMap*(width=20, height=20, room_size: Vector2=(3,5)): (Map, Vector2)
             for other_room in rooms:
                 # If we intersect any other rooms..
                 if new_room.intersects( other_room ):
-                    echo "Intersects"
+                    #echo "Intersects"
                     # don't add to rooms list
                     passed = false
             if passed: 
@@ -99,18 +99,12 @@ proc generateMap*(width=20, height=20, room_size: Vector2=(3,5)): (Map, Vector2)
                     setTile(tiles, cell.x, cell.y, width, 1) # floor
                 for cell in hline( A.x, B.x, B.y ):
                     setTile(tiles, cell.x, cell.y, width, 1) #floor_id
-
-            # Spawning
-            #place_monsters(room)
         
             if i == rooms.len-1:
                 echo("Last room")
                 # place stairs
                 var cent = center(room)
                 setTile(tiles, cent.x,cent.y, width, 2) #stairs
-            
-        # items
-        #place_items(room)
 
     (Map(
         width: width,
@@ -118,5 +112,25 @@ proc generateMap*(width=20, height=20, room_size: Vector2=(3,5)): (Map, Vector2)
         tiles: tiles),
     start_pos)
 
+# alas, placing them directly in map.nim results in recursive imports
+proc spawnMonsterbyID(id:string, map: Map) : Entity =
+    var pos = random_free_tile(map);
+    return generateMonster(id, pos[0], pos[1]);
 
+proc spawnItembyID(id:string, map:Map) : Entity =
+    var pos = random_free_tile(map);
+    return generateItem(id, pos[0], pos[1]);
 
+proc placeEntities*(map: Map, entities: var seq[Entity], max:int) =
+    var rng = aleaRNG();
+    # Get a random number of monsters
+    var num = rng.range(1..max);
+
+    for i in (1..num):
+        entities.add(spawnMonsterbyID("kobold", map));
+
+    entities.add(spawnMonsterbyID("human", map));
+
+    # items
+    entities.add(spawnItembyID("longsword", map));
+    entities.add(spawnItembyID("chainmail", map));
