@@ -67,6 +67,9 @@ type
         base_cha*: int
         faction*: string
         text*: string
+        # skills
+        dodge*: int
+        melee*: int
         # flag
         dead*: bool
 

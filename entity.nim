@@ -5,11 +5,14 @@ import type_defs
 import game_class # to be able to use game.get_faction_reaction()
 
 # constructor so that we can provide default values
-proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, faction="enemy", text="") : Creature =
+proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
+    base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, 
+    faction="enemy", text="", dodge=25, melee=55) : Creature =
 
     Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
     base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
-    faction:faction, text:text);    
+    faction:faction, text:text,
+    dodge:dodge, melee:melee);    
 
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
     var arr : array[6, int]
@@ -57,6 +60,26 @@ proc get_items_at*(entities: seq[Entity], x:int, y:int) : Entity =
             return entity
     
     return nil
+
+# based on https://forum.nim-lang.org/t/2194
+proc fieldval(cr: Creature, field: string): int {.discardable.} =
+    if field == "melee":
+        return cr.melee
+    if field == "dodge":
+        return cr.dodge
+
+
+# d100 roll under
+proc skill_test(cr: Creature, skill: string) : bool =
+    echo ("Making a test for " & skill & " target: " & $field_val(cr, skill))
+    var rng = aleaRNG();
+    var res = rng.roller("1d100");
+
+    #if result < getattr(self, skill):
+    if res < fieldval(cr, skill):
+        return true
+    else:
+        return false
 
 # find closest enemy, up to a maximum range, and in the player's FOV
 proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2], max_range:int) : Entity =
@@ -209,13 +232,19 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
     if target == game.player:
         color = (255,0,0)
 
-    var attack_roll = rng.roller("1d100");
-    if attack_roll < target.creature.get_defense:
-        if damage > 0:
-            target.creature.take_damage(damage);
-            game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
+    #var attack_roll = rng.roller("1d100");
+    #if attack_roll < target.creature.get_defense:
+    if cr.skill_test("melee"):
+        game.game_messages.add((cr.owner.name & " hits " & target.name & "!", (255,255,255)));
+        # assume target can try to dodge
+        if target.creature.skill_test("dodge"):
+            game.game_messages.add((target.name & " dodges!", (0,255,0)));
         else:
-            game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
+            if damage > 0:
+                target.creature.take_damage(damage);
+                game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
+            else:
+                game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
     else:
         game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
 
