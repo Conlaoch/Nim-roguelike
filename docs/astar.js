@@ -1,6 +1,6 @@
 //Based on http://buildnewgames.com/astar/
 
-function findPath(world, pathStart, pathEnd)
+function findPath(world, pathStart, pathEnd, entities)
 {
 	// shortcuts for speed
 	var	abs = Math.abs;
@@ -74,16 +74,16 @@ function findPath(world, pathStart, pathEnd)
 	// Returns every available North, South, East or West
 	// cell that is empty. No diagonals,
 	// unless distanceFunction function is not Manhattan
-	function Neighbours(x, y)
+	function Neighbours(x, y, entities)
 	{
 		var	N = y - 1,
 		S = y + 1,
 		E = x + 1,
 		W = x - 1,
-		myN = N > -1 && canWalkHere(x, N),
-		myS = S < worldHeight && canWalkHere(x, S),
-		myE = E < worldWidth && canWalkHere(E, y),
-		myW = W > -1 && canWalkHere(W, y),
+		myN = N > -1 && canWalkHere(x, N, entities),
+		myS = S < worldHeight && canWalkHere(x, S, entities),
+		myE = E < worldWidth && canWalkHere(E, y, entities),
+		myW = W > -1 && canWalkHere(W, y, entities),
 		result = [];
 		if(myN)
 		result.push({x:x, y:N});
@@ -144,11 +144,17 @@ function findPath(world, pathStart, pathEnd)
 	}
 
 	// returns boolean value (world cell is available and open)
-	function canWalkHere(x, y)
+	function canWalkHere(x, y, entities)
 	{
         //console.log("Check id: " + [y * worldWidth + x] + " res: " + world.tiles[y * worldWidth + x]);
         var can = (world.tiles[y * worldWidth + x] != null &&
-        world.tiles[y * worldWidth + x] != unwalkableTileNum)
+		world.tiles[y * worldWidth + x] != unwalkableTileNum)
+		
+		//check for other creatures via an exported Nim function
+		if (get_creatures_at(entities, x,y) != null)
+		{
+			return false;
+		}
         //console.log("Can walk: @ x " + x + " y: " + y + " = " + can); 
         return can;
         //return ((world[x] != null) &&
@@ -180,7 +186,7 @@ function findPath(world, pathStart, pathEnd)
 	}
 
 	// Path function, executes AStar algorithm operations
-	function calculatePath()
+	function calculatePath(entities)
 	{
         // create Nodes from the Start and End x,y coordinates
         //passed in from Nim Vector2, hence the weird naming
@@ -234,7 +240,7 @@ function findPath(world, pathStart, pathEnd)
 			else // not the destination
 			{
 				// find which nearby nodes are walkable
-				myNeighbours = Neighbours(myNode.x, myNode.y);
+				myNeighbours = Neighbours(myNode.x, myNode.y, entities);
 				// test each one that hasn't been tried already
 				for(i = 0, j = myNeighbours.length; i < j; i++)
 				{
@@ -263,6 +269,6 @@ function findPath(world, pathStart, pathEnd)
 	// actually calculate the a-star path!
 	// this returns an array of coordinates
 	// that is empty if no path is possible
-	return calculatePath();
+	return calculatePath(entities);
 
 } // end of findPath() function

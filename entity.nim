@@ -43,7 +43,8 @@ proc generate_stats*(typ="standard", kind="melee") : array[6,int] =
 
 
 # Nim functions have to be defined before anything that uses them
-proc get_creatures_at*(entities: seq[Entity], x:int, y:int) : Entity =
+# this is used by A*, too
+proc get_creatures_at*(entities: seq[Entity], x:int, y:int) : Entity {.exportc.}  =
     for entity in entities:
         if not isNil(entity.creature) and entity.position.x == x and entity.position.y == y:
             return entity
@@ -277,7 +278,7 @@ proc move_towards(e:Entity, target:Vector2, game:Game, game_map:Map, entities:se
 
 proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[Entity]) =
     echo "Calling astar..."
-    var astar = findPathNim(game_map, e.position, target);
+    var astar = findPathNim(game_map, e.position, target, entities);
     # for e in astar:
     #     echo e
     if astar.len > 1:
