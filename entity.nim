@@ -68,17 +68,43 @@ proc fieldval(cr: Creature, field: string): int {.discardable.} =
     if field == "dodge":
         return cr.dodge
 
+# equivalent for setting
+proc setfield(cr: Creature, field: string, val: int) =
+    if field == "melee":
+        cr.melee = val
+    if field == "dodge":
+        cr.dodge = val
 
 # d100 roll under
-proc skill_test(cr: Creature, skill: string) : bool =
+proc skill_test(cr: Creature, skill: string, game: Game) : bool =
     echo ("Making a test for " & skill & " target: " & $field_val(cr, skill))
     var rng = aleaRNG();
     var res = rng.roller("1d100");
 
     #if result < getattr(self, skill):
     if res < fieldval(cr, skill):
+        # check how much we gain in the skill
+        var tick = rng.roller("1d100")
+        # roll OVER the current skill
+        if tick > fieldval(cr, skill):
+            # +1d4 if we succeeded
+            var gain = rng.roller("1d4")
+            setfield(cr, skill, (fieldval(cr, skill) + gain));
+            game.game_messages.add(("You gain " & $gain & " skill points!", (0,255,0)))
+        else:
+            # +1 if we didn't
+            setfield(cr, skill, (fieldval(cr, skill) + 1));
+            game.game_messages.add(("You gain 1 skill point", (0,255,0)))
         return true
     else:
+        # if we failed, the check for gain is different
+        var tick = rng.roller("1d100")
+        # roll OVER the current skill
+        if tick > fieldval(cr, skill):
+            # +1 if we succeeded, else nothing
+            setfield(cr, skill, (fieldval(cr, skill) + 1));
+            game.game_messages.add(("You learn from your failure and gain 1 skill point", (0,255,0)))
+
         return false
 
 # find closest enemy, up to a maximum range, and in the player's FOV
@@ -234,10 +260,10 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
 
     #var attack_roll = rng.roller("1d100");
     #if attack_roll < target.creature.get_defense:
-    if cr.skill_test("melee"):
+    if cr.skill_test("melee", game):
         game.game_messages.add((cr.owner.name & " hits " & target.name & "!", (255,255,255)));
         # assume target can try to dodge
-        if target.creature.skill_test("dodge"):
+        if target.creature.skill_test("dodge", game):
             game.game_messages.add((target.name & " dodges!", (0,255,0)));
         else:
             if damage > 0:
