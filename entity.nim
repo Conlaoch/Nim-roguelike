@@ -83,27 +83,31 @@ proc skill_test(cr: Creature, skill: string, game: Game) : bool =
 
     #if result < getattr(self, skill):
     if res < fieldval(cr, skill):
-        # check how much we gain in the skill
-        var tick = rng.roller("1d100")
-        # roll OVER the current skill
-        if tick > fieldval(cr, skill):
-            # +1d4 if we succeeded
-            var gain = rng.roller("1d4")
-            setfield(cr, skill, (fieldval(cr, skill) + gain));
-            game.game_messages.add(("You gain " & $gain & " skill points!", (0,255,0)))
-        else:
-            # +1 if we didn't
-            setfield(cr, skill, (fieldval(cr, skill) + 1));
-            game.game_messages.add(("You gain 1 skill point", (0,255,0)))
+            # player-only:
+        if cr.owner == game.player:
+            # check how much we gain in the skill
+            var tick = rng.roller("1d100")
+            # roll OVER the current skill
+            if tick > fieldval(cr, skill):
+                # +1d4 if we succeeded
+                var gain = rng.roller("1d4")
+                setfield(cr, skill, (fieldval(cr, skill) + gain));
+                game.game_messages.add(("You gain " & $gain & " skill points!", (0,255,0)))
+            else:
+                # +1 if we didn't
+                setfield(cr, skill, (fieldval(cr, skill) + 1));
+                game.game_messages.add(("You gain 1 skill point", (0,255,0)))
         return true
     else:
-        # if we failed, the check for gain is different
-        var tick = rng.roller("1d100")
-        # roll OVER the current skill
-        if tick > fieldval(cr, skill):
-            # +1 if we succeeded, else nothing
-            setfield(cr, skill, (fieldval(cr, skill) + 1));
-            game.game_messages.add(("You learn from your failure and gain 1 skill point", (0,255,0)))
+        # player-only:
+        if cr.owner == game.player:
+            # if we failed, the check for gain is different
+            var tick = rng.roller("1d100")
+            # roll OVER the current skill
+            if tick > fieldval(cr, skill):
+                # +1 if we succeeded, else nothing
+                setfield(cr, skill, (fieldval(cr, skill) + 1));
+                game.game_messages.add(("You learn from your failure and gain 1 skill point", (0,255,0)))
 
         return false
 
