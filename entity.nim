@@ -352,14 +352,20 @@ proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[
 #proc draw*(e: Entity) =
 
 proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:Map, entities:seq[Entity]) = 
+    var rng = aleaRNG();
     #echo ("The " & ai.owner.creature.name & "wonders when it will get to move");
     var monster = ai.owner
     # assume if we can see it, it can see us too
     if monster.position in fov_map:
         if monster.position.distance_to(target.position) >= 2:
-            # discard means we're not using the return value
-            #discard monster.move_towards(target.position, game_map, entities);
-            monster.move_astar(target.position, game, game_map, entities);
+            if monster.creature.faction != target.creature.faction:
+                var is_neutral_faction = game.get_faction_reaction(monster.creature.faction, target.creature.faction, true) >= 0
+                if is_neutral_faction:
+                    discard monster.move(rng.range(-1..1), rng.range(-1..1), game, game_map, entities)
+                else:
+                    # discard means we're not using the return value
+                    #discard monster.move_towards(target.position, game_map, entities);
+                    monster.move_astar(target.position, game, game_map, entities);
         elif target.creature.hp > 0:
             var is_enemy_faction : bool;
             is_enemy_faction = get_faction_reaction(game, monster.creature.faction, target.creature.faction) < 0;
