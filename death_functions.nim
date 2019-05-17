@@ -7,8 +7,7 @@ proc death_monster*(e:Entity, game:Game) =
     game.game_messages.add((e.name & " is dead!", (127,127,127)));
 
     game.entities.delete(game.entities.find(e));
-    # delete from the delete list, too
-    game.to_remove.delete(game.to_remove.find(e));
+
     # axe refs
     e.creature = nil
     e.ai = nil

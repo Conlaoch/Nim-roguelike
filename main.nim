@@ -65,9 +65,9 @@ proc onReadyNimCallback*() {.exportc.} =
     game.player.position = map_data[1];
     basic_map.place_entities(game.map, game.entities, 2);
     # test (reveal all map)
-    for x in 0..<game.map.width:
-        for y in 0..<game.map.height:
-            game.explored.add((x,y))
+    #for x in 0..<game.map.width:
+    #    for y in 0..<game.map.height:
+    #        game.explored.add((x,y))
     #arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;
@@ -134,7 +134,10 @@ proc onReadyNimCallback*() {.exportc.} =
             # avoid modifying while iterating
             for entity in game.to_remove:
                 death_monster(entity, game)
-                
+            
+            # clear list to remove
+            if game.to_remove.len > 0:
+                game.to_remove.setLen(0);
 
     # this indentation is crucially important! It's not part of the main loop!
     discard dom.window.requestAnimationFrame(mainLoop)
