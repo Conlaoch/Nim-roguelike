@@ -162,6 +162,9 @@ proc nextLevel() {.exportc.} =
         # clear entities list
         if game.entities.len > 0:
             game.entities.setLen(0)
+        # clear explored list
+        if game.explored.len > 0:
+            game.explored.setLen(0);
         # generate new level
         game.map = arena_map.generateMap(15,15,@[(6,6)])
         arena_map.place_entities(game.map, game.entities, 3, 2);
