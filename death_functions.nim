@@ -6,7 +6,8 @@ proc mark_for_del*(e:Entity, game:Game) =
 proc death_monster*(e:Entity, game:Game) =
     game.game_messages.add((e.name & " is dead!", (127,127,127)));
 
-    game.entities.delete(game.entities.find(e));
+    if game.entities.find(e) > -1:
+        game.entities.delete(game.entities.find(e));
 
     # axe refs
     e.creature = nil
