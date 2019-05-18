@@ -1,4 +1,4 @@
-import dom
+import dom, times
 import html5_canvas
 
 import math_helpers, map, tint_image, seq_tools
@@ -53,6 +53,13 @@ proc get_marker_color(cr:Creature, game:Game) : ColorRGB =
         return (r:0, g:255, b:255) #"cyan"
     elif react > 0:
         return (r:0, g:0, b:255) #"blue"
+
+proc clearEffects*(game: Game) =
+    #echo getTime();
+    for e in game.effects:
+        #echo ($e.start & " int: " & $e.interval);
+        if getTime() >= (e.start + e.interval):
+            game.rem_eff.add(e);
 
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
@@ -202,7 +209,7 @@ proc drawShield(game:Game, x,y:int) =
 
 proc drawEffects*(game:Game) =
     for e in game.effects:
-        if e[0] == "dmg":
-            game.drawDmgSplatter(e[1],e[2],e[3]);
-        if e[0] == "shield":
-            game.drawShield(e[1],e[2]);
+        if e.id == "dmg":
+            game.drawDmgSplatter(e.x,e.y,e.param);
+        if e.id == "shield":
+            game.drawShield(e.x,e.y);

@@ -1,3 +1,4 @@
+import times # for timing the special effects
 import math_helpers, map, math, alea, astar
 
 # type definition moved to type_defs
@@ -272,15 +273,13 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
         else:
             if damage > 0:
                 target.creature.take_damage(damage);
-                game.effects.add(("dmg", target.position.x, target.position.y, damage));
-                #game.drawDmgSplatter(target.position.x, target.position.y, damage);
+                game.effects.add(Effect(id:"dmg", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:damage));
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
             else:
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
     else:
         game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
-        #game.drawShield(target.position.x, target.position.y);
-        game.effects.add(("shield", target.position.x, target.position.y, 0));
+        game.effects.add(Effect(id:"shield", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:0));
 
 
 # some functions that have our Entity type as the first parameter

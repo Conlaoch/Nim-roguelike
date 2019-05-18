@@ -77,6 +77,9 @@ proc onReadyNimCallback*() {.exportc.} =
     proc mainLoop(time:float) = 
         discard dom.window.requestAnimationFrame(mainLoop)
 
+        # clear the special effects of any that ran for their interval
+        game.clearEffects();
+
     # should the main loop get moved to dom.window.onload
     # this if will become necessary
     #    if not isNil(game):
@@ -98,6 +101,11 @@ proc onReadyNimCallback*() {.exportc.} =
         game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
         game.drawMessages();
         game.drawEffects();
+        
+        # actually clear effects
+        for eff in game.rem_eff:
+            if game.effects.find(eff) > -1:
+                game.effects.delete(game.effects.find(eff));
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
@@ -135,10 +143,13 @@ proc onReadyNimCallback*() {.exportc.} =
             # avoid modifying while iterating
             for entity in game.to_remove:
                 death_monster(entity, game)
-            
+
             # clear list to remove
             if game.to_remove.len > 0:
                 game.to_remove.setLen(0);
+            if game.rem_eff.len > 0:
+                game.rem_eff.setLen(0);
+           
 
     # this indentation is crucially important! It's not part of the main loop!
     discard dom.window.requestAnimationFrame(mainLoop)

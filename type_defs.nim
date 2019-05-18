@@ -1,4 +1,4 @@
-import html5_canvas
+import html5_canvas, times
 
 import math_helpers, map, FOV, tint_image
 
@@ -28,6 +28,8 @@ type
         targeting*: Vector2
         factions*: seq[Faction]
         effects*: seq[Effect]
+        # similar to to_remove above
+        rem_eff*: seq[Effect]
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
@@ -36,8 +38,15 @@ type
 
     Faction* = tuple[f1:string, f2:string, react:int]
 
-    Effect* = tuple[id:string, x:int, y:int, param:int]
-
+    #Effect* = tuple[id:string, start: Time, interval: TimeInterval, x:int, y:int, param:int]
+    Effect* = ref object
+        id*: string
+        start*: Time
+        interval*: TimeInterval
+        x*: int
+        y*: int
+        param*: int
+ 
     # From entity.nim
     Entity* = ref object
         position*: Vector2
