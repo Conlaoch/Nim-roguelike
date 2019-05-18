@@ -186,3 +186,23 @@ proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int,
 proc drawTargeting*(game:Game) =
     let iso = isoPos(game.targeting.x, game.targeting.y, game.camera.offset);
     renderGfxTile(game, game.images[7], iso[0], iso[1]);
+
+
+proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
+    let iso = isoPos(x,y, game.camera.offset);
+    renderGfxTileTinted(game, game.images[13], (255,0,0), iso[0]+12, iso[1]+16)
+    # dmg
+    game.context.font = "12px Arial"
+    game.context.fillStyle = rgb(255, 255, 255);
+    fillText(game.context, cstring($dmg), float(iso[0]+12+10), float(iso[1]+16+12));
+
+proc drawShield(game:Game, x,y:int) =
+    let iso = isoPos(x,y, game.camera.offset);
+    renderGfxTile(game, game.images[14], iso[0]+12, iso[1]+12);
+
+proc drawEffects*(game:Game) =
+    for e in game.effects:
+        if e[0] == "dmg":
+            game.drawDmgSplatter(e[1],e[2],e[3]);
+        if e[0] == "shield":
+            game.drawShield(e[1],e[2]);

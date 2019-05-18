@@ -27,6 +27,7 @@ type
         to_remove*: seq[Entity]
         targeting*: Vector2
         factions*: seq[Faction]
+        effects*: seq[Effect]
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
@@ -34,6 +35,8 @@ type
     GameMessage* = tuple[s:string, c:ColorRGB]    
 
     Faction* = tuple[f1:string, f2:string, react:int]
+
+    Effect* = tuple[id:string, x:int, y:int, param:int]
 
     # From entity.nim
     Entity* = ref object

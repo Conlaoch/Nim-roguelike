@@ -97,6 +97,7 @@ proc onReadyNimCallback*() {.exportc.} =
         game.render(game.player);
         game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
         game.drawMessages();
+        game.drawEffects();
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
@@ -214,7 +215,9 @@ dom.window.onload = proc(e: dom.Event) =
     cstring("gfx/longsword.png"),
     cstring("gfx/chain_armor.png"), #10
     cstring("gfx/unit_marker.png"),
-    cstring("gfx/human.png")]); 
+    cstring("gfx/human.png"),
+    cstring("gfx/splash_gray.png"),
+    cstring("gfx/splash_shield.png")]); 
 
     # keys
     #  proc onKeyUp(event: Event) =

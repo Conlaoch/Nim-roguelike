@@ -272,11 +272,15 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
         else:
             if damage > 0:
                 target.creature.take_damage(damage);
+                game.effects.add(("dmg", target.position.x, target.position.y, damage));
+                #game.drawDmgSplatter(target.position.x, target.position.y, damage);
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
             else:
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
     else:
         game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
+        #game.drawShield(target.position.x, target.position.y);
+        game.effects.add(("shield", target.position.x, target.position.y, 0));
 
 
 # some functions that have our Entity type as the first parameter
