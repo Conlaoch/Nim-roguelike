@@ -14,12 +14,10 @@ type
         context*: CanvasRenderingContext2D
         images*: seq[ImageElement]
         player*: Player
-        map*: Map
+        level*: Level
         recalc_FOV*: bool
         FOV_map*: seq[Vector2]
-        explored*: seq[Vector2]
         camera*: Camera
-        entities*: seq[Entity]
         game_state*: int # because enums are ints by default
         previous_state*: int # for GUI windows to know what to go back to
         game_messages*: seq[GameMessage]
@@ -27,9 +25,15 @@ type
         to_remove*: seq[Entity]
         targeting*: Vector2
         factions*: seq[Faction]
-        effects*: seq[Effect]
         # similar to to_remove above
         rem_eff*: seq[Effect]
+
+    Level* = ref object
+        map*: Map
+        explored*: seq[Vector2]
+        entities*: seq[Entity]
+        # special effects need to be cleared after changing levels, too
+        effects*: seq[Effect]
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING

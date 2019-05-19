@@ -60,10 +60,11 @@ proc onReadyNimCallback*() {.exportc.} =
     game.camera = Camera(width:7, height:7, position:game.player.position, offset:(360,260));
     game.camera.calculate_extents();
     #game.map = arena_map.generateMap(20,20,@[(10,10)])
+    game.level = newLevel();
     var map_data = basic_map.generateMap(15,15);
-    game.map = map_data[0];
+    game.level.map = map_data[0];
     game.player.position = map_data[1];
-    basic_map.place_entities(game.map, game.entities, 2);
+    basic_map.place_entities(game.level.map, game.level.entities, 2);
     # test (reveal all map)
     #for x in 0..<game.map.width:
     #    for y in 0..<game.map.height:
@@ -71,7 +72,7 @@ proc onReadyNimCallback*() {.exportc.} =
     #arena_map.place_entities(game.map, game.entities, 3, 2);
     # FOV
     game.recalc_FOV = true;
-    game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
+    game.FOV_map = calculate_fov(game.level.map, 0, game.player.position, 4);
 
     # what it says on the tin
     proc mainLoop(time:float) = 
@@ -89,13 +90,13 @@ proc onReadyNimCallback*() {.exportc.} =
             # piggyback on this for camera recalculations
             game.camera.position = game.player.position
             game.camera.calculate_extents();
-            game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
+            game.FOV_map = calculate_fov(game.level.map, 0, game.player.position, 4);
             # the loop is called 60x a second, so immediately set the flag to false
             game.recalc_FOV = false;
         # clear
         game.clearGame();
         # render
-        game.renderMap(game.map, game.FOV_map, game.explored, game.camera);
+        game.renderMap(game.level.map, game.FOV_map, game.level.explored, game.camera);
         game.renderEntities(game.FOV_map);
         game.render(game.player);
         game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
@@ -104,8 +105,8 @@ proc onReadyNimCallback*() {.exportc.} =
         
         # actually clear effects
         for eff in game.rem_eff:
-            if game.effects.find(eff) > -1:
-                game.effects.delete(game.effects.find(eff));
+            if game.level.effects.find(eff) > -1:
+                game.level.effects.delete(game.level.effects.find(eff));
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
@@ -123,10 +124,10 @@ proc onReadyNimCallback*() {.exportc.} =
 
         # AI turn
         if game.game_state == ENEMY_TURN.int:
-            for entity in game.entities:
+            for entity in game.level.entities:
                 if not isNil(entity.ai) and not entity.creature.dead:
                     #echo("The " & entity.creature.name & " ponders the meaning of its existence.");
-                    entity.ai.take_turn(game.player, game.FOV_map, game, game.map, game.entities);
+                    entity.ai.take_turn(game.player, game.FOV_map, game, game.level.map, game.level.entities);
             
                 if not isNil(entity.creature) and entity.creature.dead:
                     mark_for_del(entity, game);
@@ -187,7 +188,7 @@ proc loadGameNim() {.exportc.} =
 
     # fix references
     # naive way (a proper one would probably involve a e id => Entity ref lookup table)
-    for e in game.entities:
+    for e in game.level.entities:
         if not isNil(e.item):
             e.item.owner = e
         if not isNil(e.ai):

@@ -132,13 +132,13 @@ proc pick_up*(item: Item, e: Entity, game:Game) =
         e.inventory.items.add(item)
         game.game_messages.add(("Picked up item " & item.owner.name, (255,255,255)));
         # because it's no longer on map
-        game.entities.delete(game.entities.find(item.owner));
+        game.level.entities.delete(game.level.entities.find(item.owner));
 
 proc drop*(item: Item, e: Entity, game:Game) =
     e.inventory.items.delete(e.inventory.items.find(item));
     # set position
     item.owner.position = e.position
-    game.entities.add(item.owner);
+    game.level.entities.add(item.owner);
     game.game_messages.add(("You dropped the " & $item.owner.name, (255,255,255)));
 
 # Equipment system
@@ -273,13 +273,13 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
         else:
             if damage > 0:
                 target.creature.take_damage(damage);
-                game.effects.add(Effect(id:"dmg", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:damage));
+                game.level.effects.add(Effect(id:"dmg", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:damage));
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " for " & $damage & " points of damage!", color));
             else:
                 game.game_messages.add((cr.owner.name & " attacks " & target.name & " but does no damage", color));
     else:
         game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
-        game.effects.add(Effect(id:"shield", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:0));
+        game.level.effects.add(Effect(id:"shield", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:0));
 
 
 # some functions that have our Entity type as the first parameter

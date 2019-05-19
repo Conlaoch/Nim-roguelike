@@ -15,14 +15,14 @@ var game*: Game;
 # functions to be called from JS by JQuery onclick()
 # and by the key input
 proc moveNim(x:int, y:int) {.exportc.} =
-    if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game, game.map, game.entities):
+    if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game, game.level.map, game.level.entities):
         game.camera.move(x,y);
         game.recalc_FOV = true
     game.game_state = ENEMY_TURN.int
 
 proc pickupNim() {.exportc.} =
     if game.game_state == PLAYER_TURN.int:
-        var it = get_items_at(game.entities, game.player.position.x, game.player.position.y)
+        var it = get_items_at(game.level.entities, game.player.position.x, game.player.position.y)
         if not isNil(it):
             it.item.pick_up(game.player, game);
         else:
@@ -157,24 +157,25 @@ proc saveGameNim() {.exportc.} =
 
 proc nextLevel() {.exportc.} =
     # are we on stairs?
-    if game.map.is_stairs(game.player.position.x, game.player.position.y):
+    if game.level.map.is_stairs(game.player.position.x, game.player.position.y):
         game.game_messages.add(("You descend deeper in the dungeon", (127,0,255)))
-        # clear entities list
-        if game.entities.len > 0:
-            game.entities.setLen(0)
-        # clear explored list
-        if game.explored.len > 0:
-            game.explored.setLen(0);
-        if game.effects.len > 0:
-            game.effects.setLen(0);
+        game.level = newLevel()
+        # # clear entities list
+        # if game.entities.len > 0:
+        #     game.entities.setLen(0)
+        # # clear explored list
+        # if game.explored.len > 0:
+        #     game.explored.setLen(0);
+        # if game.effects.len > 0:
+        #     game.effects.setLen(0);
         # generate new level
-        game.map = arena_map.generateMap(15,15,@[(6,6)])
-        arena_map.place_entities(game.map, game.entities, 3, 2);
+        game.level.map = arena_map.generateMap(15,15,@[(6,6)])
+        arena_map.place_entities(game.level.map, game.level.entities, 3, 2);
         # set player pos
         game.player.position = (1,1);
         # FOV
         game.recalc_FOV = true;
-        game.FOV_map = calculate_fov(game.map, 0, game.player.position, 4);
+        game.FOV_map = calculate_fov(game.level.map, 0, game.player.position, 4);
     else:
         game.game_messages.add(("There are no stairs here", (255,255,255)));
 
@@ -220,7 +221,7 @@ proc moveTargetNim(x:int, y:int) {.exportc.} =
 
 proc confirmTargetNim() {.exportc.} =
     # damage the target
-    var tg = get_creatures_at(game.entities, game.targeting.x, game.targeting.y);
+    var tg = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y);
     if not isNil(tg):
         tg.creature.take_damage(6);
 

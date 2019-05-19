@@ -14,8 +14,14 @@ proc newGame*(canvas: Canvas) : Game =
     new result
     result.canvas = canvas
     result.context = canvas.getContext2D()
-    result.explored = @[];
+    #result.explored = @[];
     result.game_state = PLAYER_TURN.int; # trick to use the int
+
+proc newLevel*() : Level = 
+    new result
+
+    result.explored = @[];
+
 
 proc gameMessage*(game:Game, msg:string) =
     game.game_messages.add((msg, (255,255,255)));
@@ -56,7 +62,7 @@ proc get_marker_color(cr:Creature, game:Game) : ColorRGB =
 
 proc clearEffects*(game: Game) =
     #echo getTime();
-    for e in game.effects:
+    for e in game.level.effects:
         #echo ($e.start & " int: " & $e.interval);
         if getTime() >= (e.start + e.interval):
             game.rem_eff.add(e);
@@ -88,7 +94,7 @@ proc render*(game: Game, player: Player) =
 
 # Note: currently the player is rendered separately (see above)
 proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
-    for e in game.entities:
+    for e in game.level.entities:
         let iso = isoPos(e.position.x, e.position.y, game.camera.offset);
         # if we can actually see the NPCs
         if (e.position.x, e.position.y) in fov_map:
@@ -208,7 +214,7 @@ proc drawShield(game:Game, x,y:int) =
     renderGfxTile(game, game.images[14], iso[0]+12, iso[1]+12);
 
 proc drawEffects*(game:Game) =
-    for e in game.effects:
+    for e in game.level.effects:
         if e.id == "dmg":
             game.drawDmgSplatter(e.x,e.y,e.param);
         if e.id == "shield":

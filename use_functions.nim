@@ -9,7 +9,7 @@ proc heal*(item:Item, user:Entity, game:Game) =
         user.inventory.items.delete(user.inventory.items.find(item));
 
 proc cast_lightning*(item:Item, user:Entity, game:Game) =
-    var tg = closest_monster(game.player, game.entities, game.FOV_map, 4);
+    var tg = closest_monster(game.player, game.level.entities, game.FOV_map, 4);
     if isNil(tg):
         game.game_messages.add(("No enemy is close enough to strike", (255,0,0)));
     else:
