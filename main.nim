@@ -64,6 +64,7 @@ proc onReadyNimCallback*() {.exportc.} =
     var map_data = basic_map.generateMap(15,15);
     game.level.map = map_data[0];
     game.player.position = map_data[1];
+    game.camera.center(game.player.position);
     basic_map.place_entities(game.level.map, game.level.entities, 2);
     # test (reveal all map)
     #for x in 0..<game.map.width:

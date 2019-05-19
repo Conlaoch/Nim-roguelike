@@ -173,6 +173,7 @@ proc nextLevel() {.exportc.} =
         arena_map.place_entities(game.level.map, game.level.entities, 3, 2);
         # set player pos
         game.player.position = (1,1);
+        game.camera.center(game.player.position);
         # FOV
         game.recalc_FOV = true;
         game.FOV_map = calculate_fov(game.level.map, 0, game.player.position, 4);

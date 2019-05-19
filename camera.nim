@@ -57,4 +57,10 @@ proc move*(cam: Camera, dx:int, dy:int) =
     var new_x = cam.offset[0] + x_change[0] * dx + y_change[0] * dy
     var new_y = cam.offset[1] + x_change[1] * dx + y_change[1] * dy
 
-    cam.offset = (new_x, new_y) 
+    cam.offset = (new_x, new_y)
+
+proc center*(cam:Camera, start:Vector2) =
+    # reset camera to initial value
+    cam.offset = (360,260); # is centered for 1,1 coordinate
+    var pos_change : Vector2 = (start.x-1, start.y-1);
+    cam.move(pos_change.x, pos_change.y)
