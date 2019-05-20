@@ -36,7 +36,7 @@ type
         effects*: seq[Effect]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER
 
     GameMessage* = tuple[s:string, c:ColorRGB]    
 

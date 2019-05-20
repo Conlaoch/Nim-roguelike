@@ -113,6 +113,15 @@ proc inventorySelectNim(index:int) {.exportc.} =
         # end turn      
         game.game_state = ENEMY_TURN.int
 
+proc showCharacterSheetNim() {.exportc.} =
+    # remember previous state
+    game.previous_state = game.game_state
+    # we can't name it inventory because Nim enums do not need to be qualified with their type
+    game.game_state = GUI_S_CHARACTER.int
+
+proc quitCharacterSheet() =
+    # switch back to player turn
+    game.game_state = game.previous_state
 
 proc saveGameNim() {.exportc.} = 
     echo "Saving game test..."
@@ -200,6 +209,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 71: pickupNim() # g
         of 73: showInventoryNim() # i
         of 68: showDropNim() # d
+        of 67: showCharacterSheetNim() # c
         of 83: saveGameNim() # s
         # loading handled in main.nim # q
         of 13: nextLevel() # enter
@@ -277,5 +287,8 @@ proc processKeyDown*(key: int, game:Game) =
         processInventoryKey(key, game)
       elif game.game_state == TARGETING.int:
         processTargetingKey(key, game)
+      elif game.game_state == GUI_S_CHARACTER.int:
+        if key == 27 or key == 67:
+            quitCharacterSheet();
       else:
         echo "Not player turn"

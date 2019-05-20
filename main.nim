@@ -119,6 +119,10 @@ proc onReadyNimCallback*() {.exportc.} =
 
             game.inventory_menu(inv_title, game.player.inventory, 50, game.canvas.width, game.canvas.height);
 
+        # character sheet
+        if game.game_state == GUI_S_CHARACTER.int:
+            game.character_sheet_menu("CHARACTER SHEET", game.player);
+
         # targeting
         if game.game_state == TARGETING.int:
             game.drawTargeting();
