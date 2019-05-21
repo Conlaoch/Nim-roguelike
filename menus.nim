@@ -3,7 +3,7 @@ import html5_canvas
 import type_defs, entity
 
 # generic
-proc menu(game:Game, header:string, options:seq[string], width:int, screen_width:int, screen_height:int, top:int=0) =
+proc menu(game:Game, header:string, options:seq[string], width:int, screen_width:int, screen_height:int, top:int=0, letters:bool=true) =
     if options.len > 26: 
         echo("Cannot have a menu with more than 26 options.")
         return
@@ -22,11 +22,15 @@ proc menu(game:Game, header:string, options:seq[string], width:int, screen_width
     var y = (menu_y + header_height) * 10
     var letter_index = ord('a')
     for option_text in options:
-        var text = "(" & chr(letter_index) & ") " & option_text
+        var text = option_text
+        if letters:
+            text = "(" & chr(letter_index) & ") " & option_text
+
         fillText(game.context, text, 5.0, float(y));
         # experimental height between lines in px
         y += 10;
-        letter_index += 1
+        if letters:
+            letter_index += 1
 
 # specific
 proc inventory_menu*(game:Game, header:string, inventory:Inventory, inventory_width:int, screen_width:int, screen_height:int) =
@@ -47,4 +51,4 @@ proc character_sheet_menu*(game:Game, header:string, player:Entity) =
                "WIS: " & $player.creature.base_wis, "CHA: " & $player.creature.base_cha,
                "Attack: " & $player.creature.melee, "Dodge: " & $player.creature.dodge]
     
-    menu(game, header, options, 50, game.canvas.width, game.canvas.height, 10)
+    menu(game, header, options, 50, game.canvas.width, game.canvas.height, 10, false)
