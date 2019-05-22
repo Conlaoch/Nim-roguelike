@@ -3,7 +3,7 @@ import html5_canvas
 import type_defs, entity
 
 # generic
-proc menu(game:Game, header:string, options:seq[string], width:int, screen_width:int, screen_height:int, top:int=0, letters:bool=true) =
+proc menu(game:Game, header:string, options:seq[string], width:int, screen_width:int, screen_height:int, top:int=0, letters:bool=true, centered:bool=true) =
     if options.len > 26: 
         echo("Cannot have a menu with more than 26 options.")
         return
@@ -13,7 +13,15 @@ proc menu(game:Game, header:string, options:seq[string], width:int, screen_width
 
     let menu_h = int(header_height + 1 + 26)
     let menu_y = int((50 - menu_h) / 2) + top
+
+    var menu_x = 5.0
+    if centered:
+        menu_x = screen_width/2;
     
+    # background
+    game.context.fillStyle = rgb(0,0,0);
+    game.context.fillRect(menu_x-2.0, float(menu_y * 10), 100.0, float(menu_h * 10));
+
     game.context.font = "12px Arial";
     game.context.fillStyle = rgb(255, 255, 255);
 
@@ -26,7 +34,7 @@ proc menu(game:Game, header:string, options:seq[string], width:int, screen_width
         if letters:
             text = "(" & chr(letter_index) & ") " & option_text
 
-        fillText(game.context, text, 5.0, float(y));
+        fillText(game.context, text, menu_x, float(y));
         # experimental height between lines in px
         y += 10;
         if letters:
