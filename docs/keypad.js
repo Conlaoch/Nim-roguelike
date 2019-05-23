@@ -70,6 +70,9 @@ $( document ).ready(function() {
     $(".key_load").click(function(e){
         loadGameNim()
     })
+    $(".key_look").click(function(e){
+        showLookAroundNim()
+    })
     //targeting keys
     $(".key_tg_arrow1").click(function(e) {
         //console.log($(this));

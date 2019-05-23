@@ -124,7 +124,7 @@ proc onReadyNimCallback*() {.exportc.} =
             game.character_sheet_menu("CHARACTER SHEET", game.player);
 
         # targeting
-        if game.game_state == TARGETING.int:
+        if game.game_state == TARGETING.int or game.game_state == LOOK_AROUND.int:
             game.drawTargeting();
 
         # AI turn

@@ -189,6 +189,18 @@ proc nextLevel() {.exportc.} =
     else:
         game.game_messages.add(("There are no stairs here", (255,255,255)));
 
+proc showLookAroundNim() {.exportc.} =
+    # remember previous state
+    game.previous_state = game.game_state
+
+    game.game_state = LOOK_AROUND.int
+
+    # keypad
+    # dom magic
+    dom.document.getElementById("keypad").style.display = "none";
+    dom.document.getElementById("targeting_keypad").style.display = "block";
+
+
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
         of 37: moveNim(-1,0)   #left
@@ -210,6 +222,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 73: showInventoryNim() # i
         of 68: showDropNim() # d
         of 67: showCharacterSheetNim() # c
+        of 88: showLookAroundNim() # x
         of 83: saveGameNim() # s
         # loading handled in main.nim # q
         of 13: nextLevel() # enter
@@ -231,10 +244,11 @@ proc moveTargetNim(x:int, y:int) {.exportc.} =
     game.targeting = game.targeting+(x,y)
 
 proc confirmTargetNim() {.exportc.} =
-    # damage the target
-    var tg = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y);
-    if not isNil(tg):
-        tg.creature.take_damage(6);
+    if game.game_state == TARGETING.int:
+        # damage the target
+        var tg = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y);
+        if not isNil(tg):
+            tg.creature.take_damage(6);
 
     # keypad
     # dom magic
@@ -285,7 +299,7 @@ proc processKeyDown*(key: int, game:Game) =
         processPlayerTurnKey(key, game)
       elif game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
         processInventoryKey(key, game)
-      elif game.game_state == TARGETING.int:
+      elif game.game_state == TARGETING.int or game.game_state == LOOK_AROUND.int:
         processTargetingKey(key, game)
       elif game.game_state == GUI_S_CHARACTER.int:
         if key == 27 or key == 67:
