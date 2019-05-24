@@ -8,7 +8,7 @@ var items_data*: JsObject;
 var monster_data*: JsObject;
 
 proc loadfiles*() =
-    data_loader.load_files(@[cstring("/data/items"), cstring("/data/test")]);
+    data_loader.load_files(@[cstring("data/items"), cstring("data/test")]);
 
 
     # test
