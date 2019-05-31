@@ -83,6 +83,7 @@ type
         base_cha*: int
         faction*: string
         text*: string
+        chat*: string
         # skills
         dodge*: int
         melee*: int

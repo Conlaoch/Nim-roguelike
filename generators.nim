@@ -6,9 +6,10 @@ import entity
 # globals
 var items_data*: JsObject;
 var monster_data*: JsObject;
+var dialogue_data*: JsObject;
 
 proc loadfiles*() =
-    data_loader.load_files(@[cstring("data/items"), cstring("data/test")]);
+    data_loader.load_files(@[cstring("data/items"), cstring("data/test"), cstring("data/dialogue")]);
 
 
     # test
@@ -79,9 +80,20 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         if monster_data[id].hasOwnProperty("text"):
             echo $id & " has text entry"
             mon_text = to(monster_data[id]["text"], cstring)
+        
+        var mon_chat_id = cstring("")
+        var mon_chat: JsObject
+        if monster_data[id].hasOwnProperty("chat"):
+            echo $id & " has chat entry"
+            mon_chat_id = to(monster_data[id]["chat"], cstring)
+            mon_chat = dialogue_data[mon_chat_id]
+            for k in mon_chat.keys:
+                echo $k & " : "
+                # for i in v.keys:
+                #     echo $i
 
         # creature component
-        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text);
+        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text, chat= $mon_chat_id);
         mon.creature = creat;
         # AI component
         var AI_comp = AI(owner:mon);

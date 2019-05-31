@@ -8,11 +8,11 @@ import game_class # to be able to use game.get_faction_reaction()
 # constructor so that we can provide default values
 proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
     base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, 
-    faction="enemy", text="", dodge=25, melee=55) : Creature =
+    faction="enemy", text="", chat="", dodge=25, melee=55) : Creature =
 
     Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
     base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
-    faction:faction, text:text,
+    faction:faction, text:text, chat:chat,
     dodge:dodge, melee:melee);    
 
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
@@ -315,6 +315,10 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
                 game.game_messages.add((target.name & " says: " & $target.creature.text, (255,255,255)));
             else:
                 game.game_messages.add((target.name & " has nothing to say", (127,127,127)));
+
+            # test
+            if target.creature.chat != "":
+                echo "Creature has chat"
         
         # no need to recalc FOV
         return false

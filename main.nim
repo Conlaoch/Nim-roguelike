@@ -41,8 +41,10 @@ proc onReadyNimCallback*() {.exportc.} =
     echo "Callback!"
     var data = generators.getData();
 
+    # see generators.nim line 12
     generators.items_data = data[0];
     generators.monster_data = data[1];
+    generators.dialogue_data = data[2];
 
 
     # setup cd.

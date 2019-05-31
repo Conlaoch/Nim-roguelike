@@ -1,0 +1,34 @@
+{
+ "test": {
+           "chat": "Welcome, adventurer! Do you want my help?",
+           "answer": [
+                     {
+                      "chat": "Yes, please",
+                      "reply": "great",
+                      "action": "shop"
+                      },
+                      {
+                      "chat": "No thanks, just passing by",
+                      "reply": "no"
+                      }
+                      ],
+            "great": "That's brilliant!",
+            "no": "Your choice."
+           },
+ "hooker": {
+           "chat": "Hello handsome! Do you want to spend a night?",
+           "answer": [
+                     {
+                      "chat": "Oh yeah.",
+                      "reply": "great",
+                      "action": "hooker"
+                      },
+                      {
+                      "chat": "No thanks, just passing by",
+                      "reply": "no"
+                      }
+                      ],
+            "great": "Come, let us have a nice time!",
+            "no": "Your choice."
+           }
+}
