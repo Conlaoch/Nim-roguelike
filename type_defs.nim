@@ -27,6 +27,8 @@ type
         factions*: seq[Faction]
         # similar to to_remove above
         rem_eff*: seq[Effect]
+        # player-specific thing because so far Player is just an Entity
+        talking_to*: Creature
 
     Level* = ref object
         map*: Map
@@ -36,7 +38,7 @@ type
         effects*: seq[Effect]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND, GUI_S_DIALOGUE
 
     GameMessage* = tuple[s:string, c:ColorRGB]    
 

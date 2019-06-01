@@ -318,9 +318,14 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
 
             # test
             if not isNil(target.creature.chat):
-                # echo "Creature has chat"
-                echo $target.creature.chat.start
-                echo $target.creature.chat.answers
+                echo "creature has chat"
+                # remember previous state
+                game.previous_state = game.game_state
+                game.game_state = GUI_S_DIALOGUE.int
+                echo $game.game_state
+                game.talking_to = target.creature
+                echo $game.talking_to.owner.name
+                #dialogue_menu(game, target.name, target.creature.chat)
         
         # no need to recalc FOV
         return false

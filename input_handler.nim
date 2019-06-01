@@ -18,7 +18,12 @@ proc moveNim(x:int, y:int) {.exportc.} =
     if game.game_state == PLAYER_TURN.int and game.player.move(x, y, game, game.level.map, game.level.entities):
         game.camera.move(x,y);
         game.recalc_FOV = true
-    game.game_state = ENEMY_TURN.int
+    
+    # honor dialogue state
+    if game.game_state == GUI_S_DIALOGUE.int:
+        return
+    else: 
+        game.game_state = ENEMY_TURN.int
 
 proc pickupNim() {.exportc.} =
     if game.game_state == PLAYER_TURN.int:
@@ -120,6 +125,10 @@ proc showCharacterSheetNim() {.exportc.} =
     game.game_state = GUI_S_CHARACTER.int
 
 proc quitCharacterSheet() =
+    # switch back to player turn
+    game.game_state = game.previous_state
+
+proc quitDialogue() =
     # switch back to player turn
     game.game_state = game.previous_state
 
@@ -304,5 +313,7 @@ proc processKeyDown*(key: int, game:Game) =
       elif game.game_state == GUI_S_CHARACTER.int:
         if key == 27 or key == 67:
             quitCharacterSheet();
+      elif game.game_state == GUI_S_DIALOGUE.int:
+            quitDialogue();
       else:
         echo "Not player turn"

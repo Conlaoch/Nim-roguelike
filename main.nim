@@ -125,6 +125,10 @@ proc onReadyNimCallback*() {.exportc.} =
         if game.game_state == GUI_S_CHARACTER.int:
             game.character_sheet_menu("CHARACTER SHEET", game.player);
 
+        # dialogue
+        if game.game_state == GUI_S_DIALOGUE.int:
+            game.dialogue_menu(game.talking_to.owner.name, game.talking_to.chat);
+
         # targeting
         if game.game_state == TARGETING.int or game.game_state == LOOK_AROUND.int:
             game.drawTargeting();
