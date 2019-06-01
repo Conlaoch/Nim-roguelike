@@ -50,7 +50,13 @@ type
         x*: int
         y*: int
         param*: int
- 
+
+    Dialogue* = ref object
+        start*: string
+        answers*: seq[DialogueReply]
+
+    DialogueReply* = tuple[chat:string, reply:string]
+
     # From entity.nim
     Entity* = ref object
         position*: Vector2
@@ -83,7 +89,7 @@ type
         base_cha*: int
         faction*: string
         text*: string
-        chat*: string
+        chat*: Dialogue
         # skills
         dodge*: int
         melee*: int

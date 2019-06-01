@@ -82,18 +82,27 @@ proc generateMonster*(id: string, x,y:int) : Entity =
             mon_text = to(monster_data[id]["text"], cstring)
         
         var mon_chat_id = cstring("")
-        var mon_chat: JsObject
+        var mon_chat: Dialogue
         if monster_data[id].hasOwnProperty("chat"):
-            echo $id & " has chat entry"
+            #echo $id & " has chat entry"
+            var mon_chat_data: JsObject
             mon_chat_id = to(monster_data[id]["chat"], cstring)
-            mon_chat = dialogue_data[mon_chat_id]
-            for k in mon_chat.keys:
-                echo $k & " : "
-                # for i in v.keys:
-                #     echo $i
+            mon_chat_data = dialogue_data[mon_chat_id]
+            # parse the chat itself
+            var chat = to(mon_chat_data["chat"], cstring)
+            echo $chat
+            var answers : seq[DialogueReply]
+
+            for k in mon_chat_data["answer"].keys:
+                var entry = ($to(mon_chat_data["answer"][k]["chat"], cstring), $to(mon_chat_data["answer"][k]["reply"], cstring))
+                answers.add(entry);
+            echo $answers
+
+            mon_chat = Dialogue(start: $chat, answers:answers);
+            
 
         # creature component
-        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text, chat= $mon_chat_id);
+        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text, chat= mon_chat);
         mon.creature = creat;
         # AI component
         var AI_comp = AI(owner:mon);
