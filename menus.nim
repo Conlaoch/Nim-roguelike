@@ -67,11 +67,11 @@ proc character_sheet_menu*(game:Game, header:string, player:Entity) =
     
     menu(game, header, options, 50, game.canvas.width, game.canvas.height, 10, false)
 
-proc dialogue_menu*(game:Game, header:string, dialogue:Dialogue) =
+proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]) =
 
-    var text = dialogue.start
-    var options : seq[string]
-    for a in dialogue.answers:
-        options.add(a.chat)
+    # var text = dialogue.start
+    # var options : seq[string]
+    # for a in dialogue.answers:
+    #     options.add(a.chat)
 
     menu(game, header, options, 300, game.canvas.width, game.canvas.height, text=text);

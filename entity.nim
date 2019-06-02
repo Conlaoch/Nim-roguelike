@@ -323,8 +323,8 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
                 game.previous_state = game.game_state
                 game.game_state = GUI_S_DIALOGUE.int
                 echo $game.game_state
-                game.talking_to = target.creature
-                echo $game.talking_to.owner.name
+                game.talking_data = (target.creature, target.creature.chat.start)
+                echo $game.talking_data.cr.owner.name
                 #dialogue_menu(game, target.name, target.creature.chat)
         
         # no need to recalc FOV

@@ -28,7 +28,7 @@ type
         # similar to to_remove above
         rem_eff*: seq[Effect]
         # player-specific thing because so far Player is just an Entity
-        talking_to*: Creature
+        talking_data*: tuple [cr: Creature, chat: string]
 
     Level* = ref object
         map*: Map

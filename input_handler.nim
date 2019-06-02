@@ -132,6 +132,22 @@ proc quitDialogue() =
     # switch back to player turn
     game.game_state = game.previous_state
 
+proc dialogueSelectNim(index:int) =
+    # initial
+    if game.talking_data.chat == game.talking_data.cr.chat.start:
+        var sel = game.talking_data.cr.chat.answers[index]
+        #echo $sel
+
+        # display new text if any
+            #print("Index " + str(index) + " " + str(creature.chat['answer'][index]['reply']))
+        game.talking_data.chat = sel.reply
+
+            #index = dialogue_menu(creature.name_instance, 50, "DIALOGUE", creature.chat[reply], [])
+
+    else:
+        #quit 
+        quitDialogue();
+
 proc saveGameNim() {.exportc.} = 
     echo "Saving game test..."
 
@@ -247,6 +263,15 @@ proc processInventoryKey(key: int, game:Game) =
     elif key == 27: # escape
         quitInventoryNim()
 
+proc processDialogueKey(key: int, game:Game) =
+    # 65 is the int value returned for 'a' key
+    let index = key - 65
+    if 0 <= index and index < game.talking_data.cr.chat.answers.len:
+        dialogueSelectNim(index);
+
+    elif key == 27: # escape
+        quitDialogue()
+
 # targeting mode keys
 proc moveTargetNim(x:int, y:int) {.exportc.} =
     echo "Move target " & $x & " " & $y;
@@ -314,6 +339,6 @@ proc processKeyDown*(key: int, game:Game) =
         if key == 27 or key == 67:
             quitCharacterSheet();
       elif game.game_state == GUI_S_DIALOGUE.int:
-            quitDialogue();
+            processDialogueKey(key, game);
       else:
         echo "Not player turn"

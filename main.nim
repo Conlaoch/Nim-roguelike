@@ -127,7 +127,19 @@ proc onReadyNimCallback*() {.exportc.} =
 
         # dialogue
         if game.game_state == GUI_S_DIALOGUE.int:
-            game.dialogue_menu(game.talking_to.owner.name, game.talking_to.chat);
+            var text = game.talking_data.chat
+            var options: seq[string]
+            # initial
+            if game.talking_data.chat == game.talking_data.cr.chat.start:
+                # populate the dialogue screen with answers
+                for a in game.talking_data.cr.chat.answers:
+                    options.add(a.chat)
+            else:
+                options = @[]
+
+
+            game.dialogue_menu(game.talking_data.cr.owner.name, text, options);
+            
 
         # targeting
         if game.game_state == TARGETING.int or game.game_state == LOOK_AROUND.int:
