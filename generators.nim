@@ -90,15 +90,28 @@ proc generateMonster*(id: string, x,y:int) : Entity =
             mon_chat_data = dialogue_data[mon_chat_id]
             # parse the chat itself
             var chat = to(mon_chat_data["chat"], cstring)
-            echo $chat
+            #echo $chat
             var answers : seq[DialogueReply]
 
             for k in mon_chat_data["answer"].keys:
                 var entry = ($to(mon_chat_data["answer"][k]["chat"], cstring), $to(mon_chat_data["answer"][k]["reply"], cstring))
                 answers.add(entry);
-            echo $answers
+            #echo $answers
 
-            mon_chat = Dialogue(start: $chat, answers:answers);
+            # load any further entries
+            var texts: seq[DialogueText]
+            for k in mon_chat_data.keys:
+                if k != cstring("chat") and k != cstring("answer"):
+                    #echo "entry: " & $k
+                    # only those entries that match a reply tag
+                    for e in answers:
+                        if k == cstring(e.reply):
+                            #echo "entry " & $k & " fits reply " & $e.reply
+                            texts.add(($k, $to(mon_chat_data[k], cstring)));
+            
+            #echo $texts
+
+            mon_chat = Dialogue(start: $chat, answers:answers, texts:texts);
             
 
         # creature component

@@ -132,6 +132,14 @@ proc quitDialogue() =
     # switch back to player turn
     game.game_state = game.previous_state
 
+# helper
+proc findDialogueText(id: string) : string =
+    for t in game.talking_data.cr.chat.texts:
+        if t.id == id:
+            return t.text
+
+    return ""
+
 proc dialogueSelectNim(index:int) =
     # initial
     if game.talking_data.chat == game.talking_data.cr.chat.start:
@@ -139,10 +147,14 @@ proc dialogueSelectNim(index:int) =
         #echo $sel
 
         # display new text if any
-            #print("Index " + str(index) + " " + str(creature.chat['answer'][index]['reply']))
-        game.talking_data.chat = sel.reply
-
-            #index = dialogue_menu(creature.name_instance, 50, "DIALOGUE", creature.chat[reply], [])
+        echo $sel.reply
+        var text = findDialogueText($sel.reply);
+        if text != "":
+            game.talking_data.chat = text #sel.reply
+        else:
+            echo "Reply not found"
+            # quit
+            quitDialogue();
 
     else:
         #quit 

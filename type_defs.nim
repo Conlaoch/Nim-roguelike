@@ -56,8 +56,10 @@ type
     Dialogue* = ref object
         start*: string
         answers*: seq[DialogueReply]
+        texts*: seq[DialogueText]
 
     DialogueReply* = tuple[chat:string, reply:string]
+    DialogueText* = tuple[id:string, text:string]
 
     # From entity.nim
     Entity* = ref object
