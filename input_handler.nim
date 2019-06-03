@@ -45,7 +45,7 @@ proc showInventoryKeypad() =
     # these need to be created on the fly, depending on how many items we have...
     # Nim ranges are inclusive!
     for i in 0 .. game.player.inventory.items.len-1:
-        createButton(target, i);
+        createButton(target, i, cstring("inventorySelectNim"));
 
 proc hideInventoryKeypad() = 
     # dom magic
@@ -54,7 +54,6 @@ proc hideInventoryKeypad() =
 
     var target = getInventoryKeypad();
     removeAll(target);
-
 
 proc showInventoryNim() {.exportc.} =
     # remember previous state
@@ -129,8 +128,22 @@ proc quitCharacterSheet() =
     game.game_state = game.previous_state
 
 proc quitDialogue() =
+    # hide keypad
+    hideInventoryKeypad();
+
     # switch back to player turn
     game.game_state = game.previous_state
+
+proc showDialogueKeypad() =
+    # dom magic
+    dom.document.getElementById("keypad").style.display = "none";
+    dom.document.getElementById("inventory_keypad").style.display = "block";
+
+    var target = getInventoryKeypad();
+    # these need to be created on the fly, depending on how many items we have...
+    # Nim ranges are inclusive!
+    for i in 0 .. game.talking_data.cr.chat.answers.len-1:
+        createButton(target, i, cstring("dialogueSelectNim"));
 
 # helper
 proc findDialogueText(id: string) : string =
@@ -140,7 +153,7 @@ proc findDialogueText(id: string) : string =
 
     return ""
 
-proc dialogueSelectNim(index:int) =
+proc dialogueSelectNim(index:int) {.exportc.} =
     # initial
     if game.talking_data.chat == game.talking_data.cr.chat.start:
         var sel = game.talking_data.cr.chat.answers[index]
@@ -151,6 +164,9 @@ proc dialogueSelectNim(index:int) =
         var text = findDialogueText($sel.reply);
         if text != "":
             game.talking_data.chat = text #sel.reply
+            # refresh keys
+            hideInventoryKeypad();
+            showDialogueKeypad();
         else:
             echo "Reply not found"
             # quit
@@ -159,6 +175,17 @@ proc dialogueSelectNim(index:int) =
     else:
         #quit 
         quitDialogue();
+
+# for JS
+proc quitButtonNim() {.exportc.} =
+    # contextual
+    if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
+        quitInventoryNim();
+    elif game.game_state == GUI_S_CHARACTER.int:
+        quitCharacterSheet();
+    elif game.game_state == GUI_S_DIALOGUE.int:
+        quitDialogue();
+
 
 proc saveGameNim() {.exportc.} = 
     echo "Saving game test..."

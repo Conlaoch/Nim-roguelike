@@ -59,7 +59,7 @@ $( document ).ready(function() {
         showDropNim()
     });
     $(".key_esc").click(function(e){
-        quitInventoryNim()
+        quitButtonNim()
     });
     $(".key_descend").click(function(e){
         nextLevel()

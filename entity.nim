@@ -1,9 +1,11 @@
 import times # for timing the special effects
+import dom # for keypad
 import math_helpers, map, math, alea, astar
 
 # type definition moved to type_defs
 import type_defs
 import game_class # to be able to use game.get_faction_reaction()
+import table_tools
 
 # constructor so that we can provide default values
 proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
@@ -281,6 +283,26 @@ proc attack*(cr:Creature, target:Entity, game:Game) =
         game.game_messages.add((cr.owner.name & " misses " & target.name & "!", (114,114,255)));
         game.level.effects.add(Effect(id:"shield", start: getTime(), interval:seconds(5), x:target.position.x, y:target.position.y, param:0));
 
+proc showDialogueKeypad(game:Game) =
+    # dom magic
+    dom.document.getElementById("keypad").style.display = "none";
+    dom.document.getElementById("inventory_keypad").style.display = "block";
+
+    var target = getInventoryKeypad();
+    # these need to be created on the fly, depending on how many items we have...
+    # Nim ranges are inclusive!
+    for i in 0 .. game.talking_data.cr.chat.answers.len-1:
+        createButton(target, i, cstring("dialogueSelectNim"));
+
+proc showDialogue(game: Game, target: Entity) =
+     # remember previous state
+     game.previous_state = game.game_state
+     game.game_state = GUI_S_DIALOGUE.int
+     #echo $game.game_state
+     game.talking_data = (target.creature, target.creature.chat.start)
+     #echo $game.talking_data.cr.owner.name
+
+     showDialogueKeypad(game);
 
 # some functions that have our Entity type as the first parameter
 proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]) : bool =
@@ -319,12 +341,7 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
             # test
             if not isNil(target.creature.chat):
                 echo "creature has chat"
-                # remember previous state
-                game.previous_state = game.game_state
-                game.game_state = GUI_S_DIALOGUE.int
-                echo $game.game_state
-                game.talking_data = (target.creature, target.creature.chat.start)
-                echo $game.talking_data.cr.owner.name
+                showDialogue(game, target);
                 #dialogue_menu(game, target.name, target.creature.chat)
         
         # no need to recalc FOV

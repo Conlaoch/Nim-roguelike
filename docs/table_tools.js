@@ -1,6 +1,6 @@
 
 
-function createButton(target, i){
+function createButton(target, i, fct){
     if (target.rows.length < 2){
         console.log("Inserting a second row");
         target = target.insertRow(1)
@@ -16,7 +16,7 @@ function createButton(target, i){
     var btn = document.createElement("input");
     btn.type = "button";
     btn.value = val;
-    btn.setAttribute('onclick', "inventorySelectNim(this.value.charCodeAt(0)-97)");
+    btn.setAttribute('onclick', fct+"(this.value.charCodeAt(0)-97)");
     cell.appendChild(btn);
 }
 
