@@ -1,5 +1,6 @@
 import data_loader
 import jsffi # to be able to do stuff with the data we loaded from JS side
+import tables
 import type_defs
 import entity
 
@@ -124,10 +125,17 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         echo("Spawned monster at " & $mon.position);
         return mon;
 
-proc getData*() : seq[JsObject] =
-    var data = data_loader.get_loaded();
+proc getData*() : Table[cstring, JSObject] =
+    var data : JsObject;
+    data = data_loader.get_loaded();
 
-    return data
+    # convert to a proper table
+    var dat = initTable[cstring, JsObject](32);
+    for k,v in data:
+        # duplicates shouldn't be an issue
+        dat.add(to(data[k][0], cstring), data[k][1])
+
+    return dat;
 
 # the callback on loading all data files was moved to main.nim
 

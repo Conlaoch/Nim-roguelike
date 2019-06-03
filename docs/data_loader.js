@@ -1,4 +1,5 @@
-var loaded = []
+//it's 2019, use a proper map! (ES 6 feature [!])
+var loaded = new Map();
 var promise;
 
 
@@ -20,7 +21,8 @@ function loadfile(file){
     return new Promise (function(resolve, reject){
         readTextFile(file+".json", function(text){
              data = JSON.parse(text);
-             loaded.push(data);
+             loaded.set(file, data);
+             //loaded.push(data);
              //console.log(data);
              console.log(loaded);
              resolve("file loaded OK!");
@@ -60,5 +62,8 @@ function load_files(files_array){
 
 
 function get_loaded(){
-    return loaded;
+    //console.log(Array.from(loaded));
+    //Nim doesn't understand the Map type, so convert...
+    return Array.from(loaded);
+    //return loaded;
 }

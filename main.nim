@@ -1,5 +1,6 @@
 import dom
 import html5_canvas
+import tables
 
 import input_handler
 import type_defs
@@ -41,11 +42,16 @@ proc onReadyNimCallback*() {.exportc.} =
     echo "Callback!"
     var data = generators.getData();
 
+    # those sometimes led to race conditions on refresh
+    #generators.items_data = data[0];
+    #generators.monster_data = data[1];
+    #generators.dialogue_data = data[2];
+    
     # see generators.nim line 12
-    generators.items_data = data[0];
-    generators.monster_data = data[1];
-    generators.dialogue_data = data[2];
-
+    # using a dictionary (table in Nim parlance) ensures those are always mapped to what we want
+    generators.items_data = data["data/items"];
+    generators.monster_data = data["data/test"];
+    generators.dialogue_data = data["data/dialogue"];
 
     # setup cd.
     game.add_faction(("player", "enemy", -100));
