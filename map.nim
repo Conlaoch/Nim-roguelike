@@ -1,3 +1,5 @@
+import algorithm # for sorting
+
 import math_helpers, alea
 
 type
@@ -30,7 +32,7 @@ proc is_stairs*(map: Map, x,y:int) : bool =
     else:
         return false
 
-proc get_free_tiles(inc_map: Map) : seq[Vector2] =
+proc get_free_tiles*(inc_map: Map) : seq[Vector2] =
     var free_tiles: seq[Vector2]
     for t in 0..inc_map.tiles.len-1:
         if inc_map.tiles[t] != 0:
@@ -49,3 +51,23 @@ proc random_free_tile*(inc_map:Map) : Vector2 =
     var y = free_tiles[index][1]
     echo("Coordinates are " & $x & " " & $y)
     return (x, y)
+
+proc find_grid_in_range*(map: Map, dist: int, x: int, y: int) : seq[Vector2] =
+    echo("Looking for grids in range " & $dist & " of " & $x & " " & $y);
+    var coord_in_range : seq[Vector2]
+    var tmp: seq[tuple[x: int, y: int, dist: int]]
+
+    for i in (x-dist..x+dist):
+        for j in (y-dist..y+dist):
+            if i > 0 and i < map.width and j > 0 and j < map.height:
+                var dist = distance_to((x,y), (i,j));
+                tmp.add((i, j, dist))
+                
+    # sort
+    tmp.sort do (x,y: tuple[x:int, y:int, dist:int]) -> int:
+        result = cmp(x.dist, y.dist);
+    
+    for e in tmp:
+        coord_in_range.add((e.x, e.y));
+    
+    return coord_in_range

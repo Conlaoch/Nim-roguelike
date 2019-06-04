@@ -64,6 +64,22 @@ proc get_items_at*(entities: seq[Entity], x:int, y:int) : Entity =
     
     return nil
 
+# should be somewhere else but we can't use entity from map...
+proc find_free_grid_in_range*(map: Map, dist: int, x: int, y:int, entities: seq[Entity]) : seq[Vector2] =
+    var coords = find_grid_in_range(map, dist, x,y)
+    var free = get_free_tiles(map)
+    var res : seq[Vector2]
+
+    echo("Finding free grid in range...");
+
+    for c in coords:
+        if (c[0], c[1]) in free:
+            if isNil(get_creatures_at(entities, c[0],c[1])):
+                res.add((c[0], c[1]))
+
+    echo $res;
+    return res
+
 # based on https://forum.nim-lang.org/t/2194
 proc fieldval(cr: Creature, field: string): int {.discardable.} =
     if field == "melee":

@@ -71,9 +71,21 @@ proc onReadyNimCallback*() {.exportc.} =
     game.level = newLevel();
     var map_data = basic_map.generateMap(15,15);
     game.level.map = map_data[0];
-    game.player.position = map_data[1];
-    game.camera.center(game.player.position);
     basic_map.place_entities(game.level.map, game.level.entities, 2);
+    # test (spawn NPC on player start coords)
+    game.level.entities.add(generateMonster("kobold", map_data[1][0], map_data[1][1]));
+    # check that the player start position isn't taken by NPC
+    var taken = get_creatures_at(game.level.entities, map_data[1][0],map_data[1][1]);
+    if not isNil(taken):
+        echo("Looking for grid in range");
+        var grids = find_free_grid_in_range(game.level.map, 3, map_data[1][0],map_data[1][1], game.level.entities);
+        if grids.len > 0:
+            game.player.position = grids[0];
+    else:
+        game.player.position = map_data[1];
+        
+    game.camera.center(game.player.position);
+
     # test (reveal all map)
     #for x in 0..<game.map.width:
     #    for y in 0..<game.map.height:
