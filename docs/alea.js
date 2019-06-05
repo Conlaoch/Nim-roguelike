@@ -96,7 +96,7 @@ range = function(random, nums) {
   // return integer
   if( _isInteger( loBound ) && _isInteger( hiBound ) ) {
       var ret = Math.floor( random() * ( hiBound - loBound + 1 ) ) + loBound
-      console.log("Returning int " + ret);
+      //console.log("Returning int " + ret);
       return ret;
 
   // return float
@@ -111,14 +111,14 @@ roller = function(random, expr) {
   var dice = parseFloat(parts[0]) || 1;
   var sides = parseFloat(parts[1]);
   var mod = parseFloat(parts[2]) || 0;
-  console.log("dice: " + dice + " d " + sides + " sides");
+
   var total = mod;
   for (var i = 0; i < dice; i++) {
       var num = range(random, {a:1, b:sides});
       //console.log("num:" + num);
       total += num;
   };
-  console.log("Roller returns: " + total);
+  console.log("dice: " + dice + " d " + sides + " sides. Result: " + total);
   return total;
 };
 
