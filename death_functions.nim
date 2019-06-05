@@ -6,6 +6,14 @@ proc mark_for_del*(e:Entity, game:Game) =
 proc death_monster*(e:Entity, game:Game) =
     game.game_messages.add((e.name & " is dead!", (127,127,127)));
 
+    if not isNil(e.inventory):
+        echo("Monster had inventory")
+        for item in e.inventory.items:
+            echo("Spawning an item from inventory")
+            item.owner.position = e.position
+            game.level.entities.add(item.owner)
+
+
     if game.level.entities.find(e) > -1:
         game.level.entities.delete(game.level.entities.find(e));
 
