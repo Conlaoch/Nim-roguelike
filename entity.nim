@@ -145,6 +145,12 @@ proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2
 
     return target
 
+# used for initial equipment (no messaging, no removal from map)
+proc add_to_inven*(item: Item, e:Entity) =
+    if not isNil(e.inventory):
+        e.inventory.items.add(item)
+
+
 proc pick_up*(item: Item, e: Entity, game:Game) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)

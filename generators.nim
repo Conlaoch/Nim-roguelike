@@ -113,7 +113,19 @@ proc generateMonster*(id: string, x,y:int) : Entity =
             #echo $texts
 
             mon_chat = Dialogue(start: $chat, answers:answers, texts:texts);
-            
+
+        # Inventory
+        var inv = Inventory(owner:mon);
+        mon.inventory = inv;
+
+        # equip equipment
+        var mon_equip_id = cstring("")
+        if monster_data[id].hasOwnProperty("equipment"):
+            for e_id in monster_data[id]["equipment"].keys:
+                mon_equip_id = to(monster_data[id]["equipment"][e_id], cstring);
+                echo "Equip id: " & $mon_equip_id;
+                var mon_equip = generateItem($mon_equip_id, x,y)
+                mon_equip.item.add_to_inven(mon); 
 
         # creature component
         var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text, chat= mon_chat);
@@ -121,7 +133,6 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         # AI component
         var AI_comp = AI(owner:mon);
         mon.ai = AI_comp;
-
         echo("Spawned monster at " & $mon.position);
         return mon;
 
