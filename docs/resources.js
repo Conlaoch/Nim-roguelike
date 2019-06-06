@@ -45,10 +45,11 @@ function _load(url) {
 }
 
 function get(url) {
-    console.log("Getting... " + url);
-    if (resourceCache.has(url) && resourceCache.get(url) != false){
-        console.log("We have " + resourceCache.get(url));
-    }
+    // console.log("Getting... " + url);
+    // if (resourceCache.has(url) && resourceCache.get(url) != false){
+    //     console.log("We have " + resourceCache.get(url));
+    // }
+    
     //return resourceCache[url];
     return resourceCache.get(url)
 }
