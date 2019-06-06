@@ -81,9 +81,19 @@ proc onReadyNimCallback*() {.exportc.} =
         var grids = find_free_grid_in_range(game.level.map, 3, map_data[1][0],map_data[1][1], game.level.entities);
         if grids.len > 0:
             game.player.position = grids[0];
+        else:
+            echo("No grids found");
     else:
         game.player.position = map_data[1];
-        
+
+    # give (and equip) starting equipment
+    var start_equip = generators.generateItem("longsword", map_data[1][0],map_data[1][1])
+    start_equip.item.add_to_inven(game.player)
+    start_equip.equipment.equip(game.player)
+    start_equip = generators.generateItem("chainmail", map_data[1][0],map_data[1][1])
+    start_equip.item.add_to_inven(game.player)
+    start_equip.equipment.equip(game.player)
+
     game.camera.center(game.player.position);
 
     # test (reveal all map)

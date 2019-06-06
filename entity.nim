@@ -182,11 +182,12 @@ proc get_equipped_in_slot(inv: Inventory, slot: string) : Equipment =
             return it.owner.equipment;
     return nil
 
-proc unequip(eq: Equipment, e: Entity, game: Game) =
+proc unequip(eq: Equipment, e: Entity, game: Game= nil) =
     eq.equipped = false;
-    game.game_messages.add((e.name & " took off " & $eq.owner.name, (255,255,255)));
+    if not isNil(game):
+        game.game_messages.add((e.name & " took off " & $eq.owner.name, (255,255,255)));
 
-proc equip(eq: Equipment, e: Entity, game: Game) =
+proc equip*(eq: Equipment, e: Entity, game: Game = nil) =
     if isNil(e.inventory):
         return
 
@@ -195,7 +196,8 @@ proc equip(eq: Equipment, e: Entity, game: Game) =
         old_equipment.unequip(e, game);
 
     eq.equipped = true;
-    game.game_messages.add((e.name & " equipped " & $eq.owner.name, (255,255,255)));
+    if not isNil(game):
+        game.game_messages.add((e.name & " equipped " & $eq.owner.name, (255,255,255)));
 
 
 proc toggle_equip(eq: Equipment, e: Entity, game: Game) = 
