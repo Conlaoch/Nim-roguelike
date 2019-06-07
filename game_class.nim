@@ -1,7 +1,7 @@
 import dom, times
 import html5_canvas
 
-import math_helpers, map, tint_image, seq_tools
+import math_helpers, map, tint_image, seq_tools, map_common
 
 import camera
 
@@ -200,6 +200,13 @@ proc drawTargeting*(game:Game) =
     let iso = isoPos(game.targeting.x, game.targeting.y, game.camera.offset);
     renderGfxTile(game, game.images[7], iso[0], iso[1]);
 
+    # draw info on NPC if any
+    var ent = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y); 
+    if not isNil(ent):
+        var hp_perc = (float(ent.creature.hp)*100.0/float(ent.creature.max_hp));
+        game.context.font = "12px Arial"
+        game.context.fillStyle = rgb(255, 255, 255);
+        fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 300.0);
 
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
     let iso = isoPos(x,y, game.camera.offset);
