@@ -4,7 +4,7 @@ import tables
 
 import input_handler
 import type_defs
-import resources, entity, game_class
+import resources, entity, game_class, map_common
 import map, FOV, camera
 import arena_map, basic_map
 import death_functions

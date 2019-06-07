@@ -1,7 +1,7 @@
 import dom
 import json
 
-import game_class, entity, math_helpers
+import game_class, entity, math_helpers, map_common
 import table_tools, save
 import type_defs
 
