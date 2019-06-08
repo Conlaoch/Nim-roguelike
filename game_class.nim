@@ -208,6 +208,12 @@ proc drawTargeting*(game:Game) =
         game.context.fillStyle = rgb(255, 255, 255);
         fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 300.0);
 
+proc drawText*(game:Game, text:string) =
+    game.context.font = "12px Arial"
+    game.context.fillStyle = rgb(255, 255, 255);
+    fillText(game.context, text, 100.0, 250.0);
+
+
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
     let iso = isoPos(x,y, game.camera.offset);
     renderGfxTileTinted(game, game.images[13], (255,0,0), iso[0]+12, iso[1]+16)

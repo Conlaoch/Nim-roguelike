@@ -130,7 +130,10 @@ proc onReadyNimCallback*() {.exportc.} =
         game.renderMap(game.level.map, game.FOV_map, game.level.explored, game.camera);
         game.renderEntities(game.FOV_map);
         game.render(game.player);
-        game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+        if not isNil(game.player):
+            game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+        else:
+            game.drawText("You are DEAD!");
         game.drawMessages();
         game.drawEffects();
         
