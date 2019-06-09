@@ -203,10 +203,12 @@ proc drawTargeting*(game:Game) =
     # draw info on NPC if any
     var ent = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y); 
     if not isNil(ent):
+        renderGfxTile(game, game.images[ent.image], 10, 250);
         var hp_perc = (float(ent.creature.hp)*100.0/float(ent.creature.max_hp));
         game.context.font = "12px Arial"
         game.context.fillStyle = rgb(255, 255, 255);
-        fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 300.0);
+        fillText(game.context, $ent.name, 10.0, 300.0);
+        fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 310.0);
 
 proc drawText*(game:Game, text:string) =
     game.context.font = "12px Arial"
