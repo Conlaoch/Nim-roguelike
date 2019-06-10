@@ -230,7 +230,9 @@ proc drawShield(game:Game, x,y:int) =
 
 proc drawEffects*(game:Game) =
     for e in game.level.effects:
-        if e.id == "dmg":
-            game.drawDmgSplatter(e.x,e.y,e.param);
-        if e.id == "shield":
-            game.drawShield(e.x,e.y);
+        var cell = (e.x,e.y);
+        if cell in game.FOV_map:
+            if e.id == "dmg":
+                game.drawDmgSplatter(e.x,e.y,e.param);
+            if e.id == "shield":
+                game.drawShield(e.x,e.y);
