@@ -22,7 +22,10 @@ proc moveNim(x:int, y:int) {.exportc.} =
     # honor dialogue state
     if game.game_state == GUI_S_DIALOGUE.int:
         return
-    else: 
+    else:
+        # advance time
+        game.calendar.turn += 1;
+
         game.game_state = ENEMY_TURN.int
 
 proc pickupNim() {.exportc.} =
@@ -32,7 +35,9 @@ proc pickupNim() {.exportc.} =
             it.item.pick_up(game.player, game);
         else:
             game.game_messages.add(("No item to pick up here", (255,255,255)));
-    # end turn regardless        
+    # end turn regardless
+    # advance time
+    game.calendar.turn += 1;        
     game.game_state = ENEMY_TURN.int
 
 
@@ -87,6 +92,8 @@ proc inventorySelectNim(index:int) {.exportc.} =
             # quit inventory menu
             quitInventoryNim();
             # end turn      
+            # advance time
+            game.calendar.turn += 1;
             game.game_state = ENEMY_TURN.int
         # handle targeting items
         elif item.targeting:
@@ -115,6 +122,8 @@ proc inventorySelectNim(index:int) {.exportc.} =
         # quit inventory menu
         quitInventoryNim();
         # end turn      
+        # advance time
+        game.calendar.turn += 1;
         game.game_state = ENEMY_TURN.int
 
 proc showCharacterSheetNim() {.exportc.} =

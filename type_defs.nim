@@ -27,6 +27,7 @@ type
         factions*: seq[Faction]
         # similar to to_remove above
         rem_eff*: seq[Effect]
+        calendar*: Calendar
         # player-specific thing because so far Player is just an Entity
         talking_data*: tuple [cr: Creature, chat: string]
 
@@ -60,6 +61,13 @@ type
 
     DialogueReply* = tuple[chat:string, reply:string]
     DialogueText* = tuple[id:string, text:string]
+
+    Calendar* = ref object
+        days*: int
+        start_year*: int
+        start_day*: int
+        start_hour*: int
+        turn*: int
 
     # From entity.nim
     Entity* = ref object

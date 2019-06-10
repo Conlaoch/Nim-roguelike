@@ -5,6 +5,7 @@ import tables
 import input_handler
 import type_defs
 import resources, entity, game_class, map_common
+import calendar
 import map, FOV, camera
 import arena_map, basic_map
 import death_functions
@@ -56,6 +57,8 @@ proc onReadyNimCallback*() {.exportc.} =
     # setup cd.
     game.add_faction(("player", "enemy", -100));
     game.add_faction(("player", "neutral", 0));
+
+    game.calendar = newCalendar(1371);
 
 
     game.player = Player(position: (1,1), image:0, name:"Player");
@@ -194,6 +197,8 @@ proc onReadyNimCallback*() {.exportc.} =
             # trick to use actual enum's int value
             if game.game_state != GameState.PLAYER_DEAD.int:
                 game.game_state = GameState.PLAYER_TURN.int
+                # test passage of time
+                echo(game.calendar.get_time_date(game.calendar.turn));
 
             # avoid modifying while iterating
             for entity in game.to_remove:
