@@ -80,6 +80,11 @@ proc renderGfxTile*(game: Game, img: Element, x,y: int) =
 proc renderGfxTileTinted*(game:Game, img: Element, tint:ColorRGB, x,y: int) =
     game.context.drawImage(tintImageNim((ImageElement)img, tint, 0.5), float(x), float(y));
 
+proc drawText*(game:Game, text:string, x,y:int) =
+    game.context.font = "12px Arial"
+    game.context.fillStyle = rgb(255, 255, 255);
+    fillText(game.context, text, float(x), float(y));
+
 proc render*(game: Game, player: Player) =
     # do nothing if dead
     if isNil(player):
@@ -105,6 +110,11 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
 
             # creatures need a slight offset to be placed more or less centrally
             renderGfxTile(game, game.images[e.image], iso[0]+off[0], iso[1]+off[1]);
+
+            # labels if any
+            if game.labels:
+                var txt_len = int(e.name.len()/2);
+                drawText(game, e.name, iso[0]+off[0]-txt_len, iso[1]+off[1]-10);
 
 
 var tile_lookup = {0: 1, 1:2, 2:8}.toTable()
@@ -209,11 +219,6 @@ proc drawTargeting*(game:Game) =
         game.context.fillStyle = rgb(255, 255, 255);
         fillText(game.context, $ent.name, 10.0, 300.0);
         fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 310.0);
-
-proc drawText*(game:Game, text:string) =
-    game.context.font = "12px Arial"
-    game.context.fillStyle = rgb(255, 255, 255);
-    fillText(game.context, text, 100.0, 250.0);
 
 
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =

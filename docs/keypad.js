@@ -73,6 +73,9 @@ $( document ).ready(function() {
     $(".key_look").click(function(e){
         showLookAroundNim()
     })
+    $(".key_tab").click(function(e){
+        toggleLabelsNim()
+    })
     //targeting keys
     $(".key_tg_arrow1").click(function(e) {
         //console.log($(this));

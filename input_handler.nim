@@ -246,6 +246,10 @@ proc showLookAroundNim() {.exportc.} =
     dom.document.getElementById("targeting_keypad").style.display = "block";
 
 
+proc toggleLabelsNim() {.exportc.} =
+    # toggle
+    game.labels = not game.labels
+
 proc processPlayerTurnKey(key: int, game:Game) =
     case key:
         of 37: moveNim(-1,0)   #left
@@ -271,6 +275,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 83: saveGameNim() # s
         # loading handled in main.nim # q
         of 13: nextLevel() # enter
+        of 9: toggleLabelsNim() # tab
         else:
           echo key
 

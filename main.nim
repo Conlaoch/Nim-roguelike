@@ -136,7 +136,7 @@ proc onReadyNimCallback*() {.exportc.} =
         if not isNil(game.player):
             game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
         else:
-            game.drawText("You are DEAD!");
+            game.drawText("You are DEAD!", 100, 250);
         game.drawMessages();
         game.drawEffects();
         

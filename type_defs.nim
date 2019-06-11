@@ -28,6 +28,7 @@ type
         # similar to to_remove above
         rem_eff*: seq[Effect]
         calendar*: Calendar
+        labels*: bool
         # player-specific thing because so far Player is just an Entity
         talking_data*: tuple [cr: Creature, chat: string]
 
