@@ -16,6 +16,16 @@ function tintImage(image, color, opacity = 0.5) {
     }
   
     context.save();
+
+    originalcolor(context, color, opacity, image);
+    
+    context.restore();
+  
+    return context.canvas;
+  }
+
+
+  function originalcolor(context, color, opacity, image){
     context.fillStyle = color;
     context.globalAlpha = opacity;
     context.fillRect(0, 0, context.canvas.width, context.canvas.height);
@@ -25,8 +35,9 @@ function tintImage(image, color, opacity = 0.5) {
     //originally was 1, so none of the original color affected the output
     //the function is usually called with an opacity of 0.5
     context.globalAlpha = opacity;
+
+    //key for the function to work
     context.drawImage(image, 0, 0);
-    context.restore();
-  
+
     return context.canvas;
   }
