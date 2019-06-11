@@ -181,9 +181,10 @@ proc drawMessages*(game:Game) =
 
     # draw
     var y = 0;
+    game.context.font = "12px Arial"
     for i in 0..drawn.len-1:
         var el = drawn[i];
-        game.context.font = "12px Arial"
+
         game.context.fillStyle = rgb(el[1][0], el[1][1], el[1][2])
         #game.context.fillStyle = rgb(255, 255, 255);
         fillText(game.context, el[0], 5.0, float(game.canvas.height-50+y));

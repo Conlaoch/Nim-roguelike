@@ -16,7 +16,7 @@ proc menu(game:Game, header:string, options:seq[string], width:int=100, screen_w
 
     var menu_x = 5.0
     if centered:
-        menu_x = screen_width/2;
+        menu_x = screen_width/2-width/2;
     
     # background
     game.context.fillStyle = rgb(0,0,0);
@@ -45,6 +45,35 @@ proc menu(game:Game, header:string, options:seq[string], width:int=100, screen_w
         y += 10;
         if letters:
             letter_index += 1
+
+# this one has no letters option, and therefore no 26 entries limit
+proc menu_colored(game:Game, header:string, options:seq[GameMessage], width:int=100, screen_width:int, screen_height:int, centered=true) =
+    # calculate height
+    let header_height = 2
+
+    let menu_h = int(header_height + 1 + 26)
+    let menu_y = int((50 - menu_h) / 2)
+
+    var menu_x = 5.0
+    if centered:
+        menu_x = screen_width/2-width/2;
+    
+    # background
+    game.context.fillStyle = rgb(0,0,0);
+    game.context.fillRect(menu_x-2.0, float(menu_y * 10), float(width), float(menu_h * 10));
+
+    game.context.font = "12px Arial";
+    #game.context.fillStyle = rgb(255, 255, 255);
+
+    # print all the options
+    var y = (menu_y + header_height) * 10
+
+    for option in options:
+        var text = option[0]
+        game.context.fillStyle = rgb(option[1][0], option[1][1], option[1][2]);
+        fillText(game.context, text, menu_x, float(y));
+        # experimental height between lines in px
+        y += 10;
 
 # specific
 proc inventory_menu*(game:Game, header:string, inventory:Inventory, inventory_width:int, screen_width:int, screen_height:int) =
@@ -75,3 +104,6 @@ proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]
     #     options.add(a.chat)
 
     menu(game, header, options, 300, game.canvas.width, game.canvas.height, text=text);
+
+proc message_log*(game: Game) =
+    menu_colored(game, "MESSAGE LOG", game.game_messages, 300, game.canvas.width, game.canvas.height);

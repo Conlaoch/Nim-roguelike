@@ -173,6 +173,9 @@ proc onReadyNimCallback*() {.exportc.} =
 
 
             game.dialogue_menu(game.talking_data.cr.owner.name, text, options);
+
+        if game.game_state == GUI_S_MESSAGE_LOG.int:
+            game.message_log()
             
 
         # targeting

@@ -245,6 +245,15 @@ proc showLookAroundNim() {.exportc.} =
     dom.document.getElementById("keypad").style.display = "none";
     dom.document.getElementById("targeting_keypad").style.display = "block";
 
+proc showMessageHistoryNim() {.exportc.} =
+    # remember previous state
+    game.previous_state = game.game_state
+    # we can't name it inventory because Nim enums do not need to be qualified with their type
+    game.game_state = GUI_S_MESSAGE_LOG.int
+
+proc quitMessageHistory() =
+    # switch back to player turn
+    game.game_state = game.previous_state
 
 proc toggleLabelsNim() {.exportc.} =
     # toggle
@@ -276,6 +285,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         # loading handled in main.nim # q
         of 13: nextLevel() # enter
         of 9: toggleLabelsNim() # tab
+        of 77: showMessageHistoryNim() # m
         else:
           echo key
 
@@ -365,5 +375,8 @@ proc processKeyDown*(key: int, game:Game) =
             quitCharacterSheet();
       elif game.game_state == GUI_S_DIALOGUE.int:
             processDialogueKey(key, game);
+      elif game.game_state == GUI_S_MESSAGE_LOG.int:
+        if key == 27 or key == 77:
+            quitMessageHistory();
       else:
         echo "Not player turn"
