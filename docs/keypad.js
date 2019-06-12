@@ -64,6 +64,9 @@ $( document ).ready(function() {
     $(".key_descend").click(function(e){
         nextLevel()
     });
+    $(".key_rest").click(function(e){
+        restNim()
+    });
     $(".key_save").click(function(e){
         saveGameNim()
     });
