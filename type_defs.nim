@@ -13,7 +13,7 @@ type
         canvas*: Canvas
         context*: CanvasRenderingContext2D
         images*: seq[ImageElement]
-        player*: Player
+        player*: Entity
         level*: Level
         recalc_FOV*: bool
         FOV_map*: seq[Vector2]
@@ -82,8 +82,14 @@ type
         item*: Item
         equipment*: Equipment
         inventory*:Inventory
+        player*: Player
     
-    Player* = Entity
+    Player* = ref object
+        # back ref to entity
+        owner*: Entity
+        resting*: bool
+        rest_cnt*: int
+        rest_turns*: int
 
     Creature* = ref object
         # back ref to entity

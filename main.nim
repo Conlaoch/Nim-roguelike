@@ -61,7 +61,8 @@ proc onReadyNimCallback*() {.exportc.} =
     game.calendar = newCalendar(1371);
 
 
-    game.player = Player(position: (1,1), image:0, name:"Player");
+    game.player = Entity(position: (1,1), image:0, name:"Player");
+    game.player.player = Player(owner: game.player, resting: false, rest_cnt: 0, rest_turns:0);
     var arr = generate_stats("heroic");
     # procs have a different syntax to type() construction (= instead of :)
     game.player.creature = newCreature(owner=game.player, hp=20, attack=40, defense=30,
@@ -200,6 +201,8 @@ proc onReadyNimCallback*() {.exportc.} =
             # trick to use actual enum's int value
             if game.game_state != GameState.PLAYER_DEAD.int:
                 game.game_state = GameState.PLAYER_TURN.int
+                # test
+                game.player.player.act(game);
                 # test passage of time
                 echo(game.calendar.get_time_date(game.calendar.turn));
 
@@ -262,6 +265,7 @@ proc loadGameNim() {.exportc.} =
 
     # fix player's ref, too
     game.player.creature.owner = game.player
+    game.player.player.owner = game.player
 
 
     game.game_messages.add(("Loaded game...", (255,255,255)));

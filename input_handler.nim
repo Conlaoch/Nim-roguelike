@@ -231,6 +231,10 @@ proc nextLevel() {.exportc.} =
     else:
         game.game_messages.add(("There are no stairs here", (255,255,255)));
 
+proc restNim {.exportc.} =
+    game.player.player.rest_start(30, game);
+
+
 proc showLookAroundNim() {.exportc.} =
     # remember previous state
     game.previous_state = game.game_state
@@ -277,6 +281,7 @@ proc processPlayerTurnKey(key: int, game:Game) =
         of 78: moveNim(1,1) # n
         # others
         of 71: pickupNim() # g
+        of 82: restNim() # r
         of 73: showInventoryNim() # i
         of 68: showDropNim() # d
         of 67: showCharacterSheetNim() # c

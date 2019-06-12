@@ -1,6 +1,7 @@
 import times # for timing the special effects
 import dom # for keypad
 import math_helpers, map, math, alea, astar, map_common
+import calendar
 
 # type definition moved to type_defs
 import type_defs
@@ -405,3 +406,48 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:
                     game.game_messages.add((monster.name & " says: " & $monster.creature.text, (255,255,255)));
                 else:
                     game.game_messages.add((monster.name & " has nothing to say", (127,127,127)));
+
+# Player-specific stuff
+proc rest_stop(p: Player, game:Game) =
+    p.resting = false
+    # passage of time
+    game.calendar.turn += calendar.HOUR*8
+    game.game_messages.add(("Rested for " & $p.rest_cnt & " turns", (0,0,255)));
+    game.game_messages.add((game.calendar.get_time_date(game.calendar.turn), (0,0,255)));
+
+
+proc rest_start*(p:Player, turns:int, game:Game) =
+    p.rest_cnt = 0
+    p.resting = true
+    p.rest_turns = turns
+    game.game_messages.add(("Resting starts...", (0,0,255)));
+
+    if p.resting and p.rest_cnt >= turns:
+        p.rest_stop(game)
+    else:
+        # toggle game state to enemy turn
+        game.end_player_turn()
+        p.rest_cnt += 1
+
+proc resting_step(p:Player, game:Game) =
+    if not p.resting:
+        return
+
+    if p.resting and p.rest_cnt >= p.rest_turns:
+        p.rest_stop(game)
+    else:
+        # actual resting stuff (actually only done once for simplicity)
+        if p.rest_cnt == 6:
+            # I think this formula dates back to Incursion
+            var heal = int(((1+3)*p.owner.creature.base_con)/5)
+
+            p.owner.creature.hp = int(min(p.owner.creature.max_hp, p.owner.creature.hp+heal))
+
+
+        # toggle game state to enemy turn
+        game.end_player_turn()
+        p.rest_cnt += 1
+
+proc act*(p:Player, game:Game) =
+    if p.resting:
+        p.resting_step(game);

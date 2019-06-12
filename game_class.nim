@@ -67,6 +67,9 @@ proc clearEffects*(game: Game) =
         if getTime() >= (e.start + e.interval):
             game.rem_eff.add(e);
 
+proc end_player_turn*(game:Game) =
+    game.game_state = ENEMY_TURN.int
+
 proc clearGame*(game: Game) =
     game.context.fillStyle = rgb(0,0,0);
     game.context.fillRect(0, 0, game.canvas.width.float, game.canvas.height.float)
@@ -85,7 +88,7 @@ proc drawText*(game:Game, text:string, x,y:int) =
     game.context.fillStyle = rgb(255, 255, 255);
     fillText(game.context, text, float(x), float(y));
 
-proc render*(game: Game, player: Player) =
+proc render*(game: Game, player: Entity) =
     # do nothing if dead
     if isNil(player):
         return

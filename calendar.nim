@@ -30,10 +30,10 @@ var calendar_data = [
     (30, "Midwint") #December
   ]
 
-var MINUTE = int(60/10);
-var HOUR = MINUTE*60
-var DAY = HOUR*24
-var YEAR = DAY*365
+var MINUTE* = int(60/10);
+var HOUR* = MINUTE*60
+var DAY* = HOUR*24
+var YEAR* = DAY*365
 
 
 # constructor so that we can provide default values
