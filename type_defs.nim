@@ -90,6 +90,8 @@ type
         resting*: bool
         rest_cnt*: int
         rest_turns*: int
+        nutrition*: float
+        thirst*: float
 
     Creature* = ref object
         # back ref to entity

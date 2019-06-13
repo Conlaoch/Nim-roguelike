@@ -62,7 +62,7 @@ proc onReadyNimCallback*() {.exportc.} =
 
 
     game.player = Entity(position: (1,1), image:0, name:"Player");
-    game.player.player = Player(owner: game.player, resting: false, rest_cnt: 0, rest_turns:0);
+    game.player.player = Player(owner: game.player, resting: false, rest_cnt: 0, rest_turns:0, nutrition:500, thirst:300);
     var arr = generate_stats("heroic");
     # procs have a different syntax to type() construction (= instead of :)
     game.player.creature = newCreature(owner=game.player, hp=20, attack=40, defense=30,
@@ -136,6 +136,8 @@ proc onReadyNimCallback*() {.exportc.} =
         game.render(game.player);
         if not isNil(game.player):
             game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+            game.renderBar(10, 22, 100, int(game.player.player.nutrition), 500, (0,255,0), (0,191,0));
+            game.renderBar(10, 35, 100, int(game.player.player.thirst), 300, (0,0,255), (0,0,191));
         else:
             game.drawText("You are DEAD!", 100, 250);
         game.drawMessages();

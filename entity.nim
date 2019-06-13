@@ -451,3 +451,12 @@ proc resting_step(p:Player, game:Game) =
 proc act*(p:Player, game:Game) =
     if p.resting:
         p.resting_step(game);
+    
+    # count down nutrition/thirst
+    # halve hunger rate when sleeping
+    if p.resting:
+        p.nutrition -= 0.5
+        p.thirst -= 0.5
+    else:
+        p.nutrition -= 1
+        p.thirst -= 1

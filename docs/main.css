@@ -13,6 +13,6 @@
   */
   .keypad {
     position: absolute;
-    top: 30px; /* We want to be able to see the life bar */
+    top: 45px; /* We want to be able to see the bars */
     left: 0;
   }
