@@ -1,6 +1,8 @@
 import dom, times
 import html5_canvas
 
+import strutils # for formatting floats
+
 import math_helpers, map, tint_image, seq_tools, map_common
 
 import camera
@@ -223,6 +225,14 @@ proc drawTargeting*(game:Game) =
         game.context.fillStyle = rgb(255, 255, 255);
         fillText(game.context, $ent.name, 10.0, 300.0);
         fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 310.0);
+        # chance to hit
+        # bit of a trouble with Nim/JS's floating point representation as opposed to Python's
+        var melee = (parseFloat($(float(game.player.creature.melee)/100.0))*100.0).toInt;
+        #fillText(game.context, "Chance to hit: " & $(melee) & "%", 10.0, 320.0);
+        var not_dodged = (parseFloat($(float(100-ent.creature.dodge)/100.0))*100.0).toInt;
+        var res = melee*not_dodged/100;
+        #var res = parseFloat((melee*not_dodged).formatFloat(ffDecimal, 2))*100.0;
+        fillText(game.context, "Chance to hit: " & $(melee) & "% + " & $(not_dodged) & "% = " & $res & "%", 10.0, 320.0);
 
 
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
