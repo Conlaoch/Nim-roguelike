@@ -370,7 +370,9 @@ proc processTargetingKey(key:int, game:Game) =
 # main key input handler
 proc processKeyDown*(key: int, game:Game) =
       if game.game_state == PLAYER_TURN.int:
-        processPlayerTurnKey(key, game)
+        # do nothing if sleeping
+        if not game.player.player.resting:
+            processPlayerTurnKey(key, game)
       elif game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
         processInventoryKey(key, game)
       elif game.game_state == TARGETING.int or game.game_state == LOOK_AROUND.int:
