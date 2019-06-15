@@ -29,8 +29,9 @@ type
         rem_eff*: seq[Effect]
         calendar*: Calendar
         labels*: bool
-        # player-specific thing because so far Player is just an Entity
+        # UI-specific things because nowhere to put them
         talking_data*: tuple [cr: Creature, chat: string]
+        message_log_index*: tuple [begin: int, ending: int]
 
     Level* = ref object
         map*: Map

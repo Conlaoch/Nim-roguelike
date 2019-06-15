@@ -106,4 +106,11 @@ proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]
     menu(game, header, options, 300, game.canvas.width, game.canvas.height, text=text);
 
 proc message_log*(game: Game) =
-    menu_colored(game, "MESSAGE LOG", game.game_messages, 300, game.canvas.width, game.canvas.height);
+
+    # options
+    var options: seq[GameMessage];
+    for i in game.message_log_index[0]..game.message_log_index[1]:
+        if i < game.game_messages.len:
+            options.add(game.game_messages[i]);
+
+    menu_colored(game, "MESSAGE LOG", options, 300, game.canvas.width, game.canvas.height);

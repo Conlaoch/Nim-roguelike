@@ -250,6 +250,11 @@ proc showLookAroundNim() {.exportc.} =
     dom.document.getElementById("targeting_keypad").style.display = "block";
 
 proc showMessageHistoryNim() {.exportc.} =
+    # set scroll values
+    var begin = 0
+    if game.game_messages.len > 26:
+        begin = game.game_messages.len - 25;
+    game.message_log_index = (begin, game.game_messages.len);
     # remember previous state
     game.previous_state = game.game_state
     # we can't name it inventory because Nim enums do not need to be qualified with their type
@@ -258,6 +263,12 @@ proc showMessageHistoryNim() {.exportc.} =
 proc quitMessageHistory() =
     # switch back to player turn
     game.game_state = game.previous_state
+
+proc scrollMessageHistory(diff: int) =
+    # do nothing if we'd scroll past 0 or past the end
+    if game.message_log_index[0] + diff > 0 and game.message_log_index[1] + diff < game.game_messages.len:
+        game.message_log_index[0] += diff
+        game.message_log_index[1] += diff
 
 proc toggleLabelsNim() {.exportc.} =
     # toggle
@@ -385,5 +396,9 @@ proc processKeyDown*(key: int, game:Game) =
       elif game.game_state == GUI_S_MESSAGE_LOG.int:
         if key == 27 or key == 77:
             quitMessageHistory();
+        if key == 40: # down
+            scrollMessageHistory(1);
+        if key == 38: # up
+            scrollMessageHistory(-1);
       else:
         echo "Not player turn"
