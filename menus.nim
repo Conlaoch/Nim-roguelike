@@ -1,6 +1,7 @@
 import html5_canvas
 
 import type_defs, entity
+import calendar
 
 # generic
 proc menu(game:Game, header:string, options:seq[string], width:int=100, screen_width:int, screen_height:int, top:int=0, letters:bool=true, centered:bool=true, text="") =
@@ -92,9 +93,10 @@ proc character_sheet_menu*(game:Game, header:string, player:Entity) =
     var options = @["STR: " & $player.creature.base_str, "DEX: " & $player.creature.base_dex,
                "CON: " & $player.creature.base_con, "INT: " & $player.creature.base_int,
                "WIS: " & $player.creature.base_wis, "CHA: " & $player.creature.base_cha,
-               "Attack: " & $player.creature.melee, "Dodge: " & $player.creature.dodge]
+               "Attack: " & $player.creature.melee, "Dodge: " & $player.creature.dodge,
+               "", game.calendar.get_time_date(game.calendar.turn)]
     
-    menu(game, header, options, 50, game.canvas.width, game.canvas.height, 10, false)
+    menu(game, header, options, 300, game.canvas.width, game.canvas.height, 10, false)
 
 proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]) =
 

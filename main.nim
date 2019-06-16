@@ -131,18 +131,21 @@ proc onReadyNimCallback*() {.exportc.} =
         # clear
         game.clearGame();
         # render
-        game.renderMap(game.level.map, game.FOV_map, game.level.explored, game.camera);
-        game.renderEntities(game.FOV_map);
-        game.render(game.player);
-        if not isNil(game.player):
-            game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
-            game.renderBar(10, 22, 100, int(game.player.player.nutrition), 500, (0,255,0), (0,191,0));
-            game.renderBar(10, 35, 100, int(game.player.player.thirst), 300, (0,0,255), (0,0,191));
+        if not game.player.player.resting:
+            game.renderMap(game.level.map, game.FOV_map, game.level.explored, game.camera);
+            game.renderEntities(game.FOV_map);
+            game.render(game.player);
+            if not isNil(game.player):
+                game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+                game.renderBar(10, 22, 100, int(game.player.player.nutrition), 500, (0,255,0), (0,191,0));
+                game.renderBar(10, 35, 100, int(game.player.player.thirst), 300, (0,0,255), (0,0,191));
+            else:
+                game.drawText("You are DEAD!", 100, 250);
+            game.drawMessages();
+            game.drawEffects();
         else:
-            game.drawText("You are DEAD!", 100, 250);
-        game.drawMessages();
-        game.drawEffects();
-        
+            game.drawText("SLEEPING...", 100, 250);
+            
         # actually clear effects
         for eff in game.rem_eff:
             if game.level.effects.find(eff) > -1:
