@@ -62,7 +62,10 @@ proc onReadyNimCallback*() {.exportc.} =
 
 
     game.player = Entity(position: (1,1), image:0, name:"Player");
-    game.player.player = Player(owner: game.player, resting: false, rest_cnt: 0, rest_turns:0, nutrition:500, thirst:300);
+    game.player.player = Player(owner: game.player, resting: false, rest_cnt: 0, rest_turns:0, 
+    nutrition:500, thirst:300);
+    game.player.player.money.add(Money(kind:"silver", amount:100));
+    game.player.player.money.add(Money(kind:"gold", amount:0));
     var arr = generate_stats("heroic");
     # procs have a different syntax to type() construction (= instead of :)
     game.player.creature = newCreature(owner=game.player, hp=20, attack=40, defense=30,
@@ -99,6 +102,11 @@ proc onReadyNimCallback*() {.exportc.} =
     start_equip.equipment.equip(game.player)
 
     game.camera.center(game.player.position);
+
+    # test adding money
+    for m in game.player.player.money:
+        if m.kind == "silver":
+            m.amount += 10 
 
     # test (reveal all map)
     #for x in 0..<game.map.width:

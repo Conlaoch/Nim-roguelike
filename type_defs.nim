@@ -93,6 +93,12 @@ type
         rest_turns*: int
         nutrition*: float
         thirst*: float
+        money*: seq[Money]
+
+    # this is an object because tuples are immutable...
+    Money* = ref object
+        kind*: string
+        amount*: int
 
     Creature* = ref object
         # back ref to entity

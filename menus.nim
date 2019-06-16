@@ -96,6 +96,10 @@ proc character_sheet_menu*(game:Game, header:string, player:Entity) =
                "Attack: " & $player.creature.melee, "Dodge: " & $player.creature.dodge,
                "", game.calendar.get_time_date(game.calendar.turn)]
     
+    #show money
+    for m in player.player.money:
+        options.add(m.kind & ": " & $m.amount);
+    
     menu(game, header, options, 300, game.canvas.width, game.canvas.height, 10, false)
 
 proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]) =
