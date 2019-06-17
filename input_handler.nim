@@ -136,6 +136,10 @@ proc quitCharacterSheet() =
     # switch back to player turn
     game.game_state = game.previous_state
 
+proc quitTextMenu() =
+    # switch back to player turn
+    game.game_state = PLAYER_TURN.int
+
 proc quitDialogue() =
     # hide keypad
     hideInventoryKeypad();
@@ -194,6 +198,8 @@ proc quitButtonNim() {.exportc.} =
         quitCharacterSheet();
     elif game.game_state == GUI_S_DIALOGUE.int:
         quitDialogue();
+    elif game.game_state == GUI_S_TEXT.int:
+        quitTextMenu();
 
 
 proc saveGameNim() {.exportc.} = 
@@ -400,5 +406,8 @@ proc processKeyDown*(key: int, game:Game) =
             scrollMessageHistory(1);
         if key == 38: # up
             scrollMessageHistory(-1);
+      elif game.game_state == GUI_S_TEXT.int:
+        if key == 27:
+            quitTextMenu();
       else:
         echo "Not player turn"

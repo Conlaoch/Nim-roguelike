@@ -117,6 +117,9 @@ proc onReadyNimCallback*() {.exportc.} =
     game.recalc_FOV = true;
     game.FOV_map = calculate_fov(game.level.map, 0, game.player.position, 4);
 
+    # show welcome message
+    game.game_state = GUI_S_TEXT.int
+
     # what it says on the tin
     proc mainLoop(time:float) = 
         discard dom.window.requestAnimationFrame(mainLoop)
@@ -158,6 +161,15 @@ proc onReadyNimCallback*() {.exportc.} =
         for eff in game.rem_eff:
             if game.level.effects.find(eff) > -1:
                 game.level.effects.delete(game.level.effects.find(eff));
+
+        # GUI drawing begins here
+        # welcome
+        if game.game_state == GUI_S_TEXT.int:
+            game.text_menu("Welcome to Veins of the Earth",
+            @["Brave adventurer, you are now lost in the underground", 
+        "corridors of the Veins of the Earth.", "There is no way to return to your homeland.",
+        "How long can you survive...?",
+        "Press ESC to close."], game.canvas.width, 300)
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:

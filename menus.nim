@@ -76,6 +76,34 @@ proc menu_colored(game:Game, header:string, options:seq[GameMessage], width:int=
         # experimental height between lines in px
         y += 10;
 
+
+proc text_menu*(game:Game, header:string, text:seq[string], screen_width:int, width:int=100, centered=true) =
+    # calculate height
+    let header_height = 2
+
+    let menu_h = int(header_height + 1 + 26)
+    let menu_y = int((50 - menu_h) / 2)
+
+    var menu_x = 5.0
+    if centered:
+        menu_x = screen_width/2-width/2;
+    
+    # background
+    game.context.fillStyle = rgb(0,0,0);
+    game.context.fillRect(menu_x-2.0, float(menu_y * 10), float(width), float(menu_h * 10));
+
+    game.context.font = "12px Arial";
+    game.context.fillStyle = rgb(255, 255, 255);
+
+    var y = (menu_y + header_height) * 10
+
+    #fillText(game.context, text, menu_x, float(y));
+    # temporary until newlines/wordwrap work
+    for txt in text:
+        fillText(game.context, txt, menu_x, float(y));
+        # experimental height between lines in px
+        y += 10;
+
 # specific
 proc inventory_menu*(game:Game, header:string, inventory:Inventory, inventory_width:int, screen_width:int, screen_height:int) =
     var options: seq[string]
