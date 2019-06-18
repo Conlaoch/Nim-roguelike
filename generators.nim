@@ -16,6 +16,24 @@ proc loadfiles*() =
     # test
     #data_loader.loadfile("/data/items");
 
+# helper
+# 1 gp = 20 sp
+proc calculate_price(cost: JsObject) : int =
+    var price = 0
+    
+    #echo $cost
+    for k in cost.keys:
+        echo $k & " : " & $to(cost[k], int);
+
+    if cost.hasOwnProperty("silver"):
+        price += to(cost["silver"], int)
+    if cost.hasOwnProperty("gold"):
+        price += to(cost["gold"], int)*20
+
+    echo("Calculated price is: " & $price & " sp")
+
+    return price
+
 proc generateItem*(id:string, x: int, y:int) : Entity =
     echo "Generate item with id: " & $id
 
@@ -36,6 +54,9 @@ proc generateItem*(id:string, x: int, y:int) : Entity =
         en_it.item = it;
 
         var item_type = to(items_data[id]["type"], cstring);
+        if items_data[id].hasOwnProperty("cost"):
+            var cost_data : JsObject
+            it.price = calculate_price(items_data[id]["cost"]);
 
         # optional parameters depending on type
         if item_type == "weapon":

@@ -22,7 +22,7 @@
            "name": "chainmail",
            "paperdoll": "0xE200",
            "cost": {
-           "platinum": 2
+           "gold": 20
            },
            "slot": "body",
            "type": "armor",

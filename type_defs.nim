@@ -134,6 +134,7 @@ type
         # optional
         use_func*: FuncHandler
         targeting*: bool
+        price*: int
     
     Equipment* = ref object
         # back reference to entity
