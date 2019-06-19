@@ -115,9 +115,11 @@ type
         base_int*: int
         base_wis*: int
         base_cha*: int
+        # making the world more interesting...
         faction*: string
         text*: string
         chat*: Dialogue
+        languages*: seq[string]
         # skills
         dodge*: int
         melee*: int

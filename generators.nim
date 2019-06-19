@@ -97,6 +97,12 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         #var mon_dam_dice = to(monster_data[id]["damage_dice"], int)
         var fact = to(monster_data[id]["faction"], cstring)
 
+        var langs : seq[string]
+        if monster_data[id].hasOwnProperty("languages"):
+            for k in monster_data[id]["languages"].keys:
+                var lg = to(monster_data[id]["languages"][k], cstring)
+                langs.add($lg)
+
 
         var mon_text = cstring("")
         if monster_data[id].hasOwnProperty("text"):
@@ -149,7 +155,8 @@ proc generateMonster*(id: string, x,y:int) : Entity =
                 mon_equip.item.add_to_inven(mon); 
 
         # creature component
-        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, faction= $fact, text= $mon_text, chat= mon_chat);
+        var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, 
+        faction= $fact, text= $mon_text, chat= mon_chat, languages= langs);
         mon.creature = creat;
         # AI component
         var AI_comp = AI(owner:mon);

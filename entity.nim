@@ -11,11 +11,11 @@ import table_tools
 # constructor so that we can provide default values
 proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
     base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, 
-    faction="enemy", text="", chat:Dialogue = nil, dodge=25, melee=55) : Creature =
+    faction="enemy", text="", chat:Dialogue = nil, languages: seq[string], dodge=25, melee=55) : Creature =
 
     Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
     base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
-    faction:faction, text:text, chat:chat,
+    faction:faction, text:text, chat:chat, languages:languages,
     dodge:dodge, melee:melee);    
 
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
@@ -336,8 +336,12 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
 
             # test
             if not isNil(target.creature.chat):
-                echo "creature has chat"
+                #echo "creature has chat"
+                echo ("Creature languages: " & $target.creature.languages & " player languages " & $e.creature.languages)
+                echo ("Know same languages? " & $(target.creature.languages == e.creature.languages))
+
                 showDialogue(game, target);
+
                 #dialogue_menu(game, target.name, target.creature.chat)
         
         # no need to recalc FOV
