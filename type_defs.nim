@@ -32,6 +32,9 @@ type
         # UI-specific things because nowhere to put them
         talking_data*: tuple [cr: Creature, chat: string]
         message_log_index*: tuple [begin: int, ending: int]
+        multicolumn_col*: int
+        multicolumn_total*: int
+        multicolumn_sel*: tuple [id: int, col:int]
 
     Level* = ref object
         map*: Map
@@ -41,7 +44,8 @@ type
         effects*: seq[Effect]
 
     GameState* = enum
-        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND, GUI_S_DIALOGUE, GUI_S_MESSAGE_LOG, GUI_S_TEXT
+        PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, 
+        GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND, GUI_S_DIALOGUE, GUI_S_MESSAGE_LOG, GUI_S_TEXT, GUI_S_CHARACTER_CREATION
 
     GameMessage* = tuple[s:string, c:ColorRGB]    
 

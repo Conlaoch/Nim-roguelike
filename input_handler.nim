@@ -138,7 +138,8 @@ proc quitCharacterSheet() =
 
 proc quitTextMenu() =
     # switch back to player turn
-    game.game_state = PLAYER_TURN.int
+    #game.game_state = PLAYER_TURN.int
+    game.game_state = GUI_S_CHARACTER_CREATION.int
 
 proc quitDialogue() =
     # hide keypad
@@ -329,6 +330,34 @@ proc processDialogueKey(key: int, game:Game) =
     elif key == 27: # escape
         quitDialogue()
 
+proc multiColumnSelectNim(index:int, col:int) {.exportc.} =
+    game.multicolumn_sel = (index, col);
+
+proc toggleColumnNim(game: Game) =
+    if game.multicolumn_col < game.multicolumn_total-1:
+        game.multicolumn_col += 1
+    else:
+        game.multicolumn_col = 0
+
+proc processCharacterCreationKey(key: int, game:Game) =
+    # 65 is the int value returned for 'a' key
+    let index = key - 65
+
+    var start = 0;
+    # 2 is hardcoded for now - we need a way to know how many entries per column
+    if game.multicolumn_col > 0:
+        start = 2
+
+    if start <= index and index < start + 2: 
+        multiColumnSelectNim(index, game.multicolumn_col);
+
+    if key == 9: #tab
+        toggleColumnNim(game);
+    
+    # debug purposes
+    if key == 27: #esc
+        game.game_state = PLAYER_TURN.int
+
 # targeting mode keys
 proc moveTargetNim(x:int, y:int) {.exportc.} =
     echo "Move target " & $x & " " & $y;
@@ -409,5 +438,7 @@ proc processKeyDown*(key: int, game:Game) =
       elif game.game_state == GUI_S_TEXT.int:
         if key == 27:
             quitTextMenu();
+      elif game.game_state == GUI_S_CHARACTER_CREATION.int:
+        processCharacterCreationKey(key, game);
       else:
         echo "Not player turn"

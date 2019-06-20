@@ -171,6 +171,18 @@ proc onReadyNimCallback*() {.exportc.} =
         "How long can you survive...?",
         "Press ESC to close."], game.canvas.width, 300)
 
+        if game.game_state == GUI_S_CHARACTER_CREATION.int:
+            # test
+            var races = @["human", "drow"]
+            var genders = @["male", "female"]
+        
+            var columns = @[races, genders]
+
+            game.multicolumn_menu("CHARACTER CREATION", columns, 300, game.canvas.width, current=game.multicolumn_col);
+
+            # test 
+            echo $game.multicolumn_sel;
+
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
             var inv_title: string;

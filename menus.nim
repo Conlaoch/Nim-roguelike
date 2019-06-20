@@ -76,6 +76,64 @@ proc menu_colored(game:Game, header:string, options:seq[GameMessage], width:int=
         # experimental height between lines in px
         y += 10;
 
+proc multicolumn_menu*(game: Game, title:string, columns:seq[seq[string]], width:int=100, screen_width:int, current=0) =
+    if columns[0].len > 26: 
+        echo("Cannot have a menu with more than 26 options.")
+        return
+    
+    # auto-center
+    var menu_x = screen_width/2-width/2;
+
+    let header_height = 2
+
+    let menu_h = int(header_height + 1 + 26)
+    let menu_y = int((50 - menu_h) / 2)
+
+    # default column
+    var cur_column = current
+    # save number of columns
+    game.multicolumn_total = len(columns);
+
+    # background
+    game.context.fillStyle = rgb(0,0,0);
+    game.context.fillRect(menu_x-2.0, float(menu_y * 10), float(width), float(menu_h * 10));
+
+    game.context.font = "12px Arial";
+    game.context.fillStyle = rgb(255, 255, 255);
+
+    fillText(game.context, "Press tab to change columns", menu_x, float(menu_y * 10));
+
+    # print all the options
+    var y = (menu_y + header_height) * 10
+    # this continues the lettering between columns e.g ab | cd | ef
+    var letter_index = ord('a')
+
+    var x = menu_x
+
+    for i in 0..(len(columns)-1):
+        #col = columns[i]
+        var w = 10*7
+        y = (menu_y + header_height + 2) * 10
+        # outline current column
+        if i == cur_column:
+            var h = float(len(columns[i]) * 10);
+            game.context.strokeRect(x-1.0, float(y)-11.0, float(w), h+2.0);
+            game.context.strokeStyle = rgb(255, 255, 255);
+
+
+        # draw the column
+        for option_text in columns[i]:
+            var text = "(" & chr(letter_index) & ") " & option_text
+            fillText(game.context, text, x, float(y));
+            # experimental height between lines in px
+            y += 10;
+
+            letter_index += 1
+
+        x += float(w)+2
+
+        #i += 1
+
 
 proc text_menu*(game:Game, header:string, text:seq[string], screen_width:int, width:int=100, centered=true) =
     # calculate height
