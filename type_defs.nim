@@ -34,7 +34,7 @@ type
         message_log_index*: tuple [begin: int, ending: int]
         multicolumn_col*: int
         multicolumn_total*: int
-        multicolumn_sel*: tuple [id: int, col:int]
+        multicolumn_sels*: seq[MulticolumnSel]
 
     Level* = ref object
         map*: Map
@@ -74,6 +74,8 @@ type
         start_day*: int
         start_hour*: int
         turn*: int
+
+    MulticolumnSel* = tuple[id: int, col:int]
 
     # From entity.nim
     Entity* = ref object

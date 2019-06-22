@@ -180,8 +180,14 @@ proc onReadyNimCallback*() {.exportc.} =
 
             game.multicolumn_menu("CHARACTER CREATION", columns, 300, game.canvas.width, current=game.multicolumn_col);
 
-            # test 
-            echo $game.multicolumn_sel;
+            # if we're done picking, log our choices in console
+            if len(game.multicolumn_sels) == game.multicolumn_total:
+                echo $game.multicolumn_sels;
+                for s in game.multicolumn_sels:
+                    echo $columns[s[1]][s[0]]
+
+                # switch state
+                game.game_state = PLAYER_TURN.int
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:

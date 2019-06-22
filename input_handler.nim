@@ -331,7 +331,13 @@ proc processDialogueKey(key: int, game:Game) =
         quitDialogue()
 
 proc multiColumnSelectNim(index:int, col:int) {.exportc.} =
-    game.multicolumn_sel = (index, col);
+    if len(game.multicolumn_sels) < game.multicolumn_total:
+        var id = index
+        if game.multicolumn_col > 0:
+            # 2 is hardcoded for now - we need a way to know how many entries per column
+            id = id - 2;
+
+        game.multicolumn_sels.add((id, col));
 
 proc toggleColumnNim(game: Game) =
     if game.multicolumn_col < game.multicolumn_total-1:
