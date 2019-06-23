@@ -215,16 +215,18 @@ proc renderBar*(game:Game, x:int,y:int, total_width:int, value:int, maximum:int,
 proc drawTargeting*(game:Game) =
     let iso = isoPos(game.targeting.x, game.targeting.y, game.camera.offset);
     renderGfxTile(game, game.images[7], iso[0], iso[1]);
+    # show distance
+    game.context.font = "12px Arial"
+    game.context.fillStyle = rgb(255, 255, 255);
+    fillText(game.context, "Dist: " & $game.player.position.distance_to(game.targeting), 10.0, 300.0); 
 
     # draw info on NPC if any
     var ent = get_creatures_at(game.level.entities, game.targeting.x, game.targeting.y); 
     if not isNil(ent):
         renderGfxTile(game, game.images[ent.image], 10, 250);
         var hp_perc = (float(ent.creature.hp)*100.0/float(ent.creature.max_hp));
-        game.context.font = "12px Arial"
-        game.context.fillStyle = rgb(255, 255, 255);
-        fillText(game.context, $ent.name, 10.0, 300.0);
-        fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 310.0);
+        fillText(game.context, $ent.name, 10.0, 310.0);
+        fillText(game.context, "Enemy hp: " & $ent.creature.hp & " " & $hp_perc & "%", 10.0, 320.0);
         # chance to hit
         # bit of a trouble with Nim/JS's floating point representation as opposed to Python's
         var melee = (parseFloat($(float(game.player.creature.melee)/100.0))*100.0).toInt;
@@ -232,7 +234,7 @@ proc drawTargeting*(game:Game) =
         var not_dodged = (parseFloat($(float(100-ent.creature.dodge)/100.0))*100.0).toInt;
         var res = melee*not_dodged/100;
         #var res = parseFloat((melee*not_dodged).formatFloat(ffDecimal, 2))*100.0;
-        fillText(game.context, "Chance to hit: " & $(melee) & "% + " & $(not_dodged) & "% = " & $res & "%", 10.0, 320.0);
+        fillText(game.context, "Chance to hit: " & $(melee) & "% + " & $(not_dodged) & "% = " & $res & "%", 10.0, 330.0);
 
 
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
