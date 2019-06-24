@@ -1,4 +1,4 @@
-import map, math_helpers
+import map, math_helpers, map_helpers
 import type_defs, entity, alea
 import use_functions
 import generators

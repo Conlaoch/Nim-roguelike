@@ -1,4 +1,4 @@
-import map, math_helpers
+import map, math_helpers, map_helpers
 import type_defs, entity, alea
 import use_functions
 import generators
@@ -112,14 +112,7 @@ proc generateMap*(width=20, height=20, room_size: Vector2=(3,5)): (Map, Vector2)
         tiles: tiles),
     start_pos)
 
-# alas, placing them directly in map.nim results in recursive imports
-proc spawnMonsterbyID(id:string, map: Map) : Entity =
-    var pos = random_free_tile(map);
-    return generateMonster(id, pos[0], pos[1]);
 
-proc spawnItembyID(id:string, map:Map) : Entity =
-    var pos = random_free_tile(map);
-    return generateItem(id, pos[0], pos[1]);
 
 proc placeEntities*(map: Map, entities: var seq[Entity], max:int) =
     var rng = aleaRNG();
