@@ -8,16 +8,6 @@ import type_defs
 import factions # to be able to use get_faction_reaction()
 import table_tools
 
-# constructor so that we can provide default values
-proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
-    base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, 
-    faction="enemy", text="", chat:Dialogue = nil, languages: seq[string], dodge=25, melee=55) : Creature =
-
-    Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
-    base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
-    faction:faction, text:text, chat:chat, languages:languages,
-    dodge:dodge, melee:melee);    
-
 proc generate_stats*(typ="standard", kind="melee") : array[6,int] = 
     var arr : array[6, int]
     if typ == "heroic":
@@ -116,12 +106,6 @@ proc closest_monster*(player: Entity, entities: seq[Entity], fov_map:seq[Vector2
                 closest_dist = dist
 
     return target
-
-# used for initial equipment (no messaging, no removal from map)
-proc add_to_inven*(item: Item, e:Entity) =
-    if not isNil(e.inventory):
-        e.inventory.items.add(item)
-
 
 proc pick_up*(item: Item, e: Entity, game:Game) =
     if not isNil(e.inventory):

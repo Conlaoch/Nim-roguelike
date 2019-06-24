@@ -2,7 +2,7 @@ import data_loader
 import jsffi # to be able to do stuff with the data we loaded from JS side
 import tables
 import type_defs
-import entity
+#import entity # because of adding to inventory
 
 # globals
 var items_data*: JsObject;
@@ -15,6 +15,16 @@ proc loadfiles*() =
 
     # test
     #data_loader.loadfile("/data/items");
+
+# constructor so that we can provide default values
+proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
+    base_str=8, base_dex=8, base_con=8, base_int=8, base_wis=8, base_cha=8, 
+    faction="enemy", text="", chat:Dialogue = nil, languages: seq[string], dodge=25, melee=55) : Creature =
+
+    Creature(owner:owner, hp:hp, max_hp:hp, defense:defense, attack:attack, 
+    base_str:base_str, base_dex:base_dex, base_con:base_con, base_int:base_int, base_wis:base_wis, base_cha:base_cha,
+    faction:faction, text:text, chat:chat, languages:languages,
+    dodge:dodge, melee:melee);  
 
 # helper
 # 1 gp = 20 sp
@@ -33,6 +43,12 @@ proc calculate_price(cost: JsObject) : int =
     echo("Calculated price is: " & $price & " sp")
 
     return price
+
+# originally in entity.nim but led to recursive imports...
+# used for initial equipment (no messaging, no removal from map)
+proc add_to_inven*(item: Item, e:Entity) =
+    if not isNil(e.inventory):
+        e.inventory.items.add(item)    
 
 proc generateItem*(id:string, x: int, y:int) : Entity =
     echo "Generate item with id: " & $id
@@ -177,5 +193,3 @@ proc getData*() : Table[cstring, JSObject] =
     return dat;
 
 # the callback on loading all data files was moved to main.nim
-
-
