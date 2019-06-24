@@ -1,6 +1,7 @@
 import times # for timing the special effects
 import dom # for keypad
 import math_helpers, math, alea, astar, map, map_common
+import map_helpers
 import calendar
 
 # type definition moved to type_defs
@@ -324,7 +325,14 @@ proc move*(e: Entity, dx: int, dy: int, game:Game, map:Map, entities:seq[Entity]
                 echo ("Creature languages: " & $target.creature.languages & " player languages " & $e.creature.languages)
                 echo ("Know same languages? " & $(target.creature.languages == e.creature.languages))
 
+                # test
+                var items: seq[Entity]
+                items.add(spawnItembyID("chainmail", game.level.map));
+
                 showDialogue(game, target);
+
+                if items.len > 0:
+                    game.shop_data.items = items;
 
                 #dialogue_menu(game, target.name, target.creature.chat)
         
