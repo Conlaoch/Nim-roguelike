@@ -1,11 +1,11 @@
 import times # for timing the special effects
 import dom # for keypad
-import math_helpers, map, math, alea, astar, map_common
+import math_helpers, math, alea, astar, map, map_common
 import calendar
 
 # type definition moved to type_defs
 import type_defs
-import game_class # to be able to use game.get_faction_reaction()
+import factions # to be able to use get_faction_reaction()
 import table_tools
 
 # constructor so that we can provide default values
@@ -430,7 +430,7 @@ proc rest_start*(p:Player, turns:int, game:Game) =
         p.rest_stop(game)
     else:
         # toggle game state to enemy turn
-        game.end_player_turn()
+        game.game_state = ENEMY_TURN.int
         p.rest_cnt += 1
 
 proc resting_step(p:Player, game:Game) =
@@ -449,7 +449,7 @@ proc resting_step(p:Player, game:Game) =
 
 
         # toggle game state to enemy turn
-        game.end_player_turn()
+        game.game_state = ENEMY_TURN.int
         p.rest_cnt += 1
 
 proc act*(p:Player, game:Game) =

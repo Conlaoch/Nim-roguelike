@@ -12,6 +12,7 @@ import death_functions
 import menus
 import save
 import generators
+import factions
 
 # global stuff goes here
 # needed because key handler refs Game
@@ -217,6 +218,18 @@ proc onReadyNimCallback*() {.exportc.} =
 
 
             game.dialogue_menu(game.talking_data.cr.owner.name, text, options);
+
+        if game.game_state == GUI_S_SHOP.int:
+            game.shop_window(game.player, game.talking_data.cr.owner, game.shop_data.items, current=game.multicolumn_col);
+
+            # if we're done picking, log our choices in console
+            if len(game.multicolumn_sels) == game.multicolumn_wanted:
+                echo $game.multicolumn_sels;
+                # for s in game.multicolumn_sels:
+                #     echo $columns[s[1]][s[0]]
+
+                # switch state
+                game.game_state = PLAYER_TURN.int
 
         if game.game_state == GUI_S_MESSAGE_LOG.int:
             game.message_log()
