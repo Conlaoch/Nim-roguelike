@@ -148,6 +148,10 @@ proc quitDialogue() =
     # switch back to player turn
     game.game_state = game.previous_state
 
+    if game.shop_data.items.len > 0:
+        # go to shop gui
+        game.game_state = GUI_S_SHOP.int
+
 proc showDialogueKeypad() =
     # dom magic
     dom.document.getElementById("keypad").style.display = "none";
@@ -340,6 +344,7 @@ proc multiColumnSelectNim(index:int, col:int) {.exportc.} =
         game.multicolumn_sels.add((id, col));
 
 proc toggleColumnNim(game: Game) =
+    echo $game.multicolumn_col & " " & $game.multicolumn_total
     if game.multicolumn_col < game.multicolumn_total-1:
         game.multicolumn_col += 1
     else:
@@ -444,7 +449,7 @@ proc processKeyDown*(key: int, game:Game) =
       elif game.game_state == GUI_S_TEXT.int:
         if key == 27:
             quitTextMenu();
-      elif game.game_state == GUI_S_CHARACTER_CREATION.int:
+      elif game.game_state == GUI_S_CHARACTER_CREATION.int or game.game_state == GUI_S_SHOP.int:
         processCharacterCreationKey(key, game);
       else:
         echo "Not player turn"

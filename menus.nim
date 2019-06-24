@@ -113,7 +113,7 @@ proc multicolumn_menu*(game: Game, title:string, columns:seq[seq[string]], width
 
     for i in 0..(len(columns)-1):
         #col = columns[i]
-        var w = 10*7
+        var w = 10*15
         y = (menu_y + header_height + 2) * 10
         # outline current column
         if i == cur_column:
@@ -197,6 +197,30 @@ proc dialogue_menu*(game:Game, header:string, text: string, options: seq[string]
     #     options.add(a.chat)
 
     menu(game, header, options, 300, game.canvas.width, game.canvas.height, text=text);
+
+proc shop_window*(game:Game, player: Entity, creature: Entity, items:seq[Entity], current=0) =
+
+    var player_inv: seq[string]
+    # player inv
+    if player.inventory.items.len == 0:
+        player_inv = @["Inventory is empty."]
+    else:
+        #options = [item.owner.name for item in inventory.items]
+        for item in player.inventory.items:
+            player_inv.add(item.owner.display_name);
+
+    # shop
+    var shop_inv: seq[string]
+    if items.len == 0:
+        shop_inv = @["Shop is empty"]
+    else:
+        for item in items:
+            shop_inv.add(item.display_name);
+
+    var columns = @[player_inv, shop_inv];
+
+    multicolumn_menu(game, "SHOP", columns, 300, game.canvas.width, 1, current);
+
 
 proc message_log*(game: Game) =
 

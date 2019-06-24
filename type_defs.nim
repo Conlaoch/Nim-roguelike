@@ -32,6 +32,8 @@ type
         # UI-specific things because nowhere to put them
         talking_data*: tuple [cr: Creature, chat: string]
         message_log_index*: tuple [begin: int, ending: int]
+        shop_data*: tuple [items: seq[Entity]]
+        # this really ought to go somewhere
         multicolumn_col*: int
         multicolumn_total*: int # how many columns in total
         multicolumn_wanted*: int # how many keypresses do we want?
