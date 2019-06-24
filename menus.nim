@@ -76,7 +76,7 @@ proc menu_colored(game:Game, header:string, options:seq[GameMessage], width:int=
         # experimental height between lines in px
         y += 10;
 
-proc multicolumn_menu*(game: Game, title:string, columns:seq[seq[string]], width:int=100, screen_width:int, current=0) =
+proc multicolumn_menu*(game: Game, title:string, columns:seq[seq[string]], width:int=100, screen_width:int, wanted=1, current=0) =
     if columns[0].len > 26: 
         echo("Cannot have a menu with more than 26 options.")
         return
@@ -93,6 +93,7 @@ proc multicolumn_menu*(game: Game, title:string, columns:seq[seq[string]], width
     var cur_column = current
     # save number of columns
     game.multicolumn_total = len(columns);
+    game.multicolumn_wanted = wanted;
 
     # background
     game.context.fillStyle = rgb(0,0,0);

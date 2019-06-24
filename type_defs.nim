@@ -33,7 +33,8 @@ type
         talking_data*: tuple [cr: Creature, chat: string]
         message_log_index*: tuple [begin: int, ending: int]
         multicolumn_col*: int
-        multicolumn_total*: int
+        multicolumn_total*: int # how many columns in total
+        multicolumn_wanted*: int # how many keypresses do we want?
         multicolumn_sels*: seq[MulticolumnSel]
 
     Level* = ref object
@@ -45,7 +46,7 @@ type
 
     GameState* = enum
         PLAYER_TURN, ENEMY_TURN, PLAYER_DEAD, 
-        GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND, GUI_S_DIALOGUE, GUI_S_MESSAGE_LOG, GUI_S_TEXT, GUI_S_CHARACTER_CREATION
+        GUI_S_INVENTORY, GUI_S_DROP, TARGETING, GUI_S_CHARACTER, LOOK_AROUND, GUI_S_DIALOGUE, GUI_S_MESSAGE_LOG, GUI_S_TEXT, GUI_S_CHARACTER_CREATION, GUI_S_SHOP
 
     GameMessage* = tuple[s:string, c:ColorRGB]    
 

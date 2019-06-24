@@ -178,10 +178,10 @@ proc onReadyNimCallback*() {.exportc.} =
         
             var columns = @[races, genders]
 
-            game.multicolumn_menu("CHARACTER CREATION", columns, 300, game.canvas.width, current=game.multicolumn_col);
+            game.multicolumn_menu("CHARACTER CREATION", columns, 300, game.canvas.width, 2, current=game.multicolumn_col);
 
             # if we're done picking, log our choices in console
-            if len(game.multicolumn_sels) == game.multicolumn_total:
+            if len(game.multicolumn_sels) == game.multicolumn_wanted:
                 echo $game.multicolumn_sels;
                 for s in game.multicolumn_sels:
                     echo $columns[s[1]][s[0]]
