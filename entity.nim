@@ -280,7 +280,7 @@ proc showDialogue(game: Game, target: Entity) =
      game.previous_state = game.game_state
      game.game_state = GUI_S_DIALOGUE.int
      #echo $game.game_state
-     game.talking_data = (target.creature, target.creature.chat.start)
+     game.talking_data = (target.creature, target.creature.chat.start, "")
      #echo $game.talking_data.cr.owner.name
 
      showDialogueKeypad(game);

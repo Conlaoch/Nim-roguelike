@@ -148,9 +148,13 @@ proc quitDialogue() =
     # switch back to player turn
     game.game_state = game.previous_state
 
-    if game.shop_data.items.len > 0:
-        # go to shop gui
-        game.game_state = GUI_S_SHOP.int
+    if game.talking_data.action != "":
+        echo "Action: " & $game.talking_data.action
+
+    if game.talking_data.action == "shop":
+        if game.shop_data.items.len > 0:
+            # go to shop gui
+            game.game_state = GUI_S_SHOP.int
 
 proc showDialogueKeypad() =
     # dom magic
@@ -176,6 +180,9 @@ proc dialogueSelectNim(index:int) {.exportc.} =
     if game.talking_data.chat == game.talking_data.cr.chat.start:
         var sel = game.talking_data.cr.chat.answers[index]
         #echo $sel
+
+        # dialogue actions
+        game.talking_data.action = $sel.action
 
         # display new text if any
         echo $sel.reply
@@ -332,6 +339,7 @@ proc processDialogueKey(key: int, game:Game) =
         dialogueSelectNim(index);
 
     elif key == 27: # escape
+        var act = game.talking_data.cr.chat.answers
         quitDialogue()
 
 proc multiColumnSelectNim(index:int, col:int) {.exportc.} =

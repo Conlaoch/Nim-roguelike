@@ -30,7 +30,7 @@ type
         calendar*: Calendar
         labels*: bool
         # UI-specific things because nowhere to put them
-        talking_data*: tuple [cr: Creature, chat: string]
+        talking_data*: tuple [cr: Creature, chat: string, action: string]
         message_log_index*: tuple [begin: int, ending: int]
         shop_data*: tuple [items: seq[Entity]]
         # this really ought to go somewhere
@@ -68,7 +68,7 @@ type
         answers*: seq[DialogueReply]
         texts*: seq[DialogueText]
 
-    DialogueReply* = tuple[chat:string, reply:string]
+    DialogueReply* = tuple[chat:string, reply:string, action: string]
     DialogueText* = tuple[id:string, text:string]
 
     Calendar* = ref object

@@ -138,7 +138,13 @@ proc generateMonster*(id: string, x,y:int) : Entity =
             var answers : seq[DialogueReply]
 
             for k in mon_chat_data["answer"].keys:
-                var entry = ($to(mon_chat_data["answer"][k]["chat"], cstring), $to(mon_chat_data["answer"][k]["reply"], cstring))
+                var action = cstring("")
+                if mon_chat_data["answer"][k].hasOwnProperty("action"):
+                    action = to(mon_chat_data["answer"][k]["action"], cstring)
+                var entry = ($to(mon_chat_data["answer"][k]["chat"], cstring), 
+                $to(mon_chat_data["answer"][k]["reply"], cstring),
+                $action
+                )
                 answers.add(entry);
             #echo $answers
 
