@@ -182,6 +182,7 @@ proc onReadyNimCallback*() {.exportc.} =
             game.multicolumn_menu("CHARACTER CREATION", columns, 300, game.canvas.width, 2, current=game.multicolumn_col);
 
             # if we're done picking, log our choices in console
+            #echo $game.multicolumn_sels & " " & $game.multicolumn_wanted 
             if len(game.multicolumn_sels) == game.multicolumn_wanted:
                 echo $game.multicolumn_sels;
                 for s in game.multicolumn_sels:
@@ -189,6 +190,8 @@ proc onReadyNimCallback*() {.exportc.} =
 
                 # switch state
                 game.game_state = PLAYER_TURN.int
+                # clear multi-column selections
+                game.multicolumn_sels = @[]
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
@@ -224,12 +227,26 @@ proc onReadyNimCallback*() {.exportc.} =
 
             # if we're done picking, log our choices in console
             if len(game.multicolumn_sels) == game.multicolumn_wanted:
-                echo $game.multicolumn_sels;
-                # for s in game.multicolumn_sels:
-                #     echo $columns[s[1]][s[0]]
+                #echo "selections: " & $game.multicolumn_sels;
+                for s in game.multicolumn_sels:
+                    # our own items
+                    if s[1] == 0:
+                        echo "Selling item..."
+                        # add money
+                        for m in game.player.player.money:
+                            if m.kind == "silver":
+                                m.amount += game.player.inventory.items[s[0]].price
+                    elif s[1] == 1:
+                        echo "Buying item..."
+                        # remove money
+                        for m in game.player.player.money:
+                            if m.kind == "silver":
+                                m.amount -= game.shop_data.items[s[0]].item.price
 
                 # switch state
                 game.game_state = PLAYER_TURN.int
+                # clear multi-column selections
+                game.multicolumn_sels = @[]
 
         if game.game_state == GUI_S_MESSAGE_LOG.int:
             game.message_log()
