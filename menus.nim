@@ -207,7 +207,7 @@ proc shop_window*(game:Game, player: Entity, creature: Entity, items:seq[Entity]
     else:
         #options = [item.owner.name for item in inventory.items]
         for item in player.inventory.items:
-            player_inv.add(item.owner.display_name);
+            player_inv.add(item.owner.display_name & " (" & $item.price & ")");
 
     # shop
     var shop_inv: seq[string]
@@ -215,7 +215,7 @@ proc shop_window*(game:Game, player: Entity, creature: Entity, items:seq[Entity]
         shop_inv = @["Shop is empty"]
     else:
         for item in items:
-            shop_inv.add(item.display_name);
+            shop_inv.add(item.display_name & " (" & $item.item.price & ")");
 
     var columns = @[player_inv, shop_inv];
 
