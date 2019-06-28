@@ -456,3 +456,13 @@ proc act*(p:Player, game:Game) =
     else:
         p.nutrition -= 1
         p.thirst -= 1
+
+proc add_money*(p:Player, amount:int) =
+    for m in p.money:
+        if m.kind == "silver":
+            m.amount += amount
+
+proc remove_money*(p:Player, amount:int) =
+    for m in p.money:
+        if m.kind == "silver" and m.amount - amount >= 0:
+            m.amount -= amount

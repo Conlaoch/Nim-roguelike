@@ -104,11 +104,6 @@ proc onReadyNimCallback*() {.exportc.} =
 
     game.camera.center(game.player.position);
 
-    # test adding money
-    for m in game.player.player.money:
-        if m.kind == "silver":
-            m.amount += 10 
-
     # test (reveal all map)
     #for x in 0..<game.map.width:
     #    for y in 0..<game.map.height:
@@ -232,16 +227,10 @@ proc onReadyNimCallback*() {.exportc.} =
                     # our own items
                     if s[1] == 0:
                         echo "Selling item..."
-                        # add money
-                        for m in game.player.player.money:
-                            if m.kind == "silver":
-                                m.amount += game.player.inventory.items[s[0]].price
+                        game.player.player.add_money(game.player.inventory.items[s[0]].price);
                     elif s[1] == 1:
                         echo "Buying item..."
-                        # remove money
-                        for m in game.player.player.money:
-                            if m.kind == "silver":
-                                m.amount -= game.shop_data.items[s[0]].item.price
+                        game.player.player.remove_money(game.shop_data.items[s[0]].item.price);
 
                 # switch state
                 game.game_state = PLAYER_TURN.int
