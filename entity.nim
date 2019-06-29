@@ -462,7 +462,11 @@ proc add_money*(p:Player, amount:int) =
         if m.kind == "silver":
             m.amount += amount
 
-proc remove_money*(p:Player, amount:int) =
+proc remove_money*(p:Player, amount:int) : bool =
+    var ret = false
     for m in p.money:
         if m.kind == "silver" and m.amount - amount >= 0:
             m.amount -= amount
+            ret = true
+
+    return ret;

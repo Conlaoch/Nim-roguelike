@@ -228,9 +228,15 @@ proc onReadyNimCallback*() {.exportc.} =
                     if s[1] == 0:
                         echo "Selling item..."
                         game.player.player.add_money(game.player.inventory.items[s[0]].price);
+                        game.shop_data.items.add(game.player.inventory.items[s[0]].owner);
+                        game.player.inventory.items.delete(s[0])
+                        
                     elif s[1] == 1:
                         echo "Buying item..."
-                        game.player.player.remove_money(game.shop_data.items[s[0]].item.price);
+                        var bought = game.player.player.remove_money(game.shop_data.items[s[0]].item.price);
+                        if bought:
+                            game.player.inventory.items.add(game.shop_data.items[s[0]].item);
+                            game.shop_data.items.delete(s[0])
 
                 # switch state
                 game.game_state = PLAYER_TURN.int
