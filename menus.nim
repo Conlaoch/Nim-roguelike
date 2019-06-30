@@ -176,6 +176,14 @@ proc inventory_menu*(game:Game, header:string, inventory:Inventory, inventory_wi
 
     menu(game, header, options, inventory_width, screen_width, screen_height)
 
+proc character_stats_menu*(game:Game, player: Entity) =
+    var options = @["STR: " & $player.creature.base_str, "DEX: " & $player.creature.base_dex,
+                "CON: " & $player.creature.base_con, "INT: " & $player.creature.base_int,
+                "WIS: " & $player.creature.base_wis, "CHA: " & $player.creature.base_cha,
+                "(R)eroll! ", " (E)xit: "]
+
+    menu(game, "STATS", options, 300, game.canvas.width, game.canvas.height, 10, false);
+
 proc character_sheet_menu*(game:Game, header:string, player:Entity) =
     var options = @["STR: " & $player.creature.base_str, "DEX: " & $player.creature.base_dex,
                "CON: " & $player.creature.base_con, "INT: " & $player.creature.base_int,

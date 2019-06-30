@@ -8,6 +8,8 @@ import type_defs
 # for next level
 import map, arena_map, FOV, camera
 
+import alea
+
 # global stuff goes here
 # needed because key handlers ref Game
 var game*: Game;
@@ -377,6 +379,21 @@ proc processCharacterCreationKey(key: int, game:Game) =
     if key == 27: #esc
         game.game_state = PLAYER_TURN.int
 
+proc rerollStats() =
+    var rng = aleaRNG();
+
+    game.player.creature.base_str = rng.roller("3d6");
+    game.player.creature.base_dex = rng.roller("3d6");
+    game.player.creature.base_con = rng.roller("3d6");
+    game.player.creature.base_int = rng.roller("3d6");
+    game.player.creature.base_wis = rng.roller("3d6");
+    game.player.creature.base_cha = rng.roller("3d6");
+
+
+proc quitStatsMenu() =
+    game.game_state = PLAYER_TURN.int
+
+
 # targeting mode keys
 proc moveTargetNim(x:int, y:int) {.exportc.} =
     echo "Move target " & $x & " " & $y;
@@ -459,5 +476,10 @@ proc processKeyDown*(key: int, game:Game) =
             quitTextMenu();
       elif game.game_state == GUI_S_CHARACTER_CREATION.int or game.game_state == GUI_S_SHOP.int:
         processCharacterCreationKey(key, game);
+      elif game.game_state == GUI_S_CHARACTER_STATS.int:
+        if key == 82:
+            rerollStats()
+        elif key == 69 or key == 27:
+            quitStatsMenu()
       else:
         echo "Not player turn"

@@ -184,9 +184,13 @@ proc onReadyNimCallback*() {.exportc.} =
                     echo $columns[s[1]][s[0]]
 
                 # switch state
-                game.game_state = PLAYER_TURN.int
+                game.game_state = GUI_S_CHARACTER_STATS.int
+                #game.game_state = PLAYER_TURN.int
                 # clear multi-column selections
                 game.multicolumn_sels = @[]
+
+        if game.game_state == GUI_S_CHARACTER_STATS.int:
+            game.character_stats_menu(game.player)
 
         # inventory
         if game.game_state == GUI_S_INVENTORY.int or game.game_state == GUI_S_DROP.int:
