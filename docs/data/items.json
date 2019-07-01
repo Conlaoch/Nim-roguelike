@@ -6,6 +6,7 @@
            "paperdoll": "0xE202",
            "slot": "main_hand",
            "type": "weapon",
+           "rarity": 20,
            "damage_dice": 8,
            "damage_number": 1
  },
@@ -14,6 +15,7 @@
            "name": "dagger",
            "slot": "main_hand",
            "type": "weapon",
+           "rarity": 50,
            "damage_dice": 4,
            "damage_number": 1
  },
@@ -26,6 +28,7 @@
            },
            "slot": "body",
            "type": "armor",
+           "rarity": 10,
            "combat_armor": 5
  },
  "leather armor": {

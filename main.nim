@@ -102,6 +102,9 @@ proc onReadyNimCallback*() {.exportc.} =
     start_equip.item.add_to_inven(game.player)
     start_equip.equipment.equip(game.player)
 
+    # test
+    discard generators.get_item_chances();
+
     game.camera.center(game.player.position);
 
     # test (reveal all map)

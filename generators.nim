@@ -199,3 +199,27 @@ proc getData*() : Table[cstring, JSObject] =
     return dat;
 
 # the callback on loading all data files was moved to main.nim
+
+proc get_item_chances*() : seq[tuple[s:string, l:int, h:int]] =
+    var chances: seq[tuple[n:string, r:int]];
+    for data_id in items_data.keys:
+        if items_data[data_id].hasOwnProperty("rarity"):
+            chances.add(($to(items_data[data_id]["name"], cstring), to(items_data[data_id]["rarity"], int)))
+
+    #echo chances
+
+    var num = 0
+    var chance_roll : seq[tuple[s:string, l:int, h:int]];
+    for chance in chances:
+        var old_num = num+1
+        num += 1+chance[1]
+        chance_roll.add((chance[0], old_num, num))
+
+    #pad out to 100
+    echo "Last number is " & $num
+    chance_roll.add(("None", num, 100))
+
+    echo chance_roll
+
+
+    return chance_roll
