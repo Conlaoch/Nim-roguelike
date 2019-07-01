@@ -2,7 +2,8 @@ import data_loader
 import jsffi # to be able to do stuff with the data we loaded from JS side
 import tables
 import type_defs
-#import entity # because of adding to inventory
+
+import alea
 
 # globals
 var items_data*: JsObject;
@@ -223,3 +224,14 @@ proc get_item_chances*() : seq[tuple[s:string, l:int, h:int]] =
 
 
     return chance_roll
+
+# roll on a table of [entry, low, high]
+proc random_choice_table*(table: seq[tuple[s:string, l:int, h:int]]) : string =
+    var rng = aleaRNG();
+    var roll = rng.roller("1d100"); # between 1 and 101
+    echo("Roll: " & $roll)
+    
+    for row in table:
+        if roll >= row[1] and roll <= row[2]:
+            echo("Random roll picked: " & $row[0])
+            return row[0]

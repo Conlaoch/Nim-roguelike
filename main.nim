@@ -103,7 +103,7 @@ proc onReadyNimCallback*() {.exportc.} =
     start_equip.equipment.equip(game.player)
 
     # test
-    discard generators.get_item_chances();
+    echo generators.random_choice_table(generators.get_item_chances());
 
     game.camera.center(game.player.position);
 
