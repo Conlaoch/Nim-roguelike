@@ -54,6 +54,7 @@ proc onReadyNimCallback*() {.exportc.} =
     generators.items_data = data["data/items"];
     generators.monster_data = data["data/test"];
     generators.dialogue_data = data["data/dialogue"];
+    generators.body_types_data = data["data/body_types"];
 
     # setup cd.
     game.add_faction(("player", "enemy", -100));
@@ -102,8 +103,10 @@ proc onReadyNimCallback*() {.exportc.} =
     start_equip.item.add_to_inven(game.player)
     start_equip.equipment.equip(game.player)
 
+
+    game.player.creature.body_parts = generators.generate_body_types();
     # test
-    echo generators.random_choice_table(generators.get_item_chances());
+    #echo generators.random_choice_table(generators.get_item_chances());
 
     game.camera.center(game.player.position);
 

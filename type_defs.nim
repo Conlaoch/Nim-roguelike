@@ -134,6 +134,7 @@ type
         melee*: int
         # flag
         dead*: bool
+        body_parts*: seq[string]
 
     AI* = ref object
         # back reference to entity

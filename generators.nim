@@ -9,13 +9,23 @@ import alea
 var items_data*: JsObject;
 var monster_data*: JsObject;
 var dialogue_data*: JsObject;
+var body_types_data*: JsObject;
 
 proc loadfiles*() =
-    data_loader.load_files(@[cstring("data/items"), cstring("data/test"), cstring("data/dialogue")]);
+    data_loader.load_files(@[cstring("data/items"), cstring("data/test"), cstring("data/dialogue"), cstring("data/body_types")]);
 
 
-    # test
-    #data_loader.loadfile("/data/items");
+proc generate_body_types*(kind="humanoid") : seq[string] =
+    var body_type : seq[string];
+    if body_types_data.hasOwnProperty(kind):
+        for k in body_types_data[kind].keys:
+            body_type.add($to(body_types_data[kind][k], cstring));
+
+        echo $body_type    
+        return body_type
+    else:
+        echo("Bad body type requested: " & $kind)
+        return @[]
 
 # constructor so that we can provide default values
 proc newCreature*(owner: Entity, hp: int, defense:int, attack:int, 
