@@ -1,5 +1,6 @@
 import times # for timing the special effects
 import dom # for keypad
+import tables
 import math_helpers, math, alea, astar, map, map_common
 import map_helpers
 import calendar
@@ -214,6 +215,16 @@ proc get_defense*(cr:Creature): int {.inline.} =
     echo("Def: " & $ret)
     return ret
 
+proc set_body_parts*(cr:Creature, parts:seq[string]) =
+    var BP_TO_HP = { "head": 0.33, "torso": 0.4, "arm": 0.25, "leg": 0.25 }.toTable()
+
+    echo("Setting body parts...")
+    for p in parts:
+        #echo("Setting " & $p)
+
+        if p in BP_TO_HP:
+            echo("Looking up hp.." & $(int(BP_TO_HP[p]*float(cr.max_hp))));
+            cr.body_parts.add((p, int(BP_TO_HP[p]*float(cr.max_hp))));
 
 
 proc heal_damage*(cr:Creature, amount: int) =

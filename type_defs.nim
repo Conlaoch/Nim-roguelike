@@ -134,7 +134,7 @@ type
         melee*: int
         # flag
         dead*: bool
-        body_parts*: seq[string]
+        body_parts*: seq[tuple[p: string, hp:int]]
 
     AI* = ref object
         # back reference to entity

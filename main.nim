@@ -104,7 +104,7 @@ proc onReadyNimCallback*() {.exportc.} =
     start_equip.equipment.equip(game.player)
 
 
-    game.player.creature.body_parts = generators.generate_body_types();
+    game.player.creature.set_body_parts(generators.generate_body_types());
     # test
     #echo generators.random_choice_table(generators.get_item_chances());
 
