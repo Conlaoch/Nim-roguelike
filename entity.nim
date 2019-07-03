@@ -215,17 +215,24 @@ proc get_defense*(cr:Creature): int {.inline.} =
     echo("Def: " & $ret)
     return ret
 
-proc set_body_parts*(cr:Creature, parts:seq[string]) =
-    var BP_TO_HP = { "head": 0.33, "torso": 0.4, "arm": 0.25, "leg": 0.25 }.toTable()
+# we had to move setting body parts out of here... recursive imports...
 
-    echo("Setting body parts...")
-    for p in parts:
-        #echo("Setting " & $p)
+proc random_body_part(cr:Creature) : BodyPart =
+    var rng = aleaRNG();
+    var loc = rng.roller("1d20");
 
-        if p in BP_TO_HP:
-            echo("Looking up hp.." & $(int(BP_TO_HP[p]*float(cr.max_hp))));
-            cr.body_parts.add((p, int(BP_TO_HP[p]*float(cr.max_hp))));
-
+    if loc < 3:
+        return cr.body_parts[4] # left leg
+    elif loc < 6:
+        return cr.body_parts[5] # right leg
+    elif loc < 13:
+        return cr.body_parts[1] # torso
+    elif loc < 16:
+        return cr.body_parts[2] # left arm
+    elif loc < 19:
+        return cr.body_parts[3] # right arm
+    else:
+        return cr.body_parts[0] # head
 
 proc heal_damage*(cr:Creature, amount: int) =
     var amount = amount;
@@ -238,10 +245,15 @@ proc heal_damage*(cr:Creature, amount: int) =
 
 # basic combat system
 proc take_damage*(cr:Creature, amount:int) =
-    cr.hp -= amount;
+    # determine body part hit
+    var part = cr.random_body_part();
+    part.hp -= amount;
+
+    #cr.hp -= amount;
 
     # kill!
-    if cr.hp <= 0:
+    #if cr.hp <= 0:
+    if (part.part == "torso" or part.part == "head") and part.hp <= 0:
         cr.dead = true;
 
 proc attack*(cr:Creature, target:Entity, game:Game) =

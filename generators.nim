@@ -1,6 +1,7 @@
 import data_loader
 import jsffi # to be able to do stuff with the data we loaded from JS side
 import tables
+
 import type_defs
 
 import alea
@@ -60,6 +61,20 @@ proc calculate_price(cost: JsObject) : int =
 proc add_to_inven*(item: Item, e:Entity) =
     if not isNil(e.inventory):
         e.inventory.items.add(item)    
+
+proc set_body_parts*(cr:Creature, parts:seq[string]) =
+    var BP_TO_HP = { "head": 0.33, "torso": 0.4, "arm": 0.25, "leg": 0.25 }.toTable()
+
+    echo("Setting body parts...")
+    for p in parts:
+        #echo("Setting " & $p)
+
+        if p in BP_TO_HP:
+            var hp = int(BP_TO_HP[p]*float(cr.max_hp));
+            echo "Looking up hp.." & $hp;
+
+            cr.body_parts.add(BodyPart(part:p, hp:hp, max_hp:hp));
+
 
 proc generateItem*(id:string, x: int, y:int) : Entity =
     echo "Generate item with id: " & $id
@@ -190,6 +205,10 @@ proc generateMonster*(id: string, x,y:int) : Entity =
         # creature component
         var creat = newCreature(owner=mon, hp=mon_hp, defense=30, attack=20, 
         faction= $fact, text= $mon_text, chat= mon_chat, languages= langs);
+
+        # body parts
+        creat.set_body_parts(generate_body_types())
+
         mon.creature = creat;
         # AI component
         var AI_comp = AI(owner:mon);
