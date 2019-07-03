@@ -149,7 +149,14 @@ proc onReadyNimCallback*() {.exportc.} =
             game.renderEntities(game.FOV_map);
             game.render(game.player);
             if not isNil(game.player):
-                game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+                #game.renderBar(10, 10, 100, game.player.creature.hp, game.player.creature.max_hp, (255,0,0), (191, 0,0));
+                
+                # draw body parts' hp
+                var x = 10 
+                for p in game.player.creature.body_parts:
+                    game.renderBar(x, 10, 10*p.hp, p.hp, p.max_hp, (255,0,0), (191, 0,0))
+                    x += 100+5
+                
                 game.renderBar(10, 22, 100, int(game.player.player.nutrition), 500, (0,255,0), (0,191,0));
                 game.renderBar(10, 35, 100, int(game.player.player.thirst), 300, (0,0,255), (0,0,191));
             else:
