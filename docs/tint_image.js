@@ -1,29 +1,43 @@
 // based on https://github.com/matmartinez/tinto
 
-let context; // cache
 
-function tintImage(image, color, opacity = 0.5) {
-    if (!context) {
+//it's 2019, use a proper map! (ES 6 feature [!])
+var cache = new Map();
+
+var context; // cache
+
+function tintImage(image, id, color, opacity = 0.5) {
+    //build a unique identifier from id and color
+    //var c_id = id.concat(color);
+    if (!cache.has(id)) {
       //the string here absolutely needs to be "canvas", not "canvas-temp" or any such
       //therefore the canvas game element cannot have an id of "canvas"...
       var canvas = document.createElement('canvas');
       context = canvas.getContext("2d");
       canvas.width = image.width;
       canvas.height = image.height;
-    } else {
-      context.canvas.width = image.width;
-      context.canvas.height = image.height;
-    }
-  
-    context.save();
-
-    //originalcolor(context, color, opacity, image);
-    colorImage(context, color, image);
-    maskImage(context, image);
     
-    context.restore();
-  
-    return context.canvas;
+      context.save();
+
+      //originalcolor(context, color, opacity, image);
+      colorImage(context, color, image);
+      maskImage(context, image);
+      
+      context.restore();
+
+      cache.set(id, context);
+    
+      return context.canvas;
+    
+    //proper caching
+    } else {
+      return cache.get(id).canvas;
+    //  return context.canvas;
+    
+    
+      //   context.canvas.width = image.width;
+    //   context.canvas.height = image.height;
+    }
   }
 
 

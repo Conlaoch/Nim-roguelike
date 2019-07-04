@@ -50,8 +50,8 @@ proc renderGfxTile*(game: Game, img: Element, x,y: int) =
     game.context.drawImage((ImageElement)img, float(x), float(y));
 
 # tinted version
-proc renderGfxTileTinted*(game:Game, img: Element, tint:ColorRGB, x,y: int) =
-    game.context.drawImage(tintImageNim((ImageElement)img, tint, 0.5), float(x), float(y));
+proc renderGfxTileTinted*(game:Game, id: string, img: Element, tint:ColorRGB, x,y: int) =
+    game.context.drawImage(tintImageNim((ImageElement)img, id, tint, 0.5), float(x), float(y));
 
 proc drawText*(game:Game, text:string, x,y:int) =
     game.context.font = "12px Arial"
@@ -65,7 +65,7 @@ proc render*(game: Game, player: Entity) =
     let iso = isoPos(player.position.x, player.position.y, game.camera.offset);
 
     # marker (no need to calculate because player's always friendly to player lol)
-    renderGfxTileTinted(game, game.images[11], (r:0, g:255, b:255), iso[0], iso[1]);
+    renderGfxTileTinted(game, "11_blue", game.images[11], (r:0, g:255, b:255), iso[0], iso[1]);
 
     # entities need a slight offset to be placed more or less centrally
     renderGfxTile(game, game.images[0], iso[0]+10, iso[1]+10);
@@ -77,7 +77,7 @@ proc renderEntities*(game: Game, fov_map:seq[Vector2]) =
         # if we can actually see the NPCs
         if (e.position.x, e.position.y) in fov_map:
             if not isNil(e.creature) and e.creature.faction != "":
-                renderGfxTileTinted(game, game.images[11], e.creature.get_marker_color(game), iso[0], iso[1]);
+                renderGfxTileTinted(game, "11_npc", game.images[11], e.creature.get_marker_color(game), iso[0], iso[1]);
             
             var off = (12,12);
 
@@ -103,7 +103,7 @@ proc drawMapTile(game: Game, point:Vector2, tile: int) =
     #     renderGfxTile(game, game.images[8], point.x, point.y);
 
 proc drawMapTileTint(game:Game, point:Vector2, tile:int, tint:ColorRGB) =
-    renderGfxTileTinted(game, game.images[tile_lookup[tile]], tint, point.x, point.y);
+    renderGfxTileTinted(game, $tile_lookup[tile] & "_gray", game.images[tile_lookup[tile]], tint, point.x, point.y);
     #game.context.drawImage(tintImageNim(game.images[tile_lookup[tile]], tint, 0.5), float(point.x), float(point.y));
 
     # if tile == 0:
@@ -207,7 +207,7 @@ proc drawTargeting*(game:Game) =
 
 proc drawDmgSplatter(game:Game, x,y:int, dmg: int) =
     let iso = isoPos(x,y, game.camera.offset);
-    renderGfxTileTinted(game, game.images[13], (255,0,0), iso[0]+12, iso[1]+16)
+    renderGfxTileTinted(game, "13_red", game.images[13], (255,0,0), iso[0]+12, iso[1]+16)
     # dmg
     game.context.font = "12px Arial"
     game.context.fillStyle = rgb(255, 255, 255);
