@@ -1,6 +1,7 @@
 import html5_canvas, times
 
 import math_helpers, map, FOV, tint_image
+import alea
 
 import camera
 
@@ -18,6 +19,7 @@ type
         recalc_FOV*: bool
         FOV_map*: seq[Vector2]
         camera*: Camera
+        rng*: AleaRNG
         game_state*: int # because enums are ints by default
         previous_state*: int # for GUI windows to know what to go back to
         game_messages*: seq[GameMessage]

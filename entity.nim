@@ -61,19 +61,19 @@ proc setfield(cr: Creature, field: string, val: int) =
 # d100 roll under
 proc skill_test(cr: Creature, skill: string, game: Game) : bool =
     echo ("Making a test for " & skill & " target: " & $field_val(cr, skill))
-    var rng = aleaRNG();
-    var res = rng.roller("1d100");
+    #var rng = aleaRNG();
+    var res = game.rng.roller("1d100");
 
     #if result < getattr(self, skill):
     if res < fieldval(cr, skill):
             # player-only:
         if cr.owner == game.player:
             # check how much we gain in the skill
-            var tick = rng.roller("1d100")
+            var tick = game.rng.roller("1d100")
             # roll OVER the current skill
             if tick > fieldval(cr, skill):
                 # +1d4 if we succeeded
-                var gain = rng.roller("1d4")
+                var gain = game.rng.roller("1d4")
                 setfield(cr, skill, (fieldval(cr, skill) + gain));
                 game.game_messages.add(("You gain " & $gain & " skill points!", (0,255,0)))
             else:
@@ -85,7 +85,7 @@ proc skill_test(cr: Creature, skill: string, game: Game) : bool =
         # player-only:
         if cr.owner == game.player:
             # if we failed, the check for gain is different
-            var tick = rng.roller("1d100")
+            var tick = game.rng.roller("1d100")
             # roll OVER the current skill
             if tick > fieldval(cr, skill):
                 # +1 if we succeeded, else nothing
@@ -257,13 +257,13 @@ proc take_damage*(cr:Creature, amount:int) =
         cr.dead = true;
 
 proc attack*(cr:Creature, target:Entity, game:Game) =
-    var rng = aleaRNG();
-    var damage = rng.roller("1d6");
+    #var rng = aleaRNG();
+    var damage = game.rng.roller("1d6");
 
     var weapon = cr.owner.get_weapon()
     if not isNil(weapon):
         #echo("We have a weapon, dmg " & $weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
-        damage = rng.roller($weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
+        damage = game.rng.roller($weapon.owner.equipment.num_dice & "d" & $weapon.owner.equipment.damage_dice);
 
     var color = (127,127,127);
     if target == game.player:
@@ -398,7 +398,7 @@ proc move_astar(e:Entity, target:Vector2, game:Game, game_map:Map, entities:seq[
 #proc draw*(e: Entity) =
 
 proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:Map, entities:seq[Entity]) = 
-    var rng = aleaRNG();
+    #var rng = aleaRNG();
     #echo ("The " & ai.owner.creature.name & "wonders when it will get to move");
     var monster = ai.owner
     # assume if we can see it, it can see us too
@@ -407,7 +407,7 @@ proc take_turn*(ai:AI, target:Entity, fov_map:seq[Vector2], game:Game, game_map:
             if monster.creature.faction != target.creature.faction:
                 var is_neutral_faction = game.get_faction_reaction(monster.creature.faction, target.creature.faction, true) >= 0
                 if is_neutral_faction:
-                    discard monster.move(rng.range(-1..1), rng.range(-1..1), game, game_map, entities)
+                    discard monster.move(game.rng.range(-1..1), game.rng.range(-1..1), game, game_map, entities)
                 else:
                     # discard means we're not using the return value
                     #discard monster.move_towards(target.position, game_map, entities);

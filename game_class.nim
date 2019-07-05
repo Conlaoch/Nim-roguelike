@@ -7,6 +7,7 @@ import math_helpers, map, tint_image, seq_tools, map_common
 import factions
 
 import camera
+import alea
 
 # type definition moved to type_defs
 import type_defs
@@ -17,6 +18,8 @@ proc newGame*(canvas: Canvas) : Game =
     new result
     result.canvas = canvas
     result.context = canvas.getContext2D()
+    # set up rng
+    result.rng = aleaRNG();
     #result.explored = @[];
     result.game_state = PLAYER_TURN.int; # trick to use the int
 

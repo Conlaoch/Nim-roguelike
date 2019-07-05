@@ -380,14 +380,14 @@ proc processCharacterCreationKey(key: int, game:Game) =
         game.game_state = PLAYER_TURN.int
 
 proc rerollStats() =
-    var rng = aleaRNG();
+    #var rng = aleaRNG();
 
-    game.player.creature.base_str = rng.roller("3d6");
-    game.player.creature.base_dex = rng.roller("3d6");
-    game.player.creature.base_con = rng.roller("3d6");
-    game.player.creature.base_int = rng.roller("3d6");
-    game.player.creature.base_wis = rng.roller("3d6");
-    game.player.creature.base_cha = rng.roller("3d6");
+    game.player.creature.base_str = game.rng.roller("3d6");
+    game.player.creature.base_dex = game.rng.roller("3d6");
+    game.player.creature.base_con = game.rng.roller("3d6");
+    game.player.creature.base_int = game.rng.roller("3d6");
+    game.player.creature.base_wis = game.rng.roller("3d6");
+    game.player.creature.base_cha = game.rng.roller("3d6");
 
 
 proc quitStatsMenu() =
